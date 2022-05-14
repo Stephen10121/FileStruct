@@ -1,0 +1,26 @@
+* {
+	padding: 0;
+	margin: 0;
+	text-decoration: none;
+	box-sizing: border-box;
+}
+
+html {
+	font-size: 10px;
+}
+
+body {
+	width: 100vw;
+	height: 100vh;
+	/* background-color: #888888; */
+	background-color: #1f1f1f;
+}
+
+:root {
+	--folder-color: #0070a3;
+	--folder-hover-color: #004b6e;
+	--rotate-deg: 90deg;
+}
+
+/* font-family: 'Poppins', sans-serif;
+font-family: 'Roboto', sans-serif; */
