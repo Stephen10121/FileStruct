@@ -2,6 +2,8 @@
   import { createEventDispatcher } from "svelte";
   export let location;
   export let folderName;
+  export let selected;
+
   const dispatch = createEventDispatcher();
   const clickFolder = () => {
     dispatch("folderClicked", location);
@@ -12,7 +14,10 @@
   <button class="tributton">
     <img src="triangle.svg" alt="" />
   </button>
-  <button class="selectButton" on:click={clickFolder}>
+  <button
+    class="selectButton {selected === location ? 'buttonSelected' : null}"
+    on:click={clickFolder}
+  >
     <img src="folder.png" alt="Folder Img" /><p><slot /></p>
   </button>
 </li>
@@ -105,5 +110,9 @@
   li p {
     font-family: "Roboto", sans-serif;
     font-size: 1.5rem;
+  }
+
+  .buttonSelected {
+    background-color: var(--folder-hover-color);
   }
 </style>

@@ -597,12 +597,13 @@ var app = (function () {
     	let img1;
     	let img1_src_value;
     	let p;
+    	let button1_class_value;
     	let li_id_value;
     	let current;
     	let mounted;
     	let dispose;
-    	const default_slot_template = /*#slots*/ ctx[4].default;
-    	const default_slot = create_slot(default_slot_template, ctx, /*$$scope*/ ctx[3], null);
+    	const default_slot_template = /*#slots*/ ctx[5].default;
+    	const default_slot = create_slot(default_slot_template, ctx, /*$$scope*/ ctx[4], null);
 
     	const block = {
     		c: function create() {
@@ -616,21 +617,25 @@ var app = (function () {
     			if (default_slot) default_slot.c();
     			if (!src_url_equal(img0.src, img0_src_value = "triangle.svg")) attr_dev(img0, "src", img0_src_value);
     			attr_dev(img0, "alt", "");
-    			attr_dev(img0, "class", "svelte-1yvcfr5");
-    			add_location(img0, file$4, 12, 4, 315);
-    			attr_dev(button0, "class", "tributton svelte-1yvcfr5");
-    			add_location(button0, file$4, 11, 2, 283);
+    			attr_dev(img0, "class", "svelte-mqt2k");
+    			add_location(img0, file$4, 14, 4, 341);
+    			attr_dev(button0, "class", "tributton svelte-mqt2k");
+    			add_location(button0, file$4, 13, 2, 309);
     			if (!src_url_equal(img1.src, img1_src_value = "folder.png")) attr_dev(img1, "src", img1_src_value);
     			attr_dev(img1, "alt", "Folder Img");
-    			attr_dev(img1, "class", "svelte-1yvcfr5");
-    			add_location(img1, file$4, 15, 4, 423);
-    			attr_dev(p, "class", "svelte-1yvcfr5");
-    			add_location(p, file$4, 15, 45, 464);
-    			attr_dev(button1, "class", "selectButton svelte-1yvcfr5");
-    			add_location(button1, file$4, 14, 2, 365);
+    			attr_dev(img1, "class", "svelte-mqt2k");
+    			add_location(img1, file$4, 20, 4, 513);
+    			attr_dev(p, "class", "svelte-mqt2k");
+    			add_location(p, file$4, 20, 45, 554);
+
+    			attr_dev(button1, "class", button1_class_value = "selectButton " + (/*selected*/ ctx[2] === /*location*/ ctx[0]
+    			? 'buttonSelected'
+    			: null) + " svelte-mqt2k");
+
+    			add_location(button1, file$4, 16, 2, 391);
     			attr_dev(li, "id", li_id_value = /*location*/ ctx[0] + /*folderName*/ ctx[1]);
-    			attr_dev(li, "class", "svelte-1yvcfr5");
-    			add_location(li, file$4, 10, 0, 248);
+    			attr_dev(li, "class", "svelte-mqt2k");
+    			add_location(li, file$4, 12, 0, 274);
     		},
     		l: function claim(nodes) {
     			throw new Error("options.hydrate only works if the component was compiled with the `hydratable: true` option");
@@ -651,24 +656,30 @@ var app = (function () {
     			current = true;
 
     			if (!mounted) {
-    				dispose = listen_dev(button1, "click", /*clickFolder*/ ctx[2], false, false, false);
+    				dispose = listen_dev(button1, "click", /*clickFolder*/ ctx[3], false, false, false);
     				mounted = true;
     			}
     		},
     		p: function update(ctx, [dirty]) {
     			if (default_slot) {
-    				if (default_slot.p && (!current || dirty & /*$$scope*/ 8)) {
+    				if (default_slot.p && (!current || dirty & /*$$scope*/ 16)) {
     					update_slot_base(
     						default_slot,
     						default_slot_template,
     						ctx,
-    						/*$$scope*/ ctx[3],
+    						/*$$scope*/ ctx[4],
     						!current
-    						? get_all_dirty_from_scope(/*$$scope*/ ctx[3])
-    						: get_slot_changes(default_slot_template, /*$$scope*/ ctx[3], dirty, null),
+    						? get_all_dirty_from_scope(/*$$scope*/ ctx[4])
+    						: get_slot_changes(default_slot_template, /*$$scope*/ ctx[4], dirty, null),
     						null
     					);
     				}
+    			}
+
+    			if (!current || dirty & /*selected, location*/ 5 && button1_class_value !== (button1_class_value = "selectButton " + (/*selected*/ ctx[2] === /*location*/ ctx[0]
+    			? 'buttonSelected'
+    			: null) + " svelte-mqt2k")) {
+    				attr_dev(button1, "class", button1_class_value);
     			}
 
     			if (!current || dirty & /*location, folderName*/ 3 && li_id_value !== (li_id_value = /*location*/ ctx[0] + /*folderName*/ ctx[1])) {
@@ -708,13 +719,14 @@ var app = (function () {
     	validate_slots('FolderButton', slots, ['default']);
     	let { location } = $$props;
     	let { folderName } = $$props;
+    	let { selected } = $$props;
     	const dispatch = createEventDispatcher();
 
     	const clickFolder = () => {
     		dispatch("folderClicked", location);
     	};
 
-    	const writable_props = ['location', 'folderName'];
+    	const writable_props = ['location', 'folderName', 'selected'];
 
     	Object.keys($$props).forEach(key => {
     		if (!~writable_props.indexOf(key) && key.slice(0, 2) !== '$$' && key !== 'slot') console.warn(`<FolderButton> was created with unknown prop '${key}'`);
@@ -723,13 +735,15 @@ var app = (function () {
     	$$self.$$set = $$props => {
     		if ('location' in $$props) $$invalidate(0, location = $$props.location);
     		if ('folderName' in $$props) $$invalidate(1, folderName = $$props.folderName);
-    		if ('$$scope' in $$props) $$invalidate(3, $$scope = $$props.$$scope);
+    		if ('selected' in $$props) $$invalidate(2, selected = $$props.selected);
+    		if ('$$scope' in $$props) $$invalidate(4, $$scope = $$props.$$scope);
     	};
 
     	$$self.$capture_state = () => ({
     		createEventDispatcher,
     		location,
     		folderName,
+    		selected,
     		dispatch,
     		clickFolder
     	});
@@ -737,19 +751,20 @@ var app = (function () {
     	$$self.$inject_state = $$props => {
     		if ('location' in $$props) $$invalidate(0, location = $$props.location);
     		if ('folderName' in $$props) $$invalidate(1, folderName = $$props.folderName);
+    		if ('selected' in $$props) $$invalidate(2, selected = $$props.selected);
     	};
 
     	if ($$props && "$$inject" in $$props) {
     		$$self.$inject_state($$props.$$inject);
     	}
 
-    	return [location, folderName, clickFolder, $$scope, slots];
+    	return [location, folderName, selected, clickFolder, $$scope, slots];
     }
 
     class FolderButton extends SvelteComponentDev {
     	constructor(options) {
     		super(options);
-    		init(this, options, instance$4, create_fragment$4, safe_not_equal, { location: 0, folderName: 1 });
+    		init(this, options, instance$4, create_fragment$4, safe_not_equal, { location: 0, folderName: 1, selected: 2 });
 
     		dispatch_dev("SvelteRegisterComponent", {
     			component: this,
@@ -768,6 +783,10 @@ var app = (function () {
     		if (/*folderName*/ ctx[1] === undefined && !('folderName' in props)) {
     			console.warn("<FolderButton> was created without expected prop 'folderName'");
     		}
+
+    		if (/*selected*/ ctx[2] === undefined && !('selected' in props)) {
+    			console.warn("<FolderButton> was created without expected prop 'selected'");
+    		}
     	}
 
     	get location() {
@@ -785,11 +804,17 @@ var app = (function () {
     	set folderName(value) {
     		throw new Error("<FolderButton>: Props cannot be set directly on the component instance unless compiling with 'accessors: true' or '<svelte:options accessors/>'");
     	}
+
+    	get selected() {
+    		throw new Error("<FolderButton>: Props cannot be read directly from the component instance unless compiling with 'accessors: true' or '<svelte:options accessors/>'");
+    	}
+
+    	set selected(value) {
+    		throw new Error("<FolderButton>: Props cannot be set directly on the component instance unless compiling with 'accessors: true' or '<svelte:options accessors/>'");
+    	}
     }
 
     /* src\components\FolderWSButton.svelte generated by Svelte v3.48.0 */
-
-    const { console: console_1$1 } = globals;
     const file$3 = "src\\components\\FolderWSButton.svelte";
     const get_subfolders_slot_changes = dirty => ({});
     const get_subfolders_slot_context = ctx => ({ class: "subfolderspan" });
@@ -807,8 +832,8 @@ var app = (function () {
     		c: function create() {
     			ul = element("ul");
     			if (subfolders_slot) subfolders_slot.c();
-    			attr_dev(ul, "class", "subfolder svelte-i42pnk");
-    			add_location(ul, file$3, 30, 2, 738);
+    			attr_dev(ul, "class", "subfolder svelte-s6hnj7");
+    			add_location(ul, file$3, 30, 2, 751);
     		},
     		m: function mount(target, anchor) {
     			insert_dev(target, ul, anchor);
@@ -872,6 +897,7 @@ var app = (function () {
     	let img1;
     	let img1_src_value;
     	let p;
+    	let button1_class_value;
     	let li_id_value;
     	let t1;
     	let if_block_anchor;
@@ -880,7 +906,7 @@ var app = (function () {
     	let dispose;
     	const folderName_slot_template = /*#slots*/ ctx[6].folderName;
     	const folderName_slot = create_slot(folderName_slot_template, ctx, /*$$scope*/ ctx[5], get_folderName_slot_context);
-    	let if_block = /*showSub*/ ctx[2] && create_if_block$2(ctx);
+    	let if_block = /*showSub*/ ctx[3] && create_if_block$2(ctx);
 
     	const block = {
     		c: function create() {
@@ -897,21 +923,25 @@ var app = (function () {
     			if_block_anchor = empty();
     			if (!src_url_equal(img0.src, img0_src_value = "triangle.svg")) attr_dev(img0, "src", img0_src_value);
     			attr_dev(img0, "alt", "");
-    			attr_dev(img0, "class", "svelte-i42pnk");
-    			add_location(img0, file$3, 23, 4, 517);
-    			attr_dev(button0, "class", button0_class_value = "tributton " + (/*showSub*/ ctx[2] ? 'rotateButton' : null) + " svelte-i42pnk");
-    			add_location(button0, file$3, 17, 3, 384);
+    			attr_dev(img0, "class", "svelte-s6hnj7");
+    			add_location(img0, file$3, 20, 4, 466);
+    			attr_dev(button0, "class", button0_class_value = "tributton " + (/*showSub*/ ctx[3] ? 'rotateButton' : null) + " svelte-s6hnj7");
+    			add_location(button0, file$3, 14, 3, 333);
     			if (!src_url_equal(img1.src, img1_src_value = "folder.png")) attr_dev(img1, "src", img1_src_value);
     			attr_dev(img1, "alt", "Folder Img");
-    			attr_dev(img1, "class", "svelte-i42pnk");
-    			add_location(img1, file$3, 26, 4, 625);
-    			attr_dev(p, "class", "svelte-i42pnk");
-    			add_location(p, file$3, 26, 45, 666);
-    			attr_dev(button1, "class", "selectButton svelte-i42pnk");
-    			add_location(button1, file$3, 25, 2, 567);
+    			attr_dev(img1, "class", "svelte-s6hnj7");
+    			add_location(img1, file$3, 26, 4, 638);
+    			attr_dev(p, "class", "svelte-s6hnj7");
+    			add_location(p, file$3, 26, 45, 679);
+
+    			attr_dev(button1, "class", button1_class_value = "selectButton " + (/*selected*/ ctx[2] === /*location*/ ctx[0]
+    			? 'buttonSelected'
+    			: null) + " svelte-s6hnj7");
+
+    			add_location(button1, file$3, 22, 2, 516);
     			attr_dev(li, "id", li_id_value = /*location*/ ctx[0] + /*folderName*/ ctx[1]);
-    			attr_dev(li, "class", "svelte-i42pnk");
-    			add_location(li, file$3, 16, 0, 349);
+    			attr_dev(li, "class", "svelte-s6hnj7");
+    			add_location(li, file$3, 13, 0, 298);
     		},
     		l: function claim(nodes) {
     			throw new Error("options.hydrate only works if the component was compiled with the `hydratable: true` option");
@@ -937,14 +967,14 @@ var app = (function () {
     			if (!mounted) {
     				dispose = [
     					listen_dev(button0, "click", /*click_handler*/ ctx[7], false, false, false),
-    					listen_dev(button1, "click", /*clickFolder*/ ctx[3], false, false, false)
+    					listen_dev(button1, "click", /*clickFolder*/ ctx[4], false, false, false)
     				];
 
     				mounted = true;
     			}
     		},
     		p: function update(ctx, [dirty]) {
-    			if (!current || dirty & /*showSub*/ 4 && button0_class_value !== (button0_class_value = "tributton " + (/*showSub*/ ctx[2] ? 'rotateButton' : null) + " svelte-i42pnk")) {
+    			if (!current || dirty & /*showSub*/ 8 && button0_class_value !== (button0_class_value = "tributton " + (/*showSub*/ ctx[3] ? 'rotateButton' : null) + " svelte-s6hnj7")) {
     				attr_dev(button0, "class", button0_class_value);
     			}
 
@@ -963,15 +993,21 @@ var app = (function () {
     				}
     			}
 
+    			if (!current || dirty & /*selected, location*/ 5 && button1_class_value !== (button1_class_value = "selectButton " + (/*selected*/ ctx[2] === /*location*/ ctx[0]
+    			? 'buttonSelected'
+    			: null) + " svelte-s6hnj7")) {
+    				attr_dev(button1, "class", button1_class_value);
+    			}
+
     			if (!current || dirty & /*location, folderName*/ 3 && li_id_value !== (li_id_value = /*location*/ ctx[0] + /*folderName*/ ctx[1])) {
     				attr_dev(li, "id", li_id_value);
     			}
 
-    			if (/*showSub*/ ctx[2]) {
+    			if (/*showSub*/ ctx[3]) {
     				if (if_block) {
     					if_block.p(ctx, dirty);
 
-    					if (dirty & /*showSub*/ 4) {
+    					if (dirty & /*showSub*/ 8) {
     						transition_in(if_block, 1);
     					}
     				} else {
@@ -1039,17 +1075,17 @@ var app = (function () {
     	const writable_props = ['location', 'folderName', 'selected'];
 
     	Object.keys($$props).forEach(key => {
-    		if (!~writable_props.indexOf(key) && key.slice(0, 2) !== '$$' && key !== 'slot') console_1$1.warn(`<FolderWSButton> was created with unknown prop '${key}'`);
+    		if (!~writable_props.indexOf(key) && key.slice(0, 2) !== '$$' && key !== 'slot') console.warn(`<FolderWSButton> was created with unknown prop '${key}'`);
     	});
 
     	const click_handler = () => {
-    		$$invalidate(2, showSub = !showSub);
+    		$$invalidate(3, showSub = !showSub);
     	};
 
     	$$self.$$set = $$props => {
     		if ('location' in $$props) $$invalidate(0, location = $$props.location);
     		if ('folderName' in $$props) $$invalidate(1, folderName = $$props.folderName);
-    		if ('selected' in $$props) $$invalidate(4, selected = $$props.selected);
+    		if ('selected' in $$props) $$invalidate(2, selected = $$props.selected);
     		if ('$$scope' in $$props) $$invalidate(5, $$scope = $$props.$$scope);
     	};
 
@@ -1066,28 +1102,20 @@ var app = (function () {
     	$$self.$inject_state = $$props => {
     		if ('location' in $$props) $$invalidate(0, location = $$props.location);
     		if ('folderName' in $$props) $$invalidate(1, folderName = $$props.folderName);
-    		if ('selected' in $$props) $$invalidate(4, selected = $$props.selected);
-    		if ('showSub' in $$props) $$invalidate(2, showSub = $$props.showSub);
+    		if ('selected' in $$props) $$invalidate(2, selected = $$props.selected);
+    		if ('showSub' in $$props) $$invalidate(3, showSub = $$props.showSub);
     	};
 
     	if ($$props && "$$inject" in $$props) {
     		$$self.$inject_state($$props.$$inject);
     	}
 
-    	$$self.$$.update = () => {
-    		if ($$self.$$.dirty & /*location, selected*/ 17) {
-    			{
-    				console.log(location, selected);
-    			}
-    		}
-    	};
-
     	return [
     		location,
     		folderName,
+    		selected,
     		showSub,
     		clickFolder,
-    		selected,
     		$$scope,
     		slots,
     		click_handler
@@ -1097,7 +1125,7 @@ var app = (function () {
     class FolderWSButton extends SvelteComponentDev {
     	constructor(options) {
     		super(options);
-    		init(this, options, instance$3, create_fragment$3, safe_not_equal, { location: 0, folderName: 1, selected: 4 });
+    		init(this, options, instance$3, create_fragment$3, safe_not_equal, { location: 0, folderName: 1, selected: 2 });
 
     		dispatch_dev("SvelteRegisterComponent", {
     			component: this,
@@ -1110,15 +1138,15 @@ var app = (function () {
     		const props = options.props || {};
 
     		if (/*location*/ ctx[0] === undefined && !('location' in props)) {
-    			console_1$1.warn("<FolderWSButton> was created without expected prop 'location'");
+    			console.warn("<FolderWSButton> was created without expected prop 'location'");
     		}
 
     		if (/*folderName*/ ctx[1] === undefined && !('folderName' in props)) {
-    			console_1$1.warn("<FolderWSButton> was created without expected prop 'folderName'");
+    			console.warn("<FolderWSButton> was created without expected prop 'folderName'");
     		}
 
-    		if (/*selected*/ ctx[4] === undefined && !('selected' in props)) {
-    			console_1$1.warn("<FolderWSButton> was created without expected prop 'selected'");
+    		if (/*selected*/ ctx[2] === undefined && !('selected' in props)) {
+    			console.warn("<FolderWSButton> was created without expected prop 'selected'");
     		}
     	}
 

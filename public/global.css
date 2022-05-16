@@ -19,6 +19,7 @@ body {
 :root {
 	--folder-color: #0070a3;
 	--folder-hover-color: #004b6e;
+	--folder-selected-color: #002638;
 	--rotate-deg: 90deg;
 }
 

@@ -4,14 +4,11 @@
   export let folderName;
   export let selected;
   let showSub = false;
+
   const dispatch = createEventDispatcher();
   const clickFolder = () => {
     dispatch("folderClicked", location);
   };
-
-  $: {
-    console.log(location, selected);
-  }
 </script>
 
 <li id={location + folderName}
@@ -23,7 +20,10 @@
   >
     <img src="triangle.svg" alt="" />
   </button>
-  <button class="selectButton" on:click={clickFolder}>
+  <button
+    class="selectButton {selected === location ? 'buttonSelected' : null}"
+    on:click={clickFolder}
+  >
     <img src="folder.png" alt="Folder Img" /><p><slot name="folderName" /></p>
   </button></li
 >
@@ -129,5 +129,9 @@
   .subfolder {
     padding-left: 50px;
     overflow: hidden;
+  }
+
+  .buttonSelected {
+    background-color: var(--folder-hover-color);
   }
 </style>
