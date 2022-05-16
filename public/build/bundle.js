@@ -617,24 +617,24 @@ var app = (function () {
     			if (default_slot) default_slot.c();
     			if (!src_url_equal(img0.src, img0_src_value = "triangle.svg")) attr_dev(img0, "src", img0_src_value);
     			attr_dev(img0, "alt", "");
-    			attr_dev(img0, "class", "svelte-mqt2k");
+    			attr_dev(img0, "class", "svelte-1i2b9wc");
     			add_location(img0, file$4, 14, 4, 341);
-    			attr_dev(button0, "class", "tributton svelte-mqt2k");
+    			attr_dev(button0, "class", "tributton svelte-1i2b9wc");
     			add_location(button0, file$4, 13, 2, 309);
     			if (!src_url_equal(img1.src, img1_src_value = "folder.png")) attr_dev(img1, "src", img1_src_value);
     			attr_dev(img1, "alt", "Folder Img");
-    			attr_dev(img1, "class", "svelte-mqt2k");
+    			attr_dev(img1, "class", "svelte-1i2b9wc");
     			add_location(img1, file$4, 20, 4, 513);
-    			attr_dev(p, "class", "svelte-mqt2k");
+    			attr_dev(p, "class", "svelte-1i2b9wc");
     			add_location(p, file$4, 20, 45, 554);
 
     			attr_dev(button1, "class", button1_class_value = "selectButton " + (/*selected*/ ctx[2] === /*location*/ ctx[0]
     			? 'buttonSelected'
-    			: null) + " svelte-mqt2k");
+    			: null) + " svelte-1i2b9wc");
 
     			add_location(button1, file$4, 16, 2, 391);
     			attr_dev(li, "id", li_id_value = /*location*/ ctx[0] + /*folderName*/ ctx[1]);
-    			attr_dev(li, "class", "svelte-mqt2k");
+    			attr_dev(li, "class", "svelte-1i2b9wc");
     			add_location(li, file$4, 12, 0, 274);
     		},
     		l: function claim(nodes) {
@@ -678,7 +678,7 @@ var app = (function () {
 
     			if (!current || dirty & /*selected, location*/ 5 && button1_class_value !== (button1_class_value = "selectButton " + (/*selected*/ ctx[2] === /*location*/ ctx[0]
     			? 'buttonSelected'
-    			: null) + " svelte-mqt2k")) {
+    			: null) + " svelte-1i2b9wc")) {
     				attr_dev(button1, "class", button1_class_value);
     			}
 
@@ -832,7 +832,7 @@ var app = (function () {
     		c: function create() {
     			ul = element("ul");
     			if (subfolders_slot) subfolders_slot.c();
-    			attr_dev(ul, "class", "subfolder svelte-s6hnj7");
+    			attr_dev(ul, "class", "subfolder svelte-qzm1jo");
     			add_location(ul, file$3, 30, 2, 751);
     		},
     		m: function mount(target, anchor) {
@@ -923,24 +923,24 @@ var app = (function () {
     			if_block_anchor = empty();
     			if (!src_url_equal(img0.src, img0_src_value = "triangle.svg")) attr_dev(img0, "src", img0_src_value);
     			attr_dev(img0, "alt", "");
-    			attr_dev(img0, "class", "svelte-s6hnj7");
+    			attr_dev(img0, "class", "svelte-qzm1jo");
     			add_location(img0, file$3, 20, 4, 466);
-    			attr_dev(button0, "class", button0_class_value = "tributton " + (/*showSub*/ ctx[3] ? 'rotateButton' : null) + " svelte-s6hnj7");
+    			attr_dev(button0, "class", button0_class_value = "tributton " + (/*showSub*/ ctx[3] ? 'rotateButton' : null) + " svelte-qzm1jo");
     			add_location(button0, file$3, 14, 3, 333);
     			if (!src_url_equal(img1.src, img1_src_value = "folder.png")) attr_dev(img1, "src", img1_src_value);
     			attr_dev(img1, "alt", "Folder Img");
-    			attr_dev(img1, "class", "svelte-s6hnj7");
+    			attr_dev(img1, "class", "svelte-qzm1jo");
     			add_location(img1, file$3, 26, 4, 638);
-    			attr_dev(p, "class", "svelte-s6hnj7");
+    			attr_dev(p, "class", "svelte-qzm1jo");
     			add_location(p, file$3, 26, 45, 679);
 
     			attr_dev(button1, "class", button1_class_value = "selectButton " + (/*selected*/ ctx[2] === /*location*/ ctx[0]
     			? 'buttonSelected'
-    			: null) + " svelte-s6hnj7");
+    			: null) + " svelte-qzm1jo");
 
     			add_location(button1, file$3, 22, 2, 516);
     			attr_dev(li, "id", li_id_value = /*location*/ ctx[0] + /*folderName*/ ctx[1]);
-    			attr_dev(li, "class", "svelte-s6hnj7");
+    			attr_dev(li, "class", "svelte-qzm1jo");
     			add_location(li, file$3, 13, 0, 298);
     		},
     		l: function claim(nodes) {
@@ -974,7 +974,7 @@ var app = (function () {
     			}
     		},
     		p: function update(ctx, [dirty]) {
-    			if (!current || dirty & /*showSub*/ 8 && button0_class_value !== (button0_class_value = "tributton " + (/*showSub*/ ctx[3] ? 'rotateButton' : null) + " svelte-s6hnj7")) {
+    			if (!current || dirty & /*showSub*/ 8 && button0_class_value !== (button0_class_value = "tributton " + (/*showSub*/ ctx[3] ? 'rotateButton' : null) + " svelte-qzm1jo")) {
     				attr_dev(button0, "class", button0_class_value);
     			}
 
@@ -995,7 +995,7 @@ var app = (function () {
 
     			if (!current || dirty & /*selected, location*/ 5 && button1_class_value !== (button1_class_value = "selectButton " + (/*selected*/ ctx[2] === /*location*/ ctx[0]
     			? 'buttonSelected'
-    			: null) + " svelte-s6hnj7")) {
+    			: null) + " svelte-qzm1jo")) {
     				attr_dev(button1, "class", button1_class_value);
     			}
 
@@ -2305,7 +2305,7 @@ var app = (function () {
     				each_blocks[i].c();
     			}
 
-    			attr_dev(ul, "class", "svelte-8p7od");
+    			attr_dev(ul, "class", "svelte-jutmda");
     			add_location(ul, file$1, 16, 0, 420);
     		},
     		l: function claim(nodes) {
@@ -2485,6 +2485,43 @@ var app = (function () {
     	}
     }
 
+    const folderStruct = {
+        G_files: ["cool.txt"],
+        house: {
+          G_files: ["home.txt"],
+        },
+        vids: {
+          G_files: [],
+          Date_2020: {
+            G_files: ["pic1.png", "pic2.png"],
+            coolPics5: {
+              G_files: ["pic100.png"],
+              Gerry: {
+                G_files: ["cool.txt"],
+                house: {
+                  G_files: ["home.txt"],
+                },
+                vids: {
+                  G_files: [],
+                  Date_2020: {
+                    G_files: ["pic1.png", "pic2.png"],
+                    coolPics5: {
+                      G_files: ["pic100.png"],
+                    },
+                  },
+                  Date_2021: {
+                    G_files: ["pic5.png", "pic6.png"],
+                  },
+                },
+              },
+            },
+          },
+          Date_2021: {
+            G_files: ["pic5.png", "pic6.png"],
+          },
+        },
+      };
+
     /* src\App.svelte generated by Svelte v3.48.0 */
 
     const { console: console_1 } = globals;
@@ -2492,16 +2529,24 @@ var app = (function () {
 
     function create_fragment(ctx) {
     	let main;
+    	let div0;
+    	let t1;
+    	let section;
+    	let p;
+    	let t3;
     	let buildfolderstruct;
-    	let t0;
-    	let button;
+    	let t4;
+    	let div1;
+    	let button0;
+    	let t6;
+    	let button1;
     	let current;
     	let mounted;
     	let dispose;
 
     	buildfolderstruct = new BuildFolderStruct({
     			props: {
-    				folders: /*folderStruct*/ ctx[1],
+    				folders: /*folderStruct2*/ ctx[1],
     				selected: /*selected*/ ctx[0]
     			},
     			$$inline: true
@@ -2512,31 +2557,63 @@ var app = (function () {
     	const block = {
     		c: function create() {
     			main = element("main");
+    			div0 = element("div");
+    			div0.textContent = "lol";
+    			t1 = space();
+    			section = element("section");
+    			p = element("p");
+    			p.textContent = "Name";
+    			t3 = space();
     			create_component(buildfolderstruct.$$.fragment);
-    			t0 = space();
-    			button = element("button");
-    			button.textContent = "Click";
-    			add_location(button, file, 66, 2, 1565);
-    			add_location(main, file, 60, 0, 1452);
+    			t4 = space();
+    			div1 = element("div");
+    			button0 = element("button");
+    			button0.textContent = "Click";
+    			t6 = space();
+    			button1 = element("button");
+    			button1.textContent = "Delete A Tree";
+    			attr_dev(div0, "class", "sideFolder");
+    			add_location(div0, file, 35, 2, 890);
+    			add_location(p, file, 37, 4, 964);
+    			attr_dev(section, "class", "folder-part svelte-1593wea");
+    			add_location(section, file, 36, 2, 929);
+    			add_location(button0, file, 45, 4, 1140);
+    			add_location(button1, file, 46, 4, 1186);
+    			attr_dev(div1, "class", "restOfthepart");
+    			add_location(div1, file, 44, 2, 1107);
+    			attr_dev(main, "class", "svelte-1593wea");
+    			add_location(main, file, 34, 0, 880);
     		},
     		l: function claim(nodes) {
     			throw new Error("options.hydrate only works if the component was compiled with the `hydratable: true` option");
     		},
     		m: function mount(target, anchor) {
     			insert_dev(target, main, anchor);
-    			mount_component(buildfolderstruct, main, null);
-    			append_dev(main, t0);
-    			append_dev(main, button);
+    			append_dev(main, div0);
+    			append_dev(main, t1);
+    			append_dev(main, section);
+    			append_dev(section, p);
+    			append_dev(section, t3);
+    			mount_component(buildfolderstruct, section, null);
+    			append_dev(main, t4);
+    			append_dev(main, div1);
+    			append_dev(div1, button0);
+    			append_dev(div1, t6);
+    			append_dev(div1, button1);
     			current = true;
 
     			if (!mounted) {
-    				dispose = listen_dev(button, "click", /*addVal*/ ctx[3], false, false, false);
+    				dispose = [
+    					listen_dev(button0, "click", /*addVal*/ ctx[3], false, false, false),
+    					listen_dev(button1, "click", /*deleteSomething*/ ctx[4], false, false, false)
+    				];
+
     				mounted = true;
     			}
     		},
     		p: function update(ctx, [dirty]) {
     			const buildfolderstruct_changes = {};
-    			if (dirty & /*folderStruct*/ 2) buildfolderstruct_changes.folders = /*folderStruct*/ ctx[1];
+    			if (dirty & /*folderStruct2*/ 2) buildfolderstruct_changes.folders = /*folderStruct2*/ ctx[1];
     			if (dirty & /*selected*/ 1) buildfolderstruct_changes.selected = /*selected*/ ctx[0];
     			buildfolderstruct.$set(buildfolderstruct_changes);
     		},
@@ -2553,7 +2630,7 @@ var app = (function () {
     			if (detaching) detach_dev(main);
     			destroy_component(buildfolderstruct);
     			mounted = false;
-    			dispose();
+    			run_all(dispose);
     		}
     	};
 
@@ -2572,50 +2649,34 @@ var app = (function () {
     	let { $$slots: slots = {}, $$scope } = $$props;
     	validate_slots('App', slots, []);
     	let selected = "none";
+    	let folderStruct2 = folderStruct;
+    	let currentFolderPath = "";
 
     	const newLoc = ({ detail }) => {
     		$$invalidate(0, selected = detail);
     		detail = detail.split("/");
-    		let files = folderStruct[detail[0]];
+    		let files = folderStruct2[detail[0]];
 
     		for (let i = 1; i < detail.length; i++) {
     			files = files[detail[i]];
     		}
 
-    		console.log(!files["G_files"] | files["G_files"].length === 0
-    		? "No Files"
-    		: files.G_files);
-    	};
-
-    	let folderStruct = {
-    		G_files: ["cool.txt"],
-    		house: { G_files: ["home.txt"] },
-    		vids: {
-    			G_files: [],
-    			Date_2020: {
-    				G_files: ["pic1.png", "pic2.png"],
-    				coolPics5: {
-    					G_files: ["pic100.png"],
-    					Gerry: {
-    						G_files: ["cool.txt"],
-    						house: { G_files: ["home.txt"] },
-    						vids: {
-    							G_files: [],
-    							Date_2020: {
-    								G_files: ["pic1.png", "pic2.png"],
-    								coolPics5: { G_files: ["pic100.png"] }
-    							},
-    							Date_2021: { G_files: ["pic5.png", "pic6.png"] }
-    						}
-    					}
-    				}
-    			},
-    			Date_2021: { G_files: ["pic5.png", "pic6.png"] }
+    		if (!files["G_files"]) {
+    			currentFolderPath = false;
+    			return;
     		}
+
+    		currentFolderPath = !files["G_files"].length === 0 ? false : files.G_files;
     	};
 
     	const addVal = () => {
-    		$$invalidate(1, folderStruct.house["nancy"] = { G_files: [] }, folderStruct);
+    		$$invalidate(1, folderStruct2.house["nancy"] = { G_files: [] }, folderStruct2);
+    		console.log("button");
+    	};
+
+    	const deleteSomething = () => {
+    		$$invalidate(1, folderStruct2.vids.Date_2020 = {}, folderStruct2);
+    		console.log(folderStruct2);
     	};
 
     	const writable_props = [];
@@ -2626,22 +2687,26 @@ var app = (function () {
 
     	$$self.$capture_state = () => ({
     		BuildFolderStruct,
-    		selected,
-    		newLoc,
     		folderStruct,
-    		addVal
+    		selected,
+    		folderStruct2,
+    		currentFolderPath,
+    		newLoc,
+    		addVal,
+    		deleteSomething
     	});
 
     	$$self.$inject_state = $$props => {
     		if ('selected' in $$props) $$invalidate(0, selected = $$props.selected);
-    		if ('folderStruct' in $$props) $$invalidate(1, folderStruct = $$props.folderStruct);
+    		if ('folderStruct2' in $$props) $$invalidate(1, folderStruct2 = $$props.folderStruct2);
+    		if ('currentFolderPath' in $$props) currentFolderPath = $$props.currentFolderPath;
     	};
 
     	if ($$props && "$$inject" in $$props) {
     		$$self.$inject_state($$props.$$inject);
     	}
 
-    	return [selected, folderStruct, newLoc, addVal];
+    	return [selected, folderStruct2, newLoc, addVal, deleteSomething];
     }
 
     class App extends SvelteComponentDev {

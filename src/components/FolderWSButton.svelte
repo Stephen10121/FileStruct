@@ -85,7 +85,7 @@
     position: absolute;
     top: 50%;
     right: 20px;
-    width: 40px;
+    width: 10px;
     height: 3px;
     transform: translateY(-50%);
     background-color: black;
@@ -95,7 +95,7 @@
     content: "";
     position: absolute;
     top: -1988px;
-    right: 60px;
+    right: 30px;
     width: 3px;
     height: 2000px;
     transform: translateX(50%);
@@ -127,8 +127,9 @@
   }
 
   .subfolder {
-    padding-left: 50px;
+    padding-left: 20px;
     overflow: hidden;
+    width: fit-content;
   }
 
   .buttonSelected {

@@ -1,71 +1,64 @@
 <script>
   import BuildFolderStruct from "./components/BuildFolderStruct.svelte";
+  import { folderStruct } from "./directory";
   let selected = "none";
+  let folderStruct2 = folderStruct;
+  let currentFolderPath = "";
+
   const newLoc = ({ detail }) => {
     selected = detail;
     detail = detail.split("/");
-    let files = folderStruct[detail[0]];
+    let files = folderStruct2[detail[0]];
     for (let i = 1; i < detail.length; i++) {
       files = files[detail[i]];
     }
-    console.log(
-      !files["G_files"] | (files["G_files"].length === 0)
-        ? "No Files"
-        : files.G_files
-    );
+    if (!files["G_files"]) {
+      currentFolderPath = false;
+      return;
+    }
+    currentFolderPath = !files["G_files"].length === 0 ? false : files.G_files;
   };
 
-  let folderStruct = {
-    G_files: ["cool.txt"],
-    house: {
-      G_files: ["home.txt"],
-    },
-    vids: {
-      G_files: [],
-      Date_2020: {
-        G_files: ["pic1.png", "pic2.png"],
-        coolPics5: {
-          G_files: ["pic100.png"],
-          Gerry: {
-            G_files: ["cool.txt"],
-            house: {
-              G_files: ["home.txt"],
-            },
-            vids: {
-              G_files: [],
-              Date_2020: {
-                G_files: ["pic1.png", "pic2.png"],
-                coolPics5: {
-                  G_files: ["pic100.png"],
-                },
-              },
-              Date_2021: {
-                G_files: ["pic5.png", "pic6.png"],
-              },
-            },
-          },
-        },
-      },
-      Date_2021: {
-        G_files: ["pic5.png", "pic6.png"],
-      },
-    },
-  };
   const addVal = () => {
-    folderStruct.house["nancy"] = {
+    folderStruct2.house["nancy"] = {
       G_files: [],
     };
+    console.log("button");
+  };
+
+  const deleteSomething = () => {
+    folderStruct2.vids.Date_2020 = {};
+    console.log(folderStruct2);
   };
 </script>
 
 <main>
-  <BuildFolderStruct
-    folders={folderStruct}
-    on:folderClicked={newLoc}
-    {selected}
-  />
-  <button on:click={addVal}>Click</button>
+  <div class="sideFolder"> lol </div>
+  <section class="folder-part">
+    <p>Name</p>
+    <BuildFolderStruct
+      folders={folderStruct2}
+      on:folderClicked={newLoc}
+      {selected}
+    />
+  </section>
+  <div class="restOfthepart">
+    <button on:click={addVal}>Click</button>
+    <button on:click={deleteSomething}>Delete A Tree</button>
+  </div>
 </main>
 
 <style>
+  main {
+    display: grid;
+    grid-template-columns: 80px 300px auto;
+    width: 100vw;
+    height: 100vh;
+  }
+
+  .folder-part {
+    height: 100%;
+    display: grid;
+    grid-template-rows: 70px auto;
+  }
 </style>
