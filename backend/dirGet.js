@@ -1,5 +1,5 @@
-
 const fs = require('fs');
+const fs2 = require('fs/promises');
 
 async function getTFiles(directoryPath) {
     let allFiles = {
@@ -30,6 +30,21 @@ const getFiles = async (directoryPath) => {
     return getTFiles(directoryPath);
 }
 
+const fileInfo = async (fileLocation) => {
+    try {
+    let stats = await fs2.stat(fileLocation);
+    let data = {
+        dateCreated: stats.birthtime.toString().split(":")[0].slice(0, -3),
+        size: stats.size
+    }
+    return data;
+    } catch (err) {
+        console.log(err);
+        return { status: 500 };
+    }
+};
+
 module.exports = {
-    getFiles
+    getFiles,
+    fileInfo
 }

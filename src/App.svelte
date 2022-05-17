@@ -51,7 +51,7 @@
       {selected}
     />
   </section>
-  <FileStruct files={currentFolderPathFiles} />
+  <FileStruct {selected} files={currentFolderPathFiles} />
 </main>
 
 <style>

@@ -1,13 +1,14 @@
 <script>
   import File from "./File.svelte";
   export let files;
+  export let selected;
   console.log(files);
   let x = 0;
 </script>
 
 <ul>
   {#each files as file}
-    <File>{file}</File>
+    <File {selected} {file}>{file}</File>
   {/each}
 </ul>
 
