@@ -1,9 +1,17 @@
 <script>
   import BuildFolderStruct from "./components/BuildFolderStruct.svelte";
   import { folderStruct } from "./directory";
+  import FileStruct from "./components/FileStruct.svelte";
   let selected = "none";
   let folderStruct2 = folderStruct;
-  let currentFolderPath = "";
+  let currentFolderPathFiles = "";
+
+  fetch(`http://localhost:5500/fetchFiles?location=./storage`)
+    .then((response) => response.json())
+    .then((data) => {
+      console.log(data);
+      folderStruct2 = data.files;
+    });
 
   const newLoc = ({ detail }) => {
     selected = detail;
@@ -13,10 +21,11 @@
       files = files[detail[i]];
     }
     if (!files["G_files"]) {
-      currentFolderPath = false;
+      currentFolderPathFiles = [];
       return;
     }
-    currentFolderPath = !files["G_files"].length === 0 ? false : files.G_files;
+    currentFolderPathFiles =
+      !files["G_files"].length === 0 ? [] : files.G_files;
   };
 
   const addVal = () => {
@@ -42,10 +51,7 @@
       {selected}
     />
   </section>
-  <div class="restOfthepart">
-    <button on:click={addVal}>Click</button>
-    <button on:click={deleteSomething}>Delete A Tree</button>
-  </div>
+  <FileStruct files={currentFolderPathFiles} />
 </main>
 
 <style>
@@ -60,5 +66,11 @@
     height: 100%;
     display: grid;
     grid-template-rows: 70px auto;
+  }
+
+  .restOfthepart p {
+    font-family: "Poppins", sans-serif;
+    font-size: 2rem;
+    color: white;
   }
 </style>

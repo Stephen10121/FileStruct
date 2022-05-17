@@ -67,21 +67,4 @@
     background-color: red;
     overflow: auto;
   }
-
-  ul::-webkit-scrollbar {
-    width: 7px;
-    height: 7px;
-  }
-
-  ul::-webkit-scrollbar-track {
-    background: #f1f1f1;
-  }
-
-  ul::-webkit-scrollbar-thumb {
-    background: #888;
-  }
-
-  ul::-webkit-scrollbar-thumb:hover {
-    background: #555;
-  }
 </style>

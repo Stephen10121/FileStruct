@@ -18,7 +18,7 @@
       showSub = !showSub;
     }}
   >
-    <img src="triangle.svg" alt="" />
+    <img src="icons/triangle.svg" alt="" />
   </button>
   <button
     class="selectButton {selected === location ? 'buttonSelected' : null}"

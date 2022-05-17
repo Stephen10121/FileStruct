@@ -16,7 +16,7 @@ async function getTFiles(directoryPath) {
     return allFiles;
 }
 
-async function getFiles(directoryPath) {
+const getFiles = async (directoryPath) => {
     fs.access(directoryPath, (error) => {
         if (error) {
             fs.mkdir(directoryPath, { recursive: true }, (err) => {
@@ -28,4 +28,8 @@ async function getFiles(directoryPath) {
         }
     });
     return getTFiles(directoryPath);
+}
+
+module.exports = {
+    getFiles
 }
