@@ -2,16 +2,19 @@
   import FilePreview from "./FilePreview.svelte";
   export let selected;
   export let file;
+  export let metadata;
   let previewShow = false;
 </script>
 
 <li>
-  <FilePreview
-    {file}
-    {selected}
-    {previewShow}
-    on:hidePreview={() => (previewShow = false)}
-  />
+  {#if previewShow}
+    <FilePreview
+      {file}
+      {selected}
+      {metadata}
+      on:hidePreview={() => (previewShow = false)}
+    />
+  {/if}
   <button on:click={() => (previewShow = true)}><slot /></button>
   <div class="stuff">
     <button><img src="icons/download.svg" alt="Download" /></button>

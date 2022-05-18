@@ -10,7 +10,8 @@ async function getTFiles(directoryPath) {
         if (item.isDirectory()) {
             allFiles[item.name] = await getFiles(`${directoryPath}/${item.name}`)
         } else {
-            allFiles.G_files.push(item.name);
+            const currentFileInfo = await fileInfo(`${directoryPath}/${item.name}`);
+            allFiles.G_files.push({ name: item.name, metadata: currentFileInfo });
         }
     }
     return allFiles;

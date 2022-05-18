@@ -2,29 +2,24 @@
   import { createEventDispatcher } from "svelte";
   const dispatch = createEventDispatcher();
   export let selected;
-  export let previewShow;
   export let file;
-  let fileData = { size: "N/A", dateCreated: "N/A" };
-  const getMetaData = () => {
-    fetch(
-      `http://localhost:5500/fetchFileData?location=./storage/${selected}/${file}`
-    )
-      .then((response) => response.json())
-      .then((data) => {
-        console.log(data);
-        fileData = data.fileData;
-      });
-  };
+  export let metadata;
 
-  if (previewShow) {
-    getMetaData();
-  }
-  $: {
-    getMetaData();
+  let fileSizeUnit = "b";
+  let fileSize = metadata.size;
+  if (metadata.size > 1000000000) {
+    fileSizeUnit = "Gb";
+    fileSize = Math.round(metadata.size / 1000000000);
+  } else if (metadata.size > 1000000) {
+    fileSizeUnit = "Mb";
+    fileSize = Math.round(metadata.size / 1000000);
+  } else if (metadata.size > 1000) {
+    fileSizeUnit = "Kb";
+    fileSize = Math.round(metadata.size / 1000);
   }
 </script>
 
-<div class="preview {previewShow ? 'showPreview' : 'hidePreview'}">
+<div class="preview">
   <div class="previewBox">
     <div class="previewBoxView">View</div>
   </div>
@@ -33,9 +28,9 @@
       >&#10006;</button
     >
     <h1>About File</h1>
-    <p>Size: <span>{fileData.size}b</span></p>
-    <p>Date created: <span>{fileData.dateCreated}</span></p>
-    <p>Location: <span>{selected}/{file}</span></p>
+    <p>Size: <span>{fileSize}{fileSizeUnit}</span></p>
+    <p>Date created: <span>{metadata.dateCreated}</span></p>
+    <p>Location: <span>./{selected}/{file}</span></p>
   </div>
 </div>
 
@@ -63,6 +58,7 @@
     border: none;
     display: grid;
     grid-template-columns: 70% 30%;
+    animation: slideIn 2s linear forwards;
   }
 
   .previewBox {
@@ -72,6 +68,7 @@
     display: flex;
     align-items: center;
     justify-content: center;
+    animation: slideIn2 2s linear forwards;
   }
 
   .previewBoxView {
@@ -109,18 +106,6 @@
     font-weight: normal;
     color: rgb(194, 194, 194);
     color: rgb(255, 255, 255);
-  }
-
-  .hidePreview {
-    visibility: hidden;
-  }
-
-  .showPreview {
-    animation: slideIn 2s linear forwards;
-  }
-
-  .showPreview .previewBox {
-    animation: slideIn2 2s linear forwards;
   }
 
   @keyframes slideIn {
