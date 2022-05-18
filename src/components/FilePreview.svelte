@@ -5,6 +5,7 @@
   export let file;
   export let metadata;
 
+  let fileData = "N/A";
   let fileSizeUnit = "b";
   let fileSize = metadata.size;
   if (metadata.size > 1000000000) {
@@ -17,11 +18,19 @@
     fileSizeUnit = "Kb";
     fileSize = Math.round(metadata.size / 1000);
   }
+  fetch(
+    `http://localhost:5500/getFileData?location=./storage/${selected}/${file}`
+  )
+    .then((response) => response.json())
+    .then((data) => {
+      console.log(data, fileData);
+      fileData = String(data.fileData.replaceAll("\n", "<br>"));
+    });
 </script>
 
 <div class="preview">
   <div class="previewBox">
-    <div class="previewBoxView">View</div>
+    <div class="previewBoxView"><p>{fileData}</p></div>
   </div>
   <div class="previewMeta">
     <button class="close-button" on:click={() => dispatch("hidePreview", true)}
@@ -74,7 +83,15 @@
   .previewBoxView {
     width: 50%;
     height: 50%;
-    background-color: white;
+    background-color: #dfdfdf;
+    padding: 10px;
+    border-radius: 10px;
+  }
+
+  .previewBoxView p {
+    font-size: 2rem;
+    color: rgb(87, 87, 87);
+    font-family: "Roboto";
   }
 
   .previewMeta {

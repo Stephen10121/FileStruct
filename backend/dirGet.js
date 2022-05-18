@@ -45,7 +45,23 @@ const fileInfo = async (fileLocation) => {
     }
 };
 
+const allowedFileTypes = ["txt", "css"];
+const readFile = async (fileLocation) => {
+    if (allowedFileTypes.includes(fileLocation.split(".").reverse()[0])) {
+        try {
+            const data = await fs2.readFile(fileLocation, { encoding: 'utf8' });
+            return data;
+          } catch (err) {
+            console.log(err);
+            return "500";
+          }
+    } else {
+        return "Unsupported File Type"
+    }
+}
+
 module.exports = {
     getFiles,
-    fileInfo
+    fileInfo,
+    readFile
 }

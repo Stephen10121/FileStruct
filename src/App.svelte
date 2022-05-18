@@ -67,10 +67,4 @@
     display: grid;
     grid-template-rows: 70px auto;
   }
-
-  .restOfthepart p {
-    font-family: "Poppins", sans-serif;
-    font-size: 2rem;
-    color: white;
-  }
 </style>
