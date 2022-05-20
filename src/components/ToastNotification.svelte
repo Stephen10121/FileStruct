@@ -20,13 +20,13 @@
     position: fixed;
     bottom: 10px;
     right: 10px;
-    background-color: blue;
+    background-color: rgb(0, 132, 255);
     border-radius: 5px;
   }
 
   .notification-toast-inner {
     background-color: #dfdfdf;
-    padding: 10px 20px;
+    padding: 15px 20px;
     position: relative;
     border-radius: 5px;
     margin-left: 7px;

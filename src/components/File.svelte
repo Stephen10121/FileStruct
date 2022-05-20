@@ -4,6 +4,18 @@
   export let file;
   export let metadata;
   let previewShow = false;
+
+  const downloadFile = () => {
+    console.log("Download");
+  };
+
+  const shareFile = () => {
+    console.log("Share");
+  };
+
+  const deleteFile = () => {
+    console.log("Delete");
+  };
 </script>
 
 <li>
@@ -17,9 +29,15 @@
   {/if}
   <button on:click={() => (previewShow = true)}><slot /></button>
   <div class="stuff">
-    <button><img src="icons/download.svg" alt="Download" /></button>
-    <button><img src="icons/share.svg" alt="Share" /></button>
-    <button><img src="icons/trash.svg" alt="Trash" /></button>
+    <button on:click={downloadFile}
+      ><img src="icons/download.svg" alt="Download" /></button
+    >
+    <button on:click={shareFile}
+      ><img src="icons/share.svg" alt="Share" /></button
+    >
+    <button on:click={deleteFile}
+      ><img src="icons/trash.svg" alt="Trash" /></button
+    >
   </div>
 </li>
 

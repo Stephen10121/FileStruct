@@ -45,10 +45,10 @@
 
 {#if notification}
   <ToastNotification
-    type="alert"
+    type="success"
     on:close={() => {
       notification = false;
-    }}>Nice cool and tool</ToastNotification
+    }}>Successfully Saved File.</ToastNotification
   >
 {/if}
 <main>
