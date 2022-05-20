@@ -828,7 +828,7 @@ var app = (function () {
     const get_folderName_slot_context = ctx => ({});
 
     // (30:0) {#if showSub}
-    function create_if_block$3(ctx) {
+    function create_if_block$4(ctx) {
     	let ul;
     	let current;
     	const subfolders_slot_template = /*#slots*/ ctx[6].subfolders;
@@ -883,7 +883,7 @@ var app = (function () {
 
     	dispatch_dev("SvelteRegisterBlock", {
     		block,
-    		id: create_if_block$3.name,
+    		id: create_if_block$4.name,
     		type: "if",
     		source: "(30:0) {#if showSub}",
     		ctx
@@ -912,7 +912,7 @@ var app = (function () {
     	let dispose;
     	const folderName_slot_template = /*#slots*/ ctx[6].folderName;
     	const folderName_slot = create_slot(folderName_slot_template, ctx, /*$$scope*/ ctx[5], get_folderName_slot_context);
-    	let if_block = /*showSub*/ ctx[3] && create_if_block$3(ctx);
+    	let if_block = /*showSub*/ ctx[3] && create_if_block$4(ctx);
 
     	const block = {
     		c: function create() {
@@ -1017,7 +1017,7 @@ var app = (function () {
     						transition_in(if_block, 1);
     					}
     				} else {
-    					if_block = create_if_block$3(ctx);
+    					if_block = create_if_block$4(ctx);
     					if_block.c();
     					transition_in(if_block, 1);
     					if_block.m(if_block_anchor.parentNode, if_block_anchor);
@@ -1193,13 +1193,13 @@ var app = (function () {
     }
 
     // (11:2) {#if startFolder !== "G_files"}
-    function create_if_block$2(ctx) {
+    function create_if_block$3(ctx) {
     	let show_if;
     	let current_block_type_index;
     	let if_block;
     	let if_block_anchor;
     	let current;
-    	const if_block_creators = [create_if_block_1$1, create_else_block$1];
+    	const if_block_creators = [create_if_block_1$1, create_else_block$2];
     	const if_blocks = [];
 
     	function select_block_type(ctx, dirty) {
@@ -1266,7 +1266,7 @@ var app = (function () {
 
     	dispatch_dev("SvelteRegisterBlock", {
     		block,
-    		id: create_if_block$2.name,
+    		id: create_if_block$3.name,
     		type: "if",
     		source: "(11:2) {#if startFolder !== \\\"G_files\\\"}",
     		ctx
@@ -1276,7 +1276,7 @@ var app = (function () {
     }
 
     // (19:4) {:else}
-    function create_else_block$1(ctx) {
+    function create_else_block$2(ctx) {
     	let folderwsbutton;
     	let current;
 
@@ -1332,7 +1332,7 @@ var app = (function () {
 
     	dispatch_dev("SvelteRegisterBlock", {
     		block,
-    		id: create_else_block$1.name,
+    		id: create_else_block$2.name,
     		type: "else",
     		source: "(19:4) {:else}",
     		ctx
@@ -1574,7 +1574,7 @@ var app = (function () {
     	let first;
     	let if_block_anchor;
     	let current;
-    	let if_block = /*startFolder*/ ctx[7] !== "G_files" && create_if_block$2(ctx);
+    	let if_block = /*startFolder*/ ctx[7] !== "G_files" && create_if_block$3(ctx);
 
     	const block = {
     		key: key_1,
@@ -1602,7 +1602,7 @@ var app = (function () {
     						transition_in(if_block, 1);
     					}
     				} else {
-    					if_block = create_if_block$2(ctx);
+    					if_block = create_if_block$3(ctx);
     					if_block.c();
     					transition_in(if_block, 1);
     					if_block.m(if_block_anchor.parentNode, if_block_anchor);
@@ -1871,13 +1871,13 @@ var app = (function () {
     }
 
     // (19:4) {#if startFolder !== "G_files"}
-    function create_if_block$1(ctx) {
+    function create_if_block$2(ctx) {
     	let show_if;
     	let current_block_type_index;
     	let if_block;
     	let if_block_anchor;
     	let current;
-    	const if_block_creators = [create_if_block_1, create_else_block];
+    	const if_block_creators = [create_if_block_1, create_else_block$1];
     	const if_blocks = [];
 
     	function select_block_type(ctx, dirty) {
@@ -1944,7 +1944,7 @@ var app = (function () {
 
     	dispatch_dev("SvelteRegisterBlock", {
     		block,
-    		id: create_if_block$1.name,
+    		id: create_if_block$2.name,
     		type: "if",
     		source: "(19:4) {#if startFolder !== \\\"G_files\\\"}",
     		ctx
@@ -1954,7 +1954,7 @@ var app = (function () {
     }
 
     // (33:6) {:else}
-    function create_else_block(ctx) {
+    function create_else_block$1(ctx) {
     	let folderwsbutton;
     	let current;
 
@@ -2010,7 +2010,7 @@ var app = (function () {
 
     	dispatch_dev("SvelteRegisterBlock", {
     		block,
-    		id: create_else_block.name,
+    		id: create_else_block$1.name,
     		type: "else",
     		source: "(33:6) {:else}",
     		ctx
@@ -2217,7 +2217,7 @@ var app = (function () {
     	let first;
     	let if_block_anchor;
     	let current;
-    	let if_block = /*startFolder*/ ctx[7] !== "G_files" && create_if_block$1(ctx);
+    	let if_block = /*startFolder*/ ctx[7] !== "G_files" && create_if_block$2(ctx);
 
     	const block = {
     		key: key_1,
@@ -2245,7 +2245,7 @@ var app = (function () {
     						transition_in(if_block, 1);
     					}
     				} else {
-    					if_block = create_if_block$1(ctx);
+    					if_block = create_if_block$2(ctx);
     					if_block.c();
     					transition_in(if_block, 1);
     					if_block.m(if_block_anchor.parentNode, if_block_anchor);
@@ -2529,157 +2529,254 @@ var app = (function () {
       };
 
     /* src\components\FilePreview.svelte generated by Svelte v3.48.0 */
-
-    const { console: console_1$1 } = globals;
     const file_1$1 = "src\\components\\FilePreview.svelte";
 
-    function create_fragment$3(ctx) {
-    	let div3;
-    	let div1;
-    	let div0;
-    	let p0;
-    	let t0;
-    	let t1;
-    	let div2;
-    	let button;
-    	let t3;
-    	let h1;
-    	let t5;
-    	let p1;
-    	let t6;
-    	let span0;
-    	let t7;
-    	let t8;
-    	let t9;
-    	let p2;
-    	let t10;
-    	let span1;
-    	let t11_value = /*metadata*/ ctx[2].dateCreated + "";
-    	let t11;
-    	let t12;
-    	let p3;
-    	let t13;
-    	let span2;
-    	let t14;
-    	let t15;
-    	let t16;
-    	let t17;
-    	let mounted;
-    	let dispose;
+    // (65:4) {:else}
+    function create_else_block(ctx) {
+    	let div;
+    	let p;
+    	let t;
 
     	const block = {
     		c: function create() {
-    			div3 = element("div");
+    			div = element("div");
+    			p = element("p");
+    			t = text(/*fileData*/ ctx[3]);
+    			attr_dev(p, "class", "svelte-66weny");
+    			add_location(p, file_1$1, 66, 8, 1902);
+    			attr_dev(div, "id", "previewBoxView");
+    			attr_dev(div, "class", "previewBoxView svelte-66weny");
+    			add_location(div, file_1$1, 65, 6, 1844);
+    		},
+    		m: function mount(target, anchor) {
+    			insert_dev(target, div, anchor);
+    			append_dev(div, p);
+    			append_dev(p, t);
+    		},
+    		p: function update(ctx, dirty) {
+    			if (dirty & /*fileData*/ 8) set_data_dev(t, /*fileData*/ ctx[3]);
+    		},
+    		d: function destroy(detaching) {
+    			if (detaching) detach_dev(div);
+    		}
+    	};
+
+    	dispatch_dev("SvelteRegisterBlock", {
+    		block,
+    		id: create_else_block.name,
+    		type: "else",
+    		source: "(65:4) {:else}",
+    		ctx
+    	});
+
+    	return block;
+    }
+
+    // (56:4) {#if fileData["video"]}
+    function create_if_block$1(ctx) {
+    	let video;
+    	let source;
+    	let source_src_value;
+
+    	const block = {
+    		c: function create() {
+    			video = element("video");
+    			source = element("source");
+    			if (!src_url_equal(source.src, source_src_value = "http://localhost:5500/getVideoStream?location=" + (/*selected*/ ctx[0] + '/' + /*file*/ ctx[1]))) attr_dev(source, "src", source_src_value);
+    			attr_dev(source, "type", "video/mp4");
+    			add_location(source, file_1$1, 57, 8, 1647);
+    			attr_dev(video, "id", "previewBoxView");
+    			video.controls = true;
+    			video.muted = "muted";
+    			video.autoplay = true;
+    			attr_dev(video, "class", "svelte-66weny");
+    			add_location(video, file_1$1, 56, 6, 1578);
+    		},
+    		m: function mount(target, anchor) {
+    			insert_dev(target, video, anchor);
+    			append_dev(video, source);
+    		},
+    		p: function update(ctx, dirty) {
+    			if (dirty & /*selected, file*/ 3 && !src_url_equal(source.src, source_src_value = "http://localhost:5500/getVideoStream?location=" + (/*selected*/ ctx[0] + '/' + /*file*/ ctx[1]))) {
+    				attr_dev(source, "src", source_src_value);
+    			}
+    		},
+    		d: function destroy(detaching) {
+    			if (detaching) detach_dev(video);
+    		}
+    	};
+
+    	dispatch_dev("SvelteRegisterBlock", {
+    		block,
+    		id: create_if_block$1.name,
+    		type: "if",
+    		source: "(56:4) {#if fileData[\\\"video\\\"]}",
+    		ctx
+    	});
+
+    	return block;
+    }
+
+    function create_fragment$3(ctx) {
+    	let div1;
+    	let button0;
+    	let t0;
+    	let div0;
+    	let button1;
+    	let t2;
+    	let h1;
+    	let t4;
+    	let p0;
+    	let t5;
+    	let span0;
+    	let t6;
+    	let t7;
+    	let t8;
+    	let p1;
+    	let t9;
+    	let span1;
+    	let t10_value = /*metadata*/ ctx[2].dateCreated + "";
+    	let t10;
+    	let t11;
+    	let p2;
+    	let t12;
+    	let span2;
+    	let t13;
+    	let t14;
+    	let t15;
+    	let t16;
+    	let mounted;
+    	let dispose;
+
+    	function select_block_type(ctx, dirty) {
+    		if (/*fileData*/ ctx[3]["video"]) return create_if_block$1;
+    		return create_else_block;
+    	}
+
+    	let current_block_type = select_block_type(ctx);
+    	let if_block = current_block_type(ctx);
+
+    	const block = {
+    		c: function create() {
     			div1 = element("div");
+    			button0 = element("button");
+    			if_block.c();
+    			t0 = space();
     			div0 = element("div");
-    			p0 = element("p");
-    			t0 = text(/*fileData*/ ctx[3]);
-    			t1 = space();
-    			div2 = element("div");
-    			button = element("button");
-    			button.textContent = "✖";
-    			t3 = space();
+    			button1 = element("button");
+    			button1.textContent = "✖";
+    			t2 = space();
     			h1 = element("h1");
     			h1.textContent = "About File";
-    			t5 = space();
-    			p1 = element("p");
-    			t6 = text("Size: ");
+    			t4 = space();
+    			p0 = element("p");
+    			t5 = text("Size: ");
     			span0 = element("span");
-    			t7 = text(/*fileSize*/ ctx[5]);
-    			t8 = text(/*fileSizeUnit*/ ctx[4]);
-    			t9 = space();
-    			p2 = element("p");
-    			t10 = text("Date created: ");
+    			t6 = text(/*fileSize*/ ctx[5]);
+    			t7 = text(/*fileSizeUnit*/ ctx[4]);
+    			t8 = space();
+    			p1 = element("p");
+    			t9 = text("Date created: ");
     			span1 = element("span");
-    			t11 = text(t11_value);
-    			t12 = space();
-    			p3 = element("p");
-    			t13 = text("Location: ");
+    			t10 = text(t10_value);
+    			t11 = space();
+    			p2 = element("p");
+    			t12 = text("Location: ");
     			span2 = element("span");
-    			t14 = text("./");
-    			t15 = text(/*selected*/ ctx[0]);
-    			t16 = text("/");
-    			t17 = text(/*file*/ ctx[1]);
-    			attr_dev(p0, "class", "svelte-198uina");
-    			add_location(p0, file_1$1, 32, 32, 986);
-    			attr_dev(div0, "class", "previewBoxView svelte-198uina");
-    			add_location(div0, file_1$1, 32, 4, 958);
-    			attr_dev(div1, "class", "previewBox svelte-198uina");
-    			add_location(div1, file_1$1, 31, 2, 928);
-    			attr_dev(button, "class", "close-button svelte-198uina");
-    			add_location(button, file_1$1, 35, 4, 1054);
-    			attr_dev(h1, "class", "svelte-198uina");
-    			add_location(h1, file_1$1, 38, 4, 1167);
-    			attr_dev(span0, "class", "svelte-198uina");
-    			add_location(span0, file_1$1, 39, 13, 1201);
-    			attr_dev(p1, "class", "svelte-198uina");
-    			add_location(p1, file_1$1, 39, 4, 1192);
-    			attr_dev(span1, "class", "svelte-198uina");
-    			add_location(span1, file_1$1, 40, 21, 1265);
-    			attr_dev(p2, "class", "svelte-198uina");
-    			add_location(p2, file_1$1, 40, 4, 1248);
-    			attr_dev(span2, "class", "svelte-198uina");
-    			add_location(span2, file_1$1, 41, 17, 1323);
-    			attr_dev(p3, "class", "svelte-198uina");
-    			add_location(p3, file_1$1, 41, 4, 1310);
-    			attr_dev(div2, "class", "previewMeta svelte-198uina");
-    			add_location(div2, file_1$1, 34, 2, 1023);
-    			attr_dev(div3, "class", "preview svelte-198uina");
-    			add_location(div3, file_1$1, 30, 0, 903);
+    			t13 = text("./");
+    			t14 = text(/*selected*/ ctx[0]);
+    			t15 = text("/");
+    			t16 = text(/*file*/ ctx[1]);
+    			attr_dev(button0, "class", "previewBox svelte-66weny");
+    			add_location(button0, file_1$1, 54, 2, 1487);
+    			attr_dev(button1, "class", "close-button svelte-66weny");
+    			add_location(button1, file_1$1, 71, 4, 1992);
+    			attr_dev(h1, "class", "svelte-66weny");
+    			add_location(h1, file_1$1, 74, 4, 2105);
+    			attr_dev(span0, "class", "svelte-66weny");
+    			add_location(span0, file_1$1, 75, 13, 2139);
+    			attr_dev(p0, "class", "svelte-66weny");
+    			add_location(p0, file_1$1, 75, 4, 2130);
+    			attr_dev(span1, "class", "svelte-66weny");
+    			add_location(span1, file_1$1, 76, 21, 2203);
+    			attr_dev(p1, "class", "svelte-66weny");
+    			add_location(p1, file_1$1, 76, 4, 2186);
+    			attr_dev(span2, "class", "svelte-66weny");
+    			add_location(span2, file_1$1, 77, 17, 2261);
+    			attr_dev(p2, "class", "svelte-66weny");
+    			add_location(p2, file_1$1, 77, 4, 2248);
+    			attr_dev(div0, "class", "previewMeta svelte-66weny");
+    			add_location(div0, file_1$1, 70, 2, 1961);
+    			attr_dev(div1, "class", "preview svelte-66weny");
+    			add_location(div1, file_1$1, 53, 0, 1462);
     		},
     		l: function claim(nodes) {
     			throw new Error("options.hydrate only works if the component was compiled with the `hydratable: true` option");
     		},
     		m: function mount(target, anchor) {
-    			insert_dev(target, div3, anchor);
-    			append_dev(div3, div1);
+    			insert_dev(target, div1, anchor);
+    			append_dev(div1, button0);
+    			if_block.m(button0, null);
+    			append_dev(div1, t0);
     			append_dev(div1, div0);
+    			append_dev(div0, button1);
+    			append_dev(div0, t2);
+    			append_dev(div0, h1);
+    			append_dev(div0, t4);
     			append_dev(div0, p0);
-    			append_dev(p0, t0);
-    			append_dev(div3, t1);
-    			append_dev(div3, div2);
-    			append_dev(div2, button);
-    			append_dev(div2, t3);
-    			append_dev(div2, h1);
-    			append_dev(div2, t5);
-    			append_dev(div2, p1);
-    			append_dev(p1, t6);
-    			append_dev(p1, span0);
+    			append_dev(p0, t5);
+    			append_dev(p0, span0);
+    			append_dev(span0, t6);
     			append_dev(span0, t7);
-    			append_dev(span0, t8);
-    			append_dev(div2, t9);
-    			append_dev(div2, p2);
-    			append_dev(p2, t10);
-    			append_dev(p2, span1);
-    			append_dev(span1, t11);
-    			append_dev(div2, t12);
-    			append_dev(div2, p3);
-    			append_dev(p3, t13);
-    			append_dev(p3, span2);
+    			append_dev(div0, t8);
+    			append_dev(div0, p1);
+    			append_dev(p1, t9);
+    			append_dev(p1, span1);
+    			append_dev(span1, t10);
+    			append_dev(div0, t11);
+    			append_dev(div0, p2);
+    			append_dev(p2, t12);
+    			append_dev(p2, span2);
+    			append_dev(span2, t13);
     			append_dev(span2, t14);
     			append_dev(span2, t15);
     			append_dev(span2, t16);
-    			append_dev(span2, t17);
 
     			if (!mounted) {
-    				dispose = listen_dev(button, "click", /*click_handler*/ ctx[7], false, false, false);
+    				dispose = [
+    					listen_dev(button0, "click", /*closePreviewBox*/ ctx[7], false, false, false),
+    					listen_dev(button1, "click", /*click_handler*/ ctx[8], false, false, false)
+    				];
+
     				mounted = true;
     			}
     		},
     		p: function update(ctx, [dirty]) {
-    			if (dirty & /*fileData*/ 8) set_data_dev(t0, /*fileData*/ ctx[3]);
-    			if (dirty & /*fileSize*/ 32) set_data_dev(t7, /*fileSize*/ ctx[5]);
-    			if (dirty & /*fileSizeUnit*/ 16) set_data_dev(t8, /*fileSizeUnit*/ ctx[4]);
-    			if (dirty & /*metadata*/ 4 && t11_value !== (t11_value = /*metadata*/ ctx[2].dateCreated + "")) set_data_dev(t11, t11_value);
-    			if (dirty & /*selected*/ 1) set_data_dev(t15, /*selected*/ ctx[0]);
-    			if (dirty & /*file*/ 2) set_data_dev(t17, /*file*/ ctx[1]);
+    			if (current_block_type === (current_block_type = select_block_type(ctx)) && if_block) {
+    				if_block.p(ctx, dirty);
+    			} else {
+    				if_block.d(1);
+    				if_block = current_block_type(ctx);
+
+    				if (if_block) {
+    					if_block.c();
+    					if_block.m(button0, null);
+    				}
+    			}
+
+    			if (dirty & /*fileSize*/ 32) set_data_dev(t6, /*fileSize*/ ctx[5]);
+    			if (dirty & /*fileSizeUnit*/ 16) set_data_dev(t7, /*fileSizeUnit*/ ctx[4]);
+    			if (dirty & /*metadata*/ 4 && t10_value !== (t10_value = /*metadata*/ ctx[2].dateCreated + "")) set_data_dev(t10, t10_value);
+    			if (dirty & /*selected*/ 1) set_data_dev(t14, /*selected*/ ctx[0]);
+    			if (dirty & /*file*/ 2) set_data_dev(t16, /*file*/ ctx[1]);
     		},
     		i: noop,
     		o: noop,
     		d: function destroy(detaching) {
-    			if (detaching) detach_dev(div3);
+    			if (detaching) detach_dev(div1);
+    			if_block.d();
     			mounted = false;
-    			dispose();
+    			run_all(dispose);
     		}
     	};
 
@@ -2717,14 +2814,32 @@ var app = (function () {
     	}
 
     	fetch(`http://localhost:5500/getFileData?location=./storage/${selected}/${file}`).then(response => response.json()).then(data => {
-    		console.log(data, fileData);
-    		$$invalidate(3, fileData = String(data.fileData.replaceAll("\n", "<br>")));
+    		if (data["video"]) {
+    			$$invalidate(3, fileData = { video: true });
+    		} else {
+    			$$invalidate(3, fileData = data.fileData);
+    		}
     	});
+
+    	const closePreviewBox = e => {
+    		const innerBox = document.querySelector("#previewBoxView");
+
+    		const x = e.pageX,
+    			y = e.pageY,
+    			boxX = innerBox.getBoundingClientRect().left,
+    			boxY = innerBox.getBoundingClientRect().top,
+    			boxWidth = innerBox.offsetWidth,
+    			boxHeight = innerBox.offsetHeight;
+
+    		if (!(x >= boxX & x <= boxX + boxWidth & y >= boxY & y <= boxY + boxHeight)) {
+    			dispatch("hidePreview", true);
+    		}
+    	};
 
     	const writable_props = ['selected', 'file', 'metadata'];
 
     	Object.keys($$props).forEach(key => {
-    		if (!~writable_props.indexOf(key) && key.slice(0, 2) !== '$$' && key !== 'slot') console_1$1.warn(`<FilePreview> was created with unknown prop '${key}'`);
+    		if (!~writable_props.indexOf(key) && key.slice(0, 2) !== '$$' && key !== 'slot') console.warn(`<FilePreview> was created with unknown prop '${key}'`);
     	});
 
     	const click_handler = () => dispatch("hidePreview", true);
@@ -2743,7 +2858,8 @@ var app = (function () {
     		metadata,
     		fileData,
     		fileSizeUnit,
-    		fileSize
+    		fileSize,
+    		closePreviewBox
     	});
 
     	$$self.$inject_state = $$props => {
@@ -2767,6 +2883,7 @@ var app = (function () {
     		fileSizeUnit,
     		fileSize,
     		dispatch,
+    		closePreviewBox,
     		click_handler
     	];
     }
@@ -2787,15 +2904,15 @@ var app = (function () {
     		const props = options.props || {};
 
     		if (/*selected*/ ctx[0] === undefined && !('selected' in props)) {
-    			console_1$1.warn("<FilePreview> was created without expected prop 'selected'");
+    			console.warn("<FilePreview> was created without expected prop 'selected'");
     		}
 
     		if (/*file*/ ctx[1] === undefined && !('file' in props)) {
-    			console_1$1.warn("<FilePreview> was created without expected prop 'file'");
+    			console.warn("<FilePreview> was created without expected prop 'file'");
     		}
 
     		if (/*metadata*/ ctx[2] === undefined && !('metadata' in props)) {
-    			console_1$1.warn("<FilePreview> was created without expected prop 'metadata'");
+    			console.warn("<FilePreview> was created without expected prop 'metadata'");
     		}
     	}
 

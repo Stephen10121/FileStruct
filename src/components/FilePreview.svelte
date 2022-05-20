@@ -23,15 +23,51 @@
   )
     .then((response) => response.json())
     .then((data) => {
-      console.log(data, fileData);
-      fileData = String(data.fileData.replaceAll("\n", "<br>"));
+      if (data["video"]) {
+        fileData = { video: true };
+      } else {
+        fileData = data.fileData;
+      }
     });
+
+  const closePreviewBox = (e) => {
+    const innerBox = document.querySelector("#previewBoxView");
+    const x = e.pageX,
+      y = e.pageY,
+      boxX = innerBox.getBoundingClientRect().left,
+      boxY = innerBox.getBoundingClientRect().top,
+      boxWidth = innerBox.offsetWidth,
+      boxHeight = innerBox.offsetHeight;
+    if (
+      !(
+        (x >= boxX) &
+        (x <= boxX + boxWidth) &
+        (y >= boxY) &
+        (y <= boxY + boxHeight)
+      )
+    ) {
+      dispatch("hidePreview", true);
+    }
+  };
 </script>
 
 <div class="preview">
-  <div class="previewBox">
-    <div class="previewBoxView"><p>{fileData}</p></div>
-  </div>
+  <button class="previewBox" on:click={closePreviewBox}>
+    {#if fileData["video"]}
+      <video id="previewBoxView" controls muted="muted" autoplay>
+        <source
+          src="http://localhost:5500/getVideoStream?location={selected +
+            '/' +
+            file}"
+          type="video/mp4"
+        />
+      </video>
+    {:else}
+      <div id="previewBoxView" class="previewBoxView">
+        <p>{fileData}</p>
+      </div>
+    {/if}
+  </button>
   <div class="previewMeta">
     <button class="close-button" on:click={() => dispatch("hidePreview", true)}
       >&#10006;</button
@@ -78,6 +114,8 @@
     align-items: center;
     justify-content: center;
     animation: slideIn2 2s linear forwards;
+    outline: none;
+    border: none;
   }
 
   .previewBoxView {
@@ -146,5 +184,9 @@
     100% {
       visibility: visible;
     }
+  }
+
+  video {
+    width: 70%;
   }
 </style>

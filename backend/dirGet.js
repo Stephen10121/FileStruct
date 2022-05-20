@@ -46,6 +46,7 @@ const fileInfo = async (fileLocation) => {
 };
 
 const allowedFileTypes = ["txt", "css"];
+const allowedVideoTypes = ["mp4"]
 const readFile = async (fileLocation) => {
     if (allowedFileTypes.includes(fileLocation.split(".").reverse()[0])) {
         try {
@@ -55,6 +56,8 @@ const readFile = async (fileLocation) => {
             console.log(err);
             return "500";
           }
+    } else if (allowedVideoTypes.includes(fileLocation.split(".").reverse()[0])) {
+        return "video";
     } else {
         return "Unsupported File Type"
     }
