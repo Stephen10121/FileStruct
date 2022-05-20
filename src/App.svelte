@@ -1,6 +1,7 @@
 <script>
   import BuildFolderStruct from "./components/BuildFolderStruct.svelte";
   import { folderStruct } from "./directory";
+  import ToastNotification from "./components/ToastNotification.svelte";
   import FileStruct from "./components/FileStruct.svelte";
   let selected = "none";
   let folderStruct2 = folderStruct;
@@ -39,8 +40,17 @@
     folderStruct2.vids.Date_2020 = {};
     console.log(folderStruct2);
   };
+  let notification = true;
 </script>
 
+{#if notification}
+  <ToastNotification
+    type="alert"
+    on:close={() => {
+      notification = false;
+    }}>Nice cool and tool</ToastNotification
+  >
+{/if}
 <main>
   <div class="sideFolder"> lol </div>
   <section class="folder-part">
