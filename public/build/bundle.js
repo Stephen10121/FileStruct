@@ -2542,11 +2542,11 @@ var app = (function () {
     			div = element("div");
     			p = element("p");
     			t = text(/*fileData*/ ctx[3]);
-    			attr_dev(p, "class", "svelte-66weny");
-    			add_location(p, file_1$1, 66, 8, 1902);
+    			attr_dev(p, "class", "svelte-i3pczl");
+    			add_location(p, file_1$1, 66, 8, 1899);
     			attr_dev(div, "id", "previewBoxView");
-    			attr_dev(div, "class", "previewBoxView svelte-66weny");
-    			add_location(div, file_1$1, 65, 6, 1844);
+    			attr_dev(div, "class", "previewBoxView svelte-i3pczl");
+    			add_location(div, file_1$1, 65, 6, 1841);
     		},
     		m: function mount(target, anchor) {
     			insert_dev(target, div, anchor);
@@ -2584,13 +2584,13 @@ var app = (function () {
     			source = element("source");
     			if (!src_url_equal(source.src, source_src_value = "http://localhost:5500/getVideoStream?location=" + (/*selected*/ ctx[0] + '/' + /*file*/ ctx[1]))) attr_dev(source, "src", source_src_value);
     			attr_dev(source, "type", "video/mp4");
-    			add_location(source, file_1$1, 57, 8, 1647);
+    			add_location(source, file_1$1, 57, 8, 1644);
     			attr_dev(video, "id", "previewBoxView");
     			video.controls = true;
     			video.muted = "muted";
     			video.autoplay = true;
-    			attr_dev(video, "class", "svelte-66weny");
-    			add_location(video, file_1$1, 56, 6, 1578);
+    			attr_dev(video, "class", "svelte-i3pczl");
+    			add_location(video, file_1$1, 56, 6, 1575);
     		},
     		m: function mount(target, anchor) {
     			insert_dev(target, video, anchor);
@@ -2618,11 +2618,11 @@ var app = (function () {
     }
 
     function create_fragment$3(ctx) {
-    	let div1;
-    	let button0;
-    	let t0;
+    	let div3;
     	let div0;
-    	let button1;
+    	let t0;
+    	let div2;
+    	let button0;
     	let t2;
     	let h1;
     	let t4;
@@ -2645,6 +2645,13 @@ var app = (function () {
     	let t14;
     	let t15;
     	let t16;
+    	let t17;
+    	let div1;
+    	let button1;
+    	let t19;
+    	let button2;
+    	let t21;
+    	let button3;
     	let mounted;
     	let dispose;
 
@@ -2658,13 +2665,13 @@ var app = (function () {
 
     	const block = {
     		c: function create() {
-    			div1 = element("div");
-    			button0 = element("button");
+    			div3 = element("div");
+    			div0 = element("div");
     			if_block.c();
     			t0 = space();
-    			div0 = element("div");
-    			button1 = element("button");
-    			button1.textContent = "✖";
+    			div2 = element("div");
+    			button0 = element("button");
+    			button0.textContent = "✖";
     			t2 = space();
     			h1 = element("h1");
     			h1.textContent = "About File";
@@ -2687,65 +2694,90 @@ var app = (function () {
     			t14 = text(/*selected*/ ctx[0]);
     			t15 = text("/");
     			t16 = text(/*file*/ ctx[1]);
-    			attr_dev(button0, "class", "previewBox svelte-66weny");
-    			add_location(button0, file_1$1, 54, 2, 1487);
-    			attr_dev(button1, "class", "close-button svelte-66weny");
-    			add_location(button1, file_1$1, 71, 4, 1992);
-    			attr_dev(h1, "class", "svelte-66weny");
-    			add_location(h1, file_1$1, 74, 4, 2105);
-    			attr_dev(span0, "class", "svelte-66weny");
-    			add_location(span0, file_1$1, 75, 13, 2139);
-    			attr_dev(p0, "class", "svelte-66weny");
-    			add_location(p0, file_1$1, 75, 4, 2130);
-    			attr_dev(span1, "class", "svelte-66weny");
-    			add_location(span1, file_1$1, 76, 21, 2203);
-    			attr_dev(p1, "class", "svelte-66weny");
-    			add_location(p1, file_1$1, 76, 4, 2186);
-    			attr_dev(span2, "class", "svelte-66weny");
-    			add_location(span2, file_1$1, 77, 17, 2261);
-    			attr_dev(p2, "class", "svelte-66weny");
-    			add_location(p2, file_1$1, 77, 4, 2248);
-    			attr_dev(div0, "class", "previewMeta svelte-66weny");
-    			add_location(div0, file_1$1, 70, 2, 1961);
-    			attr_dev(div1, "class", "preview svelte-66weny");
-    			add_location(div1, file_1$1, 53, 0, 1462);
+    			t17 = space();
+    			div1 = element("div");
+    			button1 = element("button");
+    			button1.textContent = "Download";
+    			t19 = space();
+    			button2 = element("button");
+    			button2.textContent = "Share";
+    			t21 = space();
+    			button3 = element("button");
+    			button3.textContent = "Delete";
+    			attr_dev(div0, "class", "previewBox svelte-i3pczl");
+    			add_location(div0, file_1$1, 54, 2, 1487);
+    			attr_dev(button0, "class", "close-button svelte-i3pczl");
+    			add_location(button0, file_1$1, 71, 4, 1986);
+    			attr_dev(h1, "class", "svelte-i3pczl");
+    			add_location(h1, file_1$1, 74, 4, 2099);
+    			attr_dev(span0, "class", "svelte-i3pczl");
+    			add_location(span0, file_1$1, 75, 13, 2133);
+    			attr_dev(p0, "class", "svelte-i3pczl");
+    			add_location(p0, file_1$1, 75, 4, 2124);
+    			attr_dev(span1, "class", "svelte-i3pczl");
+    			add_location(span1, file_1$1, 76, 21, 2197);
+    			attr_dev(p1, "class", "svelte-i3pczl");
+    			add_location(p1, file_1$1, 76, 4, 2180);
+    			attr_dev(span2, "class", "svelte-i3pczl");
+    			add_location(span2, file_1$1, 77, 17, 2255);
+    			attr_dev(p2, "class", "svelte-i3pczl");
+    			add_location(p2, file_1$1, 77, 4, 2242);
+    			attr_dev(button1, "class", "downloadButton svelte-i3pczl");
+    			add_location(button1, file_1$1, 79, 6, 2332);
+    			attr_dev(button2, "class", "shareButton svelte-i3pczl");
+    			add_location(button2, file_1$1, 80, 6, 2388);
+    			attr_dev(button3, "class", "deleteButton svelte-i3pczl");
+    			add_location(button3, file_1$1, 81, 6, 2438);
+    			attr_dev(div1, "class", "actionButtons svelte-i3pczl");
+    			add_location(div1, file_1$1, 78, 4, 2297);
+    			attr_dev(div2, "class", "previewMeta svelte-i3pczl");
+    			add_location(div2, file_1$1, 70, 2, 1955);
+    			attr_dev(div3, "class", "preview svelte-i3pczl");
+    			add_location(div3, file_1$1, 53, 0, 1462);
     		},
     		l: function claim(nodes) {
     			throw new Error("options.hydrate only works if the component was compiled with the `hydratable: true` option");
     		},
     		m: function mount(target, anchor) {
-    			insert_dev(target, div1, anchor);
-    			append_dev(div1, button0);
-    			if_block.m(button0, null);
-    			append_dev(div1, t0);
-    			append_dev(div1, div0);
-    			append_dev(div0, button1);
-    			append_dev(div0, t2);
-    			append_dev(div0, h1);
-    			append_dev(div0, t4);
-    			append_dev(div0, p0);
+    			insert_dev(target, div3, anchor);
+    			append_dev(div3, div0);
+    			if_block.m(div0, null);
+    			append_dev(div3, t0);
+    			append_dev(div3, div2);
+    			append_dev(div2, button0);
+    			append_dev(div2, t2);
+    			append_dev(div2, h1);
+    			append_dev(div2, t4);
+    			append_dev(div2, p0);
     			append_dev(p0, t5);
     			append_dev(p0, span0);
     			append_dev(span0, t6);
     			append_dev(span0, t7);
-    			append_dev(div0, t8);
-    			append_dev(div0, p1);
+    			append_dev(div2, t8);
+    			append_dev(div2, p1);
     			append_dev(p1, t9);
     			append_dev(p1, span1);
     			append_dev(span1, t10);
-    			append_dev(div0, t11);
-    			append_dev(div0, p2);
+    			append_dev(div2, t11);
+    			append_dev(div2, p2);
     			append_dev(p2, t12);
     			append_dev(p2, span2);
     			append_dev(span2, t13);
     			append_dev(span2, t14);
     			append_dev(span2, t15);
     			append_dev(span2, t16);
+    			append_dev(div2, t17);
+    			append_dev(div2, div1);
+    			append_dev(div1, button1);
+    			append_dev(div1, t19);
+    			append_dev(div1, button2);
+    			append_dev(div1, t21);
+    			append_dev(div1, button3);
 
     			if (!mounted) {
     				dispose = [
-    					listen_dev(button0, "click", /*closePreviewBox*/ ctx[7], false, false, false),
-    					listen_dev(button1, "click", /*click_handler*/ ctx[8], false, false, false)
+    					listen_dev(div0, "click", /*closePreviewBox*/ ctx[7], false, false, false),
+    					listen_dev(button0, "click", /*click_handler*/ ctx[8], false, false, false)
     				];
 
     				mounted = true;
@@ -2760,7 +2792,7 @@ var app = (function () {
 
     				if (if_block) {
     					if_block.c();
-    					if_block.m(button0, null);
+    					if_block.m(div0, null);
     				}
     			}
 
@@ -2773,7 +2805,7 @@ var app = (function () {
     		i: noop,
     		o: noop,
     		d: function destroy(detaching) {
-    			if (detaching) detach_dev(div1);
+    			if (detaching) detach_dev(div3);
     			if_block.d();
     			mounted = false;
     			run_all(dispose);

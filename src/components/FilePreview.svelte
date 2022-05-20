@@ -52,7 +52,7 @@
 </script>
 
 <div class="preview">
-  <button class="previewBox" on:click={closePreviewBox}>
+  <div class="previewBox" on:click={closePreviewBox}>
     {#if fileData["video"]}
       <video id="previewBoxView" controls muted="muted" autoplay>
         <source
@@ -67,7 +67,7 @@
         <p>{fileData}</p>
       </div>
     {/if}
-  </button>
+  </div>
   <div class="previewMeta">
     <button class="close-button" on:click={() => dispatch("hidePreview", true)}
       >&#10006;</button
@@ -76,6 +76,11 @@
     <p>Size: <span>{fileSize}{fileSizeUnit}</span></p>
     <p>Date created: <span>{metadata.dateCreated}</span></p>
     <p>Location: <span>./{selected}/{file}</span></p>
+    <div class="actionButtons">
+      <button class="downloadButton">Download</button>
+      <button class="shareButton">Share</button>
+      <button class="deleteButton">Delete</button>
+    </div>
   </div>
 </div>
 
@@ -107,7 +112,7 @@
   }
 
   .previewBox {
-    background-color: rgba(153, 153, 153, 0.5);
+    background-color: rgba(61, 61, 61, 0.5);
     width: 100%;
     height: 100%;
     display: flex;
@@ -121,14 +126,14 @@
   .previewBoxView {
     width: 50%;
     height: 50%;
-    background-color: #dfdfdf;
+    background-color: #292d3e;
     padding: 10px;
     border-radius: 10px;
   }
 
   .previewBoxView p {
     font-size: 2rem;
-    color: rgb(87, 87, 87);
+    color: #b2c0aa;
     font-family: "Roboto";
   }
 
@@ -188,5 +193,46 @@
 
   video {
     width: 70%;
+  }
+
+  .actionButtons {
+    display: flex;
+    gap: 10px;
+  }
+
+  .actionButtons button {
+    padding: 10px 10px;
+    font-family: "Poppins", sans-serif;
+    cursor: pointer;
+    border: none;
+    border-radius: 5px;
+    transition: outline 0.15s linear;
+  }
+
+  .downloadButton {
+    background-color: rgb(47, 190, 47);
+    outline: 1px solid rgb(47, 190, 47);
+  }
+
+  .downloadButton:hover {
+    outline: 3px solid rgb(47, 190, 47);
+  }
+
+  .shareButton {
+    background-color: rgb(37, 99, 156);
+    outline: 1px solid rgb(37, 99, 156);
+  }
+
+  .shareButton:hover {
+    outline: 3px solid rgb(37, 99, 156);
+  }
+
+  .deleteButton {
+    background-color: rgb(153, 0, 0);
+    outline: 1px solid rgb(153, 0, 0);
+  }
+
+  .deleteButton:hover {
+    outline: 3px solid rgb(153, 0, 0);
   }
 </style>
