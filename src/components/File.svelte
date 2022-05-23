@@ -21,6 +21,9 @@
 <li>
   {#if previewShow}
     <FilePreview
+      on:deleteFile={deleteFile}
+      on:downloadFile={downloadFile}
+      on:shareFile={shareFile}
       {file}
       {selected}
       {metadata}

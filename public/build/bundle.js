@@ -2896,9 +2896,9 @@ var app = (function () {
     			attr_dev(button1, "class", "downloadButton svelte-i3pczl");
     			add_location(button1, file_1$1, 79, 6, 2332);
     			attr_dev(button2, "class", "shareButton svelte-i3pczl");
-    			add_location(button2, file_1$1, 80, 6, 2388);
+    			add_location(button2, file_1$1, 86, 6, 2529);
     			attr_dev(button3, "class", "deleteButton svelte-i3pczl");
-    			add_location(button3, file_1$1, 81, 6, 2438);
+    			add_location(button3, file_1$1, 93, 6, 2717);
     			attr_dev(div1, "class", "actionButtons svelte-i3pczl");
     			add_location(div1, file_1$1, 78, 4, 2297);
     			attr_dev(div2, "class", "previewMeta svelte-i3pczl");
@@ -2948,7 +2948,10 @@ var app = (function () {
     			if (!mounted) {
     				dispose = [
     					listen_dev(div0, "click", /*closePreviewBox*/ ctx[7], false, false, false),
-    					listen_dev(button0, "click", /*click_handler*/ ctx[8], false, false, false)
+    					listen_dev(button0, "click", /*click_handler*/ ctx[8], false, false, false),
+    					listen_dev(button1, "click", /*click_handler_1*/ ctx[9], false, false, false),
+    					listen_dev(button2, "click", /*click_handler_2*/ ctx[10], false, false, false),
+    					listen_dev(button3, "click", /*click_handler_3*/ ctx[11], false, false, false)
     				];
 
     				mounted = true;
@@ -3047,6 +3050,21 @@ var app = (function () {
 
     	const click_handler = () => dispatch("hidePreview", true);
 
+    	const click_handler_1 = () => {
+    		dispatch("downloadFile", true);
+    		dispatch("hidePreview", true);
+    	};
+
+    	const click_handler_2 = () => {
+    		dispatch("shareFile", true);
+    		dispatch("hidePreview", true);
+    	};
+
+    	const click_handler_3 = () => {
+    		dispatch("deleteFile", true);
+    		dispatch("hidePreview", true);
+    	};
+
     	$$self.$$set = $$props => {
     		if ('selected' in $$props) $$invalidate(0, selected = $$props.selected);
     		if ('file' in $$props) $$invalidate(1, file = $$props.file);
@@ -3087,7 +3105,10 @@ var app = (function () {
     		fileSize,
     		dispatch,
     		closePreviewBox,
-    		click_handler
+    		click_handler,
+    		click_handler_1,
+    		click_handler_2,
+    		click_handler_3
     	];
     }
 
@@ -3163,6 +3184,9 @@ var app = (function () {
     			$$inline: true
     		});
 
+    	filepreview.$on("deleteFile", /*deleteFile*/ ctx[6]);
+    	filepreview.$on("downloadFile", /*downloadFile*/ ctx[4]);
+    	filepreview.$on("shareFile", /*shareFile*/ ctx[5]);
     	filepreview.$on("hidePreview", /*hidePreview_handler*/ ctx[9]);
 
     	const block = {
@@ -3247,27 +3271,27 @@ var app = (function () {
     			button3 = element("button");
     			img2 = element("img");
     			attr_dev(button0, "class", "svelte-tck0pf");
-    			add_location(button0, file_1, 29, 2, 536);
+    			add_location(button0, file_1, 32, 2, 640);
     			if (!src_url_equal(img0.src, img0_src_value = "icons/download.svg")) attr_dev(img0, "src", img0_src_value);
     			attr_dev(img0, "alt", "Download");
     			attr_dev(img0, "class", "svelte-tck0pf");
-    			add_location(img0, file_1, 32, 7, 668);
+    			add_location(img0, file_1, 35, 7, 772);
     			attr_dev(button1, "class", "svelte-tck0pf");
-    			add_location(button1, file_1, 31, 4, 628);
+    			add_location(button1, file_1, 34, 4, 732);
     			if (!src_url_equal(img1.src, img1_src_value = "icons/share.svg")) attr_dev(img1, "src", img1_src_value);
     			attr_dev(img1, "alt", "Share");
     			attr_dev(img1, "class", "svelte-tck0pf");
-    			add_location(img1, file_1, 35, 7, 773);
+    			add_location(img1, file_1, 38, 7, 877);
     			attr_dev(button2, "class", "svelte-tck0pf");
-    			add_location(button2, file_1, 34, 4, 736);
+    			add_location(button2, file_1, 37, 4, 840);
     			if (!src_url_equal(img2.src, img2_src_value = "icons/trash.svg")) attr_dev(img2, "src", img2_src_value);
     			attr_dev(img2, "alt", "Trash");
     			attr_dev(img2, "class", "svelte-tck0pf");
-    			add_location(img2, file_1, 38, 7, 873);
+    			add_location(img2, file_1, 41, 7, 977);
     			attr_dev(button3, "class", "svelte-tck0pf");
-    			add_location(button3, file_1, 37, 4, 835);
+    			add_location(button3, file_1, 40, 4, 939);
     			attr_dev(div, "class", "stuff svelte-tck0pf");
-    			add_location(div, file_1, 30, 2, 603);
+    			add_location(div, file_1, 33, 2, 707);
     			attr_dev(li, "class", "svelte-tck0pf");
     			add_location(li, file_1, 20, 0, 370);
     		},

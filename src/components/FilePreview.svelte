@@ -77,9 +77,27 @@
     <p>Date created: <span>{metadata.dateCreated}</span></p>
     <p>Location: <span>./{selected}/{file}</span></p>
     <div class="actionButtons">
-      <button class="downloadButton">Download</button>
-      <button class="shareButton">Share</button>
-      <button class="deleteButton">Delete</button>
+      <button
+        class="downloadButton"
+        on:click={() => {
+          dispatch("downloadFile", true);
+          dispatch("hidePreview", true);
+        }}>Download</button
+      >
+      <button
+        class="shareButton"
+        on:click={() => {
+          dispatch("shareFile", true);
+          dispatch("hidePreview", true);
+        }}>Share</button
+      >
+      <button
+        class="deleteButton"
+        on:click={() => {
+          dispatch("deleteFile", true);
+          dispatch("hidePreview", true);
+        }}>Delete</button
+      >
     </div>
   </div>
 </div>
