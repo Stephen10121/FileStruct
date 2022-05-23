@@ -45,7 +45,7 @@
 
 {#if notification}
   <ToastNotification
-    type="success"
+    type="alert"
     on:close={() => {
       notification = false;
     }}>Successfully Saved File.</ToastNotification

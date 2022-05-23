@@ -2553,13 +2553,13 @@ var app = (function () {
     			t0 = space();
     			button = element("button");
     			button.textContent = "✖";
-    			attr_dev(p, "class", "svelte-bx22rv");
+    			attr_dev(p, "class", "svelte-17b7m0a");
     			add_location(p, file$2, 12, 4, 296);
-    			attr_dev(button, "class", "svelte-bx22rv");
+    			attr_dev(button, "class", "svelte-17b7m0a");
     			add_location(button, file$2, 13, 4, 317);
-    			attr_dev(div0, "class", "notification-toast-inner svelte-bx22rv");
+    			attr_dev(div0, "class", "notification-toast-inner svelte-17b7m0a");
     			add_location(div0, file$2, 11, 2, 252);
-    			attr_dev(div1, "class", div1_class_value = "notification-toast " + /*type*/ ctx[0] + " svelte-bx22rv");
+    			attr_dev(div1, "class", div1_class_value = "notification-toast " + /*type*/ ctx[0] + " svelte-17b7m0a");
     			add_location(div1, file$2, 10, 0, 209);
     		},
     		l: function claim(nodes) {
@@ -2599,7 +2599,7 @@ var app = (function () {
     				}
     			}
 
-    			if (!current || dirty & /*type*/ 1 && div1_class_value !== (div1_class_value = "notification-toast " + /*type*/ ctx[0] + " svelte-bx22rv")) {
+    			if (!current || dirty & /*type*/ 1 && div1_class_value !== (div1_class_value = "notification-toast " + /*type*/ ctx[0] + " svelte-17b7m0a")) {
     				attr_dev(div1, "class", div1_class_value);
     			}
     		},
@@ -3793,7 +3793,7 @@ var app = (function () {
 
     	toastnotification = new ToastNotification({
     			props: {
-    				type: "success",
+    				type: "alert",
     				$$slots: { default: [create_default_slot] },
     				$$scope: { ctx }
     			},
@@ -3844,7 +3844,7 @@ var app = (function () {
     	return block;
     }
 
-    // (47:2) <ToastNotification      type="success"      on:close={() => {        notification = false;      }}>
+    // (47:2) <ToastNotification      type="alert"      on:close={() => {        notification = false;      }}>
     function create_default_slot(ctx) {
     	let t;
 
@@ -3864,7 +3864,7 @@ var app = (function () {
     		block,
     		id: create_default_slot.name,
     		type: "slot",
-    		source: "(47:2) <ToastNotification      type=\\\"success\\\"      on:close={() => {        notification = false;      }}>",
+    		source: "(47:2) <ToastNotification      type=\\\"alert\\\"      on:close={() => {        notification = false;      }}>",
     		ctx
     	});
 
@@ -3919,12 +3919,12 @@ var app = (function () {
     			t5 = space();
     			create_component(filestruct.$$.fragment);
     			attr_dev(div, "class", "sideFolder");
-    			add_location(div, file, 54, 2, 1447);
-    			add_location(p, file, 56, 4, 1521);
+    			add_location(div, file, 54, 2, 1445);
+    			add_location(p, file, 56, 4, 1519);
     			attr_dev(section, "class", "folder-part svelte-1593wea");
-    			add_location(section, file, 55, 2, 1486);
+    			add_location(section, file, 55, 2, 1484);
     			attr_dev(main, "class", "svelte-1593wea");
-    			add_location(main, file, 53, 0, 1437);
+    			add_location(main, file, 53, 0, 1435);
     		},
     		l: function claim(nodes) {
     			throw new Error("options.hydrate only works if the component was compiled with the `hydratable: true` option");

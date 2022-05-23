@@ -42,7 +42,7 @@
   .notification-toast-inner button {
     position: absolute;
     top: 0px;
-    right: 2px;
+    right: 5px;
     cursor: pointer;
     border: none;
     background: none;
