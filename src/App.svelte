@@ -6,6 +6,7 @@
   let selected = "none";
   let folderStruct2 = folderStruct;
   let currentFolderPathFiles = "";
+  let notification = null;
 
   fetch(`http://localhost:5500/fetchFiles?location=./storage`)
     .then((response) => response.json())
@@ -40,15 +41,14 @@
     folderStruct2.vids.Date_2020 = {};
     console.log(folderStruct2);
   };
-  let notification = true;
 </script>
 
-{#if notification}
+{#if notification !== null}
   <ToastNotification
-    type="alert"
+    type={notification.status}
     on:close={() => {
-      notification = false;
-    }}>Successfully Saved File.</ToastNotification
+      notification = null;
+    }}>{notification.msg}</ToastNotification
   >
 {/if}
 <main>

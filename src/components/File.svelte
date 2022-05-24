@@ -1,16 +1,20 @@
 <script>
   import FilePreview from "./FilePreview.svelte";
+  import FileShare from "./FileShare.svelte";
+  import ToastNotification from "./ToastNotification.svelte";
   export let selected;
   export let file;
   export let metadata;
+  let notification = null;
   let previewShow = false;
+  let showFileShare = false;
 
   const downloadFile = () => {
     console.log("Download");
   };
 
   const shareFile = () => {
-    console.log("Share");
+    showFileShare = true;
   };
 
   const deleteFile = () => {
@@ -18,6 +22,25 @@
   };
 </script>
 
+{#if showFileShare}
+  <FileShare
+    {file}
+    on:shareTo={(e) => {
+      notification = { msg: e.detail, status: "success" };
+    }}
+    on:hideShare={() => {
+      showFileShare = false;
+    }}
+  />
+{/if}
+{#if notification !== null}
+  <ToastNotification
+    type={notification.status}
+    on:close={() => {
+      notification = null;
+    }}>{notification.msg}</ToastNotification
+  >
+{/if}
 <li>
   {#if previewShow}
     <FilePreview
