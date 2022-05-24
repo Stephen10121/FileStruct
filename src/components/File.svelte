@@ -2,12 +2,14 @@
   import FilePreview from "./FilePreview.svelte";
   import FileShare from "./FileShare.svelte";
   import ToastNotification from "./ToastNotification.svelte";
+  import BoolPrompt from "./BoolPrompt.svelte";
   export let selected;
   export let file;
   export let metadata;
   let notification = null;
   let previewShow = false;
   let showFileShare = false;
+  let deleteFileCheck = false;
 
   const downloadFile = () => {
     console.log("Download");
@@ -18,10 +20,18 @@
   };
 
   const deleteFile = () => {
-    console.log("Delete");
+    deleteFileCheck = true;
   };
 </script>
 
+{#if deleteFileCheck}
+  <BoolPrompt
+    on:boolChoose={(e) => {
+      deleteFileCheck = false;
+      console.log(e.detail);
+    }}>Delete <span class="bold">{file}</span>?</BoolPrompt
+  >
+{/if}
 {#if showFileShare}
   <FileShare
     {file}
@@ -113,5 +123,9 @@
 
   .stuff button img {
     width: 25px;
+  }
+
+  .bold {
+    font-weight: bold;
   }
 </style>
