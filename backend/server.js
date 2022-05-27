@@ -1,12 +1,15 @@
+require('dotenv').config();
 const http = require("http");
 const express = require('express');
+const socketio = require('socket.io');
 const fs = require("fs");
 const { getFiles, readFile } = require("./dirGet");
 const PORT = 5500;
+const jwt = require('jsonwebtoken');
 const app = express();
 
 app.use((req, res, next) => {
-    res.setHeader('Access-Control-Allow-Origin', "*");
+    res.setHeader('Access-Control-Allow-Origin', "https://auth.gruzservices.com");
     res.setHeader('Access-Control-Allow-Headers', '*');
     next();
 });
@@ -14,6 +17,26 @@ app.use((req, res, next) => {
 app.use(express.json(), express.static('public'), express.urlencoded({ extended: true }));
 
 const server = http.createServer(app);
+const io = socketio(server, {
+    cors: {
+        origin: '*',
+        methods: ['GET', 'POST'],
+        allowEIO3: true
+    }
+  });
+
+app.post('/auth', async (req, res) => {
+    const newData = req.body;
+    console.log(req.body);
+    const result = await userLogin({hash: newData.data, name: newData.name, email: newData.email, username: newData.username});
+    if (result.error !== 200) {
+        console.log(result.errorMessage);
+        return res.json({ msg:"Something went wrong." });
+    }
+    delete result.data.userInfo.id;
+    const accessToken = jwt.sign(result.data.userInfo, process.env.ACCESS_TOKEN_SECRET);
+    io.to(req.body.key).emit('auth', {userData: result.data.userInfo, token: accessToken});
+});
 
 app.get("/fetchFiles", async (req, res) => {
     console.log(req.query);
@@ -52,6 +75,25 @@ app.get("/getVideoStream", async (req, res) => {
     res.writeHead(206, headers);
     const videoStream = fs.createReadStream(videoPath, { start, end });
     videoStream.pipe(res);
+});
+
+io.on('connection', socket => {
+    socket.on("auth", (data) => {
+        // if (data == "password") {
+        //     whiteList.push(socket.id);
+        // } else {
+        //     socket.disconnect();
+        // }
+    });
+
+    socket.on("test", (data) => {
+        console.log(data);
+        // if (whiteList.includes(socket.id)) {
+        //     //console.log(data);
+        // } else {
+        //     socket.disconnect();
+        // }
+    });
 });
 
 server.listen(PORT, () => console.log(`Server running on port ${PORT}.`));

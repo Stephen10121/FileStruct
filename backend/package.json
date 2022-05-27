@@ -4,14 +4,19 @@
   "description": "",
   "main": "dirGet.js",
   "scripts": {
-    "dev": "nodemon server.js"
+    "dev": "nodemon server.js",
+    "startup": "node startup.js"
   },
   "author": "",
   "license": "ISC",
   "dependencies": {
+    "dotenv": "^16.0.1",
     "express": "^4.18.1",
     "file-metadata": "^3.0.0",
-    "glob": "^8.0.3"
+    "glob": "^8.0.3",
+    "jsonwebtoken": "^8.5.1",
+    "socket.io": "^4.5.1",
+    "sqlite-async": "^1.1.3"
   },
   "devDependencies": {
     "nodemon": "^2.0.16"

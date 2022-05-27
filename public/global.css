@@ -11,6 +11,7 @@ html {
 
 body {
 	width: 100vw;
+	margin: 0;
 	height: 100vh;
 	/* background-color: #888888; */
 	background-color: #1f1f1f;

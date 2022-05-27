@@ -5,7 +5,7 @@
   import NotLogged from "./NotLogged.svelte";
 </script>
 
-<Router>
+<!-- <Router>
   <Route path="home">
     <NotLogged />
   </Route>
@@ -13,4 +13,5 @@
   <Route path="/">
     <CheckLog />
   </Route>
-</Router>
+</Router> -->
+<NotLogged />
