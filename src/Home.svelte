@@ -20,21 +20,27 @@
     .then((data) => {
       console.log(data);
       folderStruct2 = data.files;
+      newLoc({ detail: null });
     });
 
   const newLoc = ({ detail }) => {
-    selected = detail;
-    detail = detail.split("/");
-    let files = folderStruct2[detail[0]];
-    for (let i = 1; i < detail.length; i++) {
-      files = files[detail[i]];
+    if (detail === null) {
+      currentFolderPathFiles =
+        !folderStruct2["G_files"].length === 0 ? [] : folderStruct2.G_files;
+    } else {
+      selected = detail;
+      detail = detail.split("/");
+      let files = folderStruct2[detail[0]];
+      for (let i = 1; i < detail.length; i++) {
+        files = files[detail[i]];
+      }
+      if (!files["G_files"]) {
+        currentFolderPathFiles = [];
+        return;
+      }
+      currentFolderPathFiles =
+        !files["G_files"].length === 0 ? [] : files.G_files;
     }
-    if (!files["G_files"]) {
-      currentFolderPathFiles = [];
-      return;
-    }
-    currentFolderPathFiles =
-      !files["G_files"].length === 0 ? [] : files.G_files;
   };
 
   const addVal = () => {

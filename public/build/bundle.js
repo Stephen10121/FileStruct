@@ -10966,7 +10966,7 @@ var app = (function () {
     const { console: console_1 } = globals;
     const file = "src\\Home.svelte";
 
-    // (53:0) {#if notification !== null}
+    // (59:0) {#if notification !== null}
     function create_if_block$1(ctx) {
     	let toastnotification;
     	let current;
@@ -11018,14 +11018,14 @@ var app = (function () {
     		block,
     		id: create_if_block$1.name,
     		type: "if",
-    		source: "(53:0) {#if notification !== null}",
+    		source: "(59:0) {#if notification !== null}",
     		ctx
     	});
 
     	return block;
     }
 
-    // (54:2) <ToastNotification      type={notification.status}      on:close={() => {        notification = null;      }}>
+    // (60:2) <ToastNotification      type={notification.status}      on:close={() => {        notification = null;      }}>
     function create_default_slot_1$1(ctx) {
     	let t_value = /*notification*/ ctx[3].msg + "";
     	let t;
@@ -11049,14 +11049,14 @@ var app = (function () {
     		block,
     		id: create_default_slot_1$1.name,
     		type: "slot",
-    		source: "(54:2) <ToastNotification      type={notification.status}      on:close={() => {        notification = null;      }}>",
+    		source: "(60:2) <ToastNotification      type={notification.status}      on:close={() => {        notification = null;      }}>",
     		ctx
     	});
 
     	return block;
     }
 
-    // (62:26) <Link to="about">
+    // (68:26) <Link to="about">
     function create_default_slot$1(ctx) {
     	let t;
 
@@ -11076,7 +11076,7 @@ var app = (function () {
     		block,
     		id: create_default_slot$1.name,
     		type: "slot",
-    		source: "(62:26) <Link to=\\\"about\\\">",
+    		source: "(68:26) <Link to=\\\"about\\\">",
     		ctx
     	});
 
@@ -11141,12 +11141,12 @@ var app = (function () {
     			t4 = space();
     			create_component(filestruct.$$.fragment);
     			attr_dev(div, "class", "sideFolder");
-    			add_location(div, file, 61, 2, 1722);
-    			add_location(p, file, 63, 4, 1825);
+    			add_location(div, file, 67, 2, 1938);
+    			add_location(p, file, 69, 4, 2041);
     			attr_dev(section, "class", "folder-part svelte-1593wea");
-    			add_location(section, file, 62, 2, 1790);
+    			add_location(section, file, 68, 2, 2006);
     			attr_dev(main, "class", "svelte-1593wea");
-    			add_location(main, file, 60, 0, 1712);
+    			add_location(main, file, 66, 0, 1928);
     		},
     		l: function claim(nodes) {
     			throw new Error("options.hydrate only works if the component was compiled with the `hydratable: true` option");
@@ -11259,23 +11259,30 @@ var app = (function () {
     	fetch(`http://localhost:5500/fetchFiles?cred=${getCookie$1("G_VAR")}`).then(response => response.json()).then(data => {
     		console.log(data);
     		$$invalidate(1, folderStruct2 = data.files);
+    		newLoc({ detail: null });
     	});
 
     	const newLoc = ({ detail }) => {
-    		$$invalidate(0, selected = detail);
-    		detail = detail.split("/");
-    		let files = folderStruct2[detail[0]];
+    		if (detail === null) {
+    			$$invalidate(2, currentFolderPathFiles = !folderStruct2["G_files"].length === 0
+    			? []
+    			: folderStruct2.G_files);
+    		} else {
+    			$$invalidate(0, selected = detail);
+    			detail = detail.split("/");
+    			let files = folderStruct2[detail[0]];
 
-    		for (let i = 1; i < detail.length; i++) {
-    			files = files[detail[i]];
+    			for (let i = 1; i < detail.length; i++) {
+    				files = files[detail[i]];
+    			}
+
+    			if (!files["G_files"]) {
+    				$$invalidate(2, currentFolderPathFiles = []);
+    				return;
+    			}
+
+    			$$invalidate(2, currentFolderPathFiles = !files["G_files"].length === 0 ? [] : files.G_files);
     		}
-
-    		if (!files["G_files"]) {
-    			$$invalidate(2, currentFolderPathFiles = []);
-    			return;
-    		}
-
-    		$$invalidate(2, currentFolderPathFiles = !files["G_files"].length === 0 ? [] : files.G_files);
     	};
 
     	const addVal = () => {
