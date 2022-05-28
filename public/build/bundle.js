@@ -8994,8 +8994,8 @@ var app = (function () {
     			add_location(source, file_1$2, 72, 8, 1970);
     			attr_dev(video, "id", "previewBoxView");
     			video.controls = true;
-    			video.muted = "muted";
     			video.autoplay = true;
+    			video.muted = false;
     			attr_dev(video, "class", "svelte-i3pczl");
     			add_location(video, file_1$2, 71, 6, 1901);
     		},

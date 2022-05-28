@@ -69,7 +69,7 @@
 <div class="preview">
   <div class="previewBox" on:click={closePreviewBox}>
     {#if fileData["video"]}
-      <video id="previewBoxView" controls muted="muted" autoplay>
+      <video id="previewBoxView" controls autoplay muted={false}>
         <source
           src="http://localhost:5500/getVideoStream?location={path}&cred={getCookie(
             'G_VAR'
