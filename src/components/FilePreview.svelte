@@ -18,9 +18,23 @@
     fileSizeUnit = "Kb";
     fileSize = Math.round(metadata.size / 1000);
   }
+  let path;
+  if (selected) {
+    path = `./${selected}/${file}`;
+  } else {
+    path = `./${file}`;
+  }
+
+  function getCookie(name) {
+    const value = `; ${document.cookie}`;
+    const parts = value.split(`; ${name}=`);
+    if (parts.length === 2) return parts.pop().split(";").shift();
+  }
+
   fetch(
-    `http://localhost:5500/getFileData?location=./storage/${selected}/${file}`,
-    { credentials: "include" }
+    `http://localhost:5500/getFileData?location=${path}&cred=${getCookie(
+      "G_VAR"
+    )}`
   )
     .then((response) => response.json())
     .then((data) => {
@@ -57,9 +71,9 @@
     {#if fileData["video"]}
       <video id="previewBoxView" controls muted="muted" autoplay>
         <source
-          src="http://localhost:5500/getVideoStream?location={selected +
-            '/' +
-            file}"
+          src="http://localhost:5500/getVideoStream?location={path}&cred={getCookie(
+            'G_VAR'
+          )}"
           type="video/mp4"
         />
       </video>
