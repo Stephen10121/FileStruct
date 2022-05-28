@@ -1,8 +1,10 @@
 <script>
-  //   import { useNavigate } from "svelte-navigator";
+  import { useNavigate } from "svelte-navigator";
+  import { createEventDispatcher } from "svelte";
   import useSocket from "./useSocket";
 
-  //   const navigate = useNavigate();
+  const dispatch = createEventDispatcher();
+  const navigate = useNavigate();
 
   const socket = useSocket("http://192.168.0.24:5500");
 
@@ -46,11 +48,12 @@
 
   const loginIt = () => {
     socket.on("auth", (data) => {
-      console.log(data);
       socket.off("auth");
+      document.cookie = `G_VAR=${data.token}`;
+      dispatch("userLoggedIn", data);
     });
     popupCenter({
-      postServer: "http://192.168.0.24:5500",
+      postServer: "http://192.168.0.24:5500/auth",
       key: socket.id,
       title: "Authenticate",
       w: 520,
@@ -81,7 +84,6 @@
 
   #sauth-login {
     width: 220px;
-    margin-top: 10px;
     font-family: "George-Italic", sans-serif;
     border-radius: 100vw;
     border: none;

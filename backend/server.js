@@ -4,17 +4,21 @@ const express = require('express');
 const socketio = require('socket.io');
 const fs = require("fs");
 const { getFiles, readFile } = require("./dirGet");
+const cookieParser = require("cookie-parser");
+const { userLogin, getUserData, saveProfile, checkUserSharing } = require("./database");
 const PORT = 5500;
 const jwt = require('jsonwebtoken');
+const { hashed } = require('./functions');
 const app = express();
 
 app.use((req, res, next) => {
-    res.setHeader('Access-Control-Allow-Origin', "https://auth.gruzservices.com");
+    // res.setHeader('Access-Control-Allow-Origin', "https://auth.gruzservices.com"); uncomment this in prod
+    res.setHeader('Access-Control-Allow-Origin', "*"); // comment this in prod
     res.setHeader('Access-Control-Allow-Headers', '*');
     next();
 });
 
-app.use(express.json(), express.static('public'), express.urlencoded({ extended: true }));
+app.use(express.json(), express.static('public'), express.urlencoded({ extended: true }), cookieParser());
 
 const server = http.createServer(app);
 const io = socketio(server, {
@@ -27,7 +31,6 @@ const io = socketio(server, {
 
 app.post('/auth', async (req, res) => {
     const newData = req.body;
-    console.log(req.body);
     const result = await userLogin({hash: newData.data, name: newData.name, email: newData.email, username: newData.username});
     if (result.error !== 200) {
         console.log(result.errorMessage);
@@ -39,12 +42,26 @@ app.post('/auth', async (req, res) => {
 });
 
 app.get("/fetchFiles", async (req, res) => {
-    console.log(req.query);
-    const files = await getFiles(req.query.location);
-    res.json({ msg: "Good", files });
+    if (!req.query["cred"]) {
+        return res.json({ msg: "Missing params" });
+    }
+    jwt.verify(req.query.cred, process.env.ACCESS_TOKEN_SECRET, async (err, user) => {
+        if (err) {
+            return res.status(400).json({ msg: 'Invalid input' });
+        }
+        const userif = await getUserData(user.usersHash);
+        if (userif == "error") {
+            return res.status(400).json({ msg: 'Invalid input' });
+        }
+        const files = await getFiles(`./storage/${hashed(user.usersName)}`);
+        res.json({ msg: "Good", files });
+    });
 });
 
 app.get("/getFileData", async (req, res) => {
+    if (!req.query["location"]) {
+        return res.json({ msg: "Missing arguments"});
+    }
     const fileData = await readFile(req.query.location);
     let jsonResult;
     if (fileData === "video") {

@@ -19,7 +19,8 @@
     fileSize = Math.round(metadata.size / 1000);
   }
   fetch(
-    `http://localhost:5500/getFileData?location=./storage/${selected}/${file}`
+    `http://localhost:5500/getFileData?location=./storage/${selected}/${file}`,
+    { credentials: "include" }
   )
     .then((response) => response.json())
     .then((data) => {

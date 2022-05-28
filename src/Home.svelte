@@ -9,7 +9,13 @@
   let currentFolderPathFiles = "";
   let notification = null;
 
-  fetch(`http://localhost:5500/fetchFiles?location=./storage`)
+  function getCookie(name) {
+    const value = `; ${document.cookie}`;
+    const parts = value.split(`; ${name}=`);
+    if (parts.length === 2) return parts.pop().split(";").shift();
+  }
+
+  fetch(`http://localhost:5500/fetchFiles?cred=${getCookie("G_VAR")}`)
     .then((response) => response.json())
     .then((data) => {
       console.log(data);
