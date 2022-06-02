@@ -1,0 +1,54 @@
+*, *::after, *::before {
+	padding: 0;
+	margin: 0;
+	text-decoration: none;
+	box-sizing: border-box;
+}
+
+html {
+	font-size: 10px;
+}
+
+body {
+	width: 100vw;
+	margin: 0;
+	height: 100vh;
+	/* background-color: #888888; */
+	background-color: #1f1f1f;
+	overflow-y: auto;
+}
+
+:root {
+	--folder-color: #0070a3;
+	--folder-hover-color: #004b6e;
+	--folder-selected-color: #002638;
+	--file-color: rgb(146, 146, 146);
+	--file-hover-color: rgb(124, 124, 124);
+	--file-section-color: rgb(23, 28, 34);
+	--folder-section-color: rgb(28, 41, 56);
+	--name-section-color: rgb(34, 35, 37);
+	--name-font-color: rgb(172, 172, 172);
+	--side-folder-color: rgb(14, 18, 24);
+	--rotate-deg: 90deg;
+}
+
+
+
+::-webkit-scrollbar {
+    width: 7px;
+    height: 7px;
+  }
+
+::-webkit-scrollbar-track {
+    background: #f1f1f1;
+  }
+
+::-webkit-scrollbar-thumb {
+    background: #888;
+  }
+::-webkit-scrollbar-thumb:hover {
+    background: #555;
+  }
+
+/* font-family: 'Poppins', sans-serif;
+font-family: 'Roboto', sans-serif; */
