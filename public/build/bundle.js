@@ -8949,10 +8949,10 @@ var app = (function () {
     			div = element("div");
     			p = element("p");
     			t = text(/*fileData*/ ctx[3]);
-    			attr_dev(p, "class", "svelte-i3pczl");
+    			attr_dev(p, "class", "svelte-bbazb7");
     			add_location(p, file_1$2, 81, 8, 2234);
     			attr_dev(div, "id", "previewBoxView");
-    			attr_dev(div, "class", "previewBoxView svelte-i3pczl");
+    			attr_dev(div, "class", "previewBoxView svelte-bbazb7");
     			add_location(div, file_1$2, 80, 6, 2176);
     		},
     		m: function mount(target, anchor) {
@@ -8996,7 +8996,7 @@ var app = (function () {
     			video.controls = true;
     			video.autoplay = true;
     			video.muted = false;
-    			attr_dev(video, "class", "svelte-i3pczl");
+    			attr_dev(video, "class", "svelte-bbazb7");
     			add_location(video, file_1$2, 71, 6, 1901);
     		},
     		m: function mount(target, anchor) {
@@ -9111,35 +9111,35 @@ var app = (function () {
     			t21 = space();
     			button3 = element("button");
     			button3.textContent = "Delete";
-    			attr_dev(div0, "class", "previewBox svelte-i3pczl");
+    			attr_dev(div0, "class", "previewBox svelte-bbazb7");
     			add_location(div0, file_1$2, 69, 2, 1813);
-    			attr_dev(button0, "class", "close-button svelte-i3pczl");
+    			attr_dev(button0, "class", "close-button svelte-bbazb7");
     			add_location(button0, file_1$2, 86, 4, 2321);
-    			attr_dev(h1, "class", "svelte-i3pczl");
+    			attr_dev(h1, "class", "svelte-bbazb7");
     			add_location(h1, file_1$2, 89, 4, 2434);
-    			attr_dev(span0, "class", "svelte-i3pczl");
+    			attr_dev(span0, "class", "svelte-bbazb7");
     			add_location(span0, file_1$2, 90, 13, 2468);
-    			attr_dev(p0, "class", "svelte-i3pczl");
+    			attr_dev(p0, "class", "svelte-bbazb7");
     			add_location(p0, file_1$2, 90, 4, 2459);
-    			attr_dev(span1, "class", "svelte-i3pczl");
+    			attr_dev(span1, "class", "svelte-bbazb7");
     			add_location(span1, file_1$2, 91, 21, 2532);
-    			attr_dev(p1, "class", "svelte-i3pczl");
+    			attr_dev(p1, "class", "svelte-bbazb7");
     			add_location(p1, file_1$2, 91, 4, 2515);
-    			attr_dev(span2, "class", "svelte-i3pczl");
+    			attr_dev(span2, "class", "svelte-bbazb7");
     			add_location(span2, file_1$2, 92, 17, 2590);
-    			attr_dev(p2, "class", "svelte-i3pczl");
+    			attr_dev(p2, "class", "svelte-bbazb7");
     			add_location(p2, file_1$2, 92, 4, 2577);
-    			attr_dev(button1, "class", "downloadButton svelte-i3pczl");
+    			attr_dev(button1, "class", "downloadButton svelte-bbazb7");
     			add_location(button1, file_1$2, 94, 6, 2667);
-    			attr_dev(button2, "class", "shareButton svelte-i3pczl");
+    			attr_dev(button2, "class", "shareButton svelte-bbazb7");
     			add_location(button2, file_1$2, 101, 6, 2864);
-    			attr_dev(button3, "class", "deleteButton svelte-i3pczl");
+    			attr_dev(button3, "class", "deleteButton svelte-bbazb7");
     			add_location(button3, file_1$2, 108, 6, 3052);
-    			attr_dev(div1, "class", "actionButtons svelte-i3pczl");
+    			attr_dev(div1, "class", "actionButtons svelte-bbazb7");
     			add_location(div1, file_1$2, 93, 4, 2632);
-    			attr_dev(div2, "class", "previewMeta svelte-i3pczl");
+    			attr_dev(div2, "class", "previewMeta svelte-bbazb7");
     			add_location(div2, file_1$2, 85, 2, 2290);
-    			attr_dev(div3, "class", "preview svelte-i3pczl");
+    			attr_dev(div3, "class", "preview svelte-bbazb7");
     			add_location(div3, file_1$2, 68, 0, 1788);
     		},
     		l: function claim(nodes) {
@@ -10999,7 +10999,7 @@ var app = (function () {
     		c: function create() {
     			button = element("button");
     			button.textContent = "home";
-    			attr_dev(button, "class", "svelte-1pb1l46");
+    			attr_dev(button, "class", "svelte-1i8yk0v");
     			add_location(button, file$1, 27, 4, 636);
     		},
     		m: function mount(target, anchor) {
@@ -11055,7 +11055,7 @@ var app = (function () {
     			}
 
     			each_1_anchor = empty$1();
-    			attr_dev(button, "class", "svelte-1pb1l46");
+    			attr_dev(button, "class", "svelte-1i8yk0v");
     			add_location(button, file$1, 8, 4, 194);
     		},
     		m: function mount(target, anchor) {
@@ -11135,7 +11135,7 @@ var app = (function () {
     		c: function create() {
     			button = element("button");
     			t = text(t_value);
-    			attr_dev(button, "class", "svelte-1pb1l46");
+    			attr_dev(button, "class", "svelte-1i8yk0v");
     			add_location(button, file$1, 14, 6, 357);
     		},
     		m: function mount(target, anchor) {
@@ -11184,7 +11184,7 @@ var app = (function () {
     		c: function create() {
     			section = element("section");
     			if_block.c();
-    			attr_dev(section, "class", "path-grid svelte-1pb1l46");
+    			attr_dev(section, "class", "path-grid svelte-1i8yk0v");
     			add_location(section, file$1, 6, 0, 143);
     		},
     		l: function claim(nodes) {
@@ -11332,7 +11332,7 @@ var app = (function () {
     			const toastnotification_changes = {};
     			if (dirty & /*notification*/ 16) toastnotification_changes.type = /*notification*/ ctx[4].status;
 
-    			if (dirty & /*$$scope, notification*/ 528) {
+    			if (dirty & /*$$scope, notification*/ 2064) {
     				toastnotification_changes.$$scope = { dirty, ctx };
     			}
 
@@ -11394,7 +11394,7 @@ var app = (function () {
     	return block;
     }
 
-    // (71:26) <Link to="about">
+    // (85:5) <Link to="about">
     function create_default_slot$1(ctx) {
     	let t;
 
@@ -11414,7 +11414,7 @@ var app = (function () {
     		block,
     		id: create_default_slot$1.name,
     		type: "slot",
-    		source: "(71:26) <Link to=\\\"about\\\">",
+    		source: "(85:5) <Link to=\\\"about\\\">",
     		ctx
     	});
 
@@ -11424,22 +11424,32 @@ var app = (function () {
     function create_fragment$2(ctx) {
     	let t0;
     	let main;
+    	let button0;
+    	let img0;
+    	let img0_src_value;
+    	let t1;
     	let div;
     	let link;
-    	let t1;
+    	let t2;
+    	let button1;
+    	let img1;
+    	let img1_src_value;
+    	let t3;
     	let section1;
     	let section0;
     	let p;
-    	let t2_value = /*userData*/ ctx[0].usersRName + "";
-    	let t2;
-    	let t3;
-    	let buildfolderstruct;
+    	let t4_value = /*userData*/ ctx[0].usersRName + "";
     	let t4;
+    	let t5;
+    	let buildfolderstruct;
+    	let t6;
     	let section2;
     	let locationpath;
-    	let t5;
+    	let t7;
     	let filestruct;
     	let current;
+    	let mounted;
+    	let dispose;
     	let if_block = /*notification*/ ctx[4] !== null && create_if_block$1(ctx);
 
     	link = new Link$1({
@@ -11481,31 +11491,53 @@ var app = (function () {
     			if (if_block) if_block.c();
     			t0 = space();
     			main = element("main");
+    			button0 = element("button");
+    			img0 = element("img");
+    			t1 = space();
     			div = element("div");
     			create_component(link.$$.fragment);
-    			t1 = space();
+    			t2 = space();
+    			button1 = element("button");
+    			img1 = element("img");
+    			t3 = space();
     			section1 = element("section");
     			section0 = element("section");
     			p = element("p");
-    			t2 = text(t2_value);
-    			t3 = space();
+    			t4 = text(t4_value);
+    			t5 = space();
     			create_component(buildfolderstruct.$$.fragment);
-    			t4 = space();
+    			t6 = space();
     			section2 = element("section");
     			create_component(locationpath.$$.fragment);
-    			t5 = space();
+    			t7 = space();
     			create_component(filestruct.$$.fragment);
-    			attr_dev(div, "class", "sideFolder");
-    			add_location(div, file, 70, 2, 2075);
-    			attr_dev(p, "class", "svelte-9tavwd");
-    			add_location(p, file, 73, 6, 2216);
-    			attr_dev(section0, "class", "name-section svelte-9tavwd");
-    			add_location(section0, file, 72, 4, 2178);
-    			attr_dev(section1, "class", "folder-part svelte-9tavwd");
-    			add_location(section1, file, 71, 2, 2143);
-    			attr_dev(section2, "class", "file-part svelte-9tavwd");
-    			add_location(section2, file, 81, 2, 2392);
-    			attr_dev(main, "class", "svelte-9tavwd");
+    			if (!src_url_equal(img0.src, img0_src_value = "/icons/grid.svg")) attr_dev(img0, "src", img0_src_value);
+    			attr_dev(img0, "alt", "Menu");
+    			attr_dev(img0, "class", "svelte-1x5oym3");
+    			add_location(img0, file, 81, 7, 2539);
+    			attr_dev(button0, "class", "slide-folder-button svelte-1x5oym3");
+    			attr_dev(button0, "id", "slide-button");
+    			add_location(button0, file, 70, 2, 2075);
+    			attr_dev(div, "class", "sideFolder svelte-1x5oym3");
+    			attr_dev(div, "id", "sideFolder");
+    			add_location(div, file, 83, 2, 2596);
+    			if (!src_url_equal(img1.src, img1_src_value = "/icons/folder-fill.svg")) attr_dev(img1, "src", img1_src_value);
+    			attr_dev(img1, "alt", "Folder");
+    			attr_dev(img1, "class", "svelte-1x5oym3");
+    			add_location(img1, file, 97, 7, 3179);
+    			attr_dev(button1, "class", "folder-part-button svelte-1x5oym3");
+    			attr_dev(button1, "id", "folderpartbutton");
+    			add_location(button1, file, 86, 2, 2690);
+    			attr_dev(p, "class", "svelte-1x5oym3");
+    			add_location(p, file, 101, 6, 3335);
+    			attr_dev(section0, "class", "name-section svelte-1x5oym3");
+    			add_location(section0, file, 100, 4, 3297);
+    			attr_dev(section1, "class", "folder-part svelte-1x5oym3");
+    			attr_dev(section1, "id", "folder-part");
+    			add_location(section1, file, 99, 2, 3245);
+    			attr_dev(section2, "class", "file-part svelte-1x5oym3");
+    			add_location(section2, file, 109, 2, 3511);
+    			attr_dev(main, "class", "svelte-1x5oym3");
     			add_location(main, file, 69, 0, 2065);
     		},
     		l: function claim(nodes) {
@@ -11515,21 +11547,36 @@ var app = (function () {
     			if (if_block) if_block.m(target, anchor);
     			insert_dev(target, t0, anchor);
     			insert_dev(target, main, anchor);
+    			append_dev(main, button0);
+    			append_dev(button0, img0);
+    			append_dev(main, t1);
     			append_dev(main, div);
     			mount_component(link, div, null);
-    			append_dev(main, t1);
+    			append_dev(main, t2);
+    			append_dev(main, button1);
+    			append_dev(button1, img1);
+    			append_dev(main, t3);
     			append_dev(main, section1);
     			append_dev(section1, section0);
     			append_dev(section0, p);
-    			append_dev(p, t2);
-    			append_dev(section1, t3);
+    			append_dev(p, t4);
+    			append_dev(section1, t5);
     			mount_component(buildfolderstruct, section1, null);
-    			append_dev(main, t4);
+    			append_dev(main, t6);
     			append_dev(main, section2);
     			mount_component(locationpath, section2, null);
-    			append_dev(section2, t5);
+    			append_dev(section2, t7);
     			mount_component(filestruct, section2, null);
     			current = true;
+
+    			if (!mounted) {
+    				dispose = [
+    					listen_dev(button0, "click", /*click_handler*/ ctx[7], false, false, false),
+    					listen_dev(button1, "click", /*click_handler_1*/ ctx[8], false, false, false)
+    				];
+
+    				mounted = true;
+    			}
     		},
     		p: function update(ctx, [dirty]) {
     			if (/*notification*/ ctx[4] !== null) {
@@ -11557,12 +11604,12 @@ var app = (function () {
 
     			const link_changes = {};
 
-    			if (dirty & /*$$scope*/ 512) {
+    			if (dirty & /*$$scope*/ 2048) {
     				link_changes.$$scope = { dirty, ctx };
     			}
 
     			link.$set(link_changes);
-    			if ((!current || dirty & /*userData*/ 1) && t2_value !== (t2_value = /*userData*/ ctx[0].usersRName + "")) set_data_dev(t2, t2_value);
+    			if ((!current || dirty & /*userData*/ 1) && t4_value !== (t4_value = /*userData*/ ctx[0].usersRName + "")) set_data_dev(t4, t4_value);
     			const buildfolderstruct_changes = {};
     			if (dirty & /*folderStruct2*/ 4) buildfolderstruct_changes.folders = /*folderStruct2*/ ctx[2];
     			if (dirty & /*selected*/ 2) buildfolderstruct_changes.selected = /*selected*/ ctx[1];
@@ -11600,6 +11647,8 @@ var app = (function () {
     			destroy_component(buildfolderstruct);
     			destroy_component(locationpath);
     			destroy_component(filestruct);
+    			mounted = false;
+    			run_all(dispose);
     		}
     	};
 
@@ -11681,6 +11730,28 @@ var app = (function () {
     		$$invalidate(4, notification = null);
     	};
 
+    	const click_handler = () => {
+    		if (document.getElementById("slide-button").style.left === "85px") {
+    			document.getElementById("slide-button").style.left = "5px";
+    			document.getElementById("sideFolder").style.left = "-80px";
+    			return;
+    		}
+
+    		document.getElementById("slide-button").style.left = "85px";
+    		document.getElementById("sideFolder").style.left = 0;
+    	};
+
+    	const click_handler_1 = () => {
+    		if (document.getElementById("folderpartbutton").style.right === "215px") {
+    			document.getElementById("folderpartbutton").style.right = "5px";
+    			document.getElementById("folder-part").style.right = "-300px";
+    			return;
+    		}
+
+    		document.getElementById("folderpartbutton").style.right = "215px";
+    		document.getElementById("folder-part").style.right = 0;
+    	};
+
     	$$self.$$set = $$props => {
     		if ('userData' in $$props) $$invalidate(0, userData = $$props.userData);
     	};
@@ -11724,7 +11795,9 @@ var app = (function () {
     		currentFolderPathFiles,
     		notification,
     		newLoc,
-    		close_handler
+    		close_handler,
+    		click_handler,
+    		click_handler_1
     	];
     }
 

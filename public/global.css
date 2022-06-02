@@ -15,6 +15,7 @@ body {
 	height: 100vh;
 	/* background-color: #888888; */
 	background-color: #1f1f1f;
+	overflow-y: auto;
 }
 
 :root {
@@ -27,6 +28,7 @@ body {
 	--folder-section-color: rgb(28, 41, 56);
 	--name-section-color: rgb(34, 35, 37);
 	--name-font-color: rgb(172, 172, 172);
+	--side-folder-color: rgb(14, 18, 24);
 	--rotate-deg: 90deg;
 }
 

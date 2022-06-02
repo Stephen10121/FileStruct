@@ -55,5 +55,7 @@
     margin: 0 5px;
     display: inline-block;
     text-decoration: none;
+    cursor: default;
+    user-select: none;
   }
 </style>

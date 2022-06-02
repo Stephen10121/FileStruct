@@ -212,6 +212,17 @@
       left: 0;
     }
   }
+  @keyframes slideInsmall {
+    0% {
+      left: 100%;
+    }
+    20% {
+      left: 0;
+    }
+    100% {
+      left: 0;
+    }
+  }
   @keyframes slideIn2 {
     0% {
       visibility: hidden;
@@ -267,5 +278,14 @@
 
   .deleteButton:hover {
     outline: 3px solid rgb(153, 0, 0);
+  }
+
+  @media only screen and (max-width: 1000px) {
+    .preview {
+      z-index: 200;
+      grid-template-columns: 1fr;
+      grid-template-rows: 2fr 1fr;
+      animation: slideInsmall 2s linear forwards;
+    }
   }
 </style>
