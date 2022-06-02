@@ -18,5 +18,6 @@
     padding: 0 10px;
     height: 100%;
     overflow-y: auto;
+    background-color: var(--file-section-color);
   }
 </style>

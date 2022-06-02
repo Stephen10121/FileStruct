@@ -50,7 +50,7 @@
     socket.on("auth", (data) => {
       socket.off("auth");
       document.cookie = `G_VAR=${data.token}`;
-      dispatch("userLoggedIn", data);
+      dispatch("userLoggedIn", data.userData);
     });
     popupCenter({
       postServer: "http://192.168.0.24:5500/auth",

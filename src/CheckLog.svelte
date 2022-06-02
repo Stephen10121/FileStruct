@@ -17,7 +17,15 @@
     // navigate("/");
     isLogged = false;
   } else {
-    isLogged = true;
+    fetch(`http://localhost:5500/userData?cred=${getCookie("G_VAR")}`)
+      .then((response) => response.json())
+      .then((data) => {
+        if (data.status !== 200) {
+          isLogged = false;
+        } else {
+          loggedIn({ detail: data.userData });
+        }
+      });
   }
 
   const loggedIn = (e) => {

@@ -46,7 +46,7 @@ const fileInfo = async (fileLocation) => {
 };
 
 const allowedFileTypes = ["txt", "css"];
-const allowedVideoTypes = ["mp4"];
+const allowedVideoTypes = ["mp4", "mkv"];
 
 const readFile = async (fileLocation) => {
     if (allowedFileTypes.includes(fileLocation.split(".").reverse()[0])) {

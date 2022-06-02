@@ -4,11 +4,13 @@
   import { folderStruct } from "./directory";
   import ToastNotification from "./components/ToastNotification.svelte";
   import FileStruct from "./components/FileStruct.svelte";
+  import LocationPath from "./components/LocationPath.svelte";
+  export let userData;
   let selected = "none";
   let folderStruct2 = folderStruct;
   let currentFolderPathFiles = "";
   let notification = null;
-
+  console.log(userData);
   function getCookie(name) {
     const value = `; ${document.cookie}`;
     const parts = value.split(`; ${name}=`);
@@ -68,14 +70,19 @@
 <main>
   <div class="sideFolder"><Link to="about">About page</Link></div>
   <section class="folder-part">
-    <p>Name</p>
+    <section class="name-section">
+      <p>{userData.usersRName}</p>
+    </section>
     <BuildFolderStruct
       folders={folderStruct2}
       on:folderClicked={newLoc}
       {selected}
     />
   </section>
-  <FileStruct {selected} files={currentFolderPathFiles} />
+  <section class="file-part">
+    <LocationPath {selected} on:change-dir={newLoc} />
+    <FileStruct {selected} files={currentFolderPathFiles} />
+  </section>
 </main>
 
 <style>
@@ -90,5 +97,25 @@
     height: 100%;
     display: grid;
     grid-template-rows: 70px auto;
+  }
+
+  .file-part {
+    display: grid;
+    grid-template-rows: 30px auto;
+  }
+
+  .name-section {
+    background-color: var(--name-section-color);
+    display: flex;
+    width: 100%;
+    height: 100%;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .name-section p {
+    font-family: "Poppins", sans-serif;
+    font-size: 3rem;
+    color: var(--name-font-color);
   }
 </style>

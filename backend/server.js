@@ -42,9 +42,28 @@ app.post('/auth', async (req, res) => {
     io.to(req.body.key).emit('auth', {userData: result.data.userInfo, token: accessToken});
 });
 
+app.get("/userData", async (req, res) => {
+    if (!req.query["cred"]) {
+        return res.json({ msg: "Missing arguments.", status: 400 });
+    }
+    jwt.verify(req.query.cred, process.env.ACCESS_TOKEN_SECRET, async (err, user) => {
+        if (err) {
+            return res.json({ msg: 'Invalid input', status: 400 });
+        }
+        const userif = await getUserData(user.usersHash);
+        if (userif == "error") {
+            return res.json({ msg: 'Invalid input', status: 400 });
+        }
+        const user2 = user;
+        delete user2.usersHash;
+        delete user2.iat;
+        res.json({ msg: "Good", userData: user2, status: 200 });
+    });
+});
+
 app.get("/fetchFiles", async (req, res) => {
     if (!req.query["cred"]) {
-        return res.json({ msg: "Missing params" });
+        return res.json({ msg: "Missing arguments." });
     }
     jwt.verify(req.query.cred, process.env.ACCESS_TOKEN_SECRET, async (err, user) => {
         if (err) {
@@ -117,6 +136,28 @@ app.get("/getVideoStream", async (req, res) => {
         videoStream.pipe(res);
     });
 });
+
+// app.get("/getVideoStreamTest", async (req, res) => {
+//     if (!req.headers["range"]) {
+//         res.status(400).send("Requires Range header");
+//     }
+//     const range = req.headers.range;
+//     const videoPath = "./storage/4813494d137e1631bba301d5acab6e7bb7aa74ce1185d456565ef51d737677b2/101.Dalmatians.1996.720p.WEB-HD.x264.900MB-Pahe.in.mkv";
+//     const videoSize = fs.statSync(videoPath).size;
+//     const CHUNK_SIZE = 20 ** 6;
+//     const start = Number(range.replace(/\D/g, ""));
+//     const end = Math.min(start + CHUNK_SIZE, videoSize - 1);
+//     const contentLength = end - start + 1;
+//     const headers = {
+//         "Content-Range": `bytes ${start}-${end}/${videoSize}`,
+//         "Accept-Ranges": "bytes",
+//         "Content-Length": contentLength,
+//         "Content-Type": "video/mp4",
+//     };
+//     res.writeHead(206, headers);
+//     const videoStream = fs.createReadStream(videoPath, { start, end });
+//     videoStream.pipe(res);
+// });
 
 io.on('connection', socket => {
     socket.on("auth", (data) => {

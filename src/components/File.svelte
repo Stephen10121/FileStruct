@@ -83,7 +83,7 @@
     width: 100%;
     margin-top: 10px;
     height: 40px;
-    background-color: rgb(146, 146, 146);
+    background-color: var(--file-color);
     display: flex;
     align-items: center;
     justify-content: space-between;
@@ -106,7 +106,7 @@
   }
 
   li:hover {
-    background-color: rgb(124, 124, 124);
+    background-color: var(--file-hover-color);
   }
 
   li:hover .stuff {
