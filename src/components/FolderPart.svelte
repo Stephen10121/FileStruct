@@ -52,7 +52,7 @@
 </script>
 
 <section class="right-click" bind:this={contextMenu}>
-  <RightClick />
+  <RightClick bind:this={contextMenu} {selected} />
 </section>
 <button
   class="folder-part-button"

@@ -11623,7 +11623,7 @@ var app = (function () {
     const { console: console_1$2 } = globals;
     const file$3 = "src\\components\\RightClick.svelte";
 
-    // (9:2) <Option      icon="/icons/folder-plus.svg"      alt="New folder icon"      on:clicked={click}      ident="newFolder"    >
+    // (11:2) <Option      icon="/icons/folder-plus.svg"      alt="New folder icon"      on:clicked={click}      ident="newFolder"    >
     function create_default_slot_5(ctx) {
     	let t;
 
@@ -11643,14 +11643,14 @@ var app = (function () {
     		block,
     		id: create_default_slot_5.name,
     		type: "slot",
-    		source: "(9:2) <Option      icon=\\\"/icons/folder-plus.svg\\\"      alt=\\\"New folder icon\\\"      on:clicked={click}      ident=\\\"newFolder\\\"    >",
+    		source: "(11:2) <Option      icon=\\\"/icons/folder-plus.svg\\\"      alt=\\\"New folder icon\\\"      on:clicked={click}      ident=\\\"newFolder\\\"    >",
     		ctx
     	});
 
     	return block;
     }
 
-    // (17:2) <Option      icon="/icons/share.svg"      alt="Share icon"      on:clicked={click}      ident="share">
+    // (19:2) <Option      icon="/icons/share.svg"      alt="Share icon"      on:clicked={click}      nonSelectable={!selected ? true : false}      ident="share">
     function create_default_slot_4(ctx) {
     	let t;
 
@@ -11670,14 +11670,14 @@ var app = (function () {
     		block,
     		id: create_default_slot_4.name,
     		type: "slot",
-    		source: "(17:2) <Option      icon=\\\"/icons/share.svg\\\"      alt=\\\"Share icon\\\"      on:clicked={click}      ident=\\\"share\\\">",
+    		source: "(19:2) <Option      icon=\\\"/icons/share.svg\\\"      alt=\\\"Share icon\\\"      on:clicked={click}      nonSelectable={!selected ? true : false}      ident=\\\"share\\\">",
     		ctx
     	});
 
     	return block;
     }
 
-    // (23:2) <Option icon="/icons/move.svg" alt="Move icon" on:clicked={click} ident="move"      >
+    // (26:2) <Option      icon="/icons/move.svg"      nonSelectable={!selected ? true : false}      alt="Move icon"      on:clicked={click}      ident="move">
     function create_default_slot_3$1(ctx) {
     	let t;
 
@@ -11697,14 +11697,14 @@ var app = (function () {
     		block,
     		id: create_default_slot_3$1.name,
     		type: "slot",
-    		source: "(23:2) <Option icon=\\\"/icons/move.svg\\\" alt=\\\"Move icon\\\" on:clicked={click} ident=\\\"move\\\"      >",
+    		source: "(26:2) <Option      icon=\\\"/icons/move.svg\\\"      nonSelectable={!selected ? true : false}      alt=\\\"Move icon\\\"      on:clicked={click}      ident=\\\"move\\\">",
     		ctx
     	});
 
     	return block;
     }
 
-    // (26:2) <Option      ident="rename"      icon="/icons/input-cursor-text.svg"      alt="Rename icon"      on:clicked={click}>
+    // (33:2) <Option      ident="rename"      icon="/icons/input-cursor-text.svg"      alt="Rename icon"      nonSelectable={!selected ? true : false}      on:clicked={click}>
     function create_default_slot_2$1(ctx) {
     	let t;
 
@@ -11724,14 +11724,14 @@ var app = (function () {
     		block,
     		id: create_default_slot_2$1.name,
     		type: "slot",
-    		source: "(26:2) <Option      ident=\\\"rename\\\"      icon=\\\"/icons/input-cursor-text.svg\\\"      alt=\\\"Rename icon\\\"      on:clicked={click}>",
+    		source: "(33:2) <Option      ident=\\\"rename\\\"      icon=\\\"/icons/input-cursor-text.svg\\\"      alt=\\\"Rename icon\\\"      nonSelectable={!selected ? true : false}      on:clicked={click}>",
     		ctx
     	});
 
     	return block;
     }
 
-    // (32:2) <Option      ident="delete"      icon="/icons/trash.svg"      alt="Delete"      nonSelectable={true}      on:clicked={click}    >
+    // (40:2) <Option      ident="delete"      icon="/icons/trash.svg"      alt="Delete"      nonSelectable={!selected ? true : false}      on:clicked={click}    >
     function create_default_slot_1$1(ctx) {
     	let t;
 
@@ -11751,14 +11751,14 @@ var app = (function () {
     		block,
     		id: create_default_slot_1$1.name,
     		type: "slot",
-    		source: "(32:2) <Option      ident=\\\"delete\\\"      icon=\\\"/icons/trash.svg\\\"      alt=\\\"Delete\\\"      nonSelectable={true}      on:clicked={click}    >",
+    		source: "(40:2) <Option      ident=\\\"delete\\\"      icon=\\\"/icons/trash.svg\\\"      alt=\\\"Delete\\\"      nonSelectable={!selected ? true : false}      on:clicked={click}    >",
     		ctx
     	});
 
     	return block;
     }
 
-    // (42:2) <Option      ident="settings"      icon="/icons/gear.svg"      alt="Settings"      nonSelectable={false}      on:clicked={click}    >
+    // (50:2) <Option      ident="settings"      icon="/icons/gear.svg"      alt="Settings"      nonSelectable={false}      on:clicked={click}    >
     function create_default_slot$2(ctx) {
     	let t;
 
@@ -11778,7 +11778,7 @@ var app = (function () {
     		block,
     		id: create_default_slot$2.name,
     		type: "slot",
-    		source: "(42:2) <Option      ident=\\\"settings\\\"      icon=\\\"/icons/gear.svg\\\"      alt=\\\"Settings\\\"      nonSelectable={false}      on:clicked={click}    >",
+    		source: "(50:2) <Option      ident=\\\"settings\\\"      icon=\\\"/icons/gear.svg\\\"      alt=\\\"Settings\\\"      nonSelectable={false}      on:clicked={click}    >",
     		ctx
     	});
 
@@ -11813,12 +11813,13 @@ var app = (function () {
     			$$inline: true
     		});
 
-    	option0.$on("clicked", /*click*/ ctx[0]);
+    	option0.$on("clicked", /*click*/ ctx[1]);
 
     	option1 = new Option({
     			props: {
     				icon: "/icons/share.svg",
     				alt: "Share icon",
+    				nonSelectable: !/*selected*/ ctx[0] ? true : false,
     				ident: "share",
     				$$slots: { default: [create_default_slot_4] },
     				$$scope: { ctx }
@@ -11826,11 +11827,12 @@ var app = (function () {
     			$$inline: true
     		});
 
-    	option1.$on("clicked", /*click*/ ctx[0]);
+    	option1.$on("clicked", /*click*/ ctx[1]);
 
     	option2 = new Option({
     			props: {
     				icon: "/icons/move.svg",
+    				nonSelectable: !/*selected*/ ctx[0] ? true : false,
     				alt: "Move icon",
     				ident: "move",
     				$$slots: { default: [create_default_slot_3$1] },
@@ -11839,34 +11841,35 @@ var app = (function () {
     			$$inline: true
     		});
 
-    	option2.$on("clicked", /*click*/ ctx[0]);
+    	option2.$on("clicked", /*click*/ ctx[1]);
 
     	option3 = new Option({
     			props: {
     				ident: "rename",
     				icon: "/icons/input-cursor-text.svg",
     				alt: "Rename icon",
+    				nonSelectable: !/*selected*/ ctx[0] ? true : false,
     				$$slots: { default: [create_default_slot_2$1] },
     				$$scope: { ctx }
     			},
     			$$inline: true
     		});
 
-    	option3.$on("clicked", /*click*/ ctx[0]);
+    	option3.$on("clicked", /*click*/ ctx[1]);
 
     	option4 = new Option({
     			props: {
     				ident: "delete",
     				icon: "/icons/trash.svg",
     				alt: "Delete",
-    				nonSelectable: true,
+    				nonSelectable: !/*selected*/ ctx[0] ? true : false,
     				$$slots: { default: [create_default_slot_1$1] },
     				$$scope: { ctx }
     			},
     			$$inline: true
     		});
 
-    	option4.$on("clicked", /*click*/ ctx[0]);
+    	option4.$on("clicked", /*click*/ ctx[1]);
 
     	option5 = new Option({
     			props: {
@@ -11880,7 +11883,7 @@ var app = (function () {
     			$$inline: true
     		});
 
-    	option5.$on("clicked", /*click*/ ctx[0]);
+    	option5.$on("clicked", /*click*/ ctx[1]);
 
     	const block = {
     		c: function create() {
@@ -11899,9 +11902,9 @@ var app = (function () {
     			t5 = space();
     			create_component(option5.$$.fragment);
     			attr_dev(div, "class", "break svelte-1go7m9p");
-    			add_location(div, file$3, 40, 2, 838);
+    			add_location(div, file$3, 48, 2, 1046);
     			attr_dev(section, "class", "right-click svelte-1go7m9p");
-    			add_location(section, file$3, 7, 0, 124);
+    			add_location(section, file$3, 9, 0, 160);
     		},
     		l: function claim(nodes) {
     			throw new Error("options.hydrate only works if the component was compiled with the `hydratable: true` option");
@@ -11926,42 +11929,46 @@ var app = (function () {
     		p: function update(ctx, [dirty]) {
     			const option0_changes = {};
 
-    			if (dirty & /*$$scope*/ 2) {
+    			if (dirty & /*$$scope*/ 4) {
     				option0_changes.$$scope = { dirty, ctx };
     			}
 
     			option0.$set(option0_changes);
     			const option1_changes = {};
+    			if (dirty & /*selected*/ 1) option1_changes.nonSelectable = !/*selected*/ ctx[0] ? true : false;
 
-    			if (dirty & /*$$scope*/ 2) {
+    			if (dirty & /*$$scope*/ 4) {
     				option1_changes.$$scope = { dirty, ctx };
     			}
 
     			option1.$set(option1_changes);
     			const option2_changes = {};
+    			if (dirty & /*selected*/ 1) option2_changes.nonSelectable = !/*selected*/ ctx[0] ? true : false;
 
-    			if (dirty & /*$$scope*/ 2) {
+    			if (dirty & /*$$scope*/ 4) {
     				option2_changes.$$scope = { dirty, ctx };
     			}
 
     			option2.$set(option2_changes);
     			const option3_changes = {};
+    			if (dirty & /*selected*/ 1) option3_changes.nonSelectable = !/*selected*/ ctx[0] ? true : false;
 
-    			if (dirty & /*$$scope*/ 2) {
+    			if (dirty & /*$$scope*/ 4) {
     				option3_changes.$$scope = { dirty, ctx };
     			}
 
     			option3.$set(option3_changes);
     			const option4_changes = {};
+    			if (dirty & /*selected*/ 1) option4_changes.nonSelectable = !/*selected*/ ctx[0] ? true : false;
 
-    			if (dirty & /*$$scope*/ 2) {
+    			if (dirty & /*$$scope*/ 4) {
     				option4_changes.$$scope = { dirty, ctx };
     			}
 
     			option4.$set(option4_changes);
     			const option5_changes = {};
 
-    			if (dirty & /*$$scope*/ 2) {
+    			if (dirty & /*$$scope*/ 4) {
     				option5_changes.$$scope = { dirty, ctx };
     			}
 
@@ -12011,25 +12018,39 @@ var app = (function () {
     function instance$6($$self, $$props, $$invalidate) {
     	let { $$slots: slots = {}, $$scope } = $$props;
     	validate_slots('RightClick', slots, []);
+    	let { selected } = $$props;
 
     	const click = e => {
-    		console.log(e.detail);
+    		console.log(e.detail, selected);
     	};
 
-    	const writable_props = [];
+    	const writable_props = ['selected'];
 
     	Object.keys($$props).forEach(key => {
     		if (!~writable_props.indexOf(key) && key.slice(0, 2) !== '$$' && key !== 'slot') console_1$2.warn(`<RightClick> was created with unknown prop '${key}'`);
     	});
 
-    	$$self.$capture_state = () => ({ Option, click });
-    	return [click];
+    	$$self.$$set = $$props => {
+    		if ('selected' in $$props) $$invalidate(0, selected = $$props.selected);
+    	};
+
+    	$$self.$capture_state = () => ({ Option, selected, click });
+
+    	$$self.$inject_state = $$props => {
+    		if ('selected' in $$props) $$invalidate(0, selected = $$props.selected);
+    	};
+
+    	if ($$props && "$$inject" in $$props) {
+    		$$self.$inject_state($$props.$$inject);
+    	}
+
+    	return [selected, click];
     }
 
     class RightClick extends SvelteComponentDev {
     	constructor(options) {
     		super(options);
-    		init(this, options, instance$6, create_fragment$6, safe_not_equal, {});
+    		init(this, options, instance$6, create_fragment$6, safe_not_equal, { selected: 0 });
 
     		dispatch_dev("SvelteRegisterComponent", {
     			component: this,
@@ -12037,6 +12058,21 @@ var app = (function () {
     			options,
     			id: create_fragment$6.name
     		});
+
+    		const { ctx } = this.$$;
+    		const props = options.props || {};
+
+    		if (/*selected*/ ctx[0] === undefined && !('selected' in props)) {
+    			console_1$2.warn("<RightClick> was created without expected prop 'selected'");
+    		}
+    	}
+
+    	get selected() {
+    		throw new Error("<RightClick>: Props cannot be read directly from the component instance unless compiling with 'accessors: true' or '<svelte:options accessors/>'");
+    	}
+
+    	set selected(value) {
+    		throw new Error("<RightClick>: Props cannot be set directly on the component instance unless compiling with 'accessors: true' or '<svelte:options accessors/>'");
     	}
     }
 
@@ -12063,7 +12099,9 @@ var app = (function () {
     	let current;
     	let mounted;
     	let dispose;
-    	rightclick = new RightClick({ $$inline: true });
+    	let rightclick_props = { selected: /*selected*/ ctx[2] };
+    	rightclick = new RightClick({ props: rightclick_props, $$inline: true });
+    	/*rightclick_binding*/ ctx[5](rightclick);
 
     	buildfolderstruct = new BuildFolderStruct({
     			props: {
@@ -12073,7 +12111,7 @@ var app = (function () {
     			$$inline: true
     		});
 
-    	buildfolderstruct.$on("folderClicked", /*folderClicked_handler*/ ctx[7]);
+    	buildfolderstruct.$on("folderClicked", /*folderClicked_handler*/ ctx[8]);
 
     	const block = {
     		c: function create() {
@@ -12094,17 +12132,17 @@ var app = (function () {
     			if (!src_url_equal(img.src, img_src_value = "/icons/folder-fill.svg")) attr_dev(img, "src", img_src_value);
     			attr_dev(img, "alt", "Folder");
     			attr_dev(img, "class", "svelte-1xo1uvj");
-    			add_location(img, file$2, 67, 5, 2032);
+    			add_location(img, file$2, 67, 5, 2067);
     			attr_dev(button, "class", "folder-part-button svelte-1xo1uvj");
     			attr_dev(button, "id", "folderpartbutton");
-    			add_location(button, file$2, 56, 0, 1565);
+    			add_location(button, file$2, 56, 0, 1600);
     			attr_dev(p, "class", "svelte-1xo1uvj");
-    			add_location(p, file$2, 75, 4, 2232);
+    			add_location(p, file$2, 75, 4, 2267);
     			attr_dev(section1, "class", "name-section svelte-1xo1uvj");
-    			add_location(section1, file$2, 74, 2, 2196);
+    			add_location(section1, file$2, 74, 2, 2231);
     			attr_dev(section2, "class", "folder-part svelte-1xo1uvj");
     			attr_dev(section2, "id", "folder-part");
-    			add_location(section2, file$2, 69, 0, 2094);
+    			add_location(section2, file$2, 69, 0, 2129);
     		},
     		l: function claim(nodes) {
     			throw new Error("options.hydrate only works if the component was compiled with the `hydratable: true` option");
@@ -12112,7 +12150,7 @@ var app = (function () {
     		m: function mount(target, anchor) {
     			insert_dev(target, section0, anchor);
     			mount_component(rightclick, section0, null);
-    			/*section0_binding*/ ctx[5](section0);
+    			/*section0_binding*/ ctx[6](section0);
     			insert_dev(target, t0, anchor);
     			insert_dev(target, button, anchor);
     			append_dev(button, img);
@@ -12127,7 +12165,7 @@ var app = (function () {
 
     			if (!mounted) {
     				dispose = [
-    					listen_dev(button, "click", /*click_handler*/ ctx[6], false, false, false),
+    					listen_dev(button, "click", /*click_handler*/ ctx[7], false, false, false),
     					listen_dev(section2, "contextmenu", prevent_default(/*menuShow*/ ctx[4]), false, true, false)
     				];
 
@@ -12135,6 +12173,9 @@ var app = (function () {
     			}
     		},
     		p: function update(ctx, [dirty]) {
+    			const rightclick_changes = {};
+    			if (dirty & /*selected*/ 4) rightclick_changes.selected = /*selected*/ ctx[2];
+    			rightclick.$set(rightclick_changes);
     			if ((!current || dirty & /*userData*/ 2) && t2_value !== (t2_value = /*userData*/ ctx[1].usersRName + "")) set_data_dev(t2, t2_value);
     			const buildfolderstruct_changes = {};
     			if (dirty & /*folderStruct2*/ 1) buildfolderstruct_changes.folders = /*folderStruct2*/ ctx[0];
@@ -12154,8 +12195,9 @@ var app = (function () {
     		},
     		d: function destroy(detaching) {
     			if (detaching) detach_dev(section0);
+    			/*rightclick_binding*/ ctx[5](null);
     			destroy_component(rightclick);
-    			/*section0_binding*/ ctx[5](null);
+    			/*section0_binding*/ ctx[6](null);
     			if (detaching) detach_dev(t0);
     			if (detaching) detach_dev(button);
     			if (detaching) detach_dev(t1);
@@ -12232,6 +12274,13 @@ var app = (function () {
     		if (!~writable_props.indexOf(key) && key.slice(0, 2) !== '$$' && key !== 'slot') console_1$1.warn(`<FolderPart> was created with unknown prop '${key}'`);
     	});
 
+    	function rightclick_binding($$value) {
+    		binding_callbacks[$$value ? 'unshift' : 'push'](() => {
+    			contextMenu = $$value;
+    			$$invalidate(3, contextMenu);
+    		});
+    	}
+
     	function section0_binding($$value) {
     		binding_callbacks[$$value ? 'unshift' : 'push'](() => {
     			contextMenu = $$value;
@@ -12289,6 +12338,7 @@ var app = (function () {
     		selected,
     		contextMenu,
     		menuShow,
+    		rightclick_binding,
     		section0_binding,
     		click_handler,
     		folderClicked_handler

@@ -1,7 +1,9 @@
 <script>
   import Option from "./Option.svelte";
+  export let selected;
+
   const click = (e) => {
-    console.log(e.detail);
+    console.log(e.detail, selected);
   };
 </script>
 
@@ -18,22 +20,28 @@
     icon="/icons/share.svg"
     alt="Share icon"
     on:clicked={click}
+    nonSelectable={!selected ? true : false}
     ident="share">Share</Option
   >
-  <Option icon="/icons/move.svg" alt="Move icon" on:clicked={click} ident="move"
-    >Move</Option
+  <Option
+    icon="/icons/move.svg"
+    nonSelectable={!selected ? true : false}
+    alt="Move icon"
+    on:clicked={click}
+    ident="move">Move</Option
   >
   <Option
     ident="rename"
     icon="/icons/input-cursor-text.svg"
     alt="Rename icon"
+    nonSelectable={!selected ? true : false}
     on:clicked={click}>Rename</Option
   >
   <Option
     ident="delete"
     icon="/icons/trash.svg"
     alt="Delete"
-    nonSelectable={true}
+    nonSelectable={!selected ? true : false}
     on:clicked={click}
   >
     Delete
