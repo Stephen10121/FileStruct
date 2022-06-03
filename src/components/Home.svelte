@@ -5,6 +5,7 @@
   import SideFolder from "./SideFolder.svelte";
   import FolderPart from "./FolderPart.svelte";
   import LocationPath from "./LocationPath.svelte";
+
   export let userData;
   export let PROXY;
 
@@ -53,11 +54,6 @@
       G_files: [],
     };
     console.log("button");
-  };
-
-  const deleteSomething = () => {
-    folderStruct2.vids.Date_2020 = {};
-    console.log(folderStruct2);
   };
 </script>
 

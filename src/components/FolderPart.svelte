@@ -1,10 +1,59 @@
 <script>
   import BuildFolderStruct from "./BuildFolderStruct.svelte";
+  import RightClick from "./RightClick.svelte";
   export let userData;
   export let folderStruct2;
   export let selected;
+
+  let contextMenu;
+
+  const deleteSomething = () => {
+    folderStruct2.vids.Date_2020 = {};
+    console.log(folderStruct2);
+  };
+  const hideRightClick = () => {
+    contextMenu.style.visibility = "hidden";
+  };
+  const menuShow = (e) => {
+    let x = e.pageX,
+      y = e.pageY,
+      winWidth = window.innerWidth,
+      winHeight = window.innerHeight,
+      cmWidth = contextMenu.offsetWidth,
+      cmHeight = contextMenu.offsetHeight;
+    contextMenu.style.left = `${
+      x > winWidth - cmWidth ? winWidth - cmWidth : x
+    }px`;
+    contextMenu.style.top = `${
+      y > winHeight - cmHeight ? winHeight - cmHeight : y
+    }px`;
+    contextMenu.style.visibility = "visible";
+  };
+  document.addEventListener("click", (e) => {
+    if (contextMenu.style.visibility !== "visible") {
+      return;
+    }
+    const pos = {
+      x: parseInt(contextMenu.style.left.replace("px", "")),
+      y: parseInt(contextMenu.style.top.replace("px", "")),
+      width: contextMenu.offsetWidth,
+      height: contextMenu.offsetHeight,
+    };
+    if (
+      pos.x + pos.width >= e.pageX &&
+      e.pageX >= pos.x &&
+      pos.y + pos.height >= e.pageY &&
+      e.pageY >= pos.y
+    ) {
+      return;
+    }
+    hideRightClick();
+  });
 </script>
 
+<section class="right-click" bind:this={contextMenu}>
+  <RightClick />
+</section>
 <button
   class="folder-part-button"
   id="folderpartbutton"
@@ -18,7 +67,11 @@
     document.getElementById("folder-part").style.right = 0;
   }}><img src="/icons/folder-fill.svg" alt="Folder" /></button
 >
-<section class="folder-part" id="folder-part">
+<section
+  class="folder-part"
+  id="folder-part"
+  on:contextmenu|preventDefault={menuShow}
+>
   <section class="name-section">
     <p>{userData.usersRName}</p>
   </section>
@@ -26,6 +79,20 @@
 </section>
 
 <style>
+  .right-click {
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    width: 200px;
+    background-color: rgb(230, 230, 230);
+    border-radius: 10px;
+    box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
+    padding: 5px 4px;
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+    visibility: hidden;
+  }
   .folder-part-button {
     position: fixed;
     bottom: 5px;
