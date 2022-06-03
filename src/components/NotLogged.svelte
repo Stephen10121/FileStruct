@@ -1,7 +1,7 @@
 <script>
   import { useNavigate } from "svelte-navigator";
   import { createEventDispatcher } from "svelte";
-  import useSocket from "./useSocket";
+  import useSocket from "../useSocket";
   export let PROXY;
 
   const dispatch = createEventDispatcher();

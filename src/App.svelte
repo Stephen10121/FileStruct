@@ -1,10 +1,9 @@
 <script>
-  import { Router, Route, Link } from "svelte-navigator";
-  import CheckLog from "./CheckLog.svelte";
-  import Home from "./Home.svelte";
-  import NotLogged from "./NotLogged.svelte";
+  import { Router, Route } from "svelte-navigator";
+  import CheckLog from "./components/CheckLog.svelte";
+  import NotLogged from "./components/NotLogged.svelte";
 
-  const PROXY = "http://192.168.0.24:5500";
+  const PROXY = "http://192.168.0.24:5700";
 </script>
 
 <Router>

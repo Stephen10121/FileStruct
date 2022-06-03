@@ -1,10 +1,10 @@
 <script>
   import { Router, Route, Link } from "svelte-navigator";
-  import BuildFolderStruct from "./components/BuildFolderStruct.svelte";
-  import { folderStruct } from "./directory";
-  import ToastNotification from "./components/ToastNotification.svelte";
-  import FileStruct from "./components/FileStruct.svelte";
-  import LocationPath from "./components/LocationPath.svelte";
+  import BuildFolderStruct from "./BuildFolderStruct.svelte";
+  import { folderStruct } from "../directory";
+  import ToastNotification from "./ToastNotification.svelte";
+  import FileStruct from "./FileStruct.svelte";
+  import LocationPath from "./LocationPath.svelte";
   export let userData;
   export let PROXY;
 
