@@ -73,7 +73,24 @@ app.get("/fetchFiles", async (req, res) => {
         if (userif == "error") {
             return res.status(400).json({ msg: 'Invalid input' });
         }
-        const files = await getFiles(`./storage/${hashed(user.usersName)}`);
+        const files = await getFiles(`./storage/${hashed(user.usersName)}/home`);
+        res.json({ msg: "Good", files });
+    });
+});
+
+app.get("/fetchSharedFiles", async (req, res) => {
+    if (!req.query["cred"]) {
+        return res.json({ msg: "Missing arguments." });
+    }
+    jwt.verify(req.query.cred, process.env.ACCESS_TOKEN_SECRET, async (err, user) => {
+        if (err) {
+            return res.status(400).json({ msg: 'Invalid input' });
+        }
+        const userif = await getUserData(user.usersHash);
+        if (userif == "error") {
+            return res.status(400).json({ msg: 'Invalid input' });
+        }
+        const files = await getFiles(`./storage/${hashed(user.usersName)}/shared`);
         res.json({ msg: "Good", files });
     });
 });
@@ -91,7 +108,7 @@ app.get("/getFileData", async (req, res) => {
             return res.status(400).json({ msg: 'Invalid input' });
         }
         
-        const fileData = await readFile(path.join(__dirname, `./storage/${hashed(user.usersName)}`, req.query.location));
+        const fileData = await readFile(path.join(__dirname, `./storage/${hashed(user.usersName)}/home`, req.query.location));
         let jsonResult;
         if (fileData === "video") {
             jsonResult = { video: true }
@@ -119,7 +136,7 @@ app.get("/getVideoStream", async (req, res) => {
         }
 
         const range = req.headers.range;
-        const videoPath = path.join(__dirname, `./storage/${hashed(user.usersName)}`, req.query.location);
+        const videoPath = path.join(__dirname, `./storage/${hashed(user.usersName)}/home`, req.query.location);
         const videoSize = fs.statSync(videoPath).size;
         const CHUNK_SIZE = 10 ** 6;
         const start = Number(range.replace(/\D/g, ""));

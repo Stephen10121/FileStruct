@@ -85,7 +85,11 @@
     <h1>About File</h1>
     <p>Size: <span>{fileSize}{fileSizeUnit}</span></p>
     <p>Date created: <span>{metadata.dateCreated}</span></p>
-    <p>Location: <span>./{selected}/{file}</span></p>
+    {#if selected}
+      <p>Location: <span>./{selected}/{file}</span></p>
+    {:else}
+      <p>Location: <span>./{file}</span></p>
+    {/if}
     <div class="actionButtons">
       <button
         class="downloadButton"

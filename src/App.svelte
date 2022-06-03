@@ -3,8 +3,8 @@
   import CheckLog from "./components/CheckLog.svelte";
   import NotLogged from "./components/NotLogged.svelte";
 
-  // const PROXY = "http://192.168.0.24:5700/";
-  const PROXY = location.href;
+  const PROXY = "http://192.168.0.24:5700/";
+  // const PROXY = location.href;
 </script>
 
 <Router>

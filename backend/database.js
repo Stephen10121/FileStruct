@@ -89,6 +89,11 @@ async function userLogin({ hash, name, email, username}) {
         fs.mkdir(dir, { recursive: true }, (err) => {
             if (err) throw err;
         });
+        const dir2 = `./storage/${hashed(username)}/home`;
+
+        fs.mkdir(dir2, { recursive: true }, (err) => {
+            if (err) throw err;
+        });
         users = await getUserByHash(hash);
     }
     return({error: 200, data: {userInfo: users[0]}});
