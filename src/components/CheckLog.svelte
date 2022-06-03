@@ -18,7 +18,7 @@
     // navigate("/");
     isLogged = false;
   } else {
-    fetch(`${PROXY}/userData?cred=${getCookie("G_VAR")}`)
+    fetch(`${PROXY}userData?cred=${getCookie("G_VAR")}`)
       .then((response) => response.json())
       .then((data) => {
         if (data.status !== 200) {

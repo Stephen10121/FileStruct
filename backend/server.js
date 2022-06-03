@@ -19,7 +19,7 @@ app.use((req, res, next) => {
     next();
 });
 
-app.use(express.json(), express.static('public'), express.urlencoded({ extended: true }), cookieParser());
+app.use(express.json(), express.static('../public'), express.urlencoded({ extended: true }), cookieParser());
 
 const server = http.createServer(app);
 const io = socketio(server, {

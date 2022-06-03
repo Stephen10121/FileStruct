@@ -54,7 +54,7 @@
       dispatch("userLoggedIn", data.userData);
     });
     popupCenter({
-      postServer: `${PROXY}/auth`,
+      postServer: `${PROXY}auth`,
       key: socket.id,
       title: "Authenticate",
       w: 520,
