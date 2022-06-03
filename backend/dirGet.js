@@ -1,5 +1,5 @@
 const fs = require('fs');
-const fs2 = require('fs/promises');
+const fs2 = require('fs').promises;
 
 async function getTFiles(directoryPath) {
     let allFiles = {
