@@ -6,6 +6,7 @@
   export let selected;
   export let file;
   export let metadata;
+  export let PROXY;
   let notification = null;
   let previewShow = false;
   let showFileShare = false;
@@ -54,6 +55,7 @@
 <li>
   {#if previewShow}
     <FilePreview
+      {PROXY}
       on:deleteFile={deleteFile}
       on:downloadFile={downloadFile}
       on:shareFile={shareFile}

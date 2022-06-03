@@ -2,11 +2,12 @@
   import File from "./File.svelte";
   export let files;
   export let selected;
+  export let PROXY;
 </script>
 
 <ul>
   {#each files as file}
-    <File {selected} file={file.name} metadata={file.metadata}>
+    <File {selected} {PROXY} file={file.name} metadata={file.metadata}>
       {file.name}
     </File>
   {/each}

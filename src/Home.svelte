@@ -6,6 +6,8 @@
   import FileStruct from "./components/FileStruct.svelte";
   import LocationPath from "./components/LocationPath.svelte";
   export let userData;
+  export let PROXY;
+
   let selected = "none";
   let folderStruct2 = folderStruct;
   let currentFolderPathFiles = "";
@@ -17,7 +19,7 @@
     if (parts.length === 2) return parts.pop().split(";").shift();
   }
 
-  fetch(`http://localhost:5500/fetchFiles?cred=${getCookie("G_VAR")}`)
+  fetch(`${PROXY}/fetchFiles?cred=${getCookie("G_VAR")}`)
     .then((response) => response.json())
     .then((data) => {
       console.log(data);
@@ -109,7 +111,7 @@
   </section>
   <section class="file-part">
     <LocationPath {selected} on:change-dir={newLoc} />
-    <FileStruct {selected} files={currentFolderPathFiles} />
+    <FileStruct {selected} files={currentFolderPathFiles} {PROXY} />
   </section>
 </main>
 

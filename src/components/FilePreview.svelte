@@ -4,6 +4,7 @@
   export let selected;
   export let file;
   export let metadata;
+  export let PROXY;
 
   let fileData = "N/A";
   let fileSizeUnit = "b";
@@ -31,11 +32,7 @@
     if (parts.length === 2) return parts.pop().split(";").shift();
   }
 
-  fetch(
-    `http://localhost:5500/getFileData?location=${path}&cred=${getCookie(
-      "G_VAR"
-    )}`
-  )
+  fetch(`${PROXY}/getFileData?location=${path}&cred=${getCookie("G_VAR")}`)
     .then((response) => response.json())
     .then((data) => {
       if (data["video"]) {
@@ -71,9 +68,7 @@
     {#if fileData["video"]}
       <video id="previewBoxView" controls autoplay muted={false}>
         <source
-          src="http://localhost:5500/getVideoStream?location={path}&cred={getCookie(
-            'G_VAR'
-          )}"
+          src="{PROXY}/getVideoStream?location={path}&cred={getCookie('G_VAR')}"
           type="video/mp4"
         />
       </video>

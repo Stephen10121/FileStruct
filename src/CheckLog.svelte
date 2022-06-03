@@ -2,6 +2,7 @@
   import { useNavigate } from "svelte-navigator";
   import NotLogged from "./NotLogged.svelte";
   import Home from "./Home.svelte";
+  export let PROXY;
 
   let isLogged = false;
   let userData;
@@ -17,7 +18,7 @@
     // navigate("/");
     isLogged = false;
   } else {
-    fetch(`http://localhost:5500/userData?cred=${getCookie("G_VAR")}`)
+    fetch(`${PROXY}/userData?cred=${getCookie("G_VAR")}`)
       .then((response) => response.json())
       .then((data) => {
         if (data.status !== 200) {
@@ -35,7 +36,7 @@
 </script>
 
 {#if isLogged}
-  <Home {userData} />
+  <Home {userData} {PROXY} />
 {:else}
-  <NotLogged on:userLoggedIn={loggedIn} />
+  <NotLogged on:userLoggedIn={loggedIn} {PROXY} />
 {/if}
