@@ -80,6 +80,7 @@
 
 <style>
   .right-click {
+    z-index: 400;
     position: fixed;
     top: 50%;
     left: 50%;

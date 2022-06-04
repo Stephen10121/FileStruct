@@ -12127,20 +12127,20 @@ var app = (function () {
     			t2 = text(t2_value);
     			t3 = space();
     			create_component(buildfolderstruct.$$.fragment);
-    			attr_dev(section0, "class", "right-click svelte-1xo1uvj");
+    			attr_dev(section0, "class", "right-click svelte-18hgno1");
     			add_location(section0, file$2, 53, 0, 1480);
     			if (!src_url_equal(img.src, img_src_value = "/icons/folder-fill.svg")) attr_dev(img, "src", img_src_value);
     			attr_dev(img, "alt", "Folder");
-    			attr_dev(img, "class", "svelte-1xo1uvj");
+    			attr_dev(img, "class", "svelte-18hgno1");
     			add_location(img, file$2, 67, 5, 2067);
-    			attr_dev(button, "class", "folder-part-button svelte-1xo1uvj");
+    			attr_dev(button, "class", "folder-part-button svelte-18hgno1");
     			attr_dev(button, "id", "folderpartbutton");
     			add_location(button, file$2, 56, 0, 1600);
-    			attr_dev(p, "class", "svelte-1xo1uvj");
+    			attr_dev(p, "class", "svelte-18hgno1");
     			add_location(p, file$2, 75, 4, 2267);
-    			attr_dev(section1, "class", "name-section svelte-1xo1uvj");
+    			attr_dev(section1, "class", "name-section svelte-18hgno1");
     			add_location(section1, file$2, 74, 2, 2231);
-    			attr_dev(section2, "class", "folder-part svelte-1xo1uvj");
+    			attr_dev(section2, "class", "folder-part svelte-18hgno1");
     			attr_dev(section2, "id", "folder-part");
     			add_location(section2, file$2, 69, 0, 2129);
     		},
