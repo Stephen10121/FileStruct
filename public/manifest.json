@@ -2,6 +2,7 @@
     "name": "GCloud Server",
     "short_name": "GCloud",
     "start_url": "/",
+    "display_override": ["window-controls-overlay"],
     "icons": [
         {
           "src": "logo-icons/manifest-icon-192.maskable.png",
