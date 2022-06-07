@@ -32,5 +32,5 @@
     "theme_color": "rgb(28, 41, 56)",
     "background-color": "#000000",
     "display": "fullscreen",
-    "orientation": "landscape"
+    "orientation": "portrait"
 }
