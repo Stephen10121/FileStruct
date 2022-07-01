@@ -10,7 +10,7 @@
 <button
   class="option {nonSelectable ? 'non-selectable' : ''}"
   on:click={() => {
-    if (!nonSelectable) {
+    if (nonSelectable === false) {
       dispatch("clicked", ident);
     }
   }}

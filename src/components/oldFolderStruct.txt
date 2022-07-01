@@ -1,0 +1,11 @@
+const addVal = () => {
+    folderStruct2.house["nancy"] = {
+      G_files: [],
+    };
+    console.log("button");
+  };
+
+  const deleteSomething = () => {
+    folderStruct2.vids.Date_2020 = {};
+    console.log(folderStruct2);
+  };

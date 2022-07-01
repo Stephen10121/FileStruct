@@ -2,15 +2,11 @@
   import BuildFolderStruct from "./BuildFolderStruct.svelte";
   import RightClick from "./RightClick.svelte";
   export let userData;
-  export let folderStruct2;
+  export let folderStruct;
   export let selected;
 
   let contextMenu;
 
-  const deleteSomething = () => {
-    folderStruct2.vids.Date_2020 = {};
-    console.log(folderStruct2);
-  };
   const hideRightClick = () => {
     contextMenu.style.visibility = "hidden";
   };
@@ -75,7 +71,7 @@
   <section class="name-section">
     <p>{userData.usersRName}</p>
   </section>
-  <BuildFolderStruct folders={folderStruct2} on:folderClicked {selected} />
+  <BuildFolderStruct folders={folderStruct} on:folderClicked {selected} />
 </section>
 
 <style>

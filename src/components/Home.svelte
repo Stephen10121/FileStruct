@@ -1,30 +1,24 @@
 <script>
-  import { folderStruct } from "../directory";
   import ToastNotification from "./ToastNotification.svelte";
   import FileStruct from "./FileStruct.svelte";
   import SideFolder from "./SideFolder.svelte";
   import FolderPart from "./FolderPart.svelte";
   import LocationPath from "./LocationPath.svelte";
+  import getCookie from "../cookie";
 
   export let userData;
   export let PROXY;
 
   let selected = "none";
-  let folderStruct2 = folderStruct;
   let currentFolderPathFiles = "";
   let notification = null;
-  console.log(userData);
-  function getCookie(name) {
-    const value = `; ${document.cookie}`;
-    const parts = value.split(`; ${name}=`);
-    if (parts.length === 2) return parts.pop().split(";").shift();
-  }
+  let folderStruct = {};
 
   fetch(`${PROXY}fetchFiles?cred=${getCookie("G_VAR2")}`)
     .then((response) => response.json())
     .then((data) => {
       console.log(data);
-      folderStruct2 = data.files;
+      folderStruct = data.files;
       newLoc({ detail: null });
     });
 
@@ -32,11 +26,11 @@
     if (detail === null) {
       selected = false;
       currentFolderPathFiles =
-        !folderStruct2["G_files"].length === 0 ? [] : folderStruct2.G_files;
+        !folderStruct["G_files"].length === 0 ? [] : folderStruct.G_files;
     } else {
       selected = detail;
       detail = detail.split("/");
-      let files = folderStruct2[detail[0]];
+      let files = folderStruct[detail[0]];
       for (let i = 1; i < detail.length; i++) {
         files = files[detail[i]];
       }
@@ -47,13 +41,6 @@
       currentFolderPathFiles =
         !files["G_files"].length === 0 ? [] : files.G_files;
     }
-  };
-
-  const addVal = () => {
-    folderStruct2.house["nancy"] = {
-      G_files: [],
-    };
-    console.log("button");
   };
 </script>
 
@@ -67,7 +54,7 @@
 {/if}
 <main>
   <SideFolder />
-  <FolderPart {userData} {folderStruct2} {selected} on:folderClicked={newLoc} />
+  <FolderPart {userData} {folderStruct} {selected} on:folderClicked={newLoc} />
   <section class="file-part">
     <LocationPath {selected} on:change-dir={newLoc} />
     <FileStruct {selected} files={currentFolderPathFiles} {PROXY} />

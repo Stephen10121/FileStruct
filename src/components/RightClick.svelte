@@ -16,6 +16,7 @@
     icon="/icons/folder-plus.svg"
     alt="New folder icon"
     on:clicked={newFolder}
+    nonSelectable={false}
     ident="newFolder"
   >
     New Folder
