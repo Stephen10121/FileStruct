@@ -48,7 +48,12 @@
 </script>
 
 <section class="right-click" bind:this={contextMenu}>
-  <RightClick bind:this={contextMenu} {selected} />
+  <RightClick
+    bind:this={contextMenu}
+    {selected}
+    on:new-folder
+    on:close-right={hideRightClick}
+  />
 </section>
 <button
   class="folder-part-button"

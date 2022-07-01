@@ -1,4 +1,6 @@
 <script>
+  import { createEventDispatcher } from "svelte";
+  const dispatch = createEventDispatcher();
   import Option from "./Option.svelte";
   export let selected;
 
@@ -7,7 +9,8 @@
   };
 
   const newFolder = (e) => {
-    console.log(e.detail, selected, "New Folder");
+    dispatch("new-folder", { selected, det: e.detail });
+    dispatch("close-right", true);
   };
 </script>
 

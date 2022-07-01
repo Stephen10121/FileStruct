@@ -11586,7 +11586,7 @@ var app = (function () {
     const { console: console_1$1 } = globals;
     const file$3 = "src\\components\\RightClick.svelte";
 
-    // (15:2) <Option      icon="/icons/folder-plus.svg"      alt="New folder icon"      on:clicked={newFolder}      nonSelectable={false}      ident="newFolder"    >
+    // (18:2) <Option      icon="/icons/folder-plus.svg"      alt="New folder icon"      on:clicked={newFolder}      nonSelectable={false}      ident="newFolder"    >
     function create_default_slot_5(ctx) {
     	let t;
 
@@ -11606,14 +11606,14 @@ var app = (function () {
     		block,
     		id: create_default_slot_5.name,
     		type: "slot",
-    		source: "(15:2) <Option      icon=\\\"/icons/folder-plus.svg\\\"      alt=\\\"New folder icon\\\"      on:clicked={newFolder}      nonSelectable={false}      ident=\\\"newFolder\\\"    >",
+    		source: "(18:2) <Option      icon=\\\"/icons/folder-plus.svg\\\"      alt=\\\"New folder icon\\\"      on:clicked={newFolder}      nonSelectable={false}      ident=\\\"newFolder\\\"    >",
     		ctx
     	});
 
     	return block;
     }
 
-    // (24:2) <Option      icon="/icons/share.svg"      alt="Share icon"      on:clicked={click}      nonSelectable={!selected ? true : false}      ident="share">
+    // (27:2) <Option      icon="/icons/share.svg"      alt="Share icon"      on:clicked={click}      nonSelectable={!selected ? true : false}      ident="share">
     function create_default_slot_4(ctx) {
     	let t;
 
@@ -11633,14 +11633,14 @@ var app = (function () {
     		block,
     		id: create_default_slot_4.name,
     		type: "slot",
-    		source: "(24:2) <Option      icon=\\\"/icons/share.svg\\\"      alt=\\\"Share icon\\\"      on:clicked={click}      nonSelectable={!selected ? true : false}      ident=\\\"share\\\">",
+    		source: "(27:2) <Option      icon=\\\"/icons/share.svg\\\"      alt=\\\"Share icon\\\"      on:clicked={click}      nonSelectable={!selected ? true : false}      ident=\\\"share\\\">",
     		ctx
     	});
 
     	return block;
     }
 
-    // (31:2) <Option      icon="/icons/move.svg"      nonSelectable={!selected ? true : false}      alt="Move icon"      on:clicked={click}      ident="move">
+    // (34:2) <Option      icon="/icons/move.svg"      nonSelectable={!selected ? true : false}      alt="Move icon"      on:clicked={click}      ident="move">
     function create_default_slot_3$1(ctx) {
     	let t;
 
@@ -11660,14 +11660,14 @@ var app = (function () {
     		block,
     		id: create_default_slot_3$1.name,
     		type: "slot",
-    		source: "(31:2) <Option      icon=\\\"/icons/move.svg\\\"      nonSelectable={!selected ? true : false}      alt=\\\"Move icon\\\"      on:clicked={click}      ident=\\\"move\\\">",
+    		source: "(34:2) <Option      icon=\\\"/icons/move.svg\\\"      nonSelectable={!selected ? true : false}      alt=\\\"Move icon\\\"      on:clicked={click}      ident=\\\"move\\\">",
     		ctx
     	});
 
     	return block;
     }
 
-    // (38:2) <Option      ident="rename"      icon="/icons/input-cursor-text.svg"      alt="Rename icon"      nonSelectable={!selected ? true : false}      on:clicked={click}>
+    // (41:2) <Option      ident="rename"      icon="/icons/input-cursor-text.svg"      alt="Rename icon"      nonSelectable={!selected ? true : false}      on:clicked={click}>
     function create_default_slot_2$1(ctx) {
     	let t;
 
@@ -11687,14 +11687,14 @@ var app = (function () {
     		block,
     		id: create_default_slot_2$1.name,
     		type: "slot",
-    		source: "(38:2) <Option      ident=\\\"rename\\\"      icon=\\\"/icons/input-cursor-text.svg\\\"      alt=\\\"Rename icon\\\"      nonSelectable={!selected ? true : false}      on:clicked={click}>",
+    		source: "(41:2) <Option      ident=\\\"rename\\\"      icon=\\\"/icons/input-cursor-text.svg\\\"      alt=\\\"Rename icon\\\"      nonSelectable={!selected ? true : false}      on:clicked={click}>",
     		ctx
     	});
 
     	return block;
     }
 
-    // (45:2) <Option      ident="delete"      icon="/icons/trash.svg"      alt="Delete"      nonSelectable={!selected ? true : false}      on:clicked={click}    >
+    // (48:2) <Option      ident="delete"      icon="/icons/trash.svg"      alt="Delete"      nonSelectable={!selected ? true : false}      on:clicked={click}    >
     function create_default_slot_1$1(ctx) {
     	let t;
 
@@ -11714,14 +11714,14 @@ var app = (function () {
     		block,
     		id: create_default_slot_1$1.name,
     		type: "slot",
-    		source: "(45:2) <Option      ident=\\\"delete\\\"      icon=\\\"/icons/trash.svg\\\"      alt=\\\"Delete\\\"      nonSelectable={!selected ? true : false}      on:clicked={click}    >",
+    		source: "(48:2) <Option      ident=\\\"delete\\\"      icon=\\\"/icons/trash.svg\\\"      alt=\\\"Delete\\\"      nonSelectable={!selected ? true : false}      on:clicked={click}    >",
     		ctx
     	});
 
     	return block;
     }
 
-    // (55:2) <Option      ident="settings"      icon="/icons/gear.svg"      alt="Settings"      nonSelectable={false}      on:clicked={click}    >
+    // (58:2) <Option      ident="settings"      icon="/icons/gear.svg"      alt="Settings"      nonSelectable={false}      on:clicked={click}    >
     function create_default_slot$2(ctx) {
     	let t;
 
@@ -11741,7 +11741,7 @@ var app = (function () {
     		block,
     		id: create_default_slot$2.name,
     		type: "slot",
-    		source: "(55:2) <Option      ident=\\\"settings\\\"      icon=\\\"/icons/gear.svg\\\"      alt=\\\"Settings\\\"      nonSelectable={false}      on:clicked={click}    >",
+    		source: "(58:2) <Option      ident=\\\"settings\\\"      icon=\\\"/icons/gear.svg\\\"      alt=\\\"Settings\\\"      nonSelectable={false}      on:clicked={click}    >",
     		ctx
     	});
 
@@ -11866,9 +11866,9 @@ var app = (function () {
     			t5 = space();
     			create_component(option5.$$.fragment);
     			attr_dev(div, "class", "break svelte-1go7m9p");
-    			add_location(div, file$3, 53, 2, 1167);
+    			add_location(div, file$3, 56, 2, 1305);
     			attr_dev(section, "class", "right-click svelte-1go7m9p");
-    			add_location(section, file$3, 13, 0, 250);
+    			add_location(section, file$3, 16, 0, 388);
     		},
     		l: function claim(nodes) {
     			throw new Error("options.hydrate only works if the component was compiled with the `hydratable: true` option");
@@ -11893,7 +11893,7 @@ var app = (function () {
     		p: function update(ctx, [dirty]) {
     			const option0_changes = {};
 
-    			if (dirty & /*$$scope*/ 8) {
+    			if (dirty & /*$$scope*/ 16) {
     				option0_changes.$$scope = { dirty, ctx };
     			}
 
@@ -11901,7 +11901,7 @@ var app = (function () {
     			const option1_changes = {};
     			if (dirty & /*selected*/ 1) option1_changes.nonSelectable = !/*selected*/ ctx[0] ? true : false;
 
-    			if (dirty & /*$$scope*/ 8) {
+    			if (dirty & /*$$scope*/ 16) {
     				option1_changes.$$scope = { dirty, ctx };
     			}
 
@@ -11909,7 +11909,7 @@ var app = (function () {
     			const option2_changes = {};
     			if (dirty & /*selected*/ 1) option2_changes.nonSelectable = !/*selected*/ ctx[0] ? true : false;
 
-    			if (dirty & /*$$scope*/ 8) {
+    			if (dirty & /*$$scope*/ 16) {
     				option2_changes.$$scope = { dirty, ctx };
     			}
 
@@ -11917,7 +11917,7 @@ var app = (function () {
     			const option3_changes = {};
     			if (dirty & /*selected*/ 1) option3_changes.nonSelectable = !/*selected*/ ctx[0] ? true : false;
 
-    			if (dirty & /*$$scope*/ 8) {
+    			if (dirty & /*$$scope*/ 16) {
     				option3_changes.$$scope = { dirty, ctx };
     			}
 
@@ -11925,14 +11925,14 @@ var app = (function () {
     			const option4_changes = {};
     			if (dirty & /*selected*/ 1) option4_changes.nonSelectable = !/*selected*/ ctx[0] ? true : false;
 
-    			if (dirty & /*$$scope*/ 8) {
+    			if (dirty & /*$$scope*/ 16) {
     				option4_changes.$$scope = { dirty, ctx };
     			}
 
     			option4.$set(option4_changes);
     			const option5_changes = {};
 
-    			if (dirty & /*$$scope*/ 8) {
+    			if (dirty & /*$$scope*/ 16) {
     				option5_changes.$$scope = { dirty, ctx };
     			}
 
@@ -11982,6 +11982,7 @@ var app = (function () {
     function instance$6($$self, $$props, $$invalidate) {
     	let { $$slots: slots = {}, $$scope } = $$props;
     	validate_slots('RightClick', slots, []);
+    	const dispatch = createEventDispatcher();
     	let { selected } = $$props;
 
     	const click = e => {
@@ -11989,7 +11990,8 @@ var app = (function () {
     	};
 
     	const newFolder = e => {
-    		console.log(e.detail, selected, "New Folder");
+    		dispatch("new-folder", { selected, det: e.detail });
+    		dispatch("close-right", true);
     	};
 
     	const writable_props = ['selected'];
@@ -12002,7 +12004,14 @@ var app = (function () {
     		if ('selected' in $$props) $$invalidate(0, selected = $$props.selected);
     	};
 
-    	$$self.$capture_state = () => ({ Option, selected, click, newFolder });
+    	$$self.$capture_state = () => ({
+    		createEventDispatcher,
+    		dispatch,
+    		Option,
+    		selected,
+    		click,
+    		newFolder
+    	});
 
     	$$self.$inject_state = $$props => {
     		if ('selected' in $$props) $$invalidate(0, selected = $$props.selected);
@@ -12067,7 +12076,9 @@ var app = (function () {
     	let dispose;
     	let rightclick_props = { selected: /*selected*/ ctx[2] };
     	rightclick = new RightClick({ props: rightclick_props, $$inline: true });
-    	/*rightclick_binding*/ ctx[5](rightclick);
+    	/*rightclick_binding*/ ctx[6](rightclick);
+    	rightclick.$on("new-folder", /*new_folder_handler*/ ctx[7]);
+    	rightclick.$on("close-right", /*hideRightClick*/ ctx[4]);
 
     	buildfolderstruct = new BuildFolderStruct({
     			props: {
@@ -12077,7 +12088,7 @@ var app = (function () {
     			$$inline: true
     		});
 
-    	buildfolderstruct.$on("folderClicked", /*folderClicked_handler*/ ctx[8]);
+    	buildfolderstruct.$on("folderClicked", /*folderClicked_handler*/ ctx[10]);
 
     	const block = {
     		c: function create() {
@@ -12098,17 +12109,17 @@ var app = (function () {
     			if (!src_url_equal(img.src, img_src_value = "/icons/folder-fill.svg")) attr_dev(img, "src", img_src_value);
     			attr_dev(img, "alt", "Folder");
     			attr_dev(img, "class", "svelte-18hgno1");
-    			add_location(img, file$2, 63, 5, 1952);
+    			add_location(img, file$2, 68, 5, 2021);
     			attr_dev(button, "class", "folder-part-button svelte-18hgno1");
     			attr_dev(button, "id", "folderpartbutton");
-    			add_location(button, file$2, 52, 0, 1485);
+    			add_location(button, file$2, 57, 0, 1554);
     			attr_dev(p, "class", "svelte-18hgno1");
-    			add_location(p, file$2, 71, 4, 2152);
+    			add_location(p, file$2, 76, 4, 2221);
     			attr_dev(section1, "class", "name-section svelte-18hgno1");
-    			add_location(section1, file$2, 70, 2, 2116);
+    			add_location(section1, file$2, 75, 2, 2185);
     			attr_dev(section2, "class", "folder-part svelte-18hgno1");
     			attr_dev(section2, "id", "folder-part");
-    			add_location(section2, file$2, 65, 0, 2014);
+    			add_location(section2, file$2, 70, 0, 2083);
     		},
     		l: function claim(nodes) {
     			throw new Error("options.hydrate only works if the component was compiled with the `hydratable: true` option");
@@ -12116,7 +12127,7 @@ var app = (function () {
     		m: function mount(target, anchor) {
     			insert_dev(target, section0, anchor);
     			mount_component(rightclick, section0, null);
-    			/*section0_binding*/ ctx[6](section0);
+    			/*section0_binding*/ ctx[8](section0);
     			insert_dev(target, t0, anchor);
     			insert_dev(target, button, anchor);
     			append_dev(button, img);
@@ -12131,8 +12142,8 @@ var app = (function () {
 
     			if (!mounted) {
     				dispose = [
-    					listen_dev(button, "click", /*click_handler*/ ctx[7], false, false, false),
-    					listen_dev(section2, "contextmenu", prevent_default(/*menuShow*/ ctx[4]), false, true, false)
+    					listen_dev(button, "click", /*click_handler*/ ctx[9], false, false, false),
+    					listen_dev(section2, "contextmenu", prevent_default(/*menuShow*/ ctx[5]), false, true, false)
     				];
 
     				mounted = true;
@@ -12161,9 +12172,9 @@ var app = (function () {
     		},
     		d: function destroy(detaching) {
     			if (detaching) detach_dev(section0);
-    			/*rightclick_binding*/ ctx[5](null);
+    			/*rightclick_binding*/ ctx[6](null);
     			destroy_component(rightclick);
-    			/*section0_binding*/ ctx[6](null);
+    			/*section0_binding*/ ctx[8](null);
     			if (detaching) detach_dev(t0);
     			if (detaching) detach_dev(button);
     			if (detaching) detach_dev(t1);
@@ -12242,6 +12253,10 @@ var app = (function () {
     		});
     	}
 
+    	function new_folder_handler(event) {
+    		bubble.call(this, $$self, event);
+    	}
+
     	function section0_binding($$value) {
     		binding_callbacks[$$value ? 'unshift' : 'push'](() => {
     			contextMenu = $$value;
@@ -12297,8 +12312,10 @@ var app = (function () {
     		folderStruct,
     		selected,
     		contextMenu,
+    		hideRightClick,
     		menuShow,
     		rightclick_binding,
+    		new_folder_handler,
     		section0_binding,
     		click_handler,
     		folderClicked_handler
@@ -12704,12 +12721,18 @@ var app = (function () {
     	}
     }
 
+    const getCookie$1 = (name) => {
+        const value = `; ${document.cookie}`;
+        const parts = value.split(`; ${name}=`);
+        if (parts.length === 2) return parts.pop().split(";").shift();
+    };
+
     /* src\components\Home.svelte generated by Svelte v3.48.0 */
 
     const { console: console_1 } = globals;
     const file = "src\\components\\Home.svelte";
 
-    // (52:0) {#if notification !== null}
+    // (51:0) {#if notification !== null}
     function create_if_block$1(ctx) {
     	let toastnotification;
     	let current;
@@ -12723,7 +12746,7 @@ var app = (function () {
     			$$inline: true
     		});
 
-    	toastnotification.$on("close", /*close_handler*/ ctx[7]);
+    	toastnotification.$on("close", /*close_handler*/ ctx[8]);
 
     	const block = {
     		c: function create() {
@@ -12737,7 +12760,7 @@ var app = (function () {
     			const toastnotification_changes = {};
     			if (dirty & /*notification*/ 16) toastnotification_changes.type = /*notification*/ ctx[4].status;
 
-    			if (dirty & /*$$scope, notification*/ 272) {
+    			if (dirty & /*$$scope, notification*/ 528) {
     				toastnotification_changes.$$scope = { dirty, ctx };
     			}
 
@@ -12761,14 +12784,14 @@ var app = (function () {
     		block,
     		id: create_if_block$1.name,
     		type: "if",
-    		source: "(52:0) {#if notification !== null}",
+    		source: "(51:0) {#if notification !== null}",
     		ctx
     	});
 
     	return block;
     }
 
-    // (53:2) <ToastNotification      type={notification.status}      on:close={() => {        notification = null;      }}>
+    // (52:2) <ToastNotification      type={notification.status}      on:close={() => {        notification = null;      }}>
     function create_default_slot$1(ctx) {
     	let t_value = /*notification*/ ctx[4].msg + "";
     	let t;
@@ -12792,7 +12815,7 @@ var app = (function () {
     		block,
     		id: create_default_slot$1.name,
     		type: "slot",
-    		source: "(53:2) <ToastNotification      type={notification.status}      on:close={() => {        notification = null;      }}>",
+    		source: "(52:2) <ToastNotification      type={notification.status}      on:close={() => {        notification = null;      }}>",
     		ctx
     	});
 
@@ -12824,6 +12847,7 @@ var app = (function () {
     		});
 
     	folderpart.$on("folderClicked", /*newLoc*/ ctx[6]);
+    	folderpart.$on("new-folder", /*newFolder*/ ctx[7]);
 
     	locationpath = new LocationPath({
     			props: { selected: /*selected*/ ctx[2] },
@@ -12855,9 +12879,9 @@ var app = (function () {
     			t3 = space();
     			create_component(filestruct.$$.fragment);
     			attr_dev(section, "class", "file-part svelte-cjs30e");
-    			add_location(section, file, 62, 2, 1812);
+    			add_location(section, file, 67, 2, 1763);
     			attr_dev(main, "class", "svelte-cjs30e");
-    			add_location(main, file, 59, 0, 1703);
+    			add_location(main, file, 58, 0, 1600);
     		},
     		l: function claim(nodes) {
     			throw new Error("options.hydrate only works if the component was compiled with the `hydratable: true` option");
@@ -12953,12 +12977,6 @@ var app = (function () {
     	return block;
     }
 
-    function getCookie$1(name) {
-    	const value = `; ${document.cookie}`;
-    	const parts = value.split(`; ${name}=`);
-    	if (parts.length === 2) return parts.pop().split(";").shift();
-    }
-
     function instance$3($$self, $$props, $$invalidate) {
     	let { $$slots: slots = {}, $$scope } = $$props;
     	validate_slots('Home', slots, []);
@@ -12968,7 +12986,6 @@ var app = (function () {
     	let currentFolderPathFiles = "";
     	let notification = null;
     	let folderStruct = {};
-    	console.log(userData);
 
     	fetch(`${PROXY}fetchFiles?cred=${getCookie$1("G_VAR2")}`).then(response => response.json()).then(data => {
     		console.log(data);
@@ -13001,6 +13018,10 @@ var app = (function () {
     		}
     	};
 
+    	const newFolder = ({ detail }) => {
+    		console.log(detail);
+    	};
+
     	const writable_props = ['userData', 'PROXY'];
 
     	Object.keys($$props).forEach(key => {
@@ -13022,14 +13043,15 @@ var app = (function () {
     		SideFolder,
     		FolderPart,
     		LocationPath,
+    		getCookie: getCookie$1,
     		userData,
     		PROXY,
     		selected,
     		currentFolderPathFiles,
     		notification,
     		folderStruct,
-    		getCookie: getCookie$1,
-    		newLoc
+    		newLoc,
+    		newFolder
     	});
 
     	$$self.$inject_state = $$props => {
@@ -13053,6 +13075,7 @@ var app = (function () {
     		notification,
     		folderStruct,
     		newLoc,
+    		newFolder,
     		close_handler
     	];
     }

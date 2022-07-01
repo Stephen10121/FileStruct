@@ -4,7 +4,7 @@
   import SideFolder from "./SideFolder.svelte";
   import FolderPart from "./FolderPart.svelte";
   import LocationPath from "./LocationPath.svelte";
-  import getCookie from "../cookie";
+  import { getCookie } from "../cookie";
 
   export let userData;
   export let PROXY;
@@ -42,6 +42,10 @@
         !files["G_files"].length === 0 ? [] : files.G_files;
     }
   };
+
+  const newFolder = ({ detail }) => {
+    console.log(detail);
+  };
 </script>
 
 {#if notification !== null}
@@ -54,7 +58,13 @@
 {/if}
 <main>
   <SideFolder />
-  <FolderPart {userData} {folderStruct} {selected} on:folderClicked={newLoc} />
+  <FolderPart
+    {userData}
+    {folderStruct}
+    {selected}
+    on:folderClicked={newLoc}
+    on:new-folder={newFolder}
+  />
   <section class="file-part">
     <LocationPath {selected} on:change-dir={newLoc} />
     <FileStruct {selected} files={currentFolderPathFiles} {PROXY} />
