@@ -12,13 +12,13 @@
     if (parts.length === 2) return parts.pop().split(";").shift();
   }
 
-  const cookie = getCookie("G_VAR");
+  const cookie = getCookie("G_VAR2");
 
   if (cookie === undefined || cookie === null) {
     // navigate("/");
     isLogged = false;
   } else {
-    fetch(`${PROXY}userData?cred=${getCookie("G_VAR")}`)
+    fetch(`${PROXY}userData?cred=${getCookie("G_VAR2")}`)
       .then((response) => response.json())
       .then((data) => {
         if (data.status !== 200) {

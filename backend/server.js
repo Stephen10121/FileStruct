@@ -31,6 +31,7 @@ const io = socketio(server, {
   });
 
 app.post('/auth', async (req, res) => {
+console.log(req.body);
     const newData = req.body;
     const result = await userLogin({hash: newData.data, name: newData.name, email: newData.email, username: newData.username});
     if (result.error !== 200) {
@@ -121,11 +122,13 @@ app.get("/getFileData", async (req, res) => {
 
 app.get("/getVideoStream", async (req, res) => {
     if (!req.query["location"] || !req.query["cred"]) {
-        return res.json({ msg: "Missing arguments"});
+        res.json({ msg: "Missing arguments"});
+        return;
     }
     if (!req.headers["range"]) {
         res.status(400).send("Requires Range header");
     }
+    
     jwt.verify(req.query.cred, process.env.ACCESS_TOKEN_SECRET, async (err, user) => {
         if (err) {
             return res.status(400).json({ msg: 'Invalid input' });

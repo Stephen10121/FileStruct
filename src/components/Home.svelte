@@ -20,7 +20,7 @@
     if (parts.length === 2) return parts.pop().split(";").shift();
   }
 
-  fetch(`${PROXY}fetchFiles?cred=${getCookie("G_VAR")}`)
+  fetch(`${PROXY}fetchFiles?cred=${getCookie("G_VAR2")}`)
     .then((response) => response.json())
     .then((data) => {
       console.log(data);

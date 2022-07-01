@@ -32,7 +32,7 @@
     if (parts.length === 2) return parts.pop().split(";").shift();
   }
 
-  fetch(`${PROXY}getFileData?location=${path}&cred=${getCookie("G_VAR")}`)
+  fetch(`${PROXY}getFileData?location=${path}&cred=${getCookie("G_VAR2")}`)
     .then((response) => response.json())
     .then((data) => {
       if (data["video"]) {
@@ -68,7 +68,7 @@
     {#if fileData["video"]}
       <video id="previewBoxView" controls autoplay muted={false}>
         <source
-          src="{PROXY}getVideoStream?location={path}&cred={getCookie('G_VAR')}"
+          src="{PROXY}getVideoStream?location={path}&cred={getCookie('G_VAR2')}"
           type="video/mp4"
         />
       </video>

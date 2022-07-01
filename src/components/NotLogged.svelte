@@ -50,7 +50,7 @@
   const loginIt = () => {
     socket.on("auth", (data) => {
       socket.off("auth");
-      document.cookie = `G_VAR=${data.token}`;
+      document.cookie = `G_VAR2=${data.token}`;
       dispatch("userLoggedIn", data.userData);
     });
     popupCenter({

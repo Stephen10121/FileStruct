@@ -4,8 +4,8 @@
   import NotLogged from "./components/NotLogged.svelte";
   import Logout from "./components/Logout.svelte";
 
-  // const PROXY = "http://192.168.0.24:5700/";
-  const PROXY = location.href;
+  const PROXY = "http://192.168.0.24:5700/";
+  //const PROXY = location.href;
 </script>
 
 <Router>

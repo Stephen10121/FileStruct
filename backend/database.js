@@ -84,12 +84,12 @@ async function userLogin({ hash, name, email, username}) {
         if (addedUser === 'error') {
             return({errorMessage: "Error Try Again", error: 1000});
         }
-        const dir = `./storage/${hashed(username)}/shared`;
+        const dir = `./storage/${hashed(username)}/shared/welcome`;
 
         fs.mkdir(dir, { recursive: true }, (err) => {
             if (err) throw err;
         });
-        const dir2 = `./storage/${hashed(username)}/home`;
+        const dir2 = `./storage/${hashed(username)}/home/welcome`;
 
         fs.mkdir(dir2, { recursive: true }, (err) => {
             if (err) throw err;

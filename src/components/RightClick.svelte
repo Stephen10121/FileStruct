@@ -5,13 +5,17 @@
   const click = (e) => {
     console.log(e.detail, selected);
   };
+
+  const newFolder = (e) => {
+    console.log(e.detail, selected, "New Folder");
+  };
 </script>
 
 <section class="right-click">
   <Option
     icon="/icons/folder-plus.svg"
     alt="New folder icon"
-    on:clicked={click}
+    on:clicked={newFolder}
     ident="newFolder"
   >
     New Folder
