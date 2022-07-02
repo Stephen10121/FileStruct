@@ -13,7 +13,7 @@ function hashed(password) {
     return hash;
 }
 
-const copyRecursiveSync = function(src, dest) {
+const copyRecursiveSync = (src, dest) => {
     var exists = fs.existsSync(src);
     var stats = exists && fs.statSync(src);
     var isDirectory = exists && stats.isDirectory();
@@ -26,10 +26,30 @@ const copyRecursiveSync = function(src, dest) {
     } else {
       fs.copyFileSync(src, dest);
     }
-  };
+};
+
+const addFolder = async (location, name, id) => {
+  if (name.includes(".") || name.includes("/") || name.includes("&")) {
+    return "Illegal Characters used.";
+  }
+  let fileLocation = `./storage/${hashed(id)}/home/`;
+  if (location === " ") {
+    fileLocation+=`${name}`;
+  } else {
+    fileLocation+=`${location}/${name}`;
+  }
+  try {
+    await fs.promises.mkdir(fileLocation, { recursive: true });
+  } catch (err) {
+    console.error(err);
+    return "Error Making folder.";
+  }
+  return 200;
+}
 
 module.exports = {
     createHash,
     hashed,
-    copyRecursiveSync
+    copyRecursiveSync,
+    addFolder
 }

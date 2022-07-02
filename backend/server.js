@@ -9,7 +9,7 @@ const cookieParser = require("cookie-parser");
 const { userLogin, getUserData, saveProfile, checkUserSharing } = require("./database");
 const PORT = process.env.SERVER_PORT || 5700;
 const jwt = require('jsonwebtoken');
-const { hashed } = require('./functions');
+const { hashed, addFolder } = require('./functions');
 const app = express();
 
 app.use((req, res, next) => {
@@ -154,6 +154,29 @@ app.get("/getVideoStream", async (req, res) => {
         res.writeHead(206, headers);
         const videoStream = fs.createReadStream(videoPath, { start, end });
         videoStream.pipe(res);
+    });
+});
+
+app.post("/addFolder", async (req, res) => {
+    if (!req.query["location"] || !req.query["cred"] || !req.query["name"]) {
+        res.json({ msg: "Missing arguments"});
+        return;
+    }
+    jwt.verify(req.query.cred, process.env.ACCESS_TOKEN_SECRET, async (err, user) => {
+        if (err) {
+            return res.status(400).json({ msg: 'Invalid input' });
+        }
+        const userif = await getUserData(user.usersHash);
+        if (userif == "error") {
+            return res.status(400).json({ msg: 'Invalid input' });
+        }
+        const addedFolder = await addFolder(req.query.location, req.query.name, user.usersName);
+        if (addedFolder === 200) {
+            const files = await getFiles(`./storage/${hashed(user.usersName)}/home`);
+            res.json({ msg: "Good", files });
+            return;
+        }
+        res.json({ msg: addedFolder });
     });
 });
 

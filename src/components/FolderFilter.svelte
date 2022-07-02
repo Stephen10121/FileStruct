@@ -5,6 +5,7 @@
   export let RecursiveFolders;
   export let path;
   export let selected;
+  $: currentFolder;
 </script>
 
 {#each Object.keys(currentFolder) as startFolder (startFolder)}

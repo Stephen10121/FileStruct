@@ -5,6 +5,7 @@
   import FolderFilter from "./FolderFilter.svelte";
   export let folders;
   export let selected;
+  $: folders;
 
   const dispatch = createEventDispatcher();
   let currentFolder = "";

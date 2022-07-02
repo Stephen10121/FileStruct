@@ -4,6 +4,7 @@
   export let userData;
   export let folderStruct;
   export let selected;
+  $: folderStruct;
 
   let contextMenu;
 

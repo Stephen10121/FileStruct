@@ -10052,7 +10052,7 @@ var app = (function () {
     	return child_ctx;
     }
 
-    // (11:2) {#if startFolder !== "G_files"}
+    // (12:2) {#if startFolder !== "G_files"}
     function create_if_block$4(ctx) {
     	let show_if;
     	let current_block_type_index;
@@ -10128,14 +10128,14 @@ var app = (function () {
     		block,
     		id: create_if_block$4.name,
     		type: "if",
-    		source: "(11:2) {#if startFolder !== \\\"G_files\\\"}",
+    		source: "(12:2) {#if startFolder !== \\\"G_files\\\"}",
     		ctx
     	});
 
     	return block;
     }
 
-    // (19:4) {:else}
+    // (20:4) {:else}
     function create_else_block$3(ctx) {
     	let folderwsbutton;
     	let current;
@@ -10194,14 +10194,14 @@ var app = (function () {
     		block,
     		id: create_else_block$3.name,
     		type: "else",
-    		source: "(19:4) {:else}",
+    		source: "(20:4) {:else}",
     		ctx
     	});
 
     	return block;
     }
 
-    // (12:4) {#if (Object.keys(currentFolder[startFolder]).length === 0) | (Object.keys(currentFolder[startFolder]).length === 1 && Object.keys(currentFolder[startFolder])[0] === "G_files")}
+    // (13:4) {#if (Object.keys(currentFolder[startFolder]).length === 0) | (Object.keys(currentFolder[startFolder]).length === 1 && Object.keys(currentFolder[startFolder])[0] === "G_files")}
     function create_if_block_1$1(ctx) {
     	let folderbutton;
     	let current;
@@ -10257,14 +10257,14 @@ var app = (function () {
     		block,
     		id: create_if_block_1$1.name,
     		type: "if",
-    		source: "(12:4) {#if (Object.keys(currentFolder[startFolder]).length === 0) | (Object.keys(currentFolder[startFolder]).length === 1 && Object.keys(currentFolder[startFolder])[0] === \\\"G_files\\\")}",
+    		source: "(13:4) {#if (Object.keys(currentFolder[startFolder]).length === 0) | (Object.keys(currentFolder[startFolder]).length === 1 && Object.keys(currentFolder[startFolder])[0] === \\\"G_files\\\")}",
     		ctx
     	});
 
     	return block;
     }
 
-    // (26:8) 
+    // (27:8) 
     function create_folderName_slot$1(ctx) {
     	let span;
     	let t_value = /*startFolder*/ ctx[7] + "";
@@ -10275,7 +10275,7 @@ var app = (function () {
     			span = element("span");
     			t = text(t_value);
     			attr_dev(span, "slot", "folderName");
-    			add_location(span, file$6, 25, 8, 882);
+    			add_location(span, file$6, 26, 8, 903);
     		},
     		m: function mount(target, anchor) {
     			insert_dev(target, span, anchor);
@@ -10293,14 +10293,14 @@ var app = (function () {
     		block,
     		id: create_folderName_slot$1.name,
     		type: "slot",
-    		source: "(26:8) ",
+    		source: "(27:8) ",
     		ctx
     	});
 
     	return block;
     }
 
-    // (27:8) 
+    // (28:8) 
     function create_subfolders_slot$1(ctx) {
     	let span;
     	let switch_instance;
@@ -10329,7 +10329,7 @@ var app = (function () {
     			span = element("span");
     			if (switch_instance) create_component(switch_instance.$$.fragment);
     			attr_dev(span, "slot", "subfolders");
-    			add_location(span, file$6, 26, 8, 936);
+    			add_location(span, file$6, 27, 8, 957);
     		},
     		m: function mount(target, anchor) {
     			insert_dev(target, span, anchor);
@@ -10391,14 +10391,14 @@ var app = (function () {
     		block,
     		id: create_subfolders_slot$1.name,
     		type: "slot",
-    		source: "(27:8) ",
+    		source: "(28:8) ",
     		ctx
     	});
 
     	return block;
     }
 
-    // (13:6) <FolderButton          {selected}          folderName={startFolder}          location={path + "/" + startFolder}          on:folderClicked>
+    // (14:6) <FolderButton          {selected}          folderName={startFolder}          location={path + "/" + startFolder}          on:folderClicked>
     function create_default_slot$4(ctx) {
     	let t_value = /*startFolder*/ ctx[7] + "";
     	let t;
@@ -10422,14 +10422,14 @@ var app = (function () {
     		block,
     		id: create_default_slot$4.name,
     		type: "slot",
-    		source: "(13:6) <FolderButton          {selected}          folderName={startFolder}          location={path + \\\"/\\\" + startFolder}          on:folderClicked>",
+    		source: "(14:6) <FolderButton          {selected}          folderName={startFolder}          location={path + \\\"/\\\" + startFolder}          on:folderClicked>",
     		ctx
     	});
 
     	return block;
     }
 
-    // (10:0) {#each Object.keys(currentFolder) as startFolder (startFolder)}
+    // (11:0) {#each Object.keys(currentFolder) as startFolder (startFolder)}
     function create_each_block$2(key_1, ctx) {
     	let first;
     	let if_block_anchor;
@@ -10497,7 +10497,7 @@ var app = (function () {
     		block,
     		id: create_each_block$2.name,
     		type: "each",
-    		source: "(10:0) {#each Object.keys(currentFolder) as startFolder (startFolder)}",
+    		source: "(11:0) {#each Object.keys(currentFolder) as startFolder (startFolder)}",
     		ctx
     	});
 
@@ -10637,6 +10637,10 @@ var app = (function () {
     		$$self.$inject_state($$props.$$inject);
     	}
 
+    	$$self.$$.update = () => {
+    		if ($$self.$$.dirty & /*currentFolder*/ 1) ;
+    	};
+
     	return [
     		currentFolder,
     		RecursiveFolders,
@@ -10730,7 +10734,7 @@ var app = (function () {
     	return child_ctx;
     }
 
-    // (19:4) {#if startFolder !== "G_files"}
+    // (20:4) {#if startFolder !== "G_files"}
     function create_if_block$3(ctx) {
     	let show_if;
     	let current_block_type_index;
@@ -10806,14 +10810,14 @@ var app = (function () {
     		block,
     		id: create_if_block$3.name,
     		type: "if",
-    		source: "(19:4) {#if startFolder !== \\\"G_files\\\"}",
+    		source: "(20:4) {#if startFolder !== \\\"G_files\\\"}",
     		ctx
     	});
 
     	return block;
     }
 
-    // (33:6) {:else}
+    // (34:6) {:else}
     function create_else_block$2(ctx) {
     	let folderwsbutton;
     	let current;
@@ -10872,14 +10876,14 @@ var app = (function () {
     		block,
     		id: create_else_block$2.name,
     		type: "else",
-    		source: "(33:6) {:else}",
+    		source: "(34:6) {:else}",
     		ctx
     	});
 
     	return block;
     }
 
-    // (20:6) {#if (Object.keys(folders[startFolder]).length === 0) | (Object.keys(folders[startFolder]).length === 1 && Object.keys(folders[startFolder])[0] === "G_files")}
+    // (21:6) {#if (Object.keys(folders[startFolder]).length === 0) | (Object.keys(folders[startFolder]).length === 1 && Object.keys(folders[startFolder])[0] === "G_files")}
     function create_if_block_1(ctx) {
     	let folderbutton;
     	let current;
@@ -10935,14 +10939,14 @@ var app = (function () {
     		block,
     		id: create_if_block_1.name,
     		type: "if",
-    		source: "(20:6) {#if (Object.keys(folders[startFolder]).length === 0) | (Object.keys(folders[startFolder]).length === 1 && Object.keys(folders[startFolder])[0] === \\\"G_files\\\")}",
+    		source: "(21:6) {#if (Object.keys(folders[startFolder]).length === 0) | (Object.keys(folders[startFolder]).length === 1 && Object.keys(folders[startFolder])[0] === \\\"G_files\\\")}",
     		ctx
     	});
 
     	return block;
     }
 
-    // (46:10) 
+    // (47:10) 
     function create_folderName_slot(ctx) {
     	let span;
     	let t_value = /*startFolder*/ ctx[7] + "";
@@ -10953,7 +10957,7 @@ var app = (function () {
     			span = element("span");
     			t = text(t_value);
     			attr_dev(span, "slot", "folderName");
-    			add_location(span, file$5, 45, 10, 1466);
+    			add_location(span, file$5, 46, 10, 1481);
     		},
     		m: function mount(target, anchor) {
     			insert_dev(target, span, anchor);
@@ -10971,14 +10975,14 @@ var app = (function () {
     		block,
     		id: create_folderName_slot.name,
     		type: "slot",
-    		source: "(46:10) ",
+    		source: "(47:10) ",
     		ctx
     	});
 
     	return block;
     }
 
-    // (47:10) 
+    // (48:10) 
     function create_subfolders_slot(ctx) {
     	let span;
     	let folderfilter;
@@ -11001,7 +11005,7 @@ var app = (function () {
     			span = element("span");
     			create_component(folderfilter.$$.fragment);
     			attr_dev(span, "slot", "subfolders");
-    			add_location(span, file$5, 46, 10, 1522);
+    			add_location(span, file$5, 47, 10, 1537);
     		},
     		m: function mount(target, anchor) {
     			insert_dev(target, span, anchor);
@@ -11034,14 +11038,14 @@ var app = (function () {
     		block,
     		id: create_subfolders_slot.name,
     		type: "slot",
-    		source: "(47:10) ",
+    		source: "(48:10) ",
     		ctx
     	});
 
     	return block;
     }
 
-    // (21:8) <FolderButton            {selected}            folderName={startFolder}            location={startFolder}            on:folderClicked={(e) => {              if (currentFolder === e.detail) {                dispatch("folderClicked", currentFolder);              } else {                currentFolder = e.detail;              }            }}>
+    // (22:8) <FolderButton            {selected}            folderName={startFolder}            location={startFolder}            on:folderClicked={(e) => {              if (currentFolder === e.detail) {                dispatch("folderClicked", currentFolder);              } else {                currentFolder = e.detail;              }            }}>
     function create_default_slot$3(ctx) {
     	let t_value = /*startFolder*/ ctx[7] + "";
     	let t;
@@ -11065,14 +11069,14 @@ var app = (function () {
     		block,
     		id: create_default_slot$3.name,
     		type: "slot",
-    		source: "(21:8) <FolderButton            {selected}            folderName={startFolder}            location={startFolder}            on:folderClicked={(e) => {              if (currentFolder === e.detail) {                dispatch(\\\"folderClicked\\\", currentFolder);              } else {                currentFolder = e.detail;              }            }}>",
+    		source: "(22:8) <FolderButton            {selected}            folderName={startFolder}            location={startFolder}            on:folderClicked={(e) => {              if (currentFolder === e.detail) {                dispatch(\\\"folderClicked\\\", currentFolder);              } else {                currentFolder = e.detail;              }            }}>",
     		ctx
     	});
 
     	return block;
     }
 
-    // (18:2) {#each Object.keys(folders) as startFolder (startFolder)}
+    // (19:2) {#each Object.keys(folders) as startFolder (startFolder)}
     function create_each_block$1(key_1, ctx) {
     	let first;
     	let if_block_anchor;
@@ -11140,7 +11144,7 @@ var app = (function () {
     		block,
     		id: create_each_block$1.name,
     		type: "each",
-    		source: "(18:2) {#each Object.keys(folders) as startFolder (startFolder)}",
+    		source: "(19:2) {#each Object.keys(folders) as startFolder (startFolder)}",
     		ctx
     	});
 
@@ -11172,7 +11176,7 @@ var app = (function () {
     			}
 
     			attr_dev(ul, "class", "svelte-17lhffs");
-    			add_location(ul, file$5, 16, 0, 420);
+    			add_location(ul, file$5, 17, 0, 435);
     		},
     		l: function claim(nodes) {
     			throw new Error("options.hydrate only works if the component was compiled with the `hydratable: true` option");
@@ -11292,6 +11296,8 @@ var app = (function () {
     	}
 
     	$$self.$$.update = () => {
+    		if ($$self.$$.dirty & /*folders*/ 1) ;
+
     		if ($$self.$$.dirty & /*currentFolder*/ 4) {
     			{
     				dispatch("folderClicked", currentFolder);
@@ -12105,21 +12111,21 @@ var app = (function () {
     			t3 = space();
     			create_component(buildfolderstruct.$$.fragment);
     			attr_dev(section0, "class", "right-click svelte-18hgno1");
-    			add_location(section0, file$2, 49, 0, 1365);
+    			add_location(section0, file$2, 50, 0, 1385);
     			if (!src_url_equal(img.src, img_src_value = "/icons/folder-fill.svg")) attr_dev(img, "src", img_src_value);
     			attr_dev(img, "alt", "Folder");
     			attr_dev(img, "class", "svelte-18hgno1");
-    			add_location(img, file$2, 68, 5, 2021);
+    			add_location(img, file$2, 69, 5, 2041);
     			attr_dev(button, "class", "folder-part-button svelte-18hgno1");
     			attr_dev(button, "id", "folderpartbutton");
-    			add_location(button, file$2, 57, 0, 1554);
+    			add_location(button, file$2, 58, 0, 1574);
     			attr_dev(p, "class", "svelte-18hgno1");
-    			add_location(p, file$2, 76, 4, 2221);
+    			add_location(p, file$2, 77, 4, 2241);
     			attr_dev(section1, "class", "name-section svelte-18hgno1");
-    			add_location(section1, file$2, 75, 2, 2185);
+    			add_location(section1, file$2, 76, 2, 2205);
     			attr_dev(section2, "class", "folder-part svelte-18hgno1");
     			attr_dev(section2, "id", "folder-part");
-    			add_location(section2, file$2, 70, 0, 2083);
+    			add_location(section2, file$2, 71, 0, 2103);
     		},
     		l: function claim(nodes) {
     			throw new Error("options.hydrate only works if the component was compiled with the `hydratable: true` option");
@@ -12306,6 +12312,10 @@ var app = (function () {
     	if ($$props && "$$inject" in $$props) {
     		$$self.$inject_state($$props.$$inject);
     	}
+
+    	$$self.$$.update = () => {
+    		if ($$self.$$.dirty & /*folderStruct*/ 2) ;
+    	};
 
     	return [
     		userData,
@@ -12732,7 +12742,7 @@ var app = (function () {
     const { console: console_1 } = globals;
     const file = "src\\components\\Home.svelte";
 
-    // (51:0) {#if notification !== null}
+    // (64:0) {#if notification !== null}
     function create_if_block$1(ctx) {
     	let toastnotification;
     	let current;
@@ -12784,14 +12794,14 @@ var app = (function () {
     		block,
     		id: create_if_block$1.name,
     		type: "if",
-    		source: "(51:0) {#if notification !== null}",
+    		source: "(64:0) {#if notification !== null}",
     		ctx
     	});
 
     	return block;
     }
 
-    // (52:2) <ToastNotification      type={notification.status}      on:close={() => {        notification = null;      }}>
+    // (65:2) <ToastNotification      type={notification.status}      on:close={() => {        notification = null;      }}>
     function create_default_slot$1(ctx) {
     	let t_value = /*notification*/ ctx[4].msg + "";
     	let t;
@@ -12815,7 +12825,7 @@ var app = (function () {
     		block,
     		id: create_default_slot$1.name,
     		type: "slot",
-    		source: "(52:2) <ToastNotification      type={notification.status}      on:close={() => {        notification = null;      }}>",
+    		source: "(65:2) <ToastNotification      type={notification.status}      on:close={() => {        notification = null;      }}>",
     		ctx
     	});
 
@@ -12879,9 +12889,9 @@ var app = (function () {
     			t3 = space();
     			create_component(filestruct.$$.fragment);
     			attr_dev(section, "class", "file-part svelte-cjs30e");
-    			add_location(section, file, 67, 2, 1763);
+    			add_location(section, file, 80, 2, 2137);
     			attr_dev(main, "class", "svelte-cjs30e");
-    			add_location(main, file, 58, 0, 1600);
+    			add_location(main, file, 71, 0, 1974);
     		},
     		l: function claim(nodes) {
     			throw new Error("options.hydrate only works if the component was compiled with the `hydratable: true` option");
@@ -13020,6 +13030,14 @@ var app = (function () {
 
     	const newFolder = ({ detail }) => {
     		console.log(detail);
+
+    		fetch(`${PROXY}addFolder?cred=${getCookie$1("G_VAR2")}&location=${detail.selected ? detail.selected : " "}&name=test`, { method: "POST" }).then(response => response.json()).then(data => {
+    			console.log(data);
+
+    			if (data.msg === "Good") {
+    				$$invalidate(5, folderStruct = data.files);
+    			}
+    		});
     	};
 
     	const writable_props = ['userData', 'PROXY'];

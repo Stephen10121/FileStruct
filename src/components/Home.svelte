@@ -45,6 +45,19 @@
 
   const newFolder = ({ detail }) => {
     console.log(detail);
+    fetch(
+      `${PROXY}addFolder?cred=${getCookie("G_VAR2")}&location=${
+        detail.selected ? detail.selected : " "
+      }&name=test`,
+      { method: "POST" }
+    )
+      .then((response) => response.json())
+      .then((data) => {
+        console.log(data);
+        if (data.msg === "Good") {
+          folderStruct = data.files;
+        }
+      });
   };
 </script>
 
