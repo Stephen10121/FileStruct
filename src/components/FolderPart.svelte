@@ -27,6 +27,9 @@
     contextMenu.style.visibility = "visible";
   };
   document.addEventListener("click", (e) => {
+    if (!contextMenu) {
+      return;
+    }
     if (contextMenu.style.visibility !== "visible") {
       return;
     }
@@ -53,6 +56,7 @@
     bind:this={contextMenu}
     {selected}
     on:new-folder
+    on:rename-folder
     on:close-right={hideRightClick}
   />
 </section>

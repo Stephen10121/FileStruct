@@ -12,6 +12,11 @@
     dispatch("new-folder", { selected, det: e.detail });
     dispatch("close-right", true);
   };
+
+  const renameFolder = () => {
+    dispatch("rename-folder", selected);
+    dispatch("close-right", true);
+  };
 </script>
 
 <section class="right-click">
@@ -43,7 +48,7 @@
     icon="/icons/input-cursor-text.svg"
     alt="Rename icon"
     nonSelectable={!selected ? true : false}
-    on:clicked={click}>Rename</Option
+    on:clicked={renameFolder}>Rename</Option
   >
   <Option
     ident="delete"

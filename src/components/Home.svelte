@@ -77,6 +77,42 @@
       });
   };
 
+  const renameFolder = (e, extra) => {
+    if (!e) {
+      showPrompt = false;
+      return;
+    }
+    showPrompt = false;
+    fetch(
+      `${PROXY}renameFolder?cred=${getCookie("G_VAR2")}&location=${
+        extra ? extra : " "
+      }&name=${e.target[0].value}`,
+      { method: "POST" }
+    )
+      .then((response) => response.json())
+      .then((data) => {
+        if (data.msg === "Good") {
+          folderStruct = data.files;
+          notification = {
+            status: "success",
+            msg: `Renamed folder to '${e.target[0].value}'`,
+          };
+        } else {
+          notification = {
+            status: "alert",
+            msg: data.msg,
+          };
+        }
+      });
+  };
+
+  const renameFolderPrompt = ({ detail }) => {
+    promptExtra = detail;
+    promptEvent = renameFolder;
+    promptPlaceholder = "Rename Folder to";
+    showPrompt = true;
+  };
+
   const newFolderPrompt = ({ detail }) => {
     promptExtra = detail.selected;
     promptEvent = newFolder;
@@ -103,6 +139,7 @@
     {folderStruct}
     {selected}
     on:folderClicked={newLoc}
+    on:rename-folder={renameFolderPrompt}
     on:new-folder={newFolderPrompt}
   />
   <section class="file-part">

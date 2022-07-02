@@ -13,7 +13,7 @@
 <div class="prompt" id="coverPrompt" on:click={divClick}>
   <form on:submit|preventDefault={(e) => promptEvent(e, promptExtra)}>
     <input type="text" placeholder={promptPlaceholder} />
-    <button type="submit">Make Folder</button>
+    <button type="submit">Submit</button>
   </form>
   <button class="close" on:click={() => promptEvent(false, promptExtra)}
     >&#10006;</button

@@ -47,9 +47,33 @@ const addFolder = async (location, name, id) => {
   return 200;
 }
 
+const renameFolder = async (location, name, id) => {
+  if (name.includes(".") || name.includes("/") || name.includes("&")) {
+    return "Illegal Characters used.";
+  }
+  let fileLocation = `./storage/${hashed(id)}/home/`;
+  if (location !== " ") {
+    fileLocation+=`${location}`;
+  }
+  let fileLocation2 = `./storage/${hashed(id)}/home/`;
+  if (location === " ") {
+    fileLocation2+=name;
+  } else {
+    fileLocation2+=`${location.split().slice(0, -1).join("/")}/${name}`;
+  }
+  try {
+    await fs.promises.rename(fileLocation, fileLocation2);
+  } catch (err) {
+    console.error(err);
+    return "Error Renaming folder.";
+  }
+  return 200;
+}
+
 module.exports = {
     createHash,
     hashed,
     copyRecursiveSync,
-    addFolder
+    addFolder,
+    renameFolder
 }
