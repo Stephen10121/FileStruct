@@ -4,6 +4,7 @@
   import SideFolder from "./SideFolder.svelte";
   import FolderPart from "./FolderPart.svelte";
   import LocationPath from "./LocationPath.svelte";
+  import Prompt from "./Prompt.svelte";
   import { getCookie } from "../cookie";
 
   export let userData;
@@ -13,6 +14,10 @@
   let currentFolderPathFiles = "";
   let notification = null;
   let folderStruct = {};
+  let showPrompt = false;
+  let promptExtra = "jeff";
+  let promptPlaceholder = "Folder Name";
+  let promptEvent;
 
   fetch(`${PROXY}fetchFiles?cred=${getCookie("G_VAR2")}`)
     .then((response) => response.json())
@@ -43,24 +48,45 @@
     }
   };
 
-  const newFolder = ({ detail }) => {
-    console.log(detail);
+  const newFolder = (e, extra) => {
+    if (!e) {
+      showPrompt = false;
+      return;
+    }
+    showPrompt = false;
     fetch(
       `${PROXY}addFolder?cred=${getCookie("G_VAR2")}&location=${
-        detail.selected ? detail.selected : " "
-      }&name=test`,
+        extra ? extra : " "
+      }&name=${e.target[0].value}`,
       { method: "POST" }
     )
       .then((response) => response.json())
       .then((data) => {
-        console.log(data);
         if (data.msg === "Good") {
           folderStruct = data.files;
+          notification = {
+            status: "success",
+            msg: `Created folder '${e.target[0].value}'`,
+          };
+        } else {
+          notification = {
+            status: "alert",
+            msg: data.msg,
+          };
         }
       });
   };
+
+  const newFolderPrompt = ({ detail }) => {
+    promptExtra = detail.selected;
+    promptEvent = newFolder;
+    showPrompt = true;
+  };
 </script>
 
+{#if showPrompt}
+  <Prompt {promptPlaceholder} {promptEvent} {promptExtra} />
+{/if}
 {#if notification !== null}
   <ToastNotification
     type={notification.status}
@@ -76,7 +102,7 @@
     {folderStruct}
     {selected}
     on:folderClicked={newLoc}
-    on:new-folder={newFolder}
+    on:new-folder={newFolderPrompt}
   />
   <section class="file-part">
     <LocationPath {selected} on:change-dir={newLoc} />
