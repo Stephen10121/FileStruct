@@ -117,9 +117,10 @@
   }
 
   .folder-part {
-    height: 100%;
+    height: 100vh;
     display: grid;
     grid-template-rows: 70px auto;
+    overflow-y: auto;
   }
 
   .name-section {

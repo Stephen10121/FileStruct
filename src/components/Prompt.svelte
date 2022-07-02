@@ -12,7 +12,7 @@
 
 <div class="prompt" id="coverPrompt" on:click={divClick}>
   <form on:submit|preventDefault={(e) => promptEvent(e, promptExtra)}>
-    <input type="text" {promptPlaceholder} />
+    <input type="text" placeholder={promptPlaceholder} />
     <button type="submit">Make Folder</button>
   </form>
   <button class="close" on:click={() => promptEvent(false, promptExtra)}
@@ -28,6 +28,7 @@
     display: flex;
     align-items: center;
     justify-content: center;
+    z-index: 101;
   }
 
   form {

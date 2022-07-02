@@ -11175,7 +11175,7 @@ var app = (function () {
     				each_blocks[i].c();
     			}
 
-    			attr_dev(ul, "class", "svelte-17lhffs");
+    			attr_dev(ul, "class", "svelte-1j63ks3");
     			add_location(ul, file$6, 17, 0, 435);
     		},
     		l: function claim(nodes) {
@@ -12110,20 +12110,20 @@ var app = (function () {
     			t2 = text(t2_value);
     			t3 = space();
     			create_component(buildfolderstruct.$$.fragment);
-    			attr_dev(section0, "class", "right-click svelte-18hgno1");
+    			attr_dev(section0, "class", "right-click svelte-4ogke0");
     			add_location(section0, file$3, 50, 0, 1385);
     			if (!src_url_equal(img.src, img_src_value = "/icons/folder-fill.svg")) attr_dev(img, "src", img_src_value);
     			attr_dev(img, "alt", "Folder");
-    			attr_dev(img, "class", "svelte-18hgno1");
+    			attr_dev(img, "class", "svelte-4ogke0");
     			add_location(img, file$3, 69, 5, 2041);
-    			attr_dev(button, "class", "folder-part-button svelte-18hgno1");
+    			attr_dev(button, "class", "folder-part-button svelte-4ogke0");
     			attr_dev(button, "id", "folderpartbutton");
     			add_location(button, file$3, 58, 0, 1574);
-    			attr_dev(p, "class", "svelte-18hgno1");
+    			attr_dev(p, "class", "svelte-4ogke0");
     			add_location(p, file$3, 77, 4, 2241);
-    			attr_dev(section1, "class", "name-section svelte-18hgno1");
+    			attr_dev(section1, "class", "name-section svelte-4ogke0");
     			add_location(section1, file$3, 76, 2, 2205);
-    			attr_dev(section2, "class", "folder-part svelte-18hgno1");
+    			attr_dev(section2, "class", "folder-part svelte-4ogke0");
     			attr_dev(section2, "id", "folder-part");
     			add_location(section2, file$3, 71, 0, 2103);
     		},
@@ -12758,17 +12758,17 @@ var app = (function () {
     			button1 = element("button");
     			button1.textContent = "✖";
     			attr_dev(input, "type", "text");
-    			attr_dev(input, "promptplaceholder", /*promptPlaceholder*/ ctx[0]);
-    			attr_dev(input, "class", "svelte-btolmz");
+    			attr_dev(input, "placeholder", /*promptPlaceholder*/ ctx[0]);
+    			attr_dev(input, "class", "svelte-v3k9k1");
     			add_location(input, file$1, 14, 4, 371);
     			attr_dev(button0, "type", "submit");
-    			attr_dev(button0, "class", "svelte-btolmz");
-    			add_location(button0, file$1, 15, 4, 418);
-    			attr_dev(form, "class", "svelte-btolmz");
+    			attr_dev(button0, "class", "svelte-v3k9k1");
+    			add_location(button0, file$1, 15, 4, 430);
+    			attr_dev(form, "class", "svelte-v3k9k1");
     			add_location(form, file$1, 13, 2, 297);
-    			attr_dev(button1, "class", "close svelte-btolmz");
-    			add_location(button1, file$1, 17, 2, 475);
-    			attr_dev(div, "class", "prompt svelte-btolmz");
+    			attr_dev(button1, "class", "close svelte-v3k9k1");
+    			add_location(button1, file$1, 17, 2, 487);
+    			attr_dev(div, "class", "prompt svelte-v3k9k1");
     			attr_dev(div, "id", "coverPrompt");
     			add_location(div, file$1, 12, 0, 236);
     		},
@@ -12796,7 +12796,7 @@ var app = (function () {
     		},
     		p: function update(ctx, [dirty]) {
     			if (dirty & /*promptPlaceholder*/ 1) {
-    				attr_dev(input, "promptplaceholder", /*promptPlaceholder*/ ctx[0]);
+    				attr_dev(input, "placeholder", /*promptPlaceholder*/ ctx[0]);
     			}
     		},
     		i: noop,
@@ -12943,15 +12943,15 @@ var app = (function () {
     const { console: console_1 } = globals;
     const file = "src\\components\\Home.svelte";
 
-    // (87:0) {#if showPrompt}
+    // (88:0) {#if showPrompt}
     function create_if_block_1(ctx) {
     	let prompt;
     	let current;
 
     	prompt = new Prompt({
     			props: {
-    				promptPlaceholder: /*promptPlaceholder*/ ctx[9],
-    				promptEvent: /*promptEvent*/ ctx[8],
+    				promptPlaceholder: /*promptPlaceholder*/ ctx[8],
+    				promptEvent: /*promptEvent*/ ctx[9],
     				promptExtra: /*promptExtra*/ ctx[7]
     			},
     			$$inline: true
@@ -12967,7 +12967,8 @@ var app = (function () {
     		},
     		p: function update(ctx, dirty) {
     			const prompt_changes = {};
-    			if (dirty & /*promptEvent*/ 256) prompt_changes.promptEvent = /*promptEvent*/ ctx[8];
+    			if (dirty & /*promptPlaceholder*/ 256) prompt_changes.promptPlaceholder = /*promptPlaceholder*/ ctx[8];
+    			if (dirty & /*promptEvent*/ 512) prompt_changes.promptEvent = /*promptEvent*/ ctx[9];
     			if (dirty & /*promptExtra*/ 128) prompt_changes.promptExtra = /*promptExtra*/ ctx[7];
     			prompt.$set(prompt_changes);
     		},
@@ -12989,14 +12990,14 @@ var app = (function () {
     		block,
     		id: create_if_block_1.name,
     		type: "if",
-    		source: "(87:0) {#if showPrompt}",
+    		source: "(88:0) {#if showPrompt}",
     		ctx
     	});
 
     	return block;
     }
 
-    // (90:0) {#if notification !== null}
+    // (91:0) {#if notification !== null}
     function create_if_block$1(ctx) {
     	let toastnotification;
     	let current;
@@ -13048,14 +13049,14 @@ var app = (function () {
     		block,
     		id: create_if_block$1.name,
     		type: "if",
-    		source: "(90:0) {#if notification !== null}",
+    		source: "(91:0) {#if notification !== null}",
     		ctx
     	});
 
     	return block;
     }
 
-    // (91:2) <ToastNotification      type={notification.status}      on:close={() => {        notification = null;      }}>
+    // (92:2) <ToastNotification      type={notification.status}      on:close={() => {        notification = null;      }}>
     function create_default_slot$1(ctx) {
     	let t_value = /*notification*/ ctx[4].msg + "";
     	let t;
@@ -13079,7 +13080,7 @@ var app = (function () {
     		block,
     		id: create_default_slot$1.name,
     		type: "slot",
-    		source: "(91:2) <ToastNotification      type={notification.status}      on:close={() => {        notification = null;      }}>",
+    		source: "(92:2) <ToastNotification      type={notification.status}      on:close={() => {        notification = null;      }}>",
     		ctx
     	});
 
@@ -13147,9 +13148,9 @@ var app = (function () {
     			t4 = space();
     			create_component(filestruct.$$.fragment);
     			attr_dev(section, "class", "file-part svelte-cjs30e");
-    			add_location(section, file, 106, 2, 2812);
+    			add_location(section, file, 107, 2, 2836);
     			attr_dev(main, "class", "svelte-cjs30e");
-    			add_location(main, file, 97, 0, 2643);
+    			add_location(main, file, 98, 0, 2667);
     		},
     		l: function claim(nodes) {
     			throw new Error("options.hydrate only works if the component was compiled with the `hydratable: true` option");
@@ -13285,7 +13286,7 @@ var app = (function () {
     	let folderStruct = {};
     	let showPrompt = false;
     	let promptExtra = "jeff";
-    	let promptPlaceholder = "Folder Name";
+    	let promptPlaceholder;
     	let promptEvent;
 
     	fetch(`${PROXY}fetchFiles?cred=${getCookie$1("G_VAR2")}`).then(response => response.json()).then(data => {
@@ -13343,7 +13344,8 @@ var app = (function () {
 
     	const newFolderPrompt = ({ detail }) => {
     		$$invalidate(7, promptExtra = detail.selected);
-    		$$invalidate(8, promptEvent = newFolder);
+    		$$invalidate(9, promptEvent = newFolder);
+    		$$invalidate(8, promptPlaceholder = "Folder Name");
     		$$invalidate(6, showPrompt = true);
     	};
 
@@ -13394,8 +13396,8 @@ var app = (function () {
     		if ('folderStruct' in $$props) $$invalidate(5, folderStruct = $$props.folderStruct);
     		if ('showPrompt' in $$props) $$invalidate(6, showPrompt = $$props.showPrompt);
     		if ('promptExtra' in $$props) $$invalidate(7, promptExtra = $$props.promptExtra);
-    		if ('promptPlaceholder' in $$props) $$invalidate(9, promptPlaceholder = $$props.promptPlaceholder);
-    		if ('promptEvent' in $$props) $$invalidate(8, promptEvent = $$props.promptEvent);
+    		if ('promptPlaceholder' in $$props) $$invalidate(8, promptPlaceholder = $$props.promptPlaceholder);
+    		if ('promptEvent' in $$props) $$invalidate(9, promptEvent = $$props.promptEvent);
     	};
 
     	if ($$props && "$$inject" in $$props) {
@@ -13411,8 +13413,8 @@ var app = (function () {
     		folderStruct,
     		showPrompt,
     		promptExtra,
-    		promptEvent,
     		promptPlaceholder,
+    		promptEvent,
     		newLoc,
     		newFolderPrompt,
     		close_handler

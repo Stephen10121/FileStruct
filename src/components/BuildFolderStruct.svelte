@@ -66,6 +66,7 @@
     height: 100%;
     padding-left: 10px;
     background-color: var(--folder-section-color);
-    overflow: auto;
+    overflow-x: auto;
+    overflow-y: auto;
   }
 </style>

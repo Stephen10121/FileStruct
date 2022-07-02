@@ -16,7 +16,7 @@
   let folderStruct = {};
   let showPrompt = false;
   let promptExtra = "jeff";
-  let promptPlaceholder = "Folder Name";
+  let promptPlaceholder;
   let promptEvent;
 
   fetch(`${PROXY}fetchFiles?cred=${getCookie("G_VAR2")}`)
@@ -80,6 +80,7 @@
   const newFolderPrompt = ({ detail }) => {
     promptExtra = detail.selected;
     promptEvent = newFolder;
+    promptPlaceholder = "Folder Name";
     showPrompt = true;
   };
 </script>
