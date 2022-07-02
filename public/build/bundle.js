@@ -12413,9 +12413,9 @@ var app = (function () {
     			button.textContent = "home";
     			p = element("p");
     			p.textContent = "/";
-    			attr_dev(button, "class", "svelte-ttoonb");
+    			attr_dev(button, "class", "svelte-z5nrg5");
     			add_location(button, file$2, 27, 4, 652);
-    			attr_dev(p, "class", "svelte-ttoonb");
+    			attr_dev(p, "class", "svelte-z5nrg5");
     			add_location(p, file$2, 31, 5, 753);
     		},
     		m: function mount(target, anchor) {
@@ -12476,9 +12476,9 @@ var app = (function () {
     			}
 
     			each_1_anchor = empty$1();
-    			attr_dev(button, "class", "svelte-ttoonb");
+    			attr_dev(button, "class", "svelte-z5nrg5");
     			add_location(button, file$2, 8, 4, 194);
-    			attr_dev(p, "class", "svelte-ttoonb");
+    			attr_dev(p, "class", "svelte-z5nrg5");
     			add_location(p, file$2, 12, 5, 295);
     		},
     		m: function mount(target, anchor) {
@@ -12563,9 +12563,9 @@ var app = (function () {
     			t0 = text(t0_value);
     			p = element("p");
     			p.textContent = "/";
-    			attr_dev(button, "class", "svelte-ttoonb");
+    			attr_dev(button, "class", "svelte-z5nrg5");
     			add_location(button, file$2, 14, 6, 365);
-    			attr_dev(p, "class", "svelte-ttoonb");
+    			attr_dev(p, "class", "svelte-z5nrg5");
     			add_location(p, file$2, 24, 7, 614);
     		},
     		m: function mount(target, anchor) {
@@ -12616,7 +12616,7 @@ var app = (function () {
     		c: function create() {
     			section = element("section");
     			if_block.c();
-    			attr_dev(section, "class", "path-grid svelte-ttoonb");
+    			attr_dev(section, "class", "path-grid svelte-z5nrg5");
     			add_location(section, file$2, 6, 0, 143);
     		},
     		l: function claim(nodes) {

@@ -53,6 +53,7 @@
     font-family: "Roboto", sans-serif;
     font-size: 1.5rem;
     color: var(--name-font-color);
+    white-space: nowrap;
   }
 
   p {
