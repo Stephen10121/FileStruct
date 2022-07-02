@@ -11,17 +11,19 @@
 </script>
 
 <div class="prompt" id="coverPrompt" on:click={divClick}>
-  <form on:submit|preventDefault={(e) => promptEvent(e, promptExtra)}>
-    <input type="text" placeholder={promptPlaceholder} />
-    <button type="submit">Submit</button>
-  </form>
-  <button class="close" on:click={() => promptEvent(false, promptExtra)}
-    >&#10006;</button
-  >
+  <div class="prompt-color">
+    <form on:submit|preventDefault={(e) => promptEvent(e, promptExtra)}>
+      <input type="text" placeholder={promptPlaceholder} />
+      <button type="submit">Submit</button>
+    </form>
+    <button class="close" on:click={() => promptEvent(false, promptExtra)}>
+      &#10006;
+    </button>
+  </div>
 </div>
 
 <style>
-  div {
+  .prompt {
     position: fixed;
     width: 100vw;
     height: 100vh;
@@ -31,9 +33,16 @@
     z-index: 101;
   }
 
-  form {
+  .prompt-color {
+    box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
     width: 60%;
     height: 60px;
+    display: grid;
+    grid-template-columns: auto 60px;
+    border-radius: 10px;
+  }
+
+  form {
     background-color: white;
     border-top-left-radius: 10px;
     border-bottom-left-radius: 10px;
