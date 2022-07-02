@@ -9,7 +9,7 @@ const cookieParser = require("cookie-parser");
 const { userLogin, getUserData, saveProfile, checkUserSharing } = require("./database");
 const PORT = process.env.SERVER_PORT || 5700;
 const jwt = require('jsonwebtoken');
-const { hashed, addFolder, renameFolder } = require('./functions');
+const { hashed, addFolder, renameFolder, deleteFolder } = require('./functions');
 const app = express();
 
 app.use((req, res, next) => {
@@ -200,6 +200,29 @@ app.post("/renameFolder", async (req, res) => {
             return;
         }
         res.json({ msg: renamedFolder });
+    });
+});
+
+app.post("/deleteFolder", async (req, res) => {
+    if (!req.query["location"] || !req.query["cred"]) {
+        res.json({ msg: "Missing arguments"});
+        return;
+    }
+    jwt.verify(req.query.cred, process.env.ACCESS_TOKEN_SECRET, async (err, user) => {
+        if (err) {
+            return res.status(400).json({ msg: 'Invalid input' });
+        }
+        const userif = await getUserData(user.usersHash);
+        if (userif == "error") {
+            return res.status(400).json({ msg: 'Invalid input' });
+        }
+        const deletedFolder = await deleteFolder(req.query.location, user.usersName);
+        if (deletedFolder === 200) {
+            const files = await getFiles(`./storage/${hashed(user.usersName)}/home`);
+            res.json({ msg: "Good", files });
+            return;
+        }
+        res.json({ msg: deletedFolder });
     });
 });
 

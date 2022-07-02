@@ -57,6 +57,7 @@
     {selected}
     on:new-folder
     on:rename-folder
+    on:delete-folder
     on:close-right={hideRightClick}
   />
 </section>

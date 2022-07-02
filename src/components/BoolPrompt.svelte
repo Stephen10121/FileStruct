@@ -1,6 +1,7 @@
 <script>
   import { createEventDispatcher } from "svelte";
   const dispatch = createEventDispatcher();
+  export let extra;
 </script>
 
 <div class="boolPrompt">
@@ -9,13 +10,13 @@
     <button
       class="yes"
       on:click={() => {
-        dispatch("boolChoose", true);
+        dispatch("boolChoose", { choose: true, extra });
       }}>Yes</button
     >
     <button
       class="no"
       on:click={() => {
-        dispatch("boolChoose", false);
+        dispatch("boolChoose", { choose: false, extra });
       }}>No</button
     >
   </div>

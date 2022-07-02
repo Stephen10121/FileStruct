@@ -17,6 +17,11 @@
     dispatch("rename-folder", selected);
     dispatch("close-right", true);
   };
+
+  const deleteFolder = () => {
+    dispatch("delete-folder", selected);
+    dispatch("close-right", true);
+  };
 </script>
 
 <section class="right-click">
@@ -55,7 +60,7 @@
     icon="/icons/trash.svg"
     alt="Delete"
     nonSelectable={!selected ? true : false}
-    on:clicked={click}
+    on:clicked={deleteFolder}
   >
     Delete
   </Option>

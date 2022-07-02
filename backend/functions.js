@@ -59,7 +59,7 @@ const renameFolder = async (location, name, id) => {
   if (location === " ") {
     fileLocation2+=name;
   } else {
-    fileLocation2+=`${location.split().slice(0, -1).join("/")}/${name}`;
+    fileLocation2+=`${location.split("/").slice(0, -1).join("/")}/${name}`;
   }
   try {
     await fs.promises.rename(fileLocation, fileLocation2);
@@ -70,10 +70,25 @@ const renameFolder = async (location, name, id) => {
   return 200;
 }
 
+const deleteFolder = async (location, id) => {
+  let fileLocation = `./storage/${hashed(id)}/home/`;
+  if (location !== " ") {
+    fileLocation+=`${location}`;
+  }
+  try {
+    await fs.promises.rmdir(fileLocation, { recursive: true });
+  } catch (err) {
+    console.error(err);
+    return "Error deleting folder.";
+  }
+  return 200;
+}
+
 module.exports = {
     createHash,
     hashed,
     copyRecursiveSync,
     addFolder,
-    renameFolder
+    renameFolder,
+    deleteFolder
 }

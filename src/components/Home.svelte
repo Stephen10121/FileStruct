@@ -5,12 +5,14 @@
   import FolderPart from "./FolderPart.svelte";
   import LocationPath from "./LocationPath.svelte";
   import Prompt from "./Prompt.svelte";
+  import BoolPrompt from "./BoolPrompt.svelte";
   import { getCookie } from "../cookie";
 
   export let userData;
   export let PROXY;
 
   let selected = "none";
+  $: selected;
   let currentFolderPathFiles = "";
   let notification = null;
   let folderStruct = {};
@@ -18,6 +20,7 @@
   let promptExtra = "jeff";
   let promptPlaceholder;
   let promptEvent;
+  let boolPrompt = false;
 
   fetch(`${PROXY}fetchFiles?cred=${getCookie("G_VAR2")}`)
     .then((response) => response.json())
@@ -97,6 +100,44 @@
             status: "success",
             msg: `Renamed folder to '${e.target[0].value}'`,
           };
+          newLoc({
+            detail:
+              selected.split("/").slice(0, -1).join("/") + e.target[0].value,
+          });
+        } else {
+          notification = {
+            status: "alert",
+            msg: data.msg,
+          };
+        }
+      });
+  };
+
+  const deleteFolder = ({ detail }) => {
+    boolPrompt = false;
+    if (!detail.choose) {
+      return;
+    }
+    fetch(
+      `${PROXY}deleteFolder?cred=${getCookie("G_VAR2")}&location=${
+        detail.extra
+      }`,
+      { method: "POST" }
+    )
+      .then((response) => response.json())
+      .then((data) => {
+        if (data.msg === "Good") {
+          folderStruct = data.files;
+          notification = {
+            status: "success",
+            msg: `Deleted folder: '${detail.extra.split("/").reverse()[0]}'`,
+          };
+          newLoc({
+            detail:
+              selected.split("/").slice(0, -1).join("/") === ""
+                ? null
+                : selected.split("/").slice(0, -1).join("/"),
+          });
         } else {
           notification = {
             status: "alert",
@@ -119,8 +160,21 @@
     promptPlaceholder = "Folder Name";
     showPrompt = true;
   };
+
+  const deleteFolderPrompt = ({ detail }) => {
+    boolPrompt = {
+      msg: "Delete Folder?",
+      extra: detail,
+      callback: deleteFolder,
+    };
+  };
 </script>
 
+{#if boolPrompt}
+  <BoolPrompt extra={boolPrompt.extra} on:boolChoose={boolPrompt.callback}
+    >{boolPrompt.msg}</BoolPrompt
+  >
+{/if}
 {#if showPrompt}
   <Prompt {promptPlaceholder} {promptEvent} {promptExtra} />
 {/if}
@@ -141,6 +195,7 @@
     on:folderClicked={newLoc}
     on:rename-folder={renameFolderPrompt}
     on:new-folder={newFolderPrompt}
+    on:delete-folder={deleteFolderPrompt}
   />
   <section class="file-part">
     <LocationPath {selected} on:change-dir={newLoc} />
