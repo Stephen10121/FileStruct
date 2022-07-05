@@ -6,6 +6,7 @@
   import LocationPath from "./LocationPath.svelte";
   import Prompt from "./Prompt.svelte";
   import BoolPrompt from "./BoolPrompt.svelte";
+  import MoveTo from "./MoveTo.svelte";
   import { getCookie } from "../cookie";
 
   export let userData;
@@ -21,6 +22,8 @@
   let promptPlaceholder;
   let promptEvent;
   let boolPrompt = false;
+  let excludeFolder = null;
+  let moveFolder = false;
 
   fetch(`${PROXY}fetchFiles?cred=${getCookie("G_VAR2")}`)
     .then((response) => response.json())
@@ -147,6 +150,32 @@
       });
   };
 
+  const moveHere = ({ detail }) => {
+    console.log(detail, selected);
+    fetch(
+      `${PROXY}moveFolder?cred=${getCookie(
+        "G_VAR2"
+      )}&location=${selected}&dest=${detail}`,
+      { method: "POST" }
+    )
+      .then((response) => response.json())
+      .then((data) => {
+        if (data.msg === "Good") {
+          folderStruct = data.files;
+          notification = {
+            status: "success",
+            msg: `Moved folder!`,
+          };
+          newLoc({ detail });
+        } else {
+          notification = {
+            status: "alert",
+            msg: data.msg,
+          };
+        }
+      });
+  };
+
   const renameFolderPrompt = ({ detail }) => {
     promptExtra = detail;
     promptEvent = renameFolder;
@@ -168,8 +197,23 @@
       callback: deleteFolder,
     };
   };
+
+  const moveFolderPrompt = ({ detail }) => {
+    moveFolder = true;
+    excludeFolder = detail;
+  };
 </script>
 
+{#if moveFolder}
+  <MoveTo
+    {folderStruct}
+    exclude={excludeFolder}
+    on:close-move={() => {
+      moveFolder = false;
+    }}
+    on:move-here={moveHere}
+  />
+{/if}
 {#if boolPrompt}
   <BoolPrompt extra={boolPrompt.extra} on:boolChoose={boolPrompt.callback}
     >{boolPrompt.msg}</BoolPrompt
@@ -195,6 +239,7 @@
     on:folderClicked={newLoc}
     on:rename-folder={renameFolderPrompt}
     on:new-folder={newFolderPrompt}
+    on:move-folder={moveFolderPrompt}
     on:delete-folder={deleteFolderPrompt}
   />
   <section class="file-part">

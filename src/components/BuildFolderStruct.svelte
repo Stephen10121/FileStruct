@@ -5,6 +5,7 @@
   import FolderFilter from "./FolderFilter.svelte";
   export let folders;
   export let selected;
+  export let exclude;
   $: folders;
 
   const dispatch = createEventDispatcher();
@@ -20,6 +21,7 @@
     {#if startFolder !== "G_files"}
       {#if (Object.keys(folders[startFolder]).length === 0) | (Object.keys(folders[startFolder]).length === 1 && Object.keys(folders[startFolder])[0] === "G_files")}
         <FolderButton
+          {exclude}
           {selected}
           folderName={startFolder}
           location={startFolder}
@@ -33,6 +35,7 @@
         >
       {:else}
         <FolderWSButton
+          {exclude}
           {selected}
           folderName={startFolder}
           location={startFolder}
@@ -48,6 +51,7 @@
           <span slot="subfolders"
             ><FolderFilter
               {selected}
+              {exclude}
               on:folderClicked
               path={startFolder}
               currentFolder={folders[startFolder]}
@@ -62,7 +66,7 @@
 
 <style>
   ul {
-    width: 300px;
+    width: 100%;
     height: 100%;
     padding-left: 10px;
     background-color: var(--folder-section-color);

@@ -1,5 +1,6 @@
 const crypto = require("crypto");
 const fs = require("fs");
+const fse = require("fs-extra");
 const path = require("path");
 
 function createHash() {
@@ -84,11 +85,24 @@ const deleteFolder = async (location, id) => {
   return 200;
 }
 
+const moveFolder = async (location, id, dest) => {
+  let fileLocation = `./storage/${hashed(id)}/home/${location}`;
+  let fileDestination = `./storage/${hashed(id)}/home/${dest}/${location.split("/").reverse()[0]}`;
+  try {
+    await fse.move(fileLocation, fileDestination);
+  } catch (err) {
+    console.log(err);
+    return "Error moving folder";
+  }
+  return 200;
+}
+
 module.exports = {
     createHash,
     hashed,
     copyRecursiveSync,
     addFolder,
     renameFolder,
-    deleteFolder
+    deleteFolder,
+    moveFolder
 }

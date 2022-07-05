@@ -3,6 +3,7 @@
   export let location;
   export let folderName;
   export let selected;
+  export let exclude;
   let showSub = false;
 
   const dispatch = createEventDispatcher();
@@ -11,26 +12,28 @@
   };
 </script>
 
-<li id={location + folderName}
-  ><button
-    class="tributton {showSub ? 'rotateButton' : null}"
-    on:click={() => {
-      showSub = !showSub;
-    }}
+{#if exclude !== location}
+  <li id={location + folderName}
+    ><button
+      class="tributton {showSub ? 'rotateButton' : null}"
+      on:click={() => {
+        showSub = !showSub;
+      }}
+    >
+      <img src="icons/triangle.svg" alt="" />
+    </button>
+    <button
+      class="selectButton {selected === location ? 'buttonSelected' : null}"
+      on:click={clickFolder}
+    >
+      <img src="folder.png" alt="Folder Img" /><p><slot name="folderName" /></p>
+    </button></li
   >
-    <img src="icons/triangle.svg" alt="" />
-  </button>
-  <button
-    class="selectButton {selected === location ? 'buttonSelected' : null}"
-    on:click={clickFolder}
-  >
-    <img src="folder.png" alt="Folder Img" /><p><slot name="folderName" /></p>
-  </button></li
->
-{#if showSub}
-  <ul class="subfolder">
-    <slot class="subfolderspan" name="subfolders" />
-  </ul>
+  {#if showSub}
+    <ul class="subfolder">
+      <slot class="subfolderspan" name="subfolders" />
+    </ul>
+  {/if}
 {/if}
 
 <style>

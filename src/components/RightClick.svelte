@@ -22,6 +22,11 @@
     dispatch("delete-folder", selected);
     dispatch("close-right", true);
   };
+
+  const moveFolder = () => {
+    dispatch("move-folder", selected);
+    dispatch("close-right", true);
+  };
 </script>
 
 <section class="right-click">
@@ -45,7 +50,7 @@
     icon="/icons/move.svg"
     nonSelectable={!selected ? true : false}
     alt="Move icon"
-    on:clicked={click}
+    on:clicked={moveFolder}
     ident="move">Move</Option
   >
   <Option

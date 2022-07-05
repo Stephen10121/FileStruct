@@ -3,6 +3,7 @@
   export let location;
   export let folderName;
   export let selected;
+  export let exclude;
 
   const dispatch = createEventDispatcher();
   const clickFolder = () => {
@@ -10,17 +11,19 @@
   };
 </script>
 
-<li id={location + folderName}>
-  <button class="tributton">
-    <img src="icons/triangle.svg" alt="" />
-  </button>
-  <button
-    class="selectButton {selected === location ? 'buttonSelected' : null}"
-    on:click={clickFolder}
-  >
-    <img src="folder.png" alt="Folder Img" /><p><slot /></p>
-  </button>
-</li>
+{#if exclude !== location}
+  <li id={location + folderName}>
+    <button class="tributton">
+      <img src="icons/triangle.svg" alt="" />
+    </button>
+    <button
+      class="selectButton {selected === location ? 'buttonSelected' : null}"
+      on:click={clickFolder}
+    >
+      <img src="folder.png" alt="Folder Img" /><p><slot /></p>
+    </button>
+  </li>
+{/if}
 
 <style>
   li {

@@ -58,6 +58,7 @@
     on:new-folder
     on:rename-folder
     on:delete-folder
+    on:move-folder
     on:close-right={hideRightClick}
   />
 </section>
@@ -82,7 +83,12 @@
   <section class="name-section">
     <p>{userData.usersRName}</p>
   </section>
-  <BuildFolderStruct folders={folderStruct} on:folderClicked {selected} />
+  <BuildFolderStruct
+    folders={folderStruct}
+    on:folderClicked
+    {selected}
+    exclude={false}
+  />
 </section>
 
 <style>
