@@ -67,7 +67,7 @@ node server.js
 
 - [ ] Share Folder.
 - [ ] Share File.
-- [ ] Move Folder.
+- [x] Move Folder.
 - [ ] Move File.
 - [x] Rename Folder.
 - [ ] Rename File.

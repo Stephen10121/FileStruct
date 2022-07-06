@@ -97,6 +97,11 @@ const moveFolder = async (location, id, dest) => {
   return 200;
 }
 
+const shareFolder = async (location, id, user) => {
+  console.log(location, id ,user);
+  return "Feature not implemented yet!";
+}
+
 module.exports = {
     createHash,
     hashed,
@@ -104,5 +109,6 @@ module.exports = {
     addFolder,
     renameFolder,
     deleteFolder,
-    moveFolder
+    moveFolder,
+    shareFolder
 }

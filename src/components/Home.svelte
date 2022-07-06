@@ -24,7 +24,7 @@
   let boolPrompt = false;
   let excludeFolder = null;
   let moveFolder = false;
-
+  console.log(userData);
   fetch(`${PROXY}fetchFiles?cred=${getCookie("G_VAR2")}`)
     .then((response) => response.json())
     .then((data) => {
@@ -116,6 +116,34 @@
       });
   };
 
+  const shareFolder = (e, extra) => {
+    if (!e) {
+      showPrompt = false;
+      return;
+    }
+    showPrompt = false;
+    fetch(
+      `${PROXY}shareFolder?cred=${getCookie("G_VAR2")}&location=${extra}&user=${
+        e.target[0].value
+      }`,
+      { method: "POST" }
+    )
+      .then((response) => response.json())
+      .then((data) => {
+        if (data.msg === "Good") {
+          notification = {
+            status: "success",
+            msg: `Shared folder: '${extra.split("/").reverse()[0]}'`,
+          };
+        } else {
+          notification = {
+            status: "alert",
+            msg: data.msg,
+          };
+        }
+      });
+  };
+
   const deleteFolder = ({ detail }) => {
     boolPrompt = false;
     if (!detail.choose) {
@@ -151,7 +179,6 @@
   };
 
   const moveHere = ({ detail }) => {
-    console.log(detail, selected);
     fetch(
       `${PROXY}moveFolder?cred=${getCookie(
         "G_VAR2"
@@ -202,6 +229,13 @@
     moveFolder = true;
     excludeFolder = detail;
   };
+
+  const shareFolderPrompt = ({ detail }) => {
+    promptExtra = detail;
+    promptEvent = shareFolder;
+    promptPlaceholder = "Share to";
+    showPrompt = true;
+  };
 </script>
 
 {#if moveFolder}
@@ -241,6 +275,7 @@
     on:new-folder={newFolderPrompt}
     on:move-folder={moveFolderPrompt}
     on:delete-folder={deleteFolderPrompt}
+    on:share-folder={shareFolderPrompt}
   />
   <section class="file-part">
     <LocationPath {selected} on:change-dir={newLoc} />

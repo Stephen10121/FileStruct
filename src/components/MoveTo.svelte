@@ -62,9 +62,10 @@
     width: 40%;
     height: 60%;
     background-color: white;
-    border-radius: 10px;
+    /* border-radius: 10px; */
     overflow: hidden;
     cursor: default;
+    box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
   }
 
   .buttons {

@@ -27,6 +27,11 @@
     dispatch("move-folder", selected);
     dispatch("close-right", true);
   };
+
+  const shareFolder = () => {
+    dispatch("share-folder", selected);
+    dispatch("close-right", true);
+  };
 </script>
 
 <section class="right-click">
@@ -42,7 +47,7 @@
   <Option
     icon="/icons/share.svg"
     alt="Share icon"
-    on:clicked={click}
+    on:clicked={shareFolder}
     nonSelectable={!selected ? true : false}
     ident="share">Share</Option
   >

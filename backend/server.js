@@ -9,7 +9,7 @@ const cookieParser = require("cookie-parser");
 const { userLogin, getUserData, saveProfile, checkUserSharing } = require("./database");
 const PORT = process.env.SERVER_PORT || 5700;
 const jwt = require('jsonwebtoken');
-const { hashed, addFolder, renameFolder, deleteFolder, moveFolder } = require('./functions');
+const { hashed, addFolder, renameFolder, deleteFolder, moveFolder, shareFolder } = require('./functions');
 const app = express();
 
 app.use((req, res, next) => {
@@ -246,6 +246,28 @@ app.post("/moveFolder", async (req, res) => {
             return;
         }
         res.json({ msg: movedFolder });
+    });
+});
+
+app.post("/shareFolder", async (req, res) => {
+    if (!req.query["location"] || !req.query["cred"] || !req.query["user"]) {
+        res.json({ msg: "Missing arguments"});
+        return;
+    }
+    jwt.verify(req.query.cred, process.env.ACCESS_TOKEN_SECRET, async (err, user) => {
+        if (err) {
+            return res.status(400).json({ msg: 'Invalid input' });
+        }
+        const userif = await getUserData(user.usersHash);
+        if (userif == "error") {
+            return res.status(400).json({ msg: 'Invalid input' });
+        }
+        const sharedFolder = await shareFolder(req.query.location, user.usersName, req.query.user);
+        if (sharedFolder === 200) {
+            res.json({ msg: "Good" });
+            return;
+        }
+        res.json({ msg: sharedFolder });
     });
 });
 

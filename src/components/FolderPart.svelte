@@ -59,6 +59,7 @@
     on:rename-folder
     on:delete-folder
     on:move-folder
+    on:share-folder
     on:close-right={hideRightClick}
   />
 </section>
