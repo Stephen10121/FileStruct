@@ -25,7 +25,7 @@
   let boolPrompt = false;
   let excludeFolder = null;
   let moveFolder = false;
-  let settings = true;
+  let settings = false;
   let usedSize = "N/A";
 
   console.log(userData);
