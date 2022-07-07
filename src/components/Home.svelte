@@ -9,6 +9,7 @@
   import MoveTo from "./MoveTo.svelte";
   import Settings from "./Settings.svelte";
   import { getCookie } from "../cookie";
+  import { fileExtension } from "../../scripts/stores";
 
   export let userData;
   export let PROXY;
@@ -27,8 +28,18 @@
   let moveFolder = false;
   let settings = false;
   let usedSize = "N/A";
-
+  let fileExtensionValue;
+  fileExtension.subscribe((value) => {
+    fileExtensionValue = value;
+  });
   console.log(userData);
+
+  if (window.localStorage.getItem("fileExtension")) {
+    fileExtension.update((n) =>
+      window.localStorage.getItem("fileExtension") === "true" ? true : false
+    );
+  }
+
   fetch(`${PROXY}fetchFiles?cred=${getCookie("G_VAR2")}`)
     .then((response) => response.json())
     .then((data) => {

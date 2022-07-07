@@ -1,7 +1,9 @@
 <script>
   import { createEventDispatcher } from "svelte";
+  import { fileExtension } from "../../scripts/stores";
   const dispatch = createEventDispatcher();
   export let usedSize;
+  let fileExtensionValue;
   const sendClose = () => {
     dispatch("close-settings", true);
   };
@@ -11,6 +13,15 @@
       sendClose();
     }
   };
+
+  fileExtension.subscribe((value) => {
+    fileExtensionValue = value;
+  });
+
+  const changeFileExt = () => {
+    fileExtension.update((n) => !n);
+    window.localStorage.setItem("fileExtension", String(fileExtensionValue));
+  };
 </script>
 
 <div class="box" id="boxDetect" on:click={close}>
@@ -18,7 +29,13 @@
     <button class="close-button" on:click={sendClose}>&#10006;</button>
     <div class="section">
       <label for="showExt">Show file extentions.</label>
-      <input type="checkbox" id="showExt" class="checkbox" />
+      <input
+        type="checkbox"
+        id="showExt"
+        class="checkbox"
+        checked={fileExtensionValue}
+        on:change={changeFileExt}
+      />
     </div>
     <p class="size">
       <span>Size:</span>

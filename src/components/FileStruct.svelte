@@ -1,14 +1,22 @@
 <script>
   import File from "./File.svelte";
+  import { fileExtension } from "../../scripts/stores";
   export let files;
   export let selected;
   export let PROXY;
+  let fileExtensionValue;
+
+  fileExtension.subscribe((value) => {
+    fileExtensionValue = value;
+  });
 </script>
 
 <ul>
   {#each files as file}
     <File {selected} {PROXY} file={file.name} metadata={file.metadata}>
-      {file.name}
+      {fileExtensionValue
+        ? file.name
+        : file.name.split(".").slice(0, -1).join(".")}
     </File>
   {/each}
 </ul>

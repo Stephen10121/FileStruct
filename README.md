@@ -73,7 +73,7 @@ node server.js
 - [ ] Rename File.
 - [x] Delete Folder.
 - [ ] Delete File.
-- [ ] Settings Page.
+- [x] Settings Page.
 - [ ] Profile Page.
 - [ ] Shared Page.
 - [ ] Upload File.
