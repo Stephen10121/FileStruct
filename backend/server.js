@@ -75,7 +75,7 @@ app.get("/fetchFiles", async (req, res) => {
             return res.status(400).json({ msg: 'Invalid input' });
         }
         const files = await getFiles(`./storage/${hashed(user.usersName)}/home`);
-        res.json({ msg: "Good", files });
+        res.json({ msg: "Good", files: files.files , fileSize: String(Math.floor(files.fileSize/10000)/100)+"Mb"});
     });
 });
 
@@ -92,7 +92,7 @@ app.get("/fetchSharedFiles", async (req, res) => {
             return res.status(400).json({ msg: 'Invalid input' });
         }
         const files = await getFiles(`./storage/${hashed(user.usersName)}/shared`);
-        res.json({ msg: "Good", files });
+            res.json({ msg: "Good", files: files.files , fileSize: files.fileSize });;
     });
 });
 
@@ -173,7 +173,7 @@ app.post("/addFolder", async (req, res) => {
         const addedFolder = await addFolder(req.query.location, req.query.name, user.usersName);
         if (addedFolder === 200) {
             const files = await getFiles(`./storage/${hashed(user.usersName)}/home`);
-            res.json({ msg: "Good", files });
+            res.json({ msg: "Good", files: files.files , fileSize: files.fileSize });
             return;
         }
         res.json({ msg: addedFolder });
@@ -196,7 +196,7 @@ app.post("/renameFolder", async (req, res) => {
         const renamedFolder = await renameFolder(req.query.location, req.query.name, user.usersName);
         if (renamedFolder === 200) {
             const files = await getFiles(`./storage/${hashed(user.usersName)}/home`);
-            res.json({ msg: "Good", files });
+            res.json({ msg: "Good", files: files.files, fileSize: files.fileSize });
             return;
         }
         res.json({ msg: renamedFolder });
@@ -219,7 +219,7 @@ app.post("/deleteFolder", async (req, res) => {
         const deletedFolder = await deleteFolder(req.query.location, user.usersName);
         if (deletedFolder === 200) {
             const files = await getFiles(`./storage/${hashed(user.usersName)}/home`);
-            res.json({ msg: "Good", files });
+            res.json({ msg: "Good", files: files.files, fileSize: files.fileSize });
             return;
         }
         res.json({ msg: deletedFolder });
@@ -242,7 +242,7 @@ app.post("/moveFolder", async (req, res) => {
         const movedFolder = await moveFolder(req.query.location, user.usersName, req.query.dest);
         if (movedFolder === 200) {
             const files = await getFiles(`./storage/${hashed(user.usersName)}/home`);
-            res.json({ msg: "Good", files });
+            res.json({ msg: "Good", files: files.files, fileSize: files.fileSize });
             return;
         }
         res.json({ msg: movedFolder });

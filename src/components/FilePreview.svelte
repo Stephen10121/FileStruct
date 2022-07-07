@@ -74,7 +74,7 @@
       </video>
     {:else}
       <div id="previewBoxView" class="previewBoxView">
-        <p>{fileData}</p>
+        <pre>{fileData}</pre>
       </div>
     {/if}
   </div>
@@ -163,9 +163,9 @@
     border-radius: 10px;
   }
 
-  .previewBoxView p {
+  .previewBoxView pre {
     font-size: 2rem;
-    color: #b2c0aa;
+    color: #bfc9ba;
     font-family: "Roboto";
   }
 

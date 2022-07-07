@@ -4,10 +4,6 @@
   import Option from "./Option.svelte";
   export let selected;
 
-  const click = (e) => {
-    console.log(e.detail, selected);
-  };
-
   const newFolder = (e) => {
     dispatch("new-folder", { selected, det: e.detail });
     dispatch("close-right", true);
@@ -30,6 +26,11 @@
 
   const shareFolder = () => {
     dispatch("share-folder", selected);
+    dispatch("close-right", true);
+  };
+
+  const settings = () => {
+    dispatch("settings", true);
     dispatch("close-right", true);
   };
 </script>
@@ -80,7 +81,7 @@
     icon="/icons/gear.svg"
     alt="Settings"
     nonSelectable={false}
-    on:clicked={click}
+    on:clicked={settings}
   >
     Settings
   </Option>
