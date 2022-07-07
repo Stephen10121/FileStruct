@@ -2,33 +2,42 @@ const fs = require('fs');
 const fs2 = require('fs').promises;
 
 async function getTFiles(directoryPath) {
+    let size = 0;
     let allFiles = {
         G_files: []
     }
     const files = await fs.promises.readdir(directoryPath, { withFileTypes: true });
     for (const item of files) {
         if (item.isDirectory()) {
-            allFiles[item.name] = await getFiles(`${directoryPath}/${item.name}`)
+            const {files, fileSize} = await getFiles(`${directoryPath}/${item.name}`);
+            allFiles[item.name] = files;
+            size += fileSize;
         } else {
             const currentFileInfo = await fileInfo(`${directoryPath}/${item.name}`);
+            size += currentFileInfo.size;
             allFiles.G_files.push({ name: item.name, metadata: currentFileInfo });
         }
     }
-    return allFiles;
+    return {allFiles, size};
 }
 
 const getFiles = async (directoryPath) => {
-    fs.access(directoryPath, (error) => {
-        if (error) {
-            fs.mkdir(directoryPath, { recursive: true }, (err) => {
-                if (err) {
-                    throw err;
-                }
-                return getTFiles(directoryPath);
-            });
+    let size = 0
+    try {
+        await fs.promises.access(directoryPath);
+    } catch (err) {
+        try {
+            await fs.promises.mkdir(directoryPath);
+            const tfiles = await getTFiles(directoryPath);
+            size += tfiles.size;
+            return {files: tfiles.allFiles, fileSize: size};
+        } catch (err) {
+            throw err;
         }
-    });
-    return getTFiles(directoryPath);
+    }
+    const tfiles = await getTFiles(directoryPath);
+    size += tfiles.size;
+    return {files: tfiles.allFiles, fileSize: size};
 }
 
 const fileInfo = async (fileLocation) => {

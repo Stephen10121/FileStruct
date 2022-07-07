@@ -21,8 +21,7 @@ const copyRecursiveSync = (src, dest) => {
     if (isDirectory) {
       fs.mkdirSync(dest);
       fs.readdirSync(src).forEach(function(childItemName) {
-        copyRecursiveSync(path.join(src, childItemName),
-                          path.join(dest, childItemName));
+        copyRecursiveSync(path.join(src, childItemName), path.join(dest, childItemName));
       });
     } else {
       fs.copyFileSync(src, dest);

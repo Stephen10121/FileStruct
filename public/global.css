@@ -29,7 +29,9 @@ body {
 	--name-section-color: rgb(34, 35, 37);
 	--name-font-color: rgb(172, 172, 172);
 	--side-folder-color: rgb(14, 18, 24);
+	--side-folder-text-color: rgb(223, 223, 223);
 	--rotate-deg: 90deg;
+	--checkbox-timing: 0.25s;
 }
 
 

@@ -60,6 +60,7 @@
     on:delete-folder
     on:move-folder
     on:share-folder
+    on:settings
     on:close-right={hideRightClick}
   />
 </section>

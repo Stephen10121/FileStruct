@@ -7,6 +7,7 @@
   import Prompt from "./Prompt.svelte";
   import BoolPrompt from "./BoolPrompt.svelte";
   import MoveTo from "./MoveTo.svelte";
+  import Settings from "./Settings.svelte";
   import { getCookie } from "../cookie";
 
   export let userData;
@@ -24,12 +25,16 @@
   let boolPrompt = false;
   let excludeFolder = null;
   let moveFolder = false;
+  let settings = true;
+  let usedSize = "N/A";
+
   console.log(userData);
   fetch(`${PROXY}fetchFiles?cred=${getCookie("G_VAR2")}`)
     .then((response) => response.json())
     .then((data) => {
       console.log(data);
       folderStruct = data.files;
+      usedSize = data.fileSize;
       newLoc({ detail: null });
     });
 
@@ -238,6 +243,14 @@
   };
 </script>
 
+{#if settings}
+  <Settings
+    {usedSize}
+    on:close-settings={() => {
+      settings = false;
+    }}
+  />
+{/if}
 {#if moveFolder}
   <MoveTo
     {folderStruct}
@@ -276,6 +289,9 @@
     on:move-folder={moveFolderPrompt}
     on:delete-folder={deleteFolderPrompt}
     on:share-folder={shareFolderPrompt}
+    on:settings={() => {
+      settings = true;
+    }}
   />
   <section class="file-part">
     <LocationPath {selected} on:change-dir={newLoc} />
