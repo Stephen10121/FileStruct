@@ -1,5 +1,6 @@
 <script>
   import { Link } from "svelte-navigator";
+  import FileUpload from "./FileUpload.svelte";
 </script>
 
 <button
@@ -18,7 +19,10 @@
 
 <section class="sideFolder" id="sideFolder">
   <Link to="about">About page</Link>
-  <Link to="logout">Logout</Link>
+  <FileUpload />
+  <div class="logoutbox">
+    <Link to="logout" class="logout"><p class="logout">Logout</p></Link>
+  </div>
 </section>
 
 <style>
@@ -27,6 +31,11 @@
     height: 100vh;
     background-color: var(--side-folder-color);
     z-index: 150;
+    display: flex;
+    align-items: center;
+    justify-content: space-evenly;
+    flex-direction: column;
+    padding: 10px;
   }
   .slide-folder-button {
     position: fixed;
@@ -45,6 +54,28 @@
 
   .slide-folder-button img {
     width: 50%;
+  }
+
+  .logoutbox {
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .logout {
+    color: var(--file-color);
+    background-color: var(--folder-section-color);
+    padding: 10px;
+    width: 100%;
+    font-size: 1.25rem;
+    font-family: "Poppins", sans-serif;
+    border-radius: 5px;
+    transition: background-color 0.25s linear;
+  }
+
+  .logout:hover {
+    background-color: var(--file-section-color);
   }
 
   @media only screen and (max-width: 850px) {

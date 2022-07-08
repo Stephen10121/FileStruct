@@ -6,11 +6,41 @@ const path = require("path");
 const fs = require("fs");
 const { getFiles, readFile } = require("./dirGet");
 const cookieParser = require("cookie-parser");
+const multer = require("multer");
 const { userLogin, getUserData, saveProfile, checkUserSharing } = require("./database");
 const PORT = process.env.SERVER_PORT || 5700;
 const jwt = require('jsonwebtoken');
 const { hashed, addFolder, renameFolder, deleteFolder, moveFolder, shareFolder } = require('./functions');
 const app = express();
+const fileStorageEngine = multer.diskStorage({
+    destination: (req, file, cb) => {
+        console.log(req.query);
+        console.log(req.body);
+        console.log(req.data);
+        if (!req.body["user"]) {
+            cb("Missing Arguments", null);
+            return;
+        }
+        jwt.verify(req.query.cred, process.env.ACCESS_TOKEN_SECRET, async (err, user) => {
+            if (err) {
+                cb("Missing Arguments", `./storage/${hashed(user.usersName)}/home`);
+                return;
+            }
+            const userif = await getUserData(user.usersHash);
+            if (userif === "error") {
+                cb("Missing Arguments", `./storage/${hashed(user.usersName)}/home`);
+                return;
+            }
+            cb(null, `./storage/${hashed(user.usersName)}/home`);
+        });
+    },
+    filename: (req, file, cb) => {
+        cb(null, file.originalname);
+    }
+});
+const upload = multer({
+    storage: fileStorageEngine
+});
 
 app.use((req, res, next) => {
     // res.setHeader('Access-Control-Allow-Origin', "https://auth.gruzservices.com"); uncomment this in prod
@@ -29,6 +59,13 @@ const io = socketio(server, {
         allowEIO3: true
     }
   });
+
+
+app.post("/upload", upload.single("file"), async (req, res) => {
+    console.log(req.file)
+    console.log(req.body.user);
+    res.send("Success.")
+});
 
 app.post('/auth', async (req, res) => {
 console.log(req.body);
