@@ -1,8 +1,9 @@
 <script>
-  import { useNavigate } from "svelte-navigator";
   import NotLogged from "./NotLogged.svelte";
+  import Profile from "./Profile.svelte";
   import Home from "./Home.svelte";
   export let PROXY;
+  export let profile;
 
   let isLogged = false;
   let userData;
@@ -36,7 +37,11 @@
 </script>
 
 {#if isLogged}
-  <Home {userData} {PROXY} />
+  {#if profile}
+    <Profile {userData} {PROXY} />
+  {:else}
+    <Home {userData} {PROXY} />
+  {/if}
 {:else}
   <NotLogged on:userLoggedIn={loggedIn} {PROXY} />
 {/if}

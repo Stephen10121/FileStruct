@@ -1,6 +1,7 @@
 <script>
   import { Link } from "svelte-navigator";
   import FileUpload from "./FileUpload.svelte";
+  export let profile;
 </script>
 
 <button
@@ -18,8 +19,12 @@
 >
 
 <section class="sideFolder" id="sideFolder">
-  <Link to="about">About page</Link>
-  <FileUpload />
+  {#if profile}
+    <Link to="/">Home</Link>
+  {:else}
+    <Link to="/profile"><div title="Profile" class="profile" /></Link>
+    <FileUpload />
+  {/if}
   <div class="logoutbox">
     <Link to="logout" class="logout"><p class="logout">Logout</p></Link>
   </div>
@@ -35,7 +40,7 @@
     align-items: center;
     justify-content: space-evenly;
     flex-direction: column;
-    padding: 10px;
+    padding: 100px 10px;
   }
   .slide-folder-button {
     position: fixed;
@@ -76,6 +81,13 @@
 
   .logout:hover {
     background-color: var(--file-section-color);
+  }
+
+  .profile {
+    width: 70px;
+    height: 70px;
+    background-color: red;
+    border-radius: 50%;
   }
 
   @media only screen and (max-width: 850px) {

@@ -12,6 +12,9 @@
 </script>
 
 <ul>
+  {#if files.length === 0}
+    <p class="empty">No Files</p>
+  {/if}
   {#each files as file}
     <File {selected} {PROXY} file={file.name} metadata={file.metadata}>
       {fileExtensionValue
@@ -28,5 +31,17 @@
     height: 100%;
     overflow-y: auto;
     background-color: var(--file-section-color);
+    position: relative;
+  }
+
+  .empty {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    font-size: 3rem;
+    font-family: "Poppins", sans-serif;
+    color: var(--file-color);
+    user-select: none;
   }
 </style>
