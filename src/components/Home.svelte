@@ -59,7 +59,7 @@
   };
 
   const newLoc = ({ detail }) => {
-    if (detail === null) {
+    if (detail === null || !detail) {
       selected = false;
       currentFolderPathFiles =
         !folderStruct["G_files"].length === 0 ? [] : folderStruct.G_files;
