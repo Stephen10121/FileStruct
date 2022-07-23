@@ -115,6 +115,36 @@ app.post("/upload", async (req, res) => {
     });
 });
 
+app.get("/download", async (req, res) => {
+    console.log(req.query.file);
+    if (!req.query["file"] || !req.query["location"] || !req.query["cred"]) {
+        res.json({ msg: "Missing arguments", error: true });
+        return;
+    }
+    jwt.verify(req.query.cred, process.env.ACCESS_TOKEN_SECRET, async (err, user) => {
+        if (err) {
+            return res.json({ msg: 'Invalid input', status: 400, error: true });
+        }
+        const userif = await getUserData(user.usersHash);
+        if (userif == "error") {
+            return res.json({ msg: 'Invalid input', status: 400, error: true });
+        }
+        let where = "";
+        if (req.query.location !== "false") {
+            where = req.query.location + "/";
+        }
+        const location = `./storage/${hashed(userif.usersName)}/home/${where}${req.query.file}`;
+        try {
+            await fs.promises.access(location);
+        } catch (err) {
+            res.json({ msg: "Path or file doesnt exist.", error: true });
+            return;
+        }
+        console.log(location);
+        res.download(location);
+    });
+});
+
 app.post('/auth', async (req, res) => {
 console.log(req.body);
     const newData = req.body;

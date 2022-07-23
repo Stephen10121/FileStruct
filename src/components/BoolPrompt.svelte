@@ -36,6 +36,7 @@
     transform: translate(-50%, -50%);
     flex-direction: column;
     border-radius: 10px;
+    z-index: 161;
   }
 
   .boolPrompt p {

@@ -65,15 +65,15 @@ node server.js
 
 ## TODO
 
-- [ ] Share Folder.
-- [ ] Share File.
 - [x] Move Folder.
-- [ ] Move File.
 - [x] Rename Folder.
-- [ ] Rename File.
 - [x] Delete Folder.
-- [ ] Delete File.
 - [x] Settings Page.
+- [x] Upload File.
+- [ ] Move File.
+- [ ] Rename File.
+- [ ] Delete File.
 - [ ] Profile Page.
 - [ ] Shared Page.
-- [x] Upload File.
+- [ ] Share Folder.
+- [ ] Share File.

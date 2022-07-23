@@ -56,6 +56,7 @@
     cursor: pointer;
     flex-direction: column;
     gap: 10px;
+    z-index: 161;
   }
 
   .info {

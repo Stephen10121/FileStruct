@@ -11166,15 +11166,15 @@ var app = (function () {
     			t2 = space();
     			button1 = element("button");
     			button1.textContent = "No";
-    			attr_dev(p, "class", "svelte-3f2dei");
+    			attr_dev(p, "class", "svelte-xwb252");
     			add_location(p, file$d, 7, 2, 168);
-    			attr_dev(button0, "class", "yes svelte-3f2dei");
+    			attr_dev(button0, "class", "yes svelte-xwb252");
     			add_location(button0, file$d, 9, 4, 214);
-    			attr_dev(button1, "class", "no svelte-3f2dei");
+    			attr_dev(button1, "class", "no svelte-xwb252");
     			add_location(button1, file$d, 15, 4, 358);
-    			attr_dev(div0, "class", "buttons svelte-3f2dei");
+    			attr_dev(div0, "class", "buttons svelte-xwb252");
     			add_location(div0, file$d, 8, 2, 187);
-    			attr_dev(div1, "class", "boolPrompt svelte-3f2dei");
+    			attr_dev(div1, "class", "boolPrompt svelte-xwb252");
     			add_location(div1, file$d, 6, 0, 140);
     		},
     		l: function claim(nodes) {
@@ -11319,7 +11319,7 @@ var app = (function () {
     const { console: console_1$1 } = globals;
     const file_1 = "src\\components\\File.svelte";
 
-    // (28:0) {#if deleteFileCheck}
+    // (58:0) {#if deleteFileCheck}
     function create_if_block_3$1(ctx) {
     	let boolprompt;
     	let current;
@@ -11369,14 +11369,14 @@ var app = (function () {
     		block,
     		id: create_if_block_3$1.name,
     		type: "if",
-    		source: "(28:0) {#if deleteFileCheck}",
+    		source: "(58:0) {#if deleteFileCheck}",
     		ctx
     	});
 
     	return block;
     }
 
-    // (29:2) <BoolPrompt      on:boolChoose={(e) => {        deleteFileCheck = false;        console.log(e.detail);      }}>
+    // (59:2) <BoolPrompt      on:boolChoose={(e) => {        deleteFileCheck = false;        console.log(e.detail);      }}>
     function create_default_slot_1$3(ctx) {
     	let t0;
     	let span;
@@ -11390,7 +11390,7 @@ var app = (function () {
     			t1 = text(/*file*/ ctx[1]);
     			t2 = text("?");
     			attr_dev(span, "class", "bold svelte-hgci6t");
-    			add_location(span, file_1, 32, 14, 784);
+    			add_location(span, file_1, 62, 14, 1717);
     		},
     		m: function mount(target, anchor) {
     			insert_dev(target, t0, anchor);
@@ -11412,14 +11412,14 @@ var app = (function () {
     		block,
     		id: create_default_slot_1$3.name,
     		type: "slot",
-    		source: "(29:2) <BoolPrompt      on:boolChoose={(e) => {        deleteFileCheck = false;        console.log(e.detail);      }}>",
+    		source: "(59:2) <BoolPrompt      on:boolChoose={(e) => {        deleteFileCheck = false;        console.log(e.detail);      }}>",
     		ctx
     	});
 
     	return block;
     }
 
-    // (36:0) {#if showFileShare}
+    // (66:0) {#if showFileShare}
     function create_if_block_2$1(ctx) {
     	let fileshare;
     	let current;
@@ -11463,14 +11463,14 @@ var app = (function () {
     		block,
     		id: create_if_block_2$1.name,
     		type: "if",
-    		source: "(36:0) {#if showFileShare}",
+    		source: "(66:0) {#if showFileShare}",
     		ctx
     	});
 
     	return block;
     }
 
-    // (47:0) {#if notification !== null}
+    // (77:0) {#if notification !== null}
     function create_if_block_1$5(ctx) {
     	let toastnotification;
     	let current;
@@ -11522,14 +11522,14 @@ var app = (function () {
     		block,
     		id: create_if_block_1$5.name,
     		type: "if",
-    		source: "(47:0) {#if notification !== null}",
+    		source: "(77:0) {#if notification !== null}",
     		ctx
     	});
 
     	return block;
     }
 
-    // (48:2) <ToastNotification      type={notification.status}      on:close={() => {        notification = null;      }}>
+    // (78:2) <ToastNotification      type={notification.status}      on:close={() => {        notification = null;      }}>
     function create_default_slot$6(ctx) {
     	let t_value = /*notification*/ ctx[4].msg + "";
     	let t;
@@ -11553,14 +11553,14 @@ var app = (function () {
     		block,
     		id: create_default_slot$6.name,
     		type: "slot",
-    		source: "(48:2) <ToastNotification      type={notification.status}      on:close={() => {        notification = null;      }}>",
+    		source: "(78:2) <ToastNotification      type={notification.status}      on:close={() => {        notification = null;      }}>",
     		ctx
     	});
 
     	return block;
     }
 
-    // (56:2) {#if previewShow}
+    // (86:2) {#if previewShow}
     function create_if_block$9(ctx) {
     	let filepreview;
     	let current;
@@ -11614,7 +11614,7 @@ var app = (function () {
     		block,
     		id: create_if_block$9.name,
     		type: "if",
-    		source: "(56:2) {#if previewShow}",
+    		source: "(86:2) {#if previewShow}",
     		ctx
     	});
 
@@ -11675,29 +11675,29 @@ var app = (function () {
     			button3 = element("button");
     			img2 = element("img");
     			attr_dev(button0, "class", "svelte-hgci6t");
-    			add_location(button0, file_1, 67, 2, 1539);
+    			add_location(button0, file_1, 97, 2, 2472);
     			if (!src_url_equal(img0.src, img0_src_value = "icons/download.svg")) attr_dev(img0, "src", img0_src_value);
     			attr_dev(img0, "alt", "Download");
     			attr_dev(img0, "class", "svelte-hgci6t");
-    			add_location(img0, file_1, 70, 7, 1671);
+    			add_location(img0, file_1, 100, 7, 2604);
     			attr_dev(button1, "class", "svelte-hgci6t");
-    			add_location(button1, file_1, 69, 4, 1631);
+    			add_location(button1, file_1, 99, 4, 2564);
     			if (!src_url_equal(img1.src, img1_src_value = "icons/share.svg")) attr_dev(img1, "src", img1_src_value);
     			attr_dev(img1, "alt", "Share");
     			attr_dev(img1, "class", "svelte-hgci6t");
-    			add_location(img1, file_1, 73, 7, 1776);
+    			add_location(img1, file_1, 103, 7, 2709);
     			attr_dev(button2, "class", "svelte-hgci6t");
-    			add_location(button2, file_1, 72, 4, 1739);
+    			add_location(button2, file_1, 102, 4, 2672);
     			if (!src_url_equal(img2.src, img2_src_value = "icons/trash.svg")) attr_dev(img2, "src", img2_src_value);
     			attr_dev(img2, "alt", "Trash");
     			attr_dev(img2, "class", "svelte-hgci6t");
-    			add_location(img2, file_1, 76, 7, 1876);
+    			add_location(img2, file_1, 106, 7, 2809);
     			attr_dev(button3, "class", "svelte-hgci6t");
-    			add_location(button3, file_1, 75, 4, 1838);
+    			add_location(button3, file_1, 105, 4, 2771);
     			attr_dev(div, "class", "stuff svelte-hgci6t");
-    			add_location(div, file_1, 68, 2, 1606);
+    			add_location(div, file_1, 98, 2, 2539);
     			attr_dev(li, "class", "svelte-hgci6t");
-    			add_location(li, file_1, 54, 0, 1254);
+    			add_location(li, file_1, 84, 0, 2187);
     		},
     		l: function claim(nodes) {
     			throw new Error("options.hydrate only works if the component was compiled with the `hydratable: true` option");
@@ -11904,8 +11904,35 @@ var app = (function () {
     	let showFileShare = false;
     	let deleteFileCheck = false;
 
-    	const downloadFile = () => {
+    	const downloadFile = async () => {
     		console.log("Download");
+    		let res = await fetch(`${PROXY}download?file=${file}&location=${selected}&cred=${getCookie$2("G_VAR2")}`, { method: "GET" });
+
+    		try {
+    			// convert zip file to url object (for anchor tag download)
+    			let blob = await res.blob();
+
+    			var url = window.URL || window.webkitURL;
+    			let link = url.createObjectURL(blob);
+
+    			// generate anchor tag, click it for download and then remove it again
+    			let a = document.createElement("a");
+
+    			a.setAttribute("download", file);
+    			a.setAttribute("href", link);
+    			document.body.appendChild(a);
+    			a.click();
+    			document.body.removeChild(a);
+    		} catch(err) {
+    			const result = await res.json();
+
+    			if (result.error) {
+    				$$invalidate(4, notification = { msg: result.msg, status: "alert" });
+    				return;
+    			}
+
+    			return;
+    		}
     	};
 
     	const shareFile = () => {
@@ -11955,6 +11982,7 @@ var app = (function () {
     		FileShare,
     		ToastNotification,
     		BoolPrompt,
+    		getCookie: getCookie$2,
     		selected,
     		file,
     		metadata,
@@ -16231,7 +16259,7 @@ var app = (function () {
     		c: function create() {
     			button = element("button");
     			button.textContent = "Move Here.";
-    			attr_dev(button, "class", "move svelte-j7rebg");
+    			attr_dev(button, "class", "move svelte-13wro04");
     			add_location(button, file$2, 30, 6, 746);
     		},
     		m: function mount(target, anchor) {
@@ -16296,14 +16324,14 @@ var app = (function () {
     			t1 = space();
     			button = element("button");
     			button.textContent = "Cancel";
-    			attr_dev(div0, "class", "info svelte-j7rebg");
+    			attr_dev(div0, "class", "info svelte-13wro04");
     			add_location(div0, file$2, 20, 2, 504);
-    			attr_dev(button, "class", "cancel svelte-j7rebg");
+    			attr_dev(button, "class", "cancel svelte-13wro04");
     			add_location(button, file$2, 38, 4, 948);
-    			attr_dev(div1, "class", "buttons svelte-j7rebg");
+    			attr_dev(div1, "class", "buttons svelte-13wro04");
     			add_location(div1, file$2, 28, 2, 684);
     			attr_dev(div2, "id", "cover");
-    			attr_dev(div2, "class", "cover svelte-j7rebg");
+    			attr_dev(div2, "class", "cover svelte-13wro04");
     			add_location(div2, file$2, 19, 0, 449);
     		},
     		l: function claim(nodes) {
@@ -18240,7 +18268,7 @@ var app = (function () {
     	let current;
 
     	checklog = new CheckLog({
-    			props: { PROXY: /*PROXY*/ ctx[0], profile: true },
+    			props: { PROXY, profile: true },
     			$$inline: true
     		});
 
@@ -18284,7 +18312,7 @@ var app = (function () {
     	let current;
 
     	checklog = new CheckLog({
-    			props: { PROXY: /*PROXY*/ ctx[0], profile: false },
+    			props: { PROXY, profile: false },
     			$$inline: true
     		});
 
@@ -18419,21 +18447,21 @@ var app = (function () {
     		p: function update(ctx, dirty) {
     			const route0_changes = {};
 
-    			if (dirty & /*$$scope*/ 2) {
+    			if (dirty & /*$$scope*/ 1) {
     				route0_changes.$$scope = { dirty, ctx };
     			}
 
     			route0.$set(route0_changes);
     			const route1_changes = {};
 
-    			if (dirty & /*$$scope*/ 2) {
+    			if (dirty & /*$$scope*/ 1) {
     				route1_changes.$$scope = { dirty, ctx };
     			}
 
     			route1.$set(route1_changes);
     			const route2_changes = {};
 
-    			if (dirty & /*$$scope*/ 2) {
+    			if (dirty & /*$$scope*/ 1) {
     				route2_changes.$$scope = { dirty, ctx };
     			}
 
@@ -18498,7 +18526,7 @@ var app = (function () {
     		p: function update(ctx, [dirty]) {
     			const router_changes = {};
 
-    			if (dirty & /*$$scope*/ 2) {
+    			if (dirty & /*$$scope*/ 1) {
     				router_changes.$$scope = { dirty, ctx };
     			}
 
@@ -18529,10 +18557,11 @@ var app = (function () {
     	return block;
     }
 
+    const PROXY = "http://192.168.0.24:5700/";
+
     function instance($$self, $$props, $$invalidate) {
     	let { $$slots: slots = {}, $$scope } = $$props;
     	validate_slots('App', slots, []);
-    	const PROXY = location.href;
     	const writable_props = [];
 
     	Object.keys($$props).forEach(key => {
@@ -18548,7 +18577,7 @@ var app = (function () {
     		PROXY
     	});
 
-    	return [PROXY];
+    	return [];
     }
 
     class App extends SvelteComponentDev {

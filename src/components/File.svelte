@@ -3,6 +3,7 @@
   import FileShare from "./FileShare.svelte";
   import ToastNotification from "./ToastNotification.svelte";
   import BoolPrompt from "./BoolPrompt.svelte";
+  import { getCookie } from "../cookie";
   export let selected;
   export let file;
   export let metadata;
@@ -12,8 +13,37 @@
   let showFileShare = false;
   let deleteFileCheck = false;
 
-  const downloadFile = () => {
+  const downloadFile = async () => {
     console.log("Download");
+    let res = await fetch(
+      `${PROXY}download?file=${file}&location=${selected}&cred=${getCookie(
+        "G_VAR2"
+      )}`,
+      {
+        method: "GET",
+      }
+    );
+    try {
+      // convert zip file to url object (for anchor tag download)
+      let blob = await res.blob();
+      var url = window.URL || window.webkitURL;
+      let link = url.createObjectURL(blob);
+
+      // generate anchor tag, click it for download and then remove it again
+      let a = document.createElement("a");
+      a.setAttribute("download", file);
+      a.setAttribute("href", link);
+      document.body.appendChild(a);
+      a.click();
+      document.body.removeChild(a);
+    } catch (err) {
+      const result = await res.json();
+      if (result.error) {
+        notification = { msg: result.msg, status: "alert" };
+        return;
+      }
+      return;
+    }
   };
 
   const shareFile = () => {
