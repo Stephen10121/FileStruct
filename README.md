@@ -70,6 +70,7 @@ node server.js
 - [x] Delete Folder.
 - [x] Settings Page.
 - [x] Upload File.
+- [x] Download File.
 - [ ] Move File.
 - [ ] Rename File.
 - [ ] Delete File.
