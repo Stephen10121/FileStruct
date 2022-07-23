@@ -39,7 +39,6 @@
       window.localStorage.getItem("fileExtension") === "true" ? true : false
     );
   }
-
   fetch(`${PROXY}fetchFiles?cred=${getCookie("G_VAR2")}`)
     .then((response) => response.json())
     .then((data) => {
@@ -48,6 +47,16 @@
       usedSize = data.fileSize;
       newLoc({ detail: null });
     });
+  const fetchFiles = () => {
+    fetch(`${PROXY}fetchFiles?cred=${getCookie("G_VAR2")}`)
+      .then((response) => response.json())
+      .then((data) => {
+        console.log(data);
+        folderStruct = data.files;
+        usedSize = data.fileSize;
+        newLoc({ detail: selected });
+      });
+  };
 
   const newLoc = ({ detail }) => {
     if (detail === null) {
@@ -289,7 +298,7 @@
   >
 {/if}
 <main>
-  <SideFolder />
+  <SideFolder {PROXY} {selected} on:update-file-struct={fetchFiles} />
   <FolderPart
     {userData}
     {folderStruct}

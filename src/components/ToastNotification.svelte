@@ -22,6 +22,7 @@
     right: 10px;
     background-color: rgb(0, 132, 255);
     border-radius: 5px;
+    z-index: 161;
   }
 
   .notification-toast-inner {

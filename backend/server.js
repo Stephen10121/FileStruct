@@ -6,41 +6,16 @@ const path = require("path");
 const fs = require("fs");
 const { getFiles, readFile } = require("./dirGet");
 const cookieParser = require("cookie-parser");
-const multer = require("multer");
 const { userLogin, getUserData, saveProfile, checkUserSharing } = require("./database");
 const PORT = process.env.SERVER_PORT || 5700;
 const jwt = require('jsonwebtoken');
+const cors = require('cors');
+const bodyParser = require('body-parser');
+const morgan = require('morgan');
+const fileUpload = require('express-fileupload');
+const _ = require('lodash');
 const { hashed, addFolder, renameFolder, deleteFolder, moveFolder, shareFolder } = require('./functions');
 const app = express();
-const fileStorageEngine = multer.diskStorage({
-    destination: (req, file, cb) => {
-        console.log(req.query);
-        console.log(req.body);
-        console.log(req.data);
-        if (!req.body["user"]) {
-            cb("Missing Arguments", null);
-            return;
-        }
-        jwt.verify(req.query.cred, process.env.ACCESS_TOKEN_SECRET, async (err, user) => {
-            if (err) {
-                cb("Missing Arguments", `./storage/${hashed(user.usersName)}/home`);
-                return;
-            }
-            const userif = await getUserData(user.usersHash);
-            if (userif === "error") {
-                cb("Missing Arguments", `./storage/${hashed(user.usersName)}/home`);
-                return;
-            }
-            cb(null, `./storage/${hashed(user.usersName)}/home`);
-        });
-    },
-    filename: (req, file, cb) => {
-        cb(null, file.originalname);
-    }
-});
-const upload = multer({
-    storage: fileStorageEngine
-});
 
 app.use((req, res, next) => {
     // res.setHeader('Access-Control-Allow-Origin', "https://auth.gruzservices.com"); uncomment this in prod
@@ -49,7 +24,9 @@ app.use((req, res, next) => {
     next();
 });
 
-app.use(express.json(), express.static('../public'), express.urlencoded({ extended: true }), cookieParser());
+app.use(fileUpload({
+    createParentPath: true
+}), express.json(), express.static('../public'), express.urlencoded({ extended: true }), cookieParser(), cors(), bodyParser.json(), bodyParser.urlencoded({extended: true}), morgan('dev'));
 
 const server = http.createServer(app);
 const io = socketio(server, {
@@ -61,10 +38,60 @@ const io = socketio(server, {
   });
 
 
-app.post("/upload", upload.single("file"), async (req, res) => {
-    console.log(req.file)
-    console.log(req.body.user);
-    res.send("Success.")
+app.post("/upload", async (req, res) => {
+    if (!req.body["user"]) {
+        return res.json({ msg: "Missing arguments.", status: 400 });
+    }
+    const userDecode = JSON.parse(req.body.user);
+    if (!userDecode["cred"] || !userDecode["where"]) {
+        res.json({ msg: "Missing arguments.", status: 400 });
+        return;
+    }
+    if (userDecode.where.includes("..")) {
+        res.json({ msg: "Bad", status: 400 });
+        return
+    }
+    console.log(userDecode.where);
+    jwt.verify(userDecode.cred, process.env.ACCESS_TOKEN_SECRET, async (err, user) => {
+        if (err) {
+            return res.json({ msg: 'Invalid input', status: 400 });
+        }
+        const userif = await getUserData(user.usersHash);
+        if (userif == "error") {
+            return res.json({ msg: 'Invalid input', status: 400 });
+        }
+        try {
+            if(!req.files) {
+                res.send({
+                    status: false,
+                    message: 'No file uploaded'
+                });
+            } else {
+                //Use the name of the input field (i.e. "avatar") to retrieve the uploaded file
+                let file = req.files.file;
+                
+                //Use the mv() method to place the file in upload directory (i.e. "uploads")
+                if (!userDecode.where) {
+                    file.mv(`./storage/${hashed(user.usersName)}/home/` + file.name);
+                } else {
+                    file.mv(`./storage/${hashed(user.usersName)}/home/${userDecode.where}/` + file.name);
+                }
+    
+                //send response
+                res.send({
+                    status: true,
+                    message: 'File is uploaded',
+                    data: {
+                        name: file.name,
+                        mimetype: file.mimetype,
+                        size: file.size
+                    }
+                });
+            }
+        } catch (err) {
+            res.status(500).send(err);
+        }
+    });
 });
 
 app.post('/auth', async (req, res) => {

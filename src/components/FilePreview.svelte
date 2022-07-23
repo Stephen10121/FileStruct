@@ -157,7 +157,8 @@
 
   .previewBoxView {
     width: 50%;
-    height: 50%;
+    height: 50vh;
+    overflow: auto;
     background-color: #292d3e;
     padding: 10px;
     border-radius: 10px;
