@@ -40,25 +40,45 @@ const io = socketio(server, {
 
 app.post("/upload", async (req, res) => {
     if (!req.body["user"]) {
-        return res.json({ msg: "Missing arguments.", status: 400 });
-    }
-    const userDecode = JSON.parse(req.body.user);
-    if (!userDecode["cred"] || !userDecode["where"]) {
-        res.json({ msg: "Missing arguments.", status: 400 });
+        res.send({
+            status: false,
+            message: 'Missing arguments.'
+        });
         return;
     }
-    if (userDecode.where.includes("..")) {
-        res.json({ msg: "Bad", status: 400 });
-        return
+    const userDecode = JSON.parse(req.body.user);
+    if (!userDecode["cred"] || userDecode["where"] === undefined) {
+        res.send({
+            status: false,
+            message: 'Missing arguments.'
+        });
+        return;
+    }
+    if (!userDecode.where === null || !userDecode.where === false) {
+        if (userDecode.where.includes("..")) {
+            res.send({
+                status: false,
+                message: 'Bad.'
+            });
+            return
+        }
     }
     console.log(userDecode.where);
     jwt.verify(userDecode.cred, process.env.ACCESS_TOKEN_SECRET, async (err, user) => {
         if (err) {
-            return res.json({ msg: 'Invalid input', status: 400 });
+            res.send({
+                status: false,
+                message: 'Invalid input.'
+            });
+            return;
         }
         const userif = await getUserData(user.usersHash);
         if (userif == "error") {
-            return res.json({ msg: 'Invalid input', status: 400 });
+            res.send({
+                status: false,
+                message: 'Invalid input.'
+            });
+            return;
         }
         try {
             if(!req.files) {
@@ -71,6 +91,7 @@ app.post("/upload", async (req, res) => {
                 let file = req.files.file;
                 
                 //Use the mv() method to place the file in upload directory (i.e. "uploads")
+                console.log(userDecode.where);
                 if (!userDecode.where) {
                     file.mv(`./storage/${hashed(user.usersName)}/home/` + file.name);
                 } else {
