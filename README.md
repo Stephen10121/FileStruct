@@ -76,4 +76,4 @@ node server.js
 - [x] Settings Page.
 - [ ] Profile Page.
 - [ ] Shared Page.
-- [ ] Upload File.
+- [x] Upload File.

@@ -2,6 +2,8 @@
   import { Link } from "svelte-navigator";
   import FileUpload from "./FileUpload.svelte";
   export let profile;
+  export let PROXY;
+  export let selected;
 </script>
 
 <button
@@ -23,7 +25,7 @@
     <Link to="/">Home</Link>
   {:else}
     <Link to="/profile"><div title="Profile" class="profile" /></Link>
-    <FileUpload />
+    <FileUpload {PROXY} {selected} on:update-file-struct />
   {/if}
   <div class="logoutbox">
     <Link to="logout" class="logout"><p class="logout">Logout</p></Link>
@@ -100,6 +102,7 @@
 
     .slide-folder-button {
       display: block;
+      z-index: 100;
     }
   }
 </style>

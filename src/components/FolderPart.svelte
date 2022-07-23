@@ -74,7 +74,7 @@
       return;
     }
     document.getElementById("folderpartbutton").style.right = "215px";
-    document.getElementById("folder-part").style.right = 0;
+    document.getElementById("folder-part").style.right = "0";
   }}><img src="/icons/folder-fill.svg" alt="Folder" /></button
 >
 <section
@@ -118,7 +118,7 @@
     border-radius: 50%;
     width: 80px;
     height: 80px;
-    z-index: 150;
+    z-index: 101;
     background-color: var(--side-folder-color);
     box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
     transition: right 0.25s linear;
@@ -131,9 +131,11 @@
 
   .folder-part {
     height: 100vh;
+    width: 300px;
     display: grid;
     grid-template-rows: 70px auto;
     overflow-y: auto;
+    z-index: 100;
   }
 
   .name-section {
