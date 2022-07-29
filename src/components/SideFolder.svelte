@@ -102,7 +102,7 @@
 
     .slide-folder-button {
       display: block;
-      z-index: 100;
+      z-index: 101;
     }
   }
 </style>
