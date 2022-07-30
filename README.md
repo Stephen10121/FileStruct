@@ -80,5 +80,16 @@ node server.js
   - [x] Share File. Almost ready. Has to hook up to shared page.
 - [x] Settings Page.
 - [ ] Profile Page.
+  - [ ] Set sharing.
+  - [ ] Theme toggling.
+  - [ ] Delete account.
 - [ ] Shared Page.
-- [ ] Home Page.
+  - [x] Dynamic sidebar.
+  - [ ] Folder Stuff.
+    - [x] Delete folder.
+    - [ ] Add to drive.
+  - [ ] File Stuff
+    - [ ] File preview video/audio and text.
+    - [ ] Delete file.
+    - [ ] Add to drive.
+- [ ] Not logged-in Page.
