@@ -13551,7 +13551,7 @@ var app = (function () {
     const { console: console_1$1 } = globals;
     const file_1 = "src\\components\\File.svelte";
 
-    // (177:0) {#if moveFile}
+    // (206:0) {#if moveFile}
     function create_if_block_4$1(ctx) {
     	let moveto;
     	let current;
@@ -13564,7 +13564,7 @@ var app = (function () {
     			$$inline: true
     		});
 
-    	moveto.$on("close-move", /*close_move_handler*/ ctx[16]);
+    	moveto.$on("close-move", /*close_move_handler*/ ctx[17]);
     	moveto.$on("move-here", /*moveFileHere*/ ctx[14]);
 
     	const block = {
@@ -13598,14 +13598,14 @@ var app = (function () {
     		block,
     		id: create_if_block_4$1.name,
     		type: "if",
-    		source: "(177:0) {#if moveFile}",
+    		source: "(206:0) {#if moveFile}",
     		ctx
     	});
 
     	return block;
     }
 
-    // (187:0) {#if deleteFileCheck}
+    // (216:0) {#if deleteFileCheck}
     function create_if_block_3$1(ctx) {
     	let boolprompt;
     	let current;
@@ -13618,7 +13618,7 @@ var app = (function () {
     			$$inline: true
     		});
 
-    	boolprompt.$on("boolChoose", /*boolChoose_handler*/ ctx[17]);
+    	boolprompt.$on("boolChoose", /*boolChoose_handler*/ ctx[18]);
 
     	const block = {
     		c: function create() {
@@ -13631,7 +13631,7 @@ var app = (function () {
     		p: function update(ctx, dirty) {
     			const boolprompt_changes = {};
 
-    			if (dirty & /*$$scope, file*/ 4194306) {
+    			if (dirty & /*$$scope, file*/ 8388610) {
     				boolprompt_changes.$$scope = { dirty, ctx };
     			}
 
@@ -13655,14 +13655,14 @@ var app = (function () {
     		block,
     		id: create_if_block_3$1.name,
     		type: "if",
-    		source: "(187:0) {#if deleteFileCheck}",
+    		source: "(216:0) {#if deleteFileCheck}",
     		ctx
     	});
 
     	return block;
     }
 
-    // (188:2) <BoolPrompt      on:boolChoose={(e) => {        deleteFileCheck = false;        console.log(e.detail);      }}>
+    // (217:2) <BoolPrompt      on:boolChoose={(e) => {        deleteFileCheck = false;        if (e.detail.choose) {          confirmedDeleteFile();        }      }}>
     function create_default_slot_1$3(ctx) {
     	let t0;
     	let span;
@@ -13676,7 +13676,7 @@ var app = (function () {
     			t1 = text(/*file*/ ctx[1]);
     			t2 = text("?");
     			attr_dev(span, "class", "bold svelte-15ncrr8");
-    			add_location(span, file_1, 191, 14, 4928);
+    			add_location(span, file_1, 222, 14, 5730);
     		},
     		m: function mount(target, anchor) {
     			insert_dev(target, t0, anchor);
@@ -13698,14 +13698,14 @@ var app = (function () {
     		block,
     		id: create_default_slot_1$3.name,
     		type: "slot",
-    		source: "(188:2) <BoolPrompt      on:boolChoose={(e) => {        deleteFileCheck = false;        console.log(e.detail);      }}>",
+    		source: "(217:2) <BoolPrompt      on:boolChoose={(e) => {        deleteFileCheck = false;        if (e.detail.choose) {          confirmedDeleteFile();        }      }}>",
     		ctx
     	});
 
     	return block;
     }
 
-    // (195:0) {#if showPrompt}
+    // (226:0) {#if showPrompt}
     function create_if_block_2$1(ctx) {
     	let prompt;
     	let current;
@@ -13752,14 +13752,14 @@ var app = (function () {
     		block,
     		id: create_if_block_2$1.name,
     		type: "if",
-    		source: "(195:0) {#if showPrompt}",
+    		source: "(226:0) {#if showPrompt}",
     		ctx
     	});
 
     	return block;
     }
 
-    // (202:0) {#if notification !== null}
+    // (233:0) {#if notification !== null}
     function create_if_block_1$2(ctx) {
     	let toastnotification;
     	let current;
@@ -13773,7 +13773,7 @@ var app = (function () {
     			$$inline: true
     		});
 
-    	toastnotification.$on("close", /*close_handler*/ ctx[18]);
+    	toastnotification.$on("close", /*close_handler*/ ctx[19]);
 
     	const block = {
     		c: function create() {
@@ -13787,7 +13787,7 @@ var app = (function () {
     			const toastnotification_changes = {};
     			if (dirty & /*notification*/ 32) toastnotification_changes.type = /*notification*/ ctx[5].status;
 
-    			if (dirty & /*$$scope, notification*/ 4194336) {
+    			if (dirty & /*$$scope, notification*/ 8388640) {
     				toastnotification_changes.$$scope = { dirty, ctx };
     			}
 
@@ -13811,14 +13811,14 @@ var app = (function () {
     		block,
     		id: create_if_block_1$2.name,
     		type: "if",
-    		source: "(202:0) {#if notification !== null}",
+    		source: "(233:0) {#if notification !== null}",
     		ctx
     	});
 
     	return block;
     }
 
-    // (203:2) <ToastNotification      type={notification.status}      on:close={() => {        notification = null;      }}>
+    // (234:2) <ToastNotification      type={notification.status}      on:close={() => {        notification = null;      }}>
     function create_default_slot$4(ctx) {
     	let t_value = /*notification*/ ctx[5].msg + "";
     	let t;
@@ -13842,14 +13842,14 @@ var app = (function () {
     		block,
     		id: create_default_slot$4.name,
     		type: "slot",
-    		source: "(203:2) <ToastNotification      type={notification.status}      on:close={() => {        notification = null;      }}>",
+    		source: "(234:2) <ToastNotification      type={notification.status}      on:close={() => {        notification = null;      }}>",
     		ctx
     	});
 
     	return block;
     }
 
-    // (211:2) {#if previewShow}
+    // (242:2) {#if previewShow}
     function create_if_block$4(ctx) {
     	let filepreview;
     	let current;
@@ -13868,7 +13868,7 @@ var app = (function () {
     	filepreview.$on("downloadFile", /*downloadFile*/ ctx[10]);
     	filepreview.$on("shareFile", /*shareFileDo*/ ctx[11]);
     	filepreview.$on("renameFile", /*renameFileDo*/ ctx[12]);
-    	filepreview.$on("hidePreview", /*hidePreview_handler*/ ctx[19]);
+    	filepreview.$on("hidePreview", /*hidePreview_handler*/ ctx[20]);
 
     	const block = {
     		c: function create() {
@@ -13904,7 +13904,7 @@ var app = (function () {
     		block,
     		id: create_if_block$4.name,
     		type: "if",
-    		source: "(211:2) {#if previewShow}",
+    		source: "(242:2) {#if previewShow}",
     		ctx
     	});
 
@@ -13944,8 +13944,8 @@ var app = (function () {
     	let if_block2 = /*showPrompt*/ ctx[9] && create_if_block_2$1(ctx);
     	let if_block3 = /*notification*/ ctx[5] !== null && create_if_block_1$2(ctx);
     	let if_block4 = /*previewShow*/ ctx[7] && create_if_block$4(ctx);
-    	const default_slot_template = /*#slots*/ ctx[15].default;
-    	const default_slot = create_slot(default_slot_template, ctx, /*$$scope*/ ctx[22], null);
+    	const default_slot_template = /*#slots*/ ctx[16].default;
+    	const default_slot = create_slot(default_slot_template, ctx, /*$$scope*/ ctx[23], null);
 
     	const block = {
     		c: function create() {
@@ -13976,39 +13976,39 @@ var app = (function () {
     			button4 = element("button");
     			img3 = element("img");
     			attr_dev(button0, "class", "slot svelte-15ncrr8");
-    			add_location(button0, file_1, 223, 2, 5667);
+    			add_location(button0, file_1, 254, 2, 6469);
     			if (!src_url_equal(img0.src, img0_src_value = "icons/download.svg")) attr_dev(img0, "src", img0_src_value);
     			attr_dev(img0, "alt", "Download");
     			attr_dev(img0, "class", "svelte-15ncrr8");
-    			add_location(img0, file_1, 226, 6, 5829);
+    			add_location(img0, file_1, 257, 6, 6631);
     			attr_dev(button1, "title", "Download");
     			attr_dev(button1, "class", "svelte-15ncrr8");
-    			add_location(button1, file_1, 225, 4, 5772);
+    			add_location(button1, file_1, 256, 4, 6574);
     			if (!src_url_equal(img1.src, img1_src_value = "icons/send-fill.svg")) attr_dev(img1, "src", img1_src_value);
     			attr_dev(img1, "alt", "Move");
     			attr_dev(img1, "class", "svelte-15ncrr8");
-    			add_location(img1, file_1, 234, 6, 6000);
+    			add_location(img1, file_1, 265, 6, 6802);
     			attr_dev(button2, "title", "Move");
     			attr_dev(button2, "class", "svelte-15ncrr8");
-    			add_location(button2, file_1, 228, 4, 5897);
+    			add_location(button2, file_1, 259, 4, 6699);
     			if (!src_url_equal(img2.src, img2_src_value = "icons/share.svg")) attr_dev(img2, "src", img2_src_value);
     			attr_dev(img2, "alt", "Share");
     			attr_dev(img2, "class", "svelte-15ncrr8");
-    			add_location(img2, file_1, 237, 6, 6118);
+    			add_location(img2, file_1, 268, 6, 6920);
     			attr_dev(button3, "title", "Share");
     			attr_dev(button3, "class", "svelte-15ncrr8");
-    			add_location(button3, file_1, 236, 4, 6065);
+    			add_location(button3, file_1, 267, 4, 6867);
     			if (!src_url_equal(img3.src, img3_src_value = "icons/trash.svg")) attr_dev(img3, "src", img3_src_value);
     			attr_dev(img3, "alt", "Delete");
     			attr_dev(img3, "class", "svelte-15ncrr8");
-    			add_location(img3, file_1, 240, 6, 6233);
+    			add_location(img3, file_1, 271, 6, 7035);
     			attr_dev(button4, "title", "Delete");
     			attr_dev(button4, "class", "svelte-15ncrr8");
-    			add_location(button4, file_1, 239, 4, 6180);
+    			add_location(button4, file_1, 270, 4, 6982);
     			attr_dev(div, "class", "stuff svelte-15ncrr8");
-    			add_location(div, file_1, 224, 2, 5747);
+    			add_location(div, file_1, 255, 2, 6549);
     			attr_dev(li, "class", "svelte-15ncrr8");
-    			add_location(li, file_1, 209, 0, 5344);
+    			add_location(li, file_1, 240, 0, 6146);
     		},
     		l: function claim(nodes) {
     			throw new Error("options.hydrate only works if the component was compiled with the `hydratable: true` option");
@@ -14048,9 +14048,9 @@ var app = (function () {
 
     			if (!mounted) {
     				dispose = [
-    					listen_dev(button0, "click", /*click_handler*/ ctx[20], false, false, false),
+    					listen_dev(button0, "click", /*click_handler*/ ctx[21], false, false, false),
     					listen_dev(button1, "click", /*downloadFile*/ ctx[10], false, false, false),
-    					listen_dev(button2, "click", /*click_handler_1*/ ctx[21], false, false, false),
+    					listen_dev(button2, "click", /*click_handler_1*/ ctx[22], false, false, false),
     					listen_dev(button3, "click", /*shareFileDo*/ ctx[11], false, false, false),
     					listen_dev(button4, "click", /*deleteFile*/ ctx[13], false, false, false)
     				];
@@ -14175,15 +14175,15 @@ var app = (function () {
     			}
 
     			if (default_slot) {
-    				if (default_slot.p && (!current || dirty & /*$$scope*/ 4194304)) {
+    				if (default_slot.p && (!current || dirty & /*$$scope*/ 8388608)) {
     					update_slot_base(
     						default_slot,
     						default_slot_template,
     						ctx,
-    						/*$$scope*/ ctx[22],
+    						/*$$scope*/ ctx[23],
     						!current
-    						? get_all_dirty_from_scope(/*$$scope*/ ctx[22])
-    						: get_slot_changes(default_slot_template, /*$$scope*/ ctx[22], dirty, null),
+    						? get_all_dirty_from_scope(/*$$scope*/ ctx[23])
+    						: get_slot_changes(default_slot_template, /*$$scope*/ ctx[23], dirty, null),
     						null
     					);
     				}
@@ -14346,7 +14346,7 @@ var app = (function () {
 
     		fetch(`${PROXY}renameFile?cred=${getCookie$2("G_VAR2")}&location=${location}&renamed=${e.target[0].value}`, { method: "POST" }).then(response => response.json()).then(data => {
     			if (data.msg === "Good") {
-    				folderStructValue.update(n => data.files);
+    				folderStructValue.update(_n => data.files);
     				dispatch("newLoc", selected);
 
     				$$invalidate(5, notification = {
@@ -14373,8 +14373,32 @@ var app = (function () {
 
     		fetch(`${PROXY}moveFile?cred=${getCookie$2("G_VAR2")}&location=${location}&dest=${destination}`, { method: "POST" }).then(response => response.json()).then(data => {
     			if (data.msg === "Good") {
-    				folderStructValue.update(n => data.files);
+    				folderStructValue.update(_n => data.files);
     				$$invalidate(5, notification = { status: "success", msg: `Moved file!` });
+    				dispatch("newLoc", selected);
+    			} else {
+    				$$invalidate(5, notification = { status: "alert", msg: data.msg });
+    			}
+    		});
+    	};
+
+    	const confirmedDeleteFile = () => {
+    		let location;
+
+    		if (!selected) {
+    			location = file;
+    		} else {
+    			location = selected + "/" + file;
+    		}
+
+    		fetch(`${PROXY}deleteFile?cred=${getCookie$2("G_VAR2")}&location=${location}`, { method: "POST" }).then(response => response.json()).then(data => {
+    			if (data.msg === "Good") {
+    				$$invalidate(5, notification = {
+    					status: "success",
+    					msg: `Deleted file: '${file}'`
+    				});
+
+    				folderStructValue.update(_n => data.files);
     				dispatch("newLoc", selected);
     			} else {
     				$$invalidate(5, notification = { status: "alert", msg: data.msg });
@@ -14394,7 +14418,10 @@ var app = (function () {
 
     	const boolChoose_handler = e => {
     		$$invalidate(8, deleteFileCheck = false);
-    		console.log(e.detail);
+
+    		if (e.detail.choose) {
+    			confirmedDeleteFile();
+    		}
     	};
 
     	const close_handler = () => {
@@ -14414,7 +14441,7 @@ var app = (function () {
     		if ('metadata' in $$props) $$invalidate(2, metadata = $$props.metadata);
     		if ('PROXY' in $$props) $$invalidate(3, PROXY = $$props.PROXY);
     		if ('folderStruct' in $$props) $$invalidate(4, folderStruct = $$props.folderStruct);
-    		if ('$$scope' in $$props) $$invalidate(22, $$scope = $$props.$$scope);
+    		if ('$$scope' in $$props) $$invalidate(23, $$scope = $$props.$$scope);
     	};
 
     	$$self.$capture_state = () => ({
@@ -14443,7 +14470,8 @@ var app = (function () {
     		deleteFile,
     		shareFile,
     		renameFile,
-    		moveFileHere
+    		moveFileHere,
+    		confirmedDeleteFile
     	});
 
     	$$self.$inject_state = $$props => {
@@ -14479,6 +14507,7 @@ var app = (function () {
     		renameFileDo,
     		deleteFile,
     		moveFileHere,
+    		confirmedDeleteFile,
     		slots,
     		close_move_handler,
     		boolChoose_handler,

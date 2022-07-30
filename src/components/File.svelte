@@ -125,7 +125,7 @@
       .then((response) => response.json())
       .then((data) => {
         if (data.msg === "Good") {
-          folderStructValue.update((n) => data.files);
+          folderStructValue.update((_n) => data.files);
           dispatch("newLoc", selected);
           notification = {
             status: "success",
@@ -158,11 +158,40 @@
       .then((response) => response.json())
       .then((data) => {
         if (data.msg === "Good") {
-          folderStructValue.update((n) => data.files);
+          folderStructValue.update((_n) => data.files);
           notification = {
             status: "success",
             msg: `Moved file!`,
           };
+          dispatch("newLoc", selected);
+        } else {
+          notification = {
+            status: "alert",
+            msg: data.msg,
+          };
+        }
+      });
+  };
+
+  const confirmedDeleteFile = () => {
+    let location;
+    if (!selected) {
+      location = file;
+    } else {
+      location = selected + "/" + file;
+    }
+    fetch(
+      `${PROXY}deleteFile?cred=${getCookie("G_VAR2")}&location=${location}`,
+      { method: "POST" }
+    )
+      .then((response) => response.json())
+      .then((data) => {
+        if (data.msg === "Good") {
+          notification = {
+            status: "success",
+            msg: `Deleted file: '${file}'`,
+          };
+          folderStructValue.update((_n) => data.files);
           dispatch("newLoc", selected);
         } else {
           notification = {
@@ -188,7 +217,9 @@
   <BoolPrompt
     on:boolChoose={(e) => {
       deleteFileCheck = false;
-      console.log(e.detail);
+      if (e.detail.choose) {
+        confirmedDeleteFile();
+      }
     }}>Delete <span class="bold">{file}</span>?</BoolPrompt
   >
 {/if}

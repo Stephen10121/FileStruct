@@ -110,6 +110,20 @@ const deleteFolder = async (location, id) => {
   return 200;
 }
 
+const deleteFile = async (location, id) => {
+  let fileLocation = `./storage/${hashed(id)}/home/`;
+  if (location !== " ") {
+    fileLocation+=`${location}`;
+  }
+  try {
+    await fs.promises.unlink(fileLocation);
+  } catch (err) {
+    console.error(err);
+    return "Error deleting folder.";
+  }
+  return 200;
+}
+
 const moveFolder = async (location, id, dest) => {
   let fileLocation = `./storage/${hashed(id)}/home/${location}`;
   let fileDestination = `./storage/${hashed(id)}/home/${dest}/${location.split("/").reverse()[0]}`;
@@ -153,6 +167,7 @@ module.exports = {
     renameFolder,
     renameFile,
     deleteFolder,
+    deleteFile,
     moveFolder,
     moveFile,
     shareFolder,
