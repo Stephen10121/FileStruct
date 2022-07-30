@@ -26,7 +26,7 @@ First clone this repo and go to the backend folder.
 Then run this command to install all of the required dependencies:
 
 ```
-yarn install
+yarn
 ```
 
 After running that command you have to initialize the database and token. To do this run:
