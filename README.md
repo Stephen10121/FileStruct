@@ -65,16 +65,19 @@ node server.js
 
 ## TODO
 
-- [x] Move Folder.
-- [x] Rename Folder.
-- [x] Delete Folder.
+- [x] Folder Stuff.
+  - [x] Move Folder.
+  - [x] Rename Folder.
+  - [x] Delete Folder.
+  - [x] Share Folder. Almost ready. Has to hook up to shared page.
+- [x] File Stuff.
+  - [x] File preview video/audio and text.
+  - [x] Upload File.
+  - [x] Download File.
+  - [x] Move File.
+  - [x] Rename File.
+  - [x] Delete File.
+  - [x] Share File. Almost ready. Has to hook up to shared page.
 - [x] Settings Page.
-- [x] Upload File.
-- [x] Download File.
-- [x] Move File.
-- [x] Rename File.
-- [x] Delete File.
 - [ ] Profile Page.
 - [ ] Shared Page.
-- [x] Share Folder. Almost ready. Has to hook up to shared page.
-- [x] Share File. Almost ready. Has to hook up to shared page.
