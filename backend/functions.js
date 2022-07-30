@@ -150,6 +150,18 @@ const moveFolder = async (location, id, dest) => {
   return 200;
 }
 
+const addToDrive = async (location, id) => {
+  let fileLocation = `./storage/${hashed(id)}/shared/${location}`;
+  let fileDestination = `./storage/${hashed(id)}/home/${location.split("/").reverse()[0]}`;
+  try {
+    await fse.move(fileLocation, fileDestination);
+  } catch (err) {
+    console.log(err);
+    return "Error moving folder";
+  }
+  return 200;
+}
+
 const moveFile = async (location, id, dest) => {
   let fileLocation = `./storage/${hashed(id)}/home/${location}`;
   let fileDestination = `./storage/${hashed(id)}/home/${dest}`;
@@ -185,6 +197,7 @@ module.exports = {
     deleteFile,
     moveFolder,
     moveFile,
+    addToDrive,
     shareFolder,
     shareFile
 }

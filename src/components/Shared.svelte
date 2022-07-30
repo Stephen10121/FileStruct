@@ -106,7 +106,26 @@
   };
 
   const addToDrive = () => {
-    console.log("add to drive.");
+    fetch(
+      `${PROXY}addToDrive?cred=${getCookie("G_VAR2")}&location=${selected}`,
+      { method: "POST" }
+    )
+      .then((response) => response.json())
+      .then((data) => {
+        if (data.msg === "Good") {
+          folderStructValue.update((n) => data.files);
+          notification = {
+            status: "success",
+            msg: `Added folder to drive.`,
+          };
+          newLoc({ detail });
+        } else {
+          notification = {
+            status: "alert",
+            msg: data.msg,
+          };
+        }
+      });
   };
 </script>
 

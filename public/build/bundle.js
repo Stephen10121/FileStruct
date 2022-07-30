@@ -17135,7 +17135,7 @@ var app = (function () {
     const { console: console_1$1 } = globals;
     const file$2 = "src\\components\\Shared.svelte";
 
-    // (117:0) {#if boolPrompt}
+    // (136:0) {#if boolPrompt}
     function create_if_block_1$2(ctx) {
     	let boolprompt;
     	let current;
@@ -17190,14 +17190,14 @@ var app = (function () {
     		block,
     		id: create_if_block_1$2.name,
     		type: "if",
-    		source: "(117:0) {#if boolPrompt}",
+    		source: "(136:0) {#if boolPrompt}",
     		ctx
     	});
 
     	return block;
     }
 
-    // (118:2) <BoolPrompt extra={boolPrompt.extra} on:boolChoose={boolPrompt.callback}      >
+    // (137:2) <BoolPrompt extra={boolPrompt.extra} on:boolChoose={boolPrompt.callback}      >
     function create_default_slot_1$2(ctx) {
     	let t_value = /*boolPrompt*/ ctx[6].msg + "";
     	let t;
@@ -17221,14 +17221,14 @@ var app = (function () {
     		block,
     		id: create_default_slot_1$2.name,
     		type: "slot",
-    		source: "(118:2) <BoolPrompt extra={boolPrompt.extra} on:boolChoose={boolPrompt.callback}      >",
+    		source: "(137:2) <BoolPrompt extra={boolPrompt.extra} on:boolChoose={boolPrompt.callback}      >",
     		ctx
     	});
 
     	return block;
     }
 
-    // (122:0) {#if notification !== null}
+    // (141:0) {#if notification !== null}
     function create_if_block$2(ctx) {
     	let toastnotification;
     	let current;
@@ -17280,14 +17280,14 @@ var app = (function () {
     		block,
     		id: create_if_block$2.name,
     		type: "if",
-    		source: "(122:0) {#if notification !== null}",
+    		source: "(141:0) {#if notification !== null}",
     		ctx
     	});
 
     	return block;
     }
 
-    // (123:2) <ToastNotification      type={notification.status}      on:close={() => {        notification = null;      }}>
+    // (142:2) <ToastNotification      type={notification.status}      on:close={() => {        notification = null;      }}>
     function create_default_slot$2(ctx) {
     	let t_value = /*notification*/ ctx[4].msg + "";
     	let t;
@@ -17311,7 +17311,7 @@ var app = (function () {
     		block,
     		id: create_default_slot$2.name,
     		type: "slot",
-    		source: "(123:2) <ToastNotification      type={notification.status}      on:close={() => {        notification = null;      }}>",
+    		source: "(142:2) <ToastNotification      type={notification.status}      on:close={() => {        notification = null;      }}>",
     		ctx
     	});
 
@@ -17397,9 +17397,9 @@ var app = (function () {
     			create_component(filestruct.$$.fragment);
     			document.title = "Shared | GCloud";
     			attr_dev(section, "class", "file-part svelte-cjs30e");
-    			add_location(section, file$2, 145, 2, 3829);
+    			add_location(section, file$2, 164, 2, 4367);
     			attr_dev(main, "class", "svelte-cjs30e");
-    			add_location(main, file$2, 129, 0, 3512);
+    			add_location(main, file$2, 148, 0, 4050);
     		},
     		l: function claim(nodes) {
     			throw new Error("options.hydrate only works if the component was compiled with the `hydratable: true` option");
@@ -17623,7 +17623,20 @@ var app = (function () {
     	};
 
     	const addToDrive = () => {
-    		console.log("add to drive.");
+    		fetch(`${PROXY}addToDrive?cred=${getCookie$2("G_VAR2")}&location=${selected}`, { method: "POST" }).then(response => response.json()).then(data => {
+    			if (data.msg === "Good") {
+    				folderStructValue.update(n => data.files);
+
+    				$$invalidate(4, notification = {
+    					status: "success",
+    					msg: `Added folder to drive.`
+    				});
+
+    				newLoc({ detail });
+    			} else {
+    				$$invalidate(4, notification = { status: "alert", msg: data.msg });
+    			}
+    		});
     	};
 
     	const writable_props = ['userData', 'PROXY'];

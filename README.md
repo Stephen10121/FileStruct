@@ -85,9 +85,9 @@ node server.js
   - [ ] Delete account.
 - [ ] Shared Page.
   - [x] Dynamic sidebar.
-  - [ ] Folder Stuff.
+  - [x] Folder Stuff.
     - [x] Delete folder.
-    - [ ] Add to drive.
+    - [x] Add to drive.
   - [ ] File Stuff
     - [ ] File preview video/audio and text.
     - [ ] Delete file.
