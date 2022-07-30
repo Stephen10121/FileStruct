@@ -95,7 +95,6 @@
         class="downloadButton"
         on:click={() => {
           dispatch("downloadFile", true);
-          dispatch("hidePreview", true);
         }}>Download</button
       >
       <button
@@ -104,6 +103,13 @@
           dispatch("shareFile", true);
           dispatch("hidePreview", true);
         }}>Share</button
+      >
+      <button
+        class="renameButton"
+        on:click={() => {
+          dispatch("renameFile", true);
+          dispatch("hidePreview", true);
+        }}>Rename</button
       >
       <button
         class="deleteButton"
@@ -251,6 +257,15 @@
     border: none;
     border-radius: 5px;
     transition: outline 0.15s linear;
+  }
+
+  .renameButton {
+    background-color: rgb(60, 37, 163);
+    outline: 1px solid rgb(60, 37, 163);
+  }
+
+  .renameButton:hover {
+    outline: 3px solid rgb(60, 37, 163);
   }
 
   .downloadButton {

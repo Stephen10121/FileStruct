@@ -13,7 +13,8 @@
 <div class="prompt" id="coverPrompt" on:click={divClick}>
   <div class="prompt-color">
     <form on:submit|preventDefault={(e) => promptEvent(e, promptExtra)}>
-      <input type="text" placeholder={promptPlaceholder} />
+      <!-- svelte-ignore a11y-autofocus -->
+      <input type="text" placeholder={promptPlaceholder} autofocus />
       <button type="submit">Submit</button>
     </form>
     <button class="close" on:click={() => promptEvent(false, promptExtra)}>
@@ -27,10 +28,14 @@
     position: fixed;
     width: 100vw;
     height: 100vh;
+    padding: 0;
+    margin: 0;
     display: flex;
     align-items: center;
     justify-content: center;
-    z-index: 101;
+    z-index: 201;
+    left: 0;
+    top: 0;
   }
 
   .prompt-color {

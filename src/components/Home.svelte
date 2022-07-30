@@ -9,7 +9,7 @@
   import MoveTo from "./MoveTo.svelte";
   import Settings from "./Settings.svelte";
   import { getCookie } from "../cookie";
-  import { fileExtension } from "../../scripts/stores";
+  import { fileExtension, folderStructValue } from "../../scripts/stores";
 
   export let userData;
   export let PROXY;
@@ -29,9 +29,15 @@
   let settings = false;
   let usedSize = "N/A";
   let fileExtensionValue;
+
+  folderStructValue.subscribe((value) => {
+    folderStruct = value;
+  });
+
   fileExtension.subscribe((value) => {
     fileExtensionValue = value;
   });
+
   console.log(userData);
 
   if (window.localStorage.getItem("fileExtension")) {
@@ -43,7 +49,7 @@
     .then((response) => response.json())
     .then((data) => {
       console.log(data);
-      folderStruct = data.files;
+      folderStructValue.update((n) => data.files);
       usedSize = data.fileSize;
       newLoc({ detail: null });
     });
@@ -52,7 +58,7 @@
       .then((response) => response.json())
       .then((data) => {
         console.log(data);
-        folderStruct = data.files;
+        folderStructValue.update((n) => data.files);
         usedSize = data.fileSize;
         newLoc({ detail: selected });
       });
@@ -94,7 +100,7 @@
       .then((response) => response.json())
       .then((data) => {
         if (data.msg === "Good") {
-          folderStruct = data.files;
+          folderStructValue.update((n) => data.files);
           notification = {
             status: "success",
             msg: `Created folder '${e.target[0].value}'`,
@@ -123,7 +129,7 @@
       .then((response) => response.json())
       .then((data) => {
         if (data.msg === "Good") {
-          folderStruct = data.files;
+          folderStructValue.update((n) => data.files);
           notification = {
             status: "success",
             msg: `Renamed folder to '${e.target[0].value}'`,
@@ -183,7 +189,7 @@
       .then((response) => response.json())
       .then((data) => {
         if (data.msg === "Good") {
-          folderStruct = data.files;
+          folderStructValue.update((n) => data.files);
           notification = {
             status: "success",
             msg: `Deleted folder: '${detail.extra.split("/").reverse()[0]}'`,
@@ -213,7 +219,7 @@
       .then((response) => response.json())
       .then((data) => {
         if (data.msg === "Good") {
-          folderStruct = data.files;
+          folderStructValue.update((n) => data.files);
           notification = {
             status: "success",
             msg: `Moved folder!`,
@@ -315,7 +321,12 @@
   />
   <section class="file-part">
     <LocationPath {selected} on:change-dir={newLoc} />
-    <FileStruct {selected} files={currentFolderPathFiles} {PROXY} />
+    <FileStruct
+      {selected}
+      files={currentFolderPathFiles}
+      {PROXY}
+      on:newLoc={newLoc}
+    />
   </section>
 </main>
 

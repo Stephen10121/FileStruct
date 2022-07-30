@@ -1,17 +1,20 @@
 <script>
   import FilePreview from "./FilePreview.svelte";
-  import FileShare from "./FileShare.svelte";
+  import { createEventDispatcher } from "svelte";
+  const dispatch = createEventDispatcher();
   import ToastNotification from "./ToastNotification.svelte";
   import BoolPrompt from "./BoolPrompt.svelte";
+  import Prompt from "./Prompt.svelte";
   import { getCookie } from "../cookie";
+  import { folderStructValue } from "../../scripts/stores";
   export let selected;
   export let file;
   export let metadata;
   export let PROXY;
   let notification = null;
   let previewShow = false;
-  let showFileShare = false;
   let deleteFileCheck = false;
+  let showPrompt = false;
 
   const downloadFile = async () => {
     console.log("Download");
@@ -46,12 +49,92 @@
     }
   };
 
-  const shareFile = () => {
-    showFileShare = true;
+  const shareFileDo = () => {
+    showPrompt = {
+      placeholder: "Share file to",
+      callback: shareFile,
+      extra: [selected, file],
+    };
+  };
+
+  const renameFileDo = () => {
+    showPrompt = {
+      placeholder: "Rename file to",
+      callback: renameFile,
+      extra: [selected, file],
+    };
   };
 
   const deleteFile = () => {
     deleteFileCheck = true;
+  };
+
+  const shareFile = (e, extra) => {
+    showPrompt = false;
+    if (!e) {
+      return;
+    }
+    let location;
+    if (!extra[0]) {
+      location = extra[1];
+    } else {
+      location = extra[0] + "/" + extra[1];
+    }
+    fetch(
+      `${PROXY}shareFile?cred=${getCookie(
+        "G_VAR2"
+      )}&location=${location}&user=${e.target[0].value}`,
+      { method: "POST" }
+    )
+      .then((response) => response.json())
+      .then((data) => {
+        if (data.msg === "Good") {
+          notification = {
+            status: "success",
+            msg: `Shared folder: '${extra.split("/").reverse()[0]}'`,
+          };
+        } else {
+          notification = {
+            status: "alert",
+            msg: data.msg,
+          };
+        }
+      });
+  };
+
+  const renameFile = (e, extra) => {
+    showPrompt = false;
+    if (!e) {
+      return;
+    }
+    let location;
+    if (!extra[0]) {
+      location = extra[1];
+    } else {
+      location = extra[0] + "/" + extra[1];
+    }
+    fetch(
+      `${PROXY}renameFile?cred=${getCookie(
+        "G_VAR2"
+      )}&location=${location}&renamed=${e.target[0].value}`,
+      { method: "POST" }
+    )
+      .then((response) => response.json())
+      .then((data) => {
+        if (data.msg === "Good") {
+          folderStructValue.update((n) => data.files);
+          dispatch("newLoc", selected);
+          notification = {
+            status: "success",
+            msg: `Renamed folder: '${extra[1]}'`,
+          };
+        } else {
+          notification = {
+            status: "alert",
+            msg: data.msg,
+          };
+        }
+      });
   };
 </script>
 
@@ -63,15 +146,11 @@
     }}>Delete <span class="bold">{file}</span>?</BoolPrompt
   >
 {/if}
-{#if showFileShare}
-  <FileShare
-    {file}
-    on:shareTo={(e) => {
-      notification = { msg: e.detail, status: "success" };
-    }}
-    on:hideShare={() => {
-      showFileShare = false;
-    }}
+{#if showPrompt}
+  <Prompt
+    promptPlaceholder={showPrompt.placeholder}
+    promptEvent={showPrompt.callback}
+    promptExtra={showPrompt.extra}
   />
 {/if}
 {#if notification !== null}
@@ -88,24 +167,28 @@
       {PROXY}
       on:deleteFile={deleteFile}
       on:downloadFile={downloadFile}
-      on:shareFile={shareFile}
+      on:shareFile={shareFileDo}
+      on:renameFile={renameFileDo}
       {file}
       {selected}
       {metadata}
       on:hidePreview={() => (previewShow = false)}
     />
   {/if}
-  <button on:click={() => (previewShow = true)}><slot /></button>
+  <button class="slot" on:click={() => (previewShow = true)}><slot /></button>
   <div class="stuff">
-    <button on:click={downloadFile}
-      ><img src="icons/download.svg" alt="Download" /></button
-    >
-    <button on:click={shareFile}
-      ><img src="icons/share.svg" alt="Share" /></button
-    >
-    <button on:click={deleteFile}
-      ><img src="icons/trash.svg" alt="Trash" /></button
-    >
+    <button on:click={downloadFile} title="Download">
+      <img src="icons/download.svg" alt="Download" />
+    </button>
+    <button title="Move">
+      <img src="icons/send-fill.svg" alt="Move" />
+    </button>
+    <button on:click={shareFileDo} title="Share">
+      <img src="icons/share.svg" alt="Share" />
+    </button>
+    <button on:click={deleteFile} title="Delete">
+      <img src="icons/trash.svg" alt="Delete" />
+    </button>
   </div>
 </li>
 
@@ -125,10 +208,12 @@
 
   .stuff {
     display: none;
-    gap: 10px;
+    gap: 5px;
+    height: 100%;
+    width: fit-content;
   }
 
-  li button {
+  .slot {
     border: none;
     font-family: "Roboto", sans-serif;
     background: none;
@@ -151,10 +236,17 @@
     cursor: pointer;
     display: grid;
     place-content: center;
+    height: 100%;
+    width: 25px;
   }
 
   .stuff button img {
-    width: 25px;
+    width: 100%;
+    transition: filter 0.25s linear;
+  }
+
+  .stuff button:hover img {
+    filter: invert(0.25);
   }
 
   .bold {

@@ -70,6 +70,29 @@ const renameFolder = async (location, name, id) => {
   return 200;
 }
 
+const renameFile = async (location, name, id) => {
+  if (name.includes(".") || name.includes("/") || name.includes("&")) {
+    return "Illegal Characters used.";
+  }
+  let fileLocation = `./storage/${hashed(id)}/home/`;
+  if (location !== " ") {
+    fileLocation+=`${location}`;
+  }
+  let fileLocation2 = `./storage/${hashed(id)}/home/`;
+  if (location === " ") {
+    fileLocation2+=name;
+  } else {
+    fileLocation2+=`${location.split("/").slice(0, -1).join("/")}/${name}`;
+  }
+  try {
+    await fs.promises.rename(fileLocation, fileLocation2 +"."+ fileLocation.split(".").reverse()[0]);
+  } catch (err) {
+    console.error(err);
+    return "Error Renaming folder.";
+  }
+  return 200;
+}
+
 const deleteFolder = async (location, id) => {
   let fileLocation = `./storage/${hashed(id)}/home/`;
   if (location !== " ") {
@@ -101,13 +124,21 @@ const shareFolder = async (location, id, user) => {
   return "Feature not implemented yet!";
 }
 
+
+const shareFile = async (location, id, user) => {
+  console.log(location, id ,user);
+  return "Feature not implemented yet!";
+}
+
 module.exports = {
     createHash,
     hashed,
     copyRecursiveSync,
     addFolder,
     renameFolder,
+    renameFile,
     deleteFolder,
     moveFolder,
-    shareFolder
+    shareFolder,
+    shareFile
 }

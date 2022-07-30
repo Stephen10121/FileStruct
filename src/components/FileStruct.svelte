@@ -16,7 +16,13 @@
     <p class="empty">No Files</p>
   {/if}
   {#each files as file}
-    <File {selected} {PROXY} file={file.name} metadata={file.metadata}>
+    <File
+      {selected}
+      {PROXY}
+      file={file.name}
+      metadata={file.metadata}
+      on:newLoc
+    >
       {fileExtensionValue
         ? file.name
         : file.name.split(".").slice(0, -1).join(".")}

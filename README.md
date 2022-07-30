@@ -72,9 +72,9 @@ node server.js
 - [x] Upload File.
 - [x] Download File.
 - [ ] Move File.
-- [ ] Rename File.
+- [x] Rename File.
 - [ ] Delete File.
 - [ ] Profile Page.
 - [ ] Shared Page.
-- [ ] Share Folder.
-- [ ] Share File.
+- [x] Share Folder. ?
+- [x] Share File. ?
