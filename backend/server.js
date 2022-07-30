@@ -14,7 +14,7 @@ const bodyParser = require('body-parser');
 const morgan = require('morgan');
 const fileUpload = require('express-fileupload');
 const _ = require('lodash');
-const { hashed, addFolder, renameFolder, renameFile, deleteFolder, moveFolder, shareFolder, shareFile } = require('./functions');
+const { hashed, addFolder, renameFolder, renameFile, deleteFolder, moveFolder, moveFile, shareFolder, shareFile } = require('./functions');
 const app = express();
 
 app.use((req, res, next) => {
@@ -373,6 +373,10 @@ app.post("/moveFolder", async (req, res) => {
         res.json({ msg: "Missing arguments"});
         return;
     }
+    if (req.query.dest.includes("..")) {
+        res.json({ msg: "Not allowed!" });
+        return;
+    }
     jwt.verify(req.query.cred, process.env.ACCESS_TOKEN_SECRET, async (err, user) => {
         if (err) {
             return res.status(400).json({ msg: 'Invalid input' });
@@ -388,6 +392,33 @@ app.post("/moveFolder", async (req, res) => {
             return;
         }
         res.json({ msg: movedFolder });
+    });
+});
+
+app.post("/moveFile", async (req, res) => {
+    if (!req.query["location"] || !req.query["cred"] || !req.query["dest"]) {
+        res.json({ msg: "Missing arguments"});
+        return;
+    }
+    if (req.query.dest.includes("..")) {
+        res.json({ msg: "Not allowed!" });
+        return;
+    }
+    jwt.verify(req.query.cred, process.env.ACCESS_TOKEN_SECRET, async (err, user) => {
+        if (err) {
+            return res.status(400).json({ msg: 'Invalid input' });
+        }
+        const userif = await getUserData(user.usersHash);
+        if (userif == "error") {
+            return res.status(400).json({ msg: 'Invalid input' });
+        }
+        const movedFile = await moveFile(req.query.location, user.usersName, req.query.dest);
+        if (movedFile === 200) {
+            const files = await getFiles(`./storage/${hashed(user.usersName)}/home`);
+            res.json({ msg: "Good", files: files.files, fileSize: files.fileSize });
+            return;
+        }
+        res.json({ msg: movedFile });
     });
 });
 

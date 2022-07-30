@@ -4,6 +4,7 @@
   export let files;
   export let selected;
   export let PROXY;
+  export let folderStruct;
   let fileExtensionValue;
 
   fileExtension.subscribe((value) => {
@@ -21,6 +22,7 @@
       {PROXY}
       file={file.name}
       metadata={file.metadata}
+      {folderStruct}
       on:newLoc
     >
       {fileExtensionValue

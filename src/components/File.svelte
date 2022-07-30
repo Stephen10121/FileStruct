@@ -3,6 +3,7 @@
   import { createEventDispatcher } from "svelte";
   const dispatch = createEventDispatcher();
   import ToastNotification from "./ToastNotification.svelte";
+  import MoveTo from "./MoveTo.svelte";
   import BoolPrompt from "./BoolPrompt.svelte";
   import Prompt from "./Prompt.svelte";
   import { getCookie } from "../cookie";
@@ -11,7 +12,9 @@
   export let file;
   export let metadata;
   export let PROXY;
+  export let folderStruct;
   let notification = null;
+  let moveFile = false;
   let previewShow = false;
   let deleteFileCheck = false;
   let showPrompt = false;
@@ -126,8 +129,41 @@
           dispatch("newLoc", selected);
           notification = {
             status: "success",
-            msg: `Renamed folder: '${extra[1]}'`,
+            msg: `Renamed file: '${extra[1]}'`,
           };
+        } else {
+          notification = {
+            status: "alert",
+            msg: data.msg,
+          };
+        }
+      });
+  };
+
+  const moveFileHere = ({ detail }) => {
+    moveFile = false;
+    let location;
+    if (!selected) {
+      location = file;
+    } else {
+      location = selected + "/" + file;
+    }
+    let destination = `${detail}/${file}`;
+    fetch(
+      `${PROXY}moveFile?cred=${getCookie(
+        "G_VAR2"
+      )}&location=${location}&dest=${destination}`,
+      { method: "POST" }
+    )
+      .then((response) => response.json())
+      .then((data) => {
+        if (data.msg === "Good") {
+          folderStructValue.update((n) => data.files);
+          notification = {
+            status: "success",
+            msg: `Moved file!`,
+          };
+          dispatch("newLoc", selected);
         } else {
           notification = {
             status: "alert",
@@ -138,6 +174,16 @@
   };
 </script>
 
+{#if moveFile}
+  <MoveTo
+    {folderStruct}
+    exclude={null}
+    on:close-move={() => {
+      moveFile = false;
+    }}
+    on:move-here={moveFileHere}
+  />
+{/if}
 {#if deleteFileCheck}
   <BoolPrompt
     on:boolChoose={(e) => {
@@ -180,7 +226,12 @@
     <button on:click={downloadFile} title="Download">
       <img src="icons/download.svg" alt="Download" />
     </button>
-    <button title="Move">
+    <button
+      title="Move"
+      on:click={() => {
+        moveFile = true;
+      }}
+    >
       <img src="icons/send-fill.svg" alt="Move" />
     </button>
     <button on:click={shareFileDo} title="Share">

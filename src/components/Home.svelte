@@ -325,6 +325,7 @@
       {selected}
       files={currentFolderPathFiles}
       {PROXY}
+      {folderStruct}
       on:newLoc={newLoc}
     />
   </section>

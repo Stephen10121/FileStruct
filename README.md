@@ -71,7 +71,7 @@ node server.js
 - [x] Settings Page.
 - [x] Upload File.
 - [x] Download File.
-- [ ] Move File.
+- [x] Move File.
 - [x] Rename File.
 - [ ] Delete File.
 - [ ] Profile Page.

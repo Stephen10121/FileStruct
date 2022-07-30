@@ -2,6 +2,9 @@ const crypto = require("crypto");
 const fs = require("fs");
 const fse = require("fs-extra");
 const path = require("path");
+const {promisify} = require('util');
+const {join} = require('path');
+const mv = promisify(fs.rename);
 
 function createHash() {
     const bytes = crypto.randomBytes(16);
@@ -88,7 +91,7 @@ const renameFile = async (location, name, id) => {
     await fs.promises.rename(fileLocation, fileLocation2 +"."+ fileLocation.split(".").reverse()[0]);
   } catch (err) {
     console.error(err);
-    return "Error Renaming folder.";
+    return "Error Renaming file.";
   }
   return 200;
 }
@@ -119,6 +122,18 @@ const moveFolder = async (location, id, dest) => {
   return 200;
 }
 
+const moveFile = async (location, id, dest) => {
+  let fileLocation = `./storage/${hashed(id)}/home/${location}`;
+  let fileDestination = `./storage/${hashed(id)}/home/${dest}`;
+  try {
+    await mv(fileLocation, fileDestination);
+  } catch (err) {
+    console.log(err);
+    return "Error moving file";
+  }
+  return 200;
+}
+
 const shareFolder = async (location, id, user) => {
   console.log(location, id ,user);
   return "Feature not implemented yet!";
@@ -139,6 +154,7 @@ module.exports = {
     renameFile,
     deleteFolder,
     moveFolder,
+    moveFile,
     shareFolder,
     shareFile
 }

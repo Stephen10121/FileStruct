@@ -57,6 +57,8 @@
     flex-direction: column;
     gap: 10px;
     z-index: 161;
+    top: 0;
+    left: 0;
   }
 
   .info {
