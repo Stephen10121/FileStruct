@@ -76,5 +76,5 @@ node server.js
 - [x] Delete File.
 - [ ] Profile Page.
 - [ ] Shared Page.
-- [x] Share Folder. ?
-- [x] Share File. ?
+- [?] Share Folder. Almost ready. Has to hook up to shared page.
+- [?] Share File. Almost ready. Has to hook up to shared page.

@@ -119,7 +119,7 @@ const deleteFile = async (location, id) => {
     await fs.promises.unlink(fileLocation);
   } catch (err) {
     console.error(err);
-    return "Error deleting folder.";
+    return "Error deleting file.";
   }
   return 200;
 }
