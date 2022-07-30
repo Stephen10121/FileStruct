@@ -14,7 +14,7 @@ const bodyParser = require('body-parser');
 const morgan = require('morgan');
 const fileUpload = require('express-fileupload');
 const _ = require('lodash');
-const { hashed, addFolder, renameFolder, renameFile, deleteFolder, deleteFile, moveFolder, moveFile, shareFolder, shareFile } = require('./functions');
+const { hashed, addFolder, renameFolder, renameFile, deleteFolder, deleteSharedFolder, deleteFile, moveFolder, moveFile, shareFolder, shareFile } = require('./functions');
 const app = express();
 
 app.use((req, res, next) => {
@@ -207,6 +207,23 @@ app.get("/fetchSharedFiles", async (req, res) => {
             return res.status(400).json({ msg: 'Invalid input' });
         }
         const files = await getFiles(`./storage/${hashed(user.usersName)}/shared`);
+        res.json({ msg: "Good", files: files.files , fileSize: String(Math.floor(files.fileSize/10000)/100)+"Mb"});
+    });
+});
+
+app.get("/fetchSharedFiles", async (req, res) => {
+    if (!req.query["cred"]) {
+        return res.json({ msg: "Missing arguments." });
+    }
+    jwt.verify(req.query.cred, process.env.ACCESS_TOKEN_SECRET, async (err, user) => {
+        if (err) {
+            return res.status(400).json({ msg: 'Invalid input' });
+        }
+        const userif = await getUserData(user.usersHash);
+        if (userif == "error") {
+            return res.status(400).json({ msg: 'Invalid input' });
+        }
+        const files = await getFiles(`./storage/${hashed(user.usersName)}/shared`);
             res.json({ msg: "Good", files: files.files , fileSize: files.fileSize });;
     });
 });
@@ -365,6 +382,33 @@ app.post("/deleteFolder", async (req, res) => {
         const deletedFolder = await deleteFolder(req.query.location, user.usersName);
         if (deletedFolder === 200) {
             const files = await getFiles(`./storage/${hashed(user.usersName)}/home`);
+            res.json({ msg: "Good", files: files.files, fileSize: files.fileSize });
+            return;
+        }
+        res.json({ msg: deletedFolder });
+    });
+});
+
+app.post("/deleteSharedFolder", async (req, res) => {
+    if (!req.query["location"] || !req.query["cred"]) {
+        res.json({ msg: "Missing arguments"});
+        return;
+    }
+    if (req.query.location.includes("..")) {
+        res.json({ msg: "Not allowed!" });
+        return;
+    }
+    jwt.verify(req.query.cred, process.env.ACCESS_TOKEN_SECRET, async (err, user) => {
+        if (err) {
+            return res.status(400).json({ msg: 'Invalid input' });
+        }
+        const userif = await getUserData(user.usersHash);
+        if (userif == "error") {
+            return res.status(400).json({ msg: 'Invalid input' });
+        }
+        const deletedFolder = await deleteSharedFolder(req.query.location, user.usersName);
+        if (deletedFolder === 200) {
+            const files = await getFiles(`./storage/${hashed(user.usersName)}/shared`);
             res.json({ msg: "Good", files: files.files, fileSize: files.fileSize });
             return;
         }

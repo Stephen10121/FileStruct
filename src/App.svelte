@@ -13,6 +13,10 @@
     <CheckLog {PROXY} profile={true} />
   </Route>
 
+  <Route path="/shared" primary={false}>
+    <CheckLog {PROXY} shared={true} />
+  </Route>
+
   <Route path="/" primary={false}>
     <CheckLog {PROXY} profile={false} />
   </Route>

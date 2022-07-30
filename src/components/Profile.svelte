@@ -10,6 +10,10 @@
   let notification = null;
 </script>
 
+<svelte:head>
+  <title>Profile | GCloud</title>
+</svelte:head>
+
 {#if notification !== null}
   <ToastNotification
     type={notification.status}

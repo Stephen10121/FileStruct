@@ -4,6 +4,7 @@
   export let userData;
   export let folderStruct;
   export let selected;
+  export let shared;
   $: folderStruct;
 
   let contextMenu;
@@ -51,19 +52,32 @@
   });
 </script>
 
-<section class="right-click" bind:this={contextMenu}>
-  <RightClick
-    bind:this={contextMenu}
-    {selected}
-    on:new-folder
-    on:rename-folder
-    on:delete-folder
-    on:move-folder
-    on:share-folder
-    on:settings
-    on:close-right={hideRightClick}
-  />
-</section>
+{#if shared}
+  <section class="right-click" bind:this={contextMenu}>
+    <RightClick
+      bind:this={contextMenu}
+      {selected}
+      {shared}
+      on:addToDrive
+      on:delete-folder
+      on:close-right={hideRightClick}
+    />
+  </section>
+{:else}
+  <section class="right-click" bind:this={contextMenu}>
+    <RightClick
+      bind:this={contextMenu}
+      {selected}
+      on:new-folder
+      on:rename-folder
+      on:delete-folder
+      on:move-folder
+      on:share-folder
+      on:settings
+      on:close-right={hideRightClick}
+    />
+  </section>
+{/if}
 <button
   class="folder-part-button"
   id="folderpartbutton"

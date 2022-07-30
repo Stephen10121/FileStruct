@@ -110,6 +110,20 @@ const deleteFolder = async (location, id) => {
   return 200;
 }
 
+const deleteSharedFolder = async (location, id) => {
+  let fileLocation = `./storage/${hashed(id)}/shared/`;
+  if (location !== " ") {
+    fileLocation+=`${location}`;
+  }
+  try {
+    await fs.promises.rmdir(fileLocation, { recursive: true });
+  } catch (err) {
+    console.error(err);
+    return "Error deleting folder.";
+  }
+  return 200;
+}
+
 const deleteFile = async (location, id) => {
   let fileLocation = `./storage/${hashed(id)}/home/`;
   if (location !== " ") {
@@ -167,6 +181,7 @@ module.exports = {
     renameFolder,
     renameFile,
     deleteFolder,
+    deleteSharedFolder,
     deleteFile,
     moveFolder,
     moveFile,

@@ -269,6 +269,10 @@
   };
 </script>
 
+<svelte:head>
+  <title>GCloud</title>
+</svelte:head>
+
 {#if settings}
   <Settings
     {usedSize}

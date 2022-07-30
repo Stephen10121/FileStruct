@@ -81,3 +81,4 @@ node server.js
 - [x] Settings Page.
 - [ ] Profile Page.
 - [ ] Shared Page.
+- [ ] Home Page.

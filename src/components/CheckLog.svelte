@@ -1,9 +1,13 @@
 <script>
+  import { useNavigate } from "svelte-navigator";
+  const navigate = useNavigate();
   import NotLogged from "./NotLogged.svelte";
   import Profile from "./Profile.svelte";
+  import Shared from "./Shared.svelte";
   import Home from "./Home.svelte";
   export let PROXY;
   export let profile;
+  export let shared;
 
   let isLogged = false;
   let userData;
@@ -16,13 +20,14 @@
   const cookie = getCookie("G_VAR2");
 
   if (cookie === undefined || cookie === null) {
-    // navigate("/");
+    navigate("/");
     isLogged = false;
   } else {
     fetch(`${PROXY}userData?cred=${getCookie("G_VAR2")}`)
       .then((response) => response.json())
       .then((data) => {
         if (data.status !== 200) {
+          navigate("/");
           isLogged = false;
         } else {
           loggedIn({ detail: data.userData });
@@ -39,6 +44,8 @@
 {#if isLogged}
   {#if profile}
     <Profile {userData} {PROXY} />
+  {:else if shared}
+    <Shared {userData} {PROXY} />
   {:else}
     <Home {userData} {PROXY} />
   {/if}
