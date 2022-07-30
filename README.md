@@ -26,13 +26,13 @@ First clone this repo and go to the backend folder.
 Then run this command to install all of the required dependencies:
 
 ```
-npm i
+yarn install
 ```
 
 After running that command you have to initialize the database and token. To do this run:
 
 ```
-npm run startup
+yarn startup
 ```
 
 ### Optional
@@ -50,7 +50,7 @@ Replace the 5000 with whatever port you want it to be.
 Finally you can run the server using:
 
 ```
-npm run dev
+yarn dev
 ```
 
 or:
