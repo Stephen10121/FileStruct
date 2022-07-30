@@ -54,7 +54,7 @@ const fileInfo = async (fileLocation) => {
     }
 };
 
-const allowedFileTypes = ["txt", "css"];
+const allowedFileTypes = ["txt", "css", "svg", "js", "html", "py"];
 const allowedVideoTypes = ["mp4", "mkv", "mp3", "m4a"];
 
 const readFile = async (fileLocation) => {
