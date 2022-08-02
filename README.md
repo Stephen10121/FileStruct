@@ -65,11 +65,11 @@ node server.js
 
 ## TODO
 
-- [ ] Folder Stuff.
+- [x] Folder Stuff.
   - [x] Move Folder.
   - [x] Rename Folder.
   - [x] Delete Folder.
-  - [ ] Share Folder. Almost ready. Has to hook up to shared page.
+  - [x] Share Folder. Almost ready. Has to hook up to shared page.
 - [x] File Stuff.
   - [x] File preview video/audio and text.
   - [x] Upload File.
@@ -79,10 +79,6 @@ node server.js
   - [x] Delete File.
   - [x] Share File.
 - [x] Settings Page.
-- [ ] Profile Page.
-  - [ ] Set sharing.
-  - [ ] Theme toggling.
-  - [ ] Delete account.
 - [x] Shared Page.
   - [x] Dynamic sidebar.
   - [x] Folder Stuff.
@@ -92,4 +88,8 @@ node server.js
     - [x] File preview video/audio and text.
     - [x] Delete file.
     - [x] Add to drive.
+- [ ] Profile Page.
+  - [ ] Set sharing.
+  - [ ] Theme toggling.
+  - [ ] Delete account.
 - [ ] Not logged-in Page.
