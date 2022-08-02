@@ -198,7 +198,7 @@ const shareFolder = async (location, id, user) => {
   const absoluteLocation = `./storage/${hashed(id)}/home/${location}`;
   const destination = `./storage/${hashed(user)}/shared/${location.split("/").reverse()[0]}`;
   try {
-    await fse.move(absoluteLocation, destination);
+    await fse.copy(absoluteLocation, destination);
   } catch (err) {
     console.log(err);
     return "Error moving folder";
