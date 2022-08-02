@@ -308,11 +308,18 @@
   >
 {/if}
 <main>
-  <SideFolder {PROXY} {selected} on:update-file-struct={fetchFiles} />
+  <SideFolder
+    shared={false}
+    profile={false}
+    {PROXY}
+    {selected}
+    on:update-file-struct={fetchFiles}
+  />
   <FolderPart
     {userData}
     {folderStruct}
     {selected}
+    shared={false}
     on:folderClicked={newLoc}
     on:rename-folder={renameFolderPrompt}
     on:new-folder={newFolderPrompt}
@@ -326,6 +333,7 @@
   <section class="file-part">
     <LocationPath {selected} on:change-dir={newLoc} />
     <FileStruct
+      shared={false}
       {selected}
       files={currentFolderPathFiles}
       {PROXY}

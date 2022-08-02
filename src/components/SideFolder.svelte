@@ -30,6 +30,8 @@
     </Link>
   {:else}
     <Link to="/profile"><div title="Profile" class="profile" /></Link>
+  {/if}
+  {#if !shared && !profile}
     <FileUpload {PROXY} {selected} on:update-file-struct />
   {/if}
   {#if shared}

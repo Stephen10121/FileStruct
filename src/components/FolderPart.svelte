@@ -68,6 +68,7 @@
     <RightClick
       bind:this={contextMenu}
       {selected}
+      {shared}
       on:new-folder
       on:rename-folder
       on:delete-folder

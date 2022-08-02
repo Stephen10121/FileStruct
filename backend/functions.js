@@ -124,8 +124,8 @@ const deleteSharedFolder = async (location, id) => {
   return 200;
 }
 
-const deleteFile = async (location, id) => {
-  let fileLocation = `./storage/${hashed(id)}/home/`;
+const deleteFile = async (location, id, shared) => {
+  let fileLocation = `./storage/${hashed(id)}/${shared?"shared":"home"}/`;
   if (location !== " ") {
     fileLocation+=`${location}`;
   }
@@ -158,6 +158,18 @@ const addToDrive = async (location, id) => {
   } catch (err) {
     console.log(err);
     return "Error moving folder";
+  }
+  return 200;
+}
+
+const addFileToDrive = async (location, id) => {
+  let fileLocation = `./storage/${hashed(id)}/shared/${location}`;
+  let fileDestination = `./storage/${hashed(id)}/home/${location.split("/").reverse()[0]}`;
+  try {
+    await fs.promises.rename(fileLocation, fileDestination);
+  } catch (err) {
+    console.log(err);
+    return "Error moving file";
   }
   return 200;
 }
@@ -198,6 +210,7 @@ module.exports = {
     moveFolder,
     moveFile,
     addToDrive,
+    addFileToDrive,
     shareFolder,
     shareFile
 }

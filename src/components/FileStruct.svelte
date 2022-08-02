@@ -1,17 +1,28 @@
 <script>
   import File from "./File.svelte";
   import { fileExtension } from "../../scripts/stores";
+  import ToastNotification from "./ToastNotification.svelte";
   export let files;
   export let selected;
   export let PROXY;
   export let folderStruct;
+  export let shared;
   let fileExtensionValue;
+  let notification = false;
 
   fileExtension.subscribe((value) => {
     fileExtensionValue = value;
   });
 </script>
 
+{#if notification}
+  <ToastNotification
+    type={notification.status}
+    on:close={() => {
+      notification = false;
+    }}>{notification.msg}</ToastNotification
+  >
+{/if}
 <ul>
   {#if files.length === 0}
     <p class="empty">No Files</p>
@@ -23,7 +34,11 @@
       file={file.name}
       metadata={file.metadata}
       {folderStruct}
+      {shared}
       on:newLoc
+      on:notification={({ detail }) => {
+        notification = detail;
+      }}
     >
       {fileExtensionValue
         ? file.name

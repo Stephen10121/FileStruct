@@ -5,6 +5,7 @@
   export let file;
   export let metadata;
   export let PROXY;
+  export let shared;
 
   let fileData = "N/A";
   let fileSizeUnit = "b";
@@ -32,7 +33,11 @@
     if (parts.length === 2) return parts.pop().split(";").shift();
   }
 
-  fetch(`${PROXY}getFileData?location=${path}&cred=${getCookie("G_VAR2")}`)
+  fetch(
+    `${PROXY}getFileData?location=${path}&cred=${getCookie(
+      "G_VAR2"
+    )}&shared=${shared}`
+  )
     .then((response) => response.json())
     .then((data) => {
       if (data["video"]) {
@@ -97,20 +102,37 @@
           dispatch("downloadFile", true);
         }}>Download</button
       >
-      <button
-        class="shareButton"
-        on:click={() => {
-          dispatch("shareFile", true);
-          dispatch("hidePreview", true);
-        }}>Share</button
-      >
-      <button
-        class="renameButton"
-        on:click={() => {
-          dispatch("renameFile", true);
-          dispatch("hidePreview", true);
-        }}>Rename</button
-      >
+      {#if shared}
+        <button
+          class="addToDriveButton"
+          on:click={() => {
+            dispatch("addToDrive", true);
+            dispatch("hidePreview", true);
+          }}>Add to Drive</button
+        >
+      {:else}
+        <button
+          class="shareButton"
+          on:click={() => {
+            dispatch("shareFile", true);
+            dispatch("hidePreview", true);
+          }}>Share</button
+        >
+        <button
+          class="renameButton"
+          on:click={() => {
+            dispatch("renameFile", true);
+            dispatch("hidePreview", true);
+          }}>Rename</button
+        >
+        <button
+          class="moveButton"
+          on:click={() => {
+            dispatch("moveFile", true);
+            dispatch("hidePreview", true);
+          }}>Move</button
+        >
+      {/if}
       <button
         class="deleteButton"
         on:click={() => {
@@ -247,7 +269,11 @@
 
   .actionButtons {
     display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: center;
     gap: 10px;
+    width: 100%;
   }
 
   .actionButtons button {
@@ -266,6 +292,24 @@
 
   .renameButton:hover {
     outline: 3px solid rgb(60, 37, 163);
+  }
+
+  .addToDriveButton {
+    background-color: rgb(17, 131, 112);
+    outline: 1px solid rgb(17, 131, 112);
+  }
+
+  .addToDriveButton:hover {
+    outline: 3px solid rgb(17, 131, 112);
+  }
+
+  .moveButton {
+    background-color: rgb(163, 47, 154);
+    outline: 1px solid rgb(163, 47, 154);
+  }
+
+  .moveButton:hover {
+    outline: 3px solid rgb(163, 47, 154);
   }
 
   .downloadButton {

@@ -45,7 +45,7 @@
   {#if profile}
     <Profile {userData} {PROXY} />
   {:else if shared}
-    <Shared {userData} {PROXY} />
+    <Shared {userData} {PROXY} {profile} />
   {:else}
     <Home {userData} {PROXY} />
   {/if}

@@ -10,15 +10,15 @@
 
 <Router>
   <Route path="/profile" primary={false}>
-    <CheckLog {PROXY} profile={true} />
+    <CheckLog {PROXY} profile={true} shared={false} />
   </Route>
 
   <Route path="/shared" primary={false}>
-    <CheckLog {PROXY} shared={true} />
+    <CheckLog {PROXY} profile={false} shared={true} />
   </Route>
 
   <Route path="/" primary={false}>
-    <CheckLog {PROXY} profile={false} />
+    <CheckLog {PROXY} profile={false} shared={false} />
   </Route>
 
   <Route path="/logout" primary={false}>

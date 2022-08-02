@@ -14,7 +14,8 @@ const bodyParser = require('body-parser');
 const morgan = require('morgan');
 const fileUpload = require('express-fileupload');
 const _ = require('lodash');
-const { hashed, addFolder, renameFolder, renameFile, deleteFolder, deleteSharedFolder, deleteFile, moveFolder, moveFile, addToDrive, shareFolder, shareFile } = require('./functions');
+const { hashed, addFolder, renameFolder, renameFile, deleteFolder, deleteSharedFolder, deleteFile, moveFolder, moveFile, addToDrive, addFileToDrive, shareFolder, shareFile } = require('./functions');
+const { query } = require('express');
 const app = express();
 
 app.use((req, res, next) => {
@@ -133,7 +134,12 @@ app.get("/download", async (req, res) => {
         if (req.query.location !== "false") {
             where = req.query.location + "/";
         }
-        const location = `./storage/${hashed(userif.usersName)}/home/${where}${req.query.file}`;
+        let location = `./storage/${hashed(userif.usersName)}/`;
+        if (req.query["shared"] === "true") {
+            location+=`shared/${where}${req.query.file}`;
+        } else {
+            location+=`home/${where}${req.query.file}`;
+        }
         try {
             await fs.promises.access(location);
         } catch (err) {
@@ -241,7 +247,7 @@ app.get("/getFileData", async (req, res) => {
             return res.status(400).json({ msg: 'Invalid input' });
         }
         
-        const fileData = await readFile(path.join(__dirname, `./storage/${hashed(user.usersName)}/home`, req.query.location));
+        const fileData = await readFile(path.join(__dirname, `./storage/${hashed(user.usersName)}/${req.query["shared"]==="true"?"shared":"home"}`, req.query.location));
         let jsonResult;
         if (fileData === "video") {
             jsonResult = { video: true }
@@ -425,6 +431,10 @@ app.post("/deleteFile", async (req, res) => {
         res.json({ msg: "Not allowed!" });
         return;
     }
+    let sendLocation = "home";
+    if (req.query["shared"] === "true") {
+        sendLocation = "shared";
+    }
     jwt.verify(req.query.cred, process.env.ACCESS_TOKEN_SECRET, async (err, user) => {
         if (err) {
             return res.status(400).json({ msg: 'Invalid input' });
@@ -433,9 +443,9 @@ app.post("/deleteFile", async (req, res) => {
         if (userif == "error") {
             return res.status(400).json({ msg: 'Invalid input' });
         }
-        const deletedFile = await deleteFile(req.query.location, user.usersName);
+        const deletedFile = await deleteFile(req.query.location, user.usersName, req.query["shared"]==="true"?true:false);
         if (deletedFile === 200) {
-            const files = await getFiles(`./storage/${hashed(user.usersName)}/home`);
+            const files = await getFiles(`./storage/${hashed(user.usersName)}/${sendLocation}`);
             res.json({ msg: "Good", files: files.files, fileSize: files.fileSize });
             return;
         }
@@ -488,6 +498,33 @@ app.post("/addToDrive", async (req, res) => {
             return res.status(400).json({ msg: 'Invalid input' });
         }
         const movedFolder = await addToDrive(req.query.location, user.usersName);
+        if (movedFolder === 200) {
+            const files = await getFiles(`./storage/${hashed(user.usersName)}/shared`);
+            res.json({ msg: "Good", files: files.files, fileSize: files.fileSize });
+            return;
+        }
+        res.json({ msg: movedFolder });
+    });
+});
+
+app.post("/addFileToDrive", async (req, res) => {
+    if (!req.query["location"] || !req.query["cred"]) {
+        res.json({ msg: "Missing arguments"});
+        return;
+    }
+    if (req.query.location === "null" || req.query.location === "false") {
+        res.json({ msg: "Cannot move root folder." });
+        return;
+    }
+    jwt.verify(req.query.cred, process.env.ACCESS_TOKEN_SECRET, async (err, user) => {
+        if (err) {
+            return res.status(400).json({ msg: 'Invalid input' });
+        }
+        const userif = await getUserData(user.usersHash);
+        if (userif == "error") {
+            return res.status(400).json({ msg: 'Invalid input' });
+        }
+        const movedFolder = await addFileToDrive(req.query.location, user.usersName);
         if (movedFolder === 200) {
             const files = await getFiles(`./storage/${hashed(user.usersName)}/shared`);
             res.json({ msg: "Good", files: files.files, fileSize: files.fileSize });

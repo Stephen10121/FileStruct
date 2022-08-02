@@ -10,6 +10,7 @@
 
   export let userData;
   export let PROXY;
+  export let profile;
 
   let selected = "none";
   $: selected;
@@ -151,6 +152,7 @@
     shared={true}
     {PROXY}
     {selected}
+    {profile}
     on:update-file-struct={fetchFiles}
   />
   <FolderPart
@@ -167,6 +169,7 @@
     <FileStruct
       {selected}
       files={currentFolderPathFiles}
+      shared={true}
       {PROXY}
       {folderStruct}
       on:newLoc={newLoc}

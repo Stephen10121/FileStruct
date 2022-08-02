@@ -2,7 +2,6 @@
   import FilePreview from "./FilePreview.svelte";
   import { createEventDispatcher } from "svelte";
   const dispatch = createEventDispatcher();
-  import ToastNotification from "./ToastNotification.svelte";
   import MoveTo from "./MoveTo.svelte";
   import BoolPrompt from "./BoolPrompt.svelte";
   import Prompt from "./Prompt.svelte";
@@ -13,7 +12,7 @@
   export let metadata;
   export let PROXY;
   export let folderStruct;
-  let notification = null;
+  export let shared;
   let moveFile = false;
   let previewShow = false;
   let deleteFileCheck = false;
@@ -24,7 +23,7 @@
     let res = await fetch(
       `${PROXY}download?file=${file}&location=${selected}&cred=${getCookie(
         "G_VAR2"
-      )}`,
+      )}&shared=${shared}`,
       {
         method: "GET",
       }
@@ -45,7 +44,7 @@
     } catch (err) {
       const result = await res.json();
       if (result.error) {
-        notification = { msg: result.msg, status: "alert" };
+        dispatch("notification", { msg: result.msg, status: "alert" });
         return;
       }
       return;
@@ -92,15 +91,15 @@
       .then((response) => response.json())
       .then((data) => {
         if (data.msg === "Good") {
-          notification = {
+          dispatch("notification", {
             status: "success",
             msg: `Shared folder: '${extra.split("/").reverse()[0]}'`,
-          };
+          });
         } else {
-          notification = {
+          dispatch("notification", {
             status: "alert",
             msg: data.msg,
-          };
+          });
         }
       });
   };
@@ -127,15 +126,15 @@
         if (data.msg === "Good") {
           folderStructValue.update((_n) => data.files);
           dispatch("newLoc", selected);
-          notification = {
+          dispatch("notification", {
             status: "success",
             msg: `Renamed file: '${extra[1]}'`,
-          };
+          });
         } else {
-          notification = {
+          dispatch("notification", {
             status: "alert",
             msg: data.msg,
-          };
+          });
         }
       });
   };
@@ -159,16 +158,16 @@
       .then((data) => {
         if (data.msg === "Good") {
           folderStructValue.update((_n) => data.files);
-          notification = {
+          dispatch("newLoc", selected);
+          dispatch("notification", {
             status: "success",
             msg: `Moved file!`,
-          };
-          dispatch("newLoc", selected);
+          });
         } else {
-          notification = {
+          dispatch("notification", {
             status: "alert",
             msg: data.msg,
-          };
+          });
         }
       });
   };
@@ -181,23 +180,54 @@
       location = selected + "/" + file;
     }
     fetch(
-      `${PROXY}deleteFile?cred=${getCookie("G_VAR2")}&location=${location}`,
+      `${PROXY}deleteFile?cred=${getCookie(
+        "G_VAR2"
+      )}&location=${location}&shared=${shared}`,
       { method: "POST" }
     )
       .then((response) => response.json())
       .then((data) => {
         if (data.msg === "Good") {
-          notification = {
-            status: "success",
-            msg: `Deleted file: '${file}'`,
-          };
           folderStructValue.update((_n) => data.files);
           dispatch("newLoc", selected);
+          dispatch("notification", {
+            status: "success",
+            msg: `Deleted file: '${file}'`,
+          });
         } else {
-          notification = {
+          dispatch("notification", {
             status: "alert",
             msg: data.msg,
-          };
+          });
+        }
+      });
+  };
+
+  const addToDrive = () => {
+    let location;
+    if (!selected) {
+      location = file;
+    } else {
+      location = selected + "/" + file;
+    }
+    fetch(
+      `${PROXY}addFileToDrive?cred=${getCookie("G_VAR2")}&location=${location}`,
+      { method: "POST" }
+    )
+      .then((response) => response.json())
+      .then((data) => {
+        if (data.msg === "Good") {
+          folderStructValue.update((_n) => data.files);
+          dispatch("newLoc", selected);
+          dispatch("notification", {
+            status: "success",
+            msg: `Added file to drive.`,
+          });
+        } else {
+          dispatch("notification", {
+            status: "alert",
+            msg: data.msg,
+          });
         }
       });
   };
@@ -230,14 +260,6 @@
     promptExtra={showPrompt.extra}
   />
 {/if}
-{#if notification !== null}
-  <ToastNotification
-    type={notification.status}
-    on:close={() => {
-      notification = null;
-    }}>{notification.msg}</ToastNotification
-  >
-{/if}
 <li>
   {#if previewShow}
     <FilePreview
@@ -246,9 +268,14 @@
       on:downloadFile={downloadFile}
       on:shareFile={shareFileDo}
       on:renameFile={renameFileDo}
+      on:addToDrive={addToDrive}
+      on:moveFile={() => {
+        moveFile = true;
+      }}
       {file}
       {selected}
       {metadata}
+      {shared}
       on:hidePreview={() => (previewShow = false)}
     />
   {/if}
@@ -257,17 +284,23 @@
     <button on:click={downloadFile} title="Download">
       <img src="icons/download.svg" alt="Download" />
     </button>
-    <button
-      title="Move"
-      on:click={() => {
-        moveFile = true;
-      }}
-    >
-      <img src="icons/send-fill.svg" alt="Move" />
-    </button>
-    <button on:click={shareFileDo} title="Share">
-      <img src="icons/share.svg" alt="Share" />
-    </button>
+    {#if shared}
+      <button title="Add to drive." on:click={addToDrive}>
+        <img src="/icons/folder-plus.svg" alt="Add to drive" />
+      </button>
+    {:else}
+      <button
+        title="Move"
+        on:click={() => {
+          moveFile = true;
+        }}
+      >
+        <img src="icons/send-fill.svg" alt="Move" />
+      </button>
+      <button on:click={shareFileDo} title="Share">
+        <img src="icons/share.svg" alt="Share" />
+      </button>
+    {/if}
     <button on:click={deleteFile} title="Delete">
       <img src="icons/trash.svg" alt="Delete" />
     </button>
