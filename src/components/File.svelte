@@ -93,7 +93,7 @@
         if (data.msg === "Good") {
           dispatch("notification", {
             status: "success",
-            msg: `Shared folder: '${extra.split("/").reverse()[0]}'`,
+            msg: `Shared file: '${file}'`,
           });
         } else {
           dispatch("notification", {

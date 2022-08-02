@@ -14112,7 +14112,7 @@ var app = (function () {
     			t1 = text(/*file*/ ctx[1]);
     			t2 = text("?");
     			attr_dev(span, "class", "bold svelte-15ncrr8");
-    			add_location(span, file_1, 252, 14, 6585);
+    			add_location(span, file_1, 252, 14, 6558);
     		},
     		m: function mount(target, anchor) {
     			insert_dev(target, t0, anchor);
@@ -14283,17 +14283,17 @@ var app = (function () {
     			if (!src_url_equal(img0.src, img0_src_value = "icons/send-fill.svg")) attr_dev(img0, "src", img0_src_value);
     			attr_dev(img0, "alt", "Move");
     			attr_dev(img0, "class", "svelte-15ncrr8");
-    			add_location(img0, file_1, 297, 8, 7766);
+    			add_location(img0, file_1, 297, 8, 7739);
     			attr_dev(button0, "title", "Move");
     			attr_dev(button0, "class", "svelte-15ncrr8");
-    			add_location(button0, file_1, 291, 6, 7651);
+    			add_location(button0, file_1, 291, 6, 7624);
     			if (!src_url_equal(img1.src, img1_src_value = "icons/share.svg")) attr_dev(img1, "src", img1_src_value);
     			attr_dev(img1, "alt", "Share");
     			attr_dev(img1, "class", "svelte-15ncrr8");
-    			add_location(img1, file_1, 300, 8, 7890);
+    			add_location(img1, file_1, 300, 8, 7863);
     			attr_dev(button1, "title", "Share");
     			attr_dev(button1, "class", "svelte-15ncrr8");
-    			add_location(button1, file_1, 299, 6, 7835);
+    			add_location(button1, file_1, 299, 6, 7808);
     		},
     		m: function mount(target, anchor) {
     			insert_dev(target, button0, anchor);
@@ -14347,10 +14347,10 @@ var app = (function () {
     			if (!src_url_equal(img.src, img_src_value = "/icons/folder-plus.svg")) attr_dev(img, "src", img_src_value);
     			attr_dev(img, "alt", "Add to drive");
     			attr_dev(img, "class", "svelte-15ncrr8");
-    			add_location(img, file_1, 288, 8, 7558);
+    			add_location(img, file_1, 288, 8, 7531);
     			attr_dev(button, "title", "Add to drive.");
     			attr_dev(button, "class", "svelte-15ncrr8");
-    			add_location(button, file_1, 287, 6, 7496);
+    			add_location(button, file_1, 287, 6, 7469);
     		},
     		m: function mount(target, anchor) {
     			insert_dev(target, button, anchor);
@@ -14438,25 +14438,25 @@ var app = (function () {
     			button2 = element("button");
     			img1 = element("img");
     			attr_dev(button0, "class", "slot svelte-15ncrr8");
-    			add_location(button0, file_1, 281, 2, 7246);
+    			add_location(button0, file_1, 281, 2, 7219);
     			if (!src_url_equal(img0.src, img0_src_value = "icons/download.svg")) attr_dev(img0, "src", img0_src_value);
     			attr_dev(img0, "alt", "Download");
     			attr_dev(img0, "class", "svelte-15ncrr8");
-    			add_location(img0, file_1, 284, 6, 7408);
+    			add_location(img0, file_1, 284, 6, 7381);
     			attr_dev(button1, "title", "Download");
     			attr_dev(button1, "class", "svelte-15ncrr8");
-    			add_location(button1, file_1, 283, 4, 7351);
+    			add_location(button1, file_1, 283, 4, 7324);
     			if (!src_url_equal(img1.src, img1_src_value = "icons/trash.svg")) attr_dev(img1, "src", img1_src_value);
     			attr_dev(img1, "alt", "Delete");
     			attr_dev(img1, "class", "svelte-15ncrr8");
-    			add_location(img1, file_1, 304, 6, 8018);
+    			add_location(img1, file_1, 304, 6, 7991);
     			attr_dev(button2, "title", "Delete");
     			attr_dev(button2, "class", "svelte-15ncrr8");
-    			add_location(button2, file_1, 303, 4, 7965);
+    			add_location(button2, file_1, 303, 4, 7938);
     			attr_dev(div, "class", "stuff svelte-15ncrr8");
-    			add_location(div, file_1, 282, 2, 7326);
+    			add_location(div, file_1, 282, 2, 7299);
     			attr_dev(li, "class", "svelte-15ncrr8");
-    			add_location(li, file_1, 262, 0, 6809);
+    			add_location(li, file_1, 262, 0, 6782);
     		},
     		l: function claim(nodes) {
     			throw new Error("options.hydrate only works if the component was compiled with the `hydratable: true` option");
@@ -14747,7 +14747,7 @@ var app = (function () {
     			if (data.msg === "Good") {
     				dispatch("notification", {
     					status: "success",
-    					msg: `Shared folder: '${extra.split("/").reverse()[0]}'`
+    					msg: `Shared file: '${file}'`
     				});
     			} else {
     				dispatch("notification", { status: "alert", msg: data.msg });

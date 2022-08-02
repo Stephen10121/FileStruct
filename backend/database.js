@@ -1,7 +1,11 @@
 const Database = require('sqlite-async');
 const fs = require("fs");
-const { hashed, createHash } = require("./functions");
+const crypto = require("crypto");
 
+function hashed(password) {
+    const hash = crypto.createHash('sha256').update(password).digest("hex");
+    return hash;
+}
 async function createTable() {
     const dir = `./storage/`;
 
@@ -139,5 +143,5 @@ module.exports = {
     getUserData,
     saveProfile,
     checkUserSharing,
-    createTable
+    createTable,
 }

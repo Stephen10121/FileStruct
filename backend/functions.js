@@ -5,6 +5,7 @@ const path = require("path");
 const {promisify} = require('util');
 const {join} = require('path');
 const mv = promisify(fs.rename);
+const { checkUserSharing } = require("./database");
 
 function createHash() {
     const bytes = crypto.randomBytes(16);
@@ -187,14 +188,42 @@ const moveFile = async (location, id, dest) => {
 }
 
 const shareFolder = async (location, id, user) => {
-  console.log(location, id ,user);
-  return "Feature not implemented yet!";
+  const checkSharing = await checkUserSharing(user);
+  if (checkSharing === null) {
+    return "User doesnt exist.";
+  } 
+  if (checkSharing === "sfalse") {
+    return "User disabled sharing.";
+  }
+  const absoluteLocation = `./storage/${hashed(id)}/home/${location}`;
+  const destination = `./storage/${hashed(user)}/shared/${location.split("/").reverse()[0]}`;
+  try {
+    await fse.move(absoluteLocation, destination);
+  } catch (err) {
+    console.log(err);
+    return "Error moving folder";
+  }
+  return 200;
 }
 
 
 const shareFile = async (location, id, user) => {
-  console.log(location, id ,user);
-  return "Feature not implemented yet!";
+  const checkSharing = await checkUserSharing(user);
+  if (checkSharing === null) {
+    return "User doesnt exist.";
+  } 
+  if (checkSharing === "sfalse") {
+    return "User disabled sharing.";
+  }
+  const absoluteLocation = `./storage/${hashed(id)}/home/${location}`;
+  const destination = `./storage/${hashed(user)}/shared/${location.split("/").reverse()[0]}`;
+  try {
+    await fs.promises.copyFile(absoluteLocation, destination);
+  } catch (err) {
+    console.log(err);
+    return "Error moving file";
+  }
+  return 200;
 }
 
 module.exports = {

@@ -70,14 +70,14 @@ node server.js
   - [x] Rename Folder.
   - [x] Delete Folder.
   - [ ] Share Folder. Almost ready. Has to hook up to shared page.
-- [ ] File Stuff.
+- [x] File Stuff.
   - [x] File preview video/audio and text.
   - [x] Upload File.
   - [x] Download File.
   - [x] Move File.
   - [x] Rename File.
   - [x] Delete File.
-  - [ ] Share File. Almost ready. Has to hook up to shared page.
+  - [x] Share File.
 - [x] Settings Page.
 - [ ] Profile Page.
   - [ ] Set sharing.
