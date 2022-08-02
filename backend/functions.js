@@ -188,6 +188,9 @@ const moveFile = async (location, id, dest) => {
 }
 
 const shareFolder = async (location, id, user) => {
+  if (id===user) {
+    return "You cannot share to yourself.";
+  }
   const checkSharing = await checkUserSharing(user);
   if (checkSharing === null) {
     return "User doesnt exist.";
@@ -208,6 +211,9 @@ const shareFolder = async (location, id, user) => {
 
 
 const shareFile = async (location, id, user) => {
+  if (id===user) {
+    return "You cannot share to yourself.";
+  }
   const checkSharing = await checkUserSharing(user);
   if (checkSharing === null) {
     return "User doesnt exist.";

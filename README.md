@@ -69,7 +69,7 @@ node server.js
   - [x] Move Folder.
   - [x] Rename Folder.
   - [x] Delete Folder.
-  - [x] Share Folder. Almost ready. Has to hook up to shared page.
+  - [x] Share Folder.
 - [x] File Stuff.
   - [x] File preview video/audio and text.
   - [x] Upload File.
