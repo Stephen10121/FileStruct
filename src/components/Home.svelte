@@ -311,6 +311,7 @@
   <SideFolder
     shared={false}
     profile={false}
+    {userData}
     {PROXY}
     {selected}
     on:update-file-struct={fetchFiles}

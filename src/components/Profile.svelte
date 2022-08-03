@@ -1,9 +1,12 @@
 <script>
   import ToastNotification from "./ToastNotification.svelte";
   import SideFolder from "./SideFolder.svelte";
+  import ImgChoose from "./ImgChoose.svelte";
+  import Sharing from "./Sharing.svelte";
+  import Theme from "./Theme.svelte";
 
   export let userData;
-  export let PROXY;
+  // export let PROXY;
 
   let selected = "none";
   $: selected;
@@ -23,8 +26,19 @@
   >
 {/if}
 <main>
-  <SideFolder profile={true} />
-  <div class="therest">profile</div>
+  <SideFolder profile={true} {userData} />
+  <div class="therest">
+    <ImgChoose
+      {userData}
+      on:profileClick={({ detail }) => {
+        console.log(detail);
+      }}
+    />
+    <div class="double">
+      <Sharing />
+      <Theme />
+    </div>
+  </div>
 </main>
 
 <style>
@@ -34,6 +48,24 @@
     width: 100vw;
     height: 100vh;
     overflow-y: auto;
+  }
+
+  .therest {
+    width: 100%;
+    height: 100vh;
+    overflow-y: auto;
+    padding: 10px 30px;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+  }
+
+  .double {
+    width: 100%;
+    height: 200px;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 10px;
   }
 
   /* @media only screen and (max-width: 850px) {

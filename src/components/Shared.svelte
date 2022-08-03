@@ -153,6 +153,7 @@
     {PROXY}
     {selected}
     {profile}
+    {userData}
     on:update-file-struct={fetchFiles}
   />
   <FolderPart

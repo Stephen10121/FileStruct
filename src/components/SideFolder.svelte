@@ -5,6 +5,7 @@
   export let shared;
   export let PROXY;
   export let selected;
+  export let userData;
 </script>
 
 <button
@@ -29,7 +30,14 @@
       </div>
     </Link>
   {:else}
-    <Link to="/profile"><div title="Profile" class="profile" /></Link>
+    <Link to="/profile"
+      ><div title="Profile" class="profile"
+        ><img
+          src={JSON.parse(userData.usersProfile).profile}
+          alt="Profile Pic"
+        /></div
+      ></Link
+    >
   {/if}
   {#if !shared && !profile}
     <FileUpload {PROXY} {selected} on:update-file-struct />
@@ -122,8 +130,13 @@
   .profile {
     width: 70px;
     height: 70px;
-    background-color: red;
+    background-color: #dfdfdf;
     border-radius: 50%;
+    overflow: hidden;
+  }
+
+  .profile img {
+    width: 100%;
   }
 
   @media only screen and (max-width: 850px) {
