@@ -23,7 +23,7 @@
     navigate("/");
     isLogged = false;
   } else {
-    fetch(`${PROXY}userData?cred=${getCookie("G_VAR2")}`)
+    fetch(`${PROXY.split("/")[0]}userData?cred=${getCookie("G_VAR2")}`)
       .then((response) => response.json())
       .then((data) => {
         if (data.status !== 200) {
@@ -43,11 +43,11 @@
 
 {#if isLogged}
   {#if profile}
-    <Profile {userData} {PROXY} />
+    <Profile {userData} PROXY={PROXY.split("/")[0]} />
   {:else if shared}
-    <Shared {userData} {PROXY} {profile} />
+    <Shared {userData} PROXY={PROXY.split("/")[0]} {profile} />
   {:else}
-    <Home {userData} {PROXY} />
+    <Home {userData} PROXY={PROXY.split("/")[0]} />
   {/if}
 {:else}
   <NotLogged on:userLoggedIn={loggedIn} {PROXY} />

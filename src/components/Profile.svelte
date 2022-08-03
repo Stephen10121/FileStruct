@@ -28,6 +28,17 @@
 <main>
   <SideFolder profile={true} {userData} />
   <div class="therest">
+    <div class="imgPart">
+      <div class="text">
+        <h1>Notice</h1>
+      </div>
+      <div class="buttonGrid">
+        <p
+          >The profile page is not functional. This is all just asthetic stuff
+          to get everything working. The backend has not been hooked up yet.</p
+        >
+      </div>
+    </div>
     <ImgChoose
       {userData}
       on:profileClick={({ detail }) => {
@@ -66,6 +77,47 @@
     display: grid;
     grid-template-columns: 1fr 1fr;
     gap: 10px;
+  }
+
+  .imgPart {
+    width: 100%;
+    height: 200px;
+    border: 5px solid var(--file-hover-color);
+    display: grid;
+    grid-template-columns: 2fr 3fr;
+    border-radius: 10px;
+    padding: 10px;
+  }
+
+  .buttonGrid {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    gap: 10px;
+    align-items: center;
+    justify-content: center;
+    padding: 10px;
+  }
+
+  .buttonGrid p {
+    font-family: "Roboto", sans-serif;
+    font-size: 2rem;
+    color: var(--file-hover-color);
+  }
+
+  .text {
+    border-right: 2px solid var(--file-hover-color);
+    width: 100%;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .text h1 {
+    font-family: "Roboto", sans-serif;
+    font-size: 3rem;
+    color: var(--file-hover-color);
   }
 
   /* @media only screen and (max-width: 850px) {
