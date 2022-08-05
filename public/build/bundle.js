@@ -10803,21 +10803,21 @@ var app = (function () {
     			create_component(theme.$$.fragment);
     			document.title = "Profile | GCloud";
     			attr_dev(h1, "class", "svelte-n52npe");
-    			add_location(h1, file$f, 39, 8, 1112);
+    			add_location(h1, file$f, 34, 8, 913);
     			attr_dev(div0, "class", "text svelte-n52npe");
-    			add_location(div0, file$f, 38, 6, 1084);
+    			add_location(div0, file$f, 33, 6, 885);
     			attr_dev(p, "class", "svelte-n52npe");
-    			add_location(p, file$f, 42, 8, 1183);
+    			add_location(p, file$f, 37, 8, 984);
     			attr_dev(div1, "class", "buttonGrid svelte-n52npe");
-    			add_location(div1, file$f, 41, 6, 1149);
+    			add_location(div1, file$f, 36, 6, 950);
     			attr_dev(div2, "class", "imgPart svelte-n52npe");
-    			add_location(div2, file$f, 37, 4, 1055);
+    			add_location(div2, file$f, 32, 4, 856);
     			attr_dev(div3, "class", "double svelte-n52npe");
-    			add_location(div3, file$f, 57, 4, 1667);
+    			add_location(div3, file$f, 52, 4, 1468);
     			attr_dev(div4, "class", "therest svelte-n52npe");
-    			add_location(div4, file$f, 36, 2, 1028);
+    			add_location(div4, file$f, 31, 2, 829);
     			attr_dev(main, "class", "svelte-n52npe");
-    			add_location(main, file$f, 34, 0, 943);
+    			add_location(main, file$f, 29, 0, 744);
     		},
     		l: function claim(nodes) {
     			throw new Error("options.hydrate only works if the component was compiled with the `hydratable: true` option");
@@ -10896,17 +10896,13 @@ var app = (function () {
     function instance$k($$self, $$props, $$invalidate) {
     	let { $$slots: slots = {}, $$scope } = $$props;
     	validate_slots('Profile', slots, []);
-    	const dispatch = createEventDispatcher();
     	let { userData } = $$props;
     	let profileSettings = JSON.parse(userData.usersProfile);
+    	console.log(profileSettings);
 
     	const changeProfile = newSettings => {
     		fetch(`/changeProfileSettings?cred=${getCookie$2("G_VAR2")}&settings=${JSON.stringify(newSettings)}`, { method: "POST" }).then(res => res.json()).then(data => {
     			console.log(data);
-
-    			if (data.msg === "Good") {
-    				dispatch("edit-profile", JSON.stringify(newSettings));
-    			}
     		});
     	};
 
@@ -10947,8 +10943,6 @@ var app = (function () {
     		Sharing,
     		Theme,
     		getCookie: getCookie$2,
-    		createEventDispatcher,
-    		dispatch,
     		userData,
     		profileSettings,
     		changeProfile
@@ -10962,10 +10956,6 @@ var app = (function () {
     	if ($$props && "$$inject" in $$props) {
     		$$self.$inject_state($$props.$$inject);
     	}
-
-    	$$self.$$.update = () => {
-    		if ($$self.$$.dirty & /*profileSettings*/ 2) ;
-    	};
 
     	return [
     		userData,

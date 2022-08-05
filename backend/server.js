@@ -234,7 +234,7 @@ app.get("/userData", async (req, res) => {
       if (userif == "error") {
         return res.json({ msg: "Invalid input", status: 400 });
       }
-      const user2 = user;
+      const user2 = userif;
       delete user2.usersHash;
       delete user2.iat;
       res.json({ msg: "Good", userData: user2, status: 200 });

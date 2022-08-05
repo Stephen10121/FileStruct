@@ -4,12 +4,10 @@
   import Sharing from "./Sharing.svelte";
   import Theme from "./Theme.svelte";
   import { getCookie } from "../cookie";
-  import { createEventDispatcher } from "svelte";
-  const dispatch = createEventDispatcher();
 
   export let userData;
   let profileSettings = JSON.parse(userData.usersProfile);
-  $: profileSettings;
+  console.log(profileSettings);
 
   const changeProfile = (newSettings) => {
     fetch(
@@ -21,9 +19,6 @@
       .then((res) => res.json())
       .then((data) => {
         console.log(data);
-        if (data.msg === "Good") {
-          dispatch("edit-profile", JSON.stringify(newSettings));
-        }
       });
   };
 </script>

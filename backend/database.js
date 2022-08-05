@@ -129,7 +129,7 @@ async function saveProfile(profile, user) {
     const db = await Database.open("./users.db");
     const updateStatement = "UPDATE users SET usersProfile=? WHERE usersHash=?";
     try {
-        const result = await db.run(updateStatement, [JSON.stringify(profile), user]);
+        const result = await db.run(updateStatement, [profile, user]);
         await db.close();
         return result;
     } catch (err) {
