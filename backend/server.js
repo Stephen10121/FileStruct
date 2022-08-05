@@ -63,13 +63,13 @@ const io = socketio(server, {
 });
 
 app.get("/profile", (_req, res) => {
-  res.sendFile(path.join(__dirname, "..\\public\\index.html"));
+  res.sendFile(path.join(__dirname, "../public/index.html"));
 });
 app.get("/shared", (_req, res) => {
-  res.sendFile(path.join(__dirname, "..\\public\\index.html"));
+  res.sendFile(path.join(__dirname, "../public/index.html"));
 });
 app.get("/logout", (_req, res) => {
-  res.sendFile(path.join(__dirname, "..\\public\\index.html"));
+  res.sendFile(path.join(__dirname, "../public/index.html"));
 });
 
 app.post("/upload", async (req, res) => {
