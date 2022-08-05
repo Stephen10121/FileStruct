@@ -1,7 +1,7 @@
 <script>
   import { createEventDispatcher } from "svelte";
   const dispatch = createEventDispatcher();
-  export let userData;
+  export let profilePic;
 </script>
 
 <div class="imgPart">
@@ -13,10 +13,7 @@
       on:click={() => {
         dispatch("profileClick", "profilePics/profile1.jpg");
       }}
-      class={JSON.parse(userData.usersProfile).profile ===
-      "profilePics/profile1.jpg"
-        ? "checked"
-        : ""}
+      class={profilePic === "profilePics/profile1.jpg" ? "checked" : ""}
     >
       <img src="profilePics/profile1.jpg" alt="Profile Pic" />
     </button>
@@ -24,10 +21,7 @@
       on:click={() => {
         dispatch("profileClick", "profilePics/profile2.jpg");
       }}
-      class={JSON.parse(userData.usersProfile).profile ===
-      "profilePics/profile2.jpg"
-        ? "checked"
-        : ""}
+      class={profilePic === "profilePics/profile2.jpg" ? "checked" : ""}
     >
       <img src="profilePics/profile2.jpg" alt="Profile Pic" />
     </button>
@@ -35,10 +29,7 @@
       on:click={() => {
         dispatch("profileClick", "profilePics/profile3.jpg");
       }}
-      class={JSON.parse(userData.usersProfile).profile ===
-      "profilePics/profile3.jpg"
-        ? "checked"
-        : ""}
+      class={profilePic === "profilePics/profile3.jpg" ? "checked" : ""}
     >
       <img src="profilePics/profile3.jpg" alt="Profile Pic" />
     </button>
@@ -46,10 +37,7 @@
       on:click={() => {
         dispatch("profileClick", "profilePics/profile4.jpg");
       }}
-      class={JSON.parse(userData.usersProfile).profile ===
-      "profilePics/profile4.jpg"
-        ? "checked"
-        : ""}
+      class={profilePic === "profilePics/profile4.jpg" ? "checked" : ""}
     >
       <img src="profilePics/profile4.jpg" alt="Profile Pic" />
     </button>
@@ -57,10 +45,7 @@
       on:click={() => {
         dispatch("profileClick", "profilePics/profile5.jpg");
       }}
-      class={JSON.parse(userData.usersProfile).profile ===
-      "profilePics/profile5.jpg"
-        ? "checked"
-        : ""}
+      class={profilePic === "profilePics/profile5.jpg" ? "checked" : ""}
     >
       <img src="profilePics/profile5.jpg" alt="Profile Pic" />
     </button>

@@ -1,31 +1,39 @@
 <script>
-  import ToastNotification from "./ToastNotification.svelte";
   import SideFolder from "./SideFolder.svelte";
   import ImgChoose from "./ImgChoose.svelte";
   import Sharing from "./Sharing.svelte";
   import Theme from "./Theme.svelte";
+  import { getCookie } from "../cookie";
+  import { createEventDispatcher } from "svelte";
+  const dispatch = createEventDispatcher();
 
   export let userData;
+  let profileSettings = JSON.parse(userData.usersProfile);
+  $: profileSettings;
 
-  let selected = "none";
-  $: selected;
-  let notification = null;
+  const changeProfile = (newSettings) => {
+    fetch(
+      `/changeProfileSettings?cred=${getCookie(
+        "G_VAR2"
+      )}&settings=${JSON.stringify(newSettings)}`,
+      { method: "POST" }
+    )
+      .then((res) => res.json())
+      .then((data) => {
+        console.log(data);
+        if (data.msg === "Good") {
+          dispatch("edit-profile", JSON.stringify(newSettings));
+        }
+      });
+  };
 </script>
 
 <svelte:head>
   <title>Profile | GCloud</title>
 </svelte:head>
 
-{#if notification !== null}
-  <ToastNotification
-    type={notification.status}
-    on:close={() => {
-      notification = null;
-    }}>{notification.msg}</ToastNotification
-  >
-{/if}
 <main>
-  <SideFolder profile={true} {userData} />
+  <SideFolder profile={true} {userData} shared={false} selected={null} />
   <div class="therest">
     <div class="imgPart">
       <div class="text">
@@ -39,14 +47,33 @@
       </div>
     </div>
     <ImgChoose
-      {userData}
+      profilePic={profileSettings.profile}
       on:profileClick={({ detail }) => {
-        console.log(detail);
+        let settings2 = profileSettings;
+        settings2.profile = detail;
+        profileSettings = settings2;
+        changeProfile(profileSettings);
       }}
     />
     <div class="double">
-      <Sharing />
-      <Theme />
+      <Sharing
+        sharing={profileSettings.sharing}
+        on:set-sharing={({ detail }) => {
+          let settings2 = profileSettings;
+          settings2.sharing = detail;
+          profileSettings = settings2;
+          changeProfile(profileSettings);
+        }}
+      />
+      <Theme
+        theme={profileSettings.theme}
+        on:set-theme={({ detail }) => {
+          let settings2 = profileSettings;
+          settings2.theme = detail;
+          profileSettings = settings2;
+          changeProfile(profileSettings);
+        }}
+      />
     </div>
   </div>
 </main>

@@ -81,10 +81,23 @@ async function editUser(id, hash, rName, email, profile, username) {
     }
 }
 
+async function changeProfile(id, profile) {
+    const db = await Database.open("./users.db");
+    const updateStatement = "UPDATE users SET usersProfile=? WHERE id=?";
+    try {
+        const result = await db.run(updateStatement, [profile, id]);
+        await db.close();
+        return result;
+    } catch (err) {
+        console.error(err);
+        return 'error';
+    }
+}
+
 async function userLogin({ hash, name, email, username}) {
     let users = await getUserByHash(hash);
     if (users.length === 0) {
-        const addedUser = await addUser(username, hash, name, email, JSON.stringify({profile: "profilePics/profile1.jpg", theme: "default", sharing: false}));
+        const addedUser = await addUser(username, hash, name, email, JSON.stringify({profile: "profilePics/profile1.jpg", theme: "dark", sharing: false}));
         if (addedUser === 'error') {
             return({errorMessage: "Error Try Again", error: 1000});
         }
@@ -114,7 +127,7 @@ async function getUserData(user) {
 
 async function saveProfile(profile, user) {
     const db = await Database.open("./users.db");
-    const updateStatement = "UPDATE users SET usersProfile=? WHERE usersName=?";
+    const updateStatement = "UPDATE users SET usersProfile=? WHERE usersHash=?";
     try {
         const result = await db.run(updateStatement, [JSON.stringify(profile), user]);
         await db.close();
@@ -144,4 +157,5 @@ module.exports = {
     saveProfile,
     checkUserSharing,
     createTable,
+    saveProfile
 }

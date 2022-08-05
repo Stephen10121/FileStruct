@@ -6,7 +6,7 @@ const path = require("path");
 const fs = require("fs");
 const { getFiles, readFile } = require("./dirGet");
 const cookieParser = require("cookie-parser");
-const { userLogin, getUserData } = require("./database");
+const { userLogin, getUserData, saveProfile } = require("./database");
 const PORT = process.env.SERVER_PORT || 5700;
 const jwt = require("jsonwebtoken");
 const cors = require("cors");
@@ -242,9 +242,36 @@ app.get("/userData", async (req, res) => {
   );
 });
 
+app.post("/changeProfileSettings", async (req, res) => {
+    if (!req.query["cred"] || !req.query["settings"]) {
+        res.json({ msg: "Missing arguments." });
+        return;
+    }
+    jwt.verify(
+        req.query.cred,
+        process.env.ACCESS_TOKEN_SECRET,
+        async (err, user) => {
+          if (err) {
+            return res.status(400).json({ msg: "Invalid input" });
+          }
+          const userif = await getUserData(user.usersHash);
+          if (userif == "error") {
+            return res.status(400).json({ msg: "Invalid input" });
+          }
+          const savingProfile = await saveProfile(req.query.settings, user.usersHash);
+          if (savingProfile === "error") {
+            res.json({ msg: "Error saving profile." });
+            return;
+          }
+          res.json({ msg: "Good" });
+        }
+      );
+});
+
 app.get("/fetchFiles", async (req, res) => {
   if (!req.query["cred"]) {
-    return res.json({ msg: "Missing arguments." });
+    res.json({ msg: "Missing arguments." });
+    return;
   }
   jwt.verify(
     req.query.cred,

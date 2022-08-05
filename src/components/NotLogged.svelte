@@ -2,12 +2,11 @@
   import { useNavigate } from "svelte-navigator";
   import { createEventDispatcher } from "svelte";
   import useSocket from "../useSocket";
-  export let PROXY;
 
   const dispatch = createEventDispatcher();
   const navigate = useNavigate();
 
-  const socket = useSocket(PROXY);
+  const socket = useSocket();
 
   const popupCenter = ({ postServer, key, title, w, h }) => {
     // Fixes dual-screen position                             Most browsers      Firefox
@@ -54,7 +53,7 @@
       dispatch("userLoggedIn", data.userData);
     });
     popupCenter({
-      postServer: `${PROXY}auth`,
+      postServer: `${window.location.href}auth`,
       key: socket.id,
       title: "Authenticate",
       w: 520,

@@ -1702,7 +1702,7 @@ var app = (function () {
     const file$p = "node_modules\\svelte-navigator\\src\\Router.svelte";
 
     // (195:0) {#if isTopLevelRouter && manageFocus && a11yConfig.announcements}
-    function create_if_block$i(ctx) {
+    function create_if_block$h(ctx) {
     	let div;
     	let t;
 
@@ -1730,7 +1730,7 @@ var app = (function () {
 
     	dispatch_dev("SvelteRegisterBlock", {
     		block,
-    		id: create_if_block$i.name,
+    		id: create_if_block$h.name,
     		type: "if",
     		source: "(195:0) {#if isTopLevelRouter && manageFocus && a11yConfig.announcements}",
     		ctx
@@ -1747,7 +1747,7 @@ var app = (function () {
     	let current;
     	const default_slot_template = /*#slots*/ ctx[20].default;
     	const default_slot = create_slot(default_slot_template, ctx, /*$$scope*/ ctx[19], null);
-    	let if_block = /*isTopLevelRouter*/ ctx[2] && /*manageFocus*/ ctx[4] && /*a11yConfig*/ ctx[1].announcements && create_if_block$i(ctx);
+    	let if_block = /*isTopLevelRouter*/ ctx[2] && /*manageFocus*/ ctx[4] && /*a11yConfig*/ ctx[1].announcements && create_if_block$h(ctx);
 
     	const block = {
     		c: function create() {
@@ -2415,14 +2415,14 @@ var app = (function () {
     });
 
     // (97:0) {#if isActive}
-    function create_if_block$h(ctx) {
+    function create_if_block$g(ctx) {
     	let router;
     	let current;
 
     	router = new Router$1({
     			props: {
     				primary: /*primary*/ ctx[1],
-    				$$slots: { default: [create_default_slot$b] },
+    				$$slots: { default: [create_default_slot$a] },
     				$$scope: { ctx }
     			},
     			$$inline: true
@@ -2462,7 +2462,7 @@ var app = (function () {
 
     	dispatch_dev("SvelteRegisterBlock", {
     		block,
-    		id: create_if_block$h.name,
+    		id: create_if_block$g.name,
     		type: "if",
     		source: "(97:0) {#if isActive}",
     		ctx
@@ -2635,7 +2635,7 @@ var app = (function () {
     }
 
     // (98:1) <Router {primary}>
-    function create_default_slot$b(ctx) {
+    function create_default_slot$a(ctx) {
     	let current_block_type_index;
     	let if_block;
     	let if_block_anchor;
@@ -2705,7 +2705,7 @@ var app = (function () {
 
     	dispatch_dev("SvelteRegisterBlock", {
     		block,
-    		id: create_default_slot$b.name,
+    		id: create_default_slot$a.name,
     		type: "slot",
     		source: "(98:1) <Router {primary}>",
     		ctx
@@ -2720,7 +2720,7 @@ var app = (function () {
     	let t1;
     	let div1;
     	let current;
-    	let if_block = /*isActive*/ ctx[2] && create_if_block$h(ctx);
+    	let if_block = /*isActive*/ ctx[2] && create_if_block$g(ctx);
 
     	const block = {
     		c: function create() {
@@ -2758,7 +2758,7 @@ var app = (function () {
     						transition_in(if_block, 1);
     					}
     				} else {
-    					if_block = create_if_block$h(ctx);
+    					if_block = create_if_block$g(ctx);
     					if_block.c();
     					transition_in(if_block, 1);
     					if_block.m(t1.parentNode, t1);
@@ -6704,14 +6704,14 @@ var app = (function () {
     			img = element("img");
     			if (!src_url_equal(img.src, img_src_value = "https://auth.gruzservices.com/icons/lock.svg")) attr_dev(img, "src", img_src_value);
     			attr_dev(img, "alt", "Lock");
-    			add_location(img, file$m, 69, 6, 2023);
+    			add_location(img, file$m, 68, 6, 2012);
     			attr_dev(span, "class", "svelte-1tk6uk1");
-    			add_location(span, file$m, 68, 4, 2009);
+    			add_location(span, file$m, 67, 4, 1998);
     			attr_dev(button, "id", "sauth-login");
     			attr_dev(button, "class", "svelte-1tk6uk1");
-    			add_location(button, file$m, 66, 2, 1922);
+    			add_location(button, file$m, 65, 2, 1911);
     			attr_dev(main, "class", "svelte-1tk6uk1");
-    			add_location(main, file$m, 65, 0, 1912);
+    			add_location(main, file$m, 64, 0, 1901);
     		},
     		l: function claim(nodes) {
     			throw new Error("options.hydrate only works if the component was compiled with the `hydratable: true` option");
@@ -6724,7 +6724,7 @@ var app = (function () {
     			append_dev(span, img);
 
     			if (!mounted) {
-    				dispose = listen_dev(button, "click", /*click_handler*/ ctx[2], false, false, false);
+    				dispose = listen_dev(button, "click", /*click_handler*/ ctx[1], false, false, false);
     				mounted = true;
     			}
     		},
@@ -6752,10 +6752,9 @@ var app = (function () {
     function instance$r($$self, $$props, $$invalidate) {
     	let { $$slots: slots = {}, $$scope } = $$props;
     	validate_slots('NotLogged', slots, []);
-    	let { PROXY } = $$props;
     	const dispatch = createEventDispatcher();
     	const navigate = useNavigate();
-    	const socket = useSocket(PROXY);
+    	const socket = useSocket();
 
     	const popupCenter = ({ postServer, key, title, w, h }) => {
     		// Fixes dual-screen position                             Most browsers      Firefox
@@ -6806,7 +6805,7 @@ var app = (function () {
     		});
 
     		popupCenter({
-    			postServer: `${PROXY}auth`,
+    			postServer: `${window.location.href}auth`,
     			key: socket.id,
     			title: "Authenticate",
     			w: 520,
@@ -6814,7 +6813,7 @@ var app = (function () {
     		});
     	};
 
-    	const writable_props = ['PROXY'];
+    	const writable_props = [];
 
     	Object.keys($$props).forEach(key => {
     		if (!~writable_props.indexOf(key) && key.slice(0, 2) !== '$$' && key !== 'slot') console.warn(`<NotLogged> was created with unknown prop '${key}'`);
@@ -6822,15 +6821,10 @@ var app = (function () {
 
     	const click_handler = () => loginIt();
 
-    	$$self.$$set = $$props => {
-    		if ('PROXY' in $$props) $$invalidate(1, PROXY = $$props.PROXY);
-    	};
-
     	$$self.$capture_state = () => ({
     		useNavigate,
     		createEventDispatcher,
     		useSocket,
-    		PROXY,
     		dispatch,
     		navigate,
     		socket,
@@ -6838,21 +6832,13 @@ var app = (function () {
     		loginIt
     	});
 
-    	$$self.$inject_state = $$props => {
-    		if ('PROXY' in $$props) $$invalidate(1, PROXY = $$props.PROXY);
-    	};
-
-    	if ($$props && "$$inject" in $$props) {
-    		$$self.$inject_state($$props.$$inject);
-    	}
-
-    	return [loginIt, PROXY, click_handler];
+    	return [loginIt, click_handler];
     }
 
     class NotLogged extends SvelteComponentDev {
     	constructor(options) {
     		super(options);
-    		init(this, options, instance$r, create_fragment$r, safe_not_equal, { PROXY: 1 });
+    		init(this, options, instance$r, create_fragment$r, safe_not_equal, {});
 
     		dispatch_dev("SvelteRegisterComponent", {
     			component: this,
@@ -6860,21 +6846,6 @@ var app = (function () {
     			options,
     			id: create_fragment$r.name
     		});
-
-    		const { ctx } = this.$$;
-    		const props = options.props || {};
-
-    		if (/*PROXY*/ ctx[1] === undefined && !('PROXY' in props)) {
-    			console.warn("<NotLogged> was created without expected prop 'PROXY'");
-    		}
-    	}
-
-    	get PROXY() {
-    		throw new Error("<NotLogged>: Props cannot be read directly from the component instance unless compiling with 'accessors: true' or '<svelte:options accessors/>'");
-    	}
-
-    	set PROXY(value) {
-    		throw new Error("<NotLogged>: Props cannot be set directly on the component instance unless compiling with 'accessors: true' or '<svelte:options accessors/>'");
     	}
     }
 
@@ -9077,14 +9048,14 @@ var app = (function () {
     const file$k = "src\\components\\FileUpload.svelte";
 
     // (42:0) {#if notification !== null}
-    function create_if_block$g(ctx) {
+    function create_if_block$f(ctx) {
     	let toastnotification;
     	let current;
 
     	toastnotification = new ToastNotification({
     			props: {
     				type: /*notification*/ ctx[0].status,
-    				$$slots: { default: [create_default_slot$a] },
+    				$$slots: { default: [create_default_slot$9] },
     				$$scope: { ctx }
     			},
     			$$inline: true
@@ -9126,7 +9097,7 @@ var app = (function () {
 
     	dispatch_dev("SvelteRegisterBlock", {
     		block,
-    		id: create_if_block$g.name,
+    		id: create_if_block$f.name,
     		type: "if",
     		source: "(42:0) {#if notification !== null}",
     		ctx
@@ -9136,7 +9107,7 @@ var app = (function () {
     }
 
     // (43:2) <ToastNotification      type={notification.status}      on:close={() => {        notification = null;      }}>
-    function create_default_slot$a(ctx) {
+    function create_default_slot$9(ctx) {
     	let t_value = /*notification*/ ctx[0].msg + "";
     	let t;
 
@@ -9157,7 +9128,7 @@ var app = (function () {
 
     	dispatch_dev("SvelteRegisterBlock", {
     		block,
-    		id: create_default_slot$a.name,
+    		id: create_default_slot$9.name,
     		type: "slot",
     		source: "(43:2) <ToastNotification      type={notification.status}      on:close={() => {        notification = null;      }}>",
     		ctx
@@ -9176,7 +9147,7 @@ var app = (function () {
     	let current;
     	let mounted;
     	let dispose;
-    	let if_block = /*notification*/ ctx[0] !== null && create_if_block$g(ctx);
+    	let if_block = /*notification*/ ctx[0] !== null && create_if_block$f(ctx);
 
     	const block = {
     		c: function create() {
@@ -9225,7 +9196,7 @@ var app = (function () {
     						transition_in(if_block, 1);
     					}
     				} else {
-    					if_block = create_if_block$g(ctx);
+    					if_block = create_if_block$f(ctx);
     					if_block.c();
     					transition_in(if_block, 1);
     					if_block.m(t0.parentNode, t0);
@@ -9671,7 +9642,7 @@ var app = (function () {
     }
 
     // (44:2) {#if shared}
-    function create_if_block$f(ctx) {
+    function create_if_block$e(ctx) {
     	let link;
     	let current;
 
@@ -9708,7 +9679,7 @@ var app = (function () {
 
     	dispatch_dev("SvelteRegisterBlock", {
     		block,
-    		id: create_if_block$f.name,
+    		id: create_if_block$e.name,
     		type: "if",
     		source: "(44:2) {#if shared}",
     		ctx
@@ -9796,7 +9767,7 @@ var app = (function () {
     }
 
     // (58:4) <Link to="/logout" class="logout">
-    function create_default_slot$9(ctx) {
+    function create_default_slot$8(ctx) {
     	let p;
 
     	const block = {
@@ -9817,7 +9788,7 @@ var app = (function () {
 
     	dispatch_dev("SvelteRegisterBlock", {
     		block,
-    		id: create_default_slot$9.name,
+    		id: create_default_slot$8.name,
     		type: "slot",
     		source: "(58:4) <Link to=\\\"/logout\\\" class=\\\"logout\\\">",
     		ctx
@@ -9855,7 +9826,7 @@ var app = (function () {
     	current_block_type_index = select_block_type(ctx);
     	if_block0 = if_blocks[current_block_type_index] = if_block_creators[current_block_type_index](ctx);
     	let if_block1 = !/*shared*/ ctx[1] && !/*profile*/ ctx[0] && create_if_block_1$9(ctx);
-    	const if_block_creators_1 = [create_if_block$f, create_else_block$8];
+    	const if_block_creators_1 = [create_if_block$e, create_else_block$8];
     	const if_blocks_1 = [];
 
     	function select_block_type_1(ctx, dirty) {
@@ -9870,7 +9841,7 @@ var app = (function () {
     			props: {
     				to: "/logout",
     				class: "logout",
-    				$$slots: { default: [create_default_slot$9] },
+    				$$slots: { default: [create_default_slot$8] },
     				$$scope: { ctx }
     			},
     			$$inline: true
@@ -10233,63 +10204,63 @@ var app = (function () {
     			button4 = element("button");
     			img4 = element("img");
     			attr_dev(h1, "class", "svelte-namr4c");
-    			add_location(h1, file$i, 8, 4, 192);
+    			add_location(h1, file$i, 8, 4, 194);
     			attr_dev(div0, "class", "text svelte-namr4c");
-    			add_location(div0, file$i, 7, 2, 168);
+    			add_location(div0, file$i, 7, 2, 170);
     			if (!src_url_equal(img0.src, img0_src_value = "profilePics/profile1.jpg")) attr_dev(img0, "src", img0_src_value);
     			attr_dev(img0, "alt", "Profile Pic");
     			attr_dev(img0, "class", "svelte-namr4c");
-    			add_location(img0, file$i, 20, 6, 509);
+    			add_location(img0, file$i, 17, 6, 455);
 
-    			attr_dev(button0, "class", button0_class_value = "" + (null_to_empty(JSON.parse(/*userData*/ ctx[0].usersProfile).profile === "profilePics/profile1.jpg"
+    			attr_dev(button0, "class", button0_class_value = "" + (null_to_empty(/*profilePic*/ ctx[0] === "profilePics/profile1.jpg"
     			? "checked"
     			: "") + " svelte-namr4c"));
 
-    			add_location(button0, file$i, 11, 4, 259);
+    			add_location(button0, file$i, 11, 4, 261);
     			if (!src_url_equal(img1.src, img1_src_value = "profilePics/profile2.jpg")) attr_dev(img1, "src", img1_src_value);
     			attr_dev(img1, "alt", "Profile Pic");
     			attr_dev(img1, "class", "svelte-namr4c");
-    			add_location(img1, file$i, 31, 6, 836);
+    			add_location(img1, file$i, 25, 6, 726);
 
-    			attr_dev(button1, "class", button1_class_value = "" + (null_to_empty(JSON.parse(/*userData*/ ctx[0].usersProfile).profile === "profilePics/profile2.jpg"
+    			attr_dev(button1, "class", button1_class_value = "" + (null_to_empty(/*profilePic*/ ctx[0] === "profilePics/profile2.jpg"
     			? "checked"
     			: "") + " svelte-namr4c"));
 
-    			add_location(button1, file$i, 22, 4, 586);
+    			add_location(button1, file$i, 19, 4, 532);
     			if (!src_url_equal(img2.src, img2_src_value = "profilePics/profile3.jpg")) attr_dev(img2, "src", img2_src_value);
     			attr_dev(img2, "alt", "Profile Pic");
     			attr_dev(img2, "class", "svelte-namr4c");
-    			add_location(img2, file$i, 42, 6, 1163);
+    			add_location(img2, file$i, 33, 6, 997);
 
-    			attr_dev(button2, "class", button2_class_value = "" + (null_to_empty(JSON.parse(/*userData*/ ctx[0].usersProfile).profile === "profilePics/profile3.jpg"
+    			attr_dev(button2, "class", button2_class_value = "" + (null_to_empty(/*profilePic*/ ctx[0] === "profilePics/profile3.jpg"
     			? "checked"
     			: "") + " svelte-namr4c"));
 
-    			add_location(button2, file$i, 33, 4, 913);
+    			add_location(button2, file$i, 27, 4, 803);
     			if (!src_url_equal(img3.src, img3_src_value = "profilePics/profile4.jpg")) attr_dev(img3, "src", img3_src_value);
     			attr_dev(img3, "alt", "Profile Pic");
     			attr_dev(img3, "class", "svelte-namr4c");
-    			add_location(img3, file$i, 53, 6, 1490);
+    			add_location(img3, file$i, 41, 6, 1268);
 
-    			attr_dev(button3, "class", button3_class_value = "" + (null_to_empty(JSON.parse(/*userData*/ ctx[0].usersProfile).profile === "profilePics/profile4.jpg"
+    			attr_dev(button3, "class", button3_class_value = "" + (null_to_empty(/*profilePic*/ ctx[0] === "profilePics/profile4.jpg"
     			? "checked"
     			: "") + " svelte-namr4c"));
 
-    			add_location(button3, file$i, 44, 4, 1240);
+    			add_location(button3, file$i, 35, 4, 1074);
     			if (!src_url_equal(img4.src, img4_src_value = "profilePics/profile5.jpg")) attr_dev(img4, "src", img4_src_value);
     			attr_dev(img4, "alt", "Profile Pic");
     			attr_dev(img4, "class", "svelte-namr4c");
-    			add_location(img4, file$i, 64, 6, 1817);
+    			add_location(img4, file$i, 49, 6, 1539);
 
-    			attr_dev(button4, "class", button4_class_value = "" + (null_to_empty(JSON.parse(/*userData*/ ctx[0].usersProfile).profile === "profilePics/profile5.jpg"
+    			attr_dev(button4, "class", button4_class_value = "" + (null_to_empty(/*profilePic*/ ctx[0] === "profilePics/profile5.jpg"
     			? "checked"
     			: "") + " svelte-namr4c"));
 
-    			add_location(button4, file$i, 55, 4, 1567);
+    			add_location(button4, file$i, 43, 4, 1345);
     			attr_dev(div1, "class", "buttonGrid svelte-namr4c");
-    			add_location(div1, file$i, 10, 2, 229);
+    			add_location(div1, file$i, 10, 2, 231);
     			attr_dev(div2, "class", "imgPart svelte-namr4c");
-    			add_location(div2, file$i, 6, 0, 143);
+    			add_location(div2, file$i, 6, 0, 145);
     		},
     		l: function claim(nodes) {
     			throw new Error("options.hydrate only works if the component was compiled with the `hydratable: true` option");
@@ -10328,31 +10299,31 @@ var app = (function () {
     			}
     		},
     		p: function update(ctx, [dirty]) {
-    			if (dirty & /*userData*/ 1 && button0_class_value !== (button0_class_value = "" + (null_to_empty(JSON.parse(/*userData*/ ctx[0].usersProfile).profile === "profilePics/profile1.jpg"
+    			if (dirty & /*profilePic*/ 1 && button0_class_value !== (button0_class_value = "" + (null_to_empty(/*profilePic*/ ctx[0] === "profilePics/profile1.jpg"
     			? "checked"
     			: "") + " svelte-namr4c"))) {
     				attr_dev(button0, "class", button0_class_value);
     			}
 
-    			if (dirty & /*userData*/ 1 && button1_class_value !== (button1_class_value = "" + (null_to_empty(JSON.parse(/*userData*/ ctx[0].usersProfile).profile === "profilePics/profile2.jpg"
+    			if (dirty & /*profilePic*/ 1 && button1_class_value !== (button1_class_value = "" + (null_to_empty(/*profilePic*/ ctx[0] === "profilePics/profile2.jpg"
     			? "checked"
     			: "") + " svelte-namr4c"))) {
     				attr_dev(button1, "class", button1_class_value);
     			}
 
-    			if (dirty & /*userData*/ 1 && button2_class_value !== (button2_class_value = "" + (null_to_empty(JSON.parse(/*userData*/ ctx[0].usersProfile).profile === "profilePics/profile3.jpg"
+    			if (dirty & /*profilePic*/ 1 && button2_class_value !== (button2_class_value = "" + (null_to_empty(/*profilePic*/ ctx[0] === "profilePics/profile3.jpg"
     			? "checked"
     			: "") + " svelte-namr4c"))) {
     				attr_dev(button2, "class", button2_class_value);
     			}
 
-    			if (dirty & /*userData*/ 1 && button3_class_value !== (button3_class_value = "" + (null_to_empty(JSON.parse(/*userData*/ ctx[0].usersProfile).profile === "profilePics/profile4.jpg"
+    			if (dirty & /*profilePic*/ 1 && button3_class_value !== (button3_class_value = "" + (null_to_empty(/*profilePic*/ ctx[0] === "profilePics/profile4.jpg"
     			? "checked"
     			: "") + " svelte-namr4c"))) {
     				attr_dev(button3, "class", button3_class_value);
     			}
 
-    			if (dirty & /*userData*/ 1 && button4_class_value !== (button4_class_value = "" + (null_to_empty(JSON.parse(/*userData*/ ctx[0].usersProfile).profile === "profilePics/profile5.jpg"
+    			if (dirty & /*profilePic*/ 1 && button4_class_value !== (button4_class_value = "" + (null_to_empty(/*profilePic*/ ctx[0] === "profilePics/profile5.jpg"
     			? "checked"
     			: "") + " svelte-namr4c"))) {
     				attr_dev(button4, "class", button4_class_value);
@@ -10382,8 +10353,8 @@ var app = (function () {
     	let { $$slots: slots = {}, $$scope } = $$props;
     	validate_slots('ImgChoose', slots, []);
     	const dispatch = createEventDispatcher();
-    	let { userData } = $$props;
-    	const writable_props = ['userData'];
+    	let { profilePic } = $$props;
+    	const writable_props = ['profilePic'];
 
     	Object.keys($$props).forEach(key => {
     		if (!~writable_props.indexOf(key) && key.slice(0, 2) !== '$$' && key !== 'slot') console.warn(`<ImgChoose> was created with unknown prop '${key}'`);
@@ -10410,17 +10381,17 @@ var app = (function () {
     	};
 
     	$$self.$$set = $$props => {
-    		if ('userData' in $$props) $$invalidate(0, userData = $$props.userData);
+    		if ('profilePic' in $$props) $$invalidate(0, profilePic = $$props.profilePic);
     	};
 
     	$$self.$capture_state = () => ({
     		createEventDispatcher,
     		dispatch,
-    		userData
+    		profilePic
     	});
 
     	$$self.$inject_state = $$props => {
-    		if ('userData' in $$props) $$invalidate(0, userData = $$props.userData);
+    		if ('profilePic' in $$props) $$invalidate(0, profilePic = $$props.profilePic);
     	};
 
     	if ($$props && "$$inject" in $$props) {
@@ -10428,7 +10399,7 @@ var app = (function () {
     	}
 
     	return [
-    		userData,
+    		profilePic,
     		dispatch,
     		click_handler,
     		click_handler_1,
@@ -10441,7 +10412,7 @@ var app = (function () {
     class ImgChoose extends SvelteComponentDev {
     	constructor(options) {
     		super(options);
-    		init(this, options, instance$n, create_fragment$n, safe_not_equal, { userData: 0 });
+    		init(this, options, instance$n, create_fragment$n, safe_not_equal, { profilePic: 0 });
 
     		dispatch_dev("SvelteRegisterComponent", {
     			component: this,
@@ -10453,16 +10424,16 @@ var app = (function () {
     		const { ctx } = this.$$;
     		const props = options.props || {};
 
-    		if (/*userData*/ ctx[0] === undefined && !('userData' in props)) {
-    			console.warn("<ImgChoose> was created without expected prop 'userData'");
+    		if (/*profilePic*/ ctx[0] === undefined && !('profilePic' in props)) {
+    			console.warn("<ImgChoose> was created without expected prop 'profilePic'");
     		}
     	}
 
-    	get userData() {
+    	get profilePic() {
     		throw new Error("<ImgChoose>: Props cannot be read directly from the component instance unless compiling with 'accessors: true' or '<svelte:options accessors/>'");
     	}
 
-    	set userData(value) {
+    	set profilePic(value) {
     		throw new Error("<ImgChoose>: Props cannot be set directly on the component instance unless compiling with 'accessors: true' or '<svelte:options accessors/>'");
     	}
     }
@@ -10477,6 +10448,9 @@ var app = (function () {
     	let t1;
     	let div1;
     	let input;
+    	let input_checked_value;
+    	let mounted;
+    	let dispose;
 
     	const block = {
     		c: function create() {
@@ -10488,18 +10462,19 @@ var app = (function () {
     			div1 = element("div");
     			input = element("input");
     			attr_dev(h1, "class", "svelte-qp1e0i");
-    			add_location(h1, file$h, 8, 4, 192);
+    			add_location(h1, file$h, 8, 4, 191);
     			attr_dev(div0, "class", "text svelte-qp1e0i");
-    			add_location(div0, file$h, 7, 2, 168);
+    			add_location(div0, file$h, 7, 2, 167);
     			attr_dev(input, "type", "checkbox");
     			attr_dev(input, "name", "sharing");
     			attr_dev(input, "id", "sharing");
     			attr_dev(input, "class", "checkbox svelte-qp1e0i");
-    			add_location(input, file$h, 11, 4, 258);
+    			input.checked = input_checked_value = /*sharing*/ ctx[0] ? true : false;
+    			add_location(input, file$h, 11, 4, 257);
     			attr_dev(div1, "class", "buttonGrid svelte-qp1e0i");
-    			add_location(div1, file$h, 10, 2, 228);
+    			add_location(div1, file$h, 10, 2, 227);
     			attr_dev(div2, "class", "imgPart svelte-qp1e0i");
-    			add_location(div2, file$h, 6, 0, 143);
+    			add_location(div2, file$h, 6, 0, 142);
     		},
     		l: function claim(nodes) {
     			throw new Error("options.hydrate only works if the component was compiled with the `hydratable: true` option");
@@ -10511,12 +10486,23 @@ var app = (function () {
     			append_dev(div2, t1);
     			append_dev(div2, div1);
     			append_dev(div1, input);
+
+    			if (!mounted) {
+    				dispose = listen_dev(input, "change", /*change_handler*/ ctx[2], false, false, false);
+    				mounted = true;
+    			}
     		},
-    		p: noop,
+    		p: function update(ctx, [dirty]) {
+    			if (dirty & /*sharing*/ 1 && input_checked_value !== (input_checked_value = /*sharing*/ ctx[0] ? true : false)) {
+    				prop_dev(input, "checked", input_checked_value);
+    			}
+    		},
     		i: noop,
     		o: noop,
     		d: function destroy(detaching) {
     			if (detaching) detach_dev(div2);
+    			mounted = false;
+    			dispose();
     		}
     	};
 
@@ -10535,38 +10521,38 @@ var app = (function () {
     	let { $$slots: slots = {}, $$scope } = $$props;
     	validate_slots('Sharing', slots, []);
     	const dispatch = createEventDispatcher();
-    	let { userData } = $$props;
-    	const writable_props = ['userData'];
+    	let { sharing } = $$props;
+    	const writable_props = ['sharing'];
 
     	Object.keys($$props).forEach(key => {
     		if (!~writable_props.indexOf(key) && key.slice(0, 2) !== '$$' && key !== 'slot') console.warn(`<Sharing> was created with unknown prop '${key}'`);
     	});
 
-    	$$self.$$set = $$props => {
-    		if ('userData' in $$props) $$invalidate(0, userData = $$props.userData);
+    	const change_handler = e => {
+    		dispatch("set-sharing", e.target.checked);
     	};
 
-    	$$self.$capture_state = () => ({
-    		createEventDispatcher,
-    		dispatch,
-    		userData
-    	});
+    	$$self.$$set = $$props => {
+    		if ('sharing' in $$props) $$invalidate(0, sharing = $$props.sharing);
+    	};
+
+    	$$self.$capture_state = () => ({ createEventDispatcher, dispatch, sharing });
 
     	$$self.$inject_state = $$props => {
-    		if ('userData' in $$props) $$invalidate(0, userData = $$props.userData);
+    		if ('sharing' in $$props) $$invalidate(0, sharing = $$props.sharing);
     	};
 
     	if ($$props && "$$inject" in $$props) {
     		$$self.$inject_state($$props.$$inject);
     	}
 
-    	return [userData];
+    	return [sharing, dispatch, change_handler];
     }
 
     class Sharing extends SvelteComponentDev {
     	constructor(options) {
     		super(options);
-    		init(this, options, instance$m, create_fragment$m, safe_not_equal, { userData: 0 });
+    		init(this, options, instance$m, create_fragment$m, safe_not_equal, { sharing: 0 });
 
     		dispatch_dev("SvelteRegisterComponent", {
     			component: this,
@@ -10578,16 +10564,16 @@ var app = (function () {
     		const { ctx } = this.$$;
     		const props = options.props || {};
 
-    		if (/*userData*/ ctx[0] === undefined && !('userData' in props)) {
-    			console.warn("<Sharing> was created without expected prop 'userData'");
+    		if (/*sharing*/ ctx[0] === undefined && !('sharing' in props)) {
+    			console.warn("<Sharing> was created without expected prop 'sharing'");
     		}
     	}
 
-    	get userData() {
+    	get sharing() {
     		throw new Error("<Sharing>: Props cannot be read directly from the component instance unless compiling with 'accessors: true' or '<svelte:options accessors/>'");
     	}
 
-    	set userData(value) {
+    	set sharing(value) {
     		throw new Error("<Sharing>: Props cannot be set directly on the component instance unless compiling with 'accessors: true' or '<svelte:options accessors/>'");
     	}
     }
@@ -10602,6 +10588,9 @@ var app = (function () {
     	let t1;
     	let div1;
     	let input;
+    	let input_checked_value;
+    	let mounted;
+    	let dispose;
 
     	const block = {
     		c: function create() {
@@ -10613,18 +10602,19 @@ var app = (function () {
     			div1 = element("div");
     			input = element("input");
     			attr_dev(h1, "class", "svelte-qp1e0i");
-    			add_location(h1, file$g, 8, 4, 192);
+    			add_location(h1, file$g, 8, 4, 189);
     			attr_dev(div0, "class", "text svelte-qp1e0i");
-    			add_location(div0, file$g, 7, 2, 168);
+    			add_location(div0, file$g, 7, 2, 165);
     			attr_dev(input, "type", "checkbox");
     			attr_dev(input, "name", "sharing");
     			attr_dev(input, "id", "sharing");
     			attr_dev(input, "class", "checkbox svelte-qp1e0i");
-    			add_location(input, file$g, 11, 4, 256);
+    			input.checked = input_checked_value = /*theme*/ ctx[0] === "light" ? true : false;
+    			add_location(input, file$g, 11, 4, 253);
     			attr_dev(div1, "class", "buttonGrid svelte-qp1e0i");
-    			add_location(div1, file$g, 10, 2, 226);
+    			add_location(div1, file$g, 10, 2, 223);
     			attr_dev(div2, "class", "imgPart svelte-qp1e0i");
-    			add_location(div2, file$g, 6, 0, 143);
+    			add_location(div2, file$g, 6, 0, 140);
     		},
     		l: function claim(nodes) {
     			throw new Error("options.hydrate only works if the component was compiled with the `hydratable: true` option");
@@ -10636,12 +10626,23 @@ var app = (function () {
     			append_dev(div2, t1);
     			append_dev(div2, div1);
     			append_dev(div1, input);
+
+    			if (!mounted) {
+    				dispose = listen_dev(input, "change", /*change_handler*/ ctx[2], false, false, false);
+    				mounted = true;
+    			}
     		},
-    		p: noop,
+    		p: function update(ctx, [dirty]) {
+    			if (dirty & /*theme*/ 1 && input_checked_value !== (input_checked_value = /*theme*/ ctx[0] === "light" ? true : false)) {
+    				prop_dev(input, "checked", input_checked_value);
+    			}
+    		},
     		i: noop,
     		o: noop,
     		d: function destroy(detaching) {
     			if (detaching) detach_dev(div2);
+    			mounted = false;
+    			dispose();
     		}
     	};
 
@@ -10660,38 +10661,38 @@ var app = (function () {
     	let { $$slots: slots = {}, $$scope } = $$props;
     	validate_slots('Theme', slots, []);
     	const dispatch = createEventDispatcher();
-    	let { userData } = $$props;
-    	const writable_props = ['userData'];
+    	let { theme } = $$props;
+    	const writable_props = ['theme'];
 
     	Object.keys($$props).forEach(key => {
     		if (!~writable_props.indexOf(key) && key.slice(0, 2) !== '$$' && key !== 'slot') console.warn(`<Theme> was created with unknown prop '${key}'`);
     	});
 
-    	$$self.$$set = $$props => {
-    		if ('userData' in $$props) $$invalidate(0, userData = $$props.userData);
+    	const change_handler = e => {
+    		dispatch("set-theme", e.target.checked ? "light" : "dark");
     	};
 
-    	$$self.$capture_state = () => ({
-    		createEventDispatcher,
-    		dispatch,
-    		userData
-    	});
+    	$$self.$$set = $$props => {
+    		if ('theme' in $$props) $$invalidate(0, theme = $$props.theme);
+    	};
+
+    	$$self.$capture_state = () => ({ createEventDispatcher, dispatch, theme });
 
     	$$self.$inject_state = $$props => {
-    		if ('userData' in $$props) $$invalidate(0, userData = $$props.userData);
+    		if ('theme' in $$props) $$invalidate(0, theme = $$props.theme);
     	};
 
     	if ($$props && "$$inject" in $$props) {
     		$$self.$inject_state($$props.$$inject);
     	}
 
-    	return [userData];
+    	return [theme, dispatch, change_handler];
     }
 
     class Theme extends SvelteComponentDev {
     	constructor(options) {
     		super(options);
-    		init(this, options, instance$l, create_fragment$l, safe_not_equal, { userData: 0 });
+    		init(this, options, instance$l, create_fragment$l, safe_not_equal, { theme: 0 });
 
     		dispatch_dev("SvelteRegisterComponent", {
     			component: this,
@@ -10703,16 +10704,16 @@ var app = (function () {
     		const { ctx } = this.$$;
     		const props = options.props || {};
 
-    		if (/*userData*/ ctx[0] === undefined && !('userData' in props)) {
-    			console.warn("<Theme> was created without expected prop 'userData'");
+    		if (/*theme*/ ctx[0] === undefined && !('theme' in props)) {
+    			console.warn("<Theme> was created without expected prop 'theme'");
     		}
     	}
 
-    	get userData() {
+    	get theme() {
     		throw new Error("<Theme>: Props cannot be read directly from the component instance unless compiling with 'accessors: true' or '<svelte:options accessors/>'");
     	}
 
-    	set userData(value) {
+    	set theme(value) {
     		throw new Error("<Theme>: Props cannot be set directly on the component instance unless compiling with 'accessors: true' or '<svelte:options accessors/>'");
     	}
     }
@@ -10722,238 +10723,142 @@ var app = (function () {
     const { console: console_1$3 } = globals;
     const file$f = "src\\components\\Profile.svelte";
 
-    // (19:0) {#if notification !== null}
-    function create_if_block$e(ctx) {
-    	let toastnotification;
-    	let current;
-
-    	toastnotification = new ToastNotification({
-    			props: {
-    				type: /*notification*/ ctx[1].status,
-    				$$slots: { default: [create_default_slot$8] },
-    				$$scope: { ctx }
-    			},
-    			$$inline: true
-    		});
-
-    	toastnotification.$on("close", /*close_handler*/ ctx[2]);
-
-    	const block = {
-    		c: function create() {
-    			create_component(toastnotification.$$.fragment);
-    		},
-    		m: function mount(target, anchor) {
-    			mount_component(toastnotification, target, anchor);
-    			current = true;
-    		},
-    		p: function update(ctx, dirty) {
-    			const toastnotification_changes = {};
-    			if (dirty & /*notification*/ 2) toastnotification_changes.type = /*notification*/ ctx[1].status;
-
-    			if (dirty & /*$$scope, notification*/ 34) {
-    				toastnotification_changes.$$scope = { dirty, ctx };
-    			}
-
-    			toastnotification.$set(toastnotification_changes);
-    		},
-    		i: function intro(local) {
-    			if (current) return;
-    			transition_in(toastnotification.$$.fragment, local);
-    			current = true;
-    		},
-    		o: function outro(local) {
-    			transition_out(toastnotification.$$.fragment, local);
-    			current = false;
-    		},
-    		d: function destroy(detaching) {
-    			destroy_component(toastnotification, detaching);
-    		}
-    	};
-
-    	dispatch_dev("SvelteRegisterBlock", {
-    		block,
-    		id: create_if_block$e.name,
-    		type: "if",
-    		source: "(19:0) {#if notification !== null}",
-    		ctx
-    	});
-
-    	return block;
-    }
-
-    // (20:2) <ToastNotification      type={notification.status}      on:close={() => {        notification = null;      }}>
-    function create_default_slot$8(ctx) {
-    	let t_value = /*notification*/ ctx[1].msg + "";
-    	let t;
-
-    	const block = {
-    		c: function create() {
-    			t = text(t_value);
-    		},
-    		m: function mount(target, anchor) {
-    			insert_dev(target, t, anchor);
-    		},
-    		p: function update(ctx, dirty) {
-    			if (dirty & /*notification*/ 2 && t_value !== (t_value = /*notification*/ ctx[1].msg + "")) set_data_dev(t, t_value);
-    		},
-    		d: function destroy(detaching) {
-    			if (detaching) detach_dev(t);
-    		}
-    	};
-
-    	dispatch_dev("SvelteRegisterBlock", {
-    		block,
-    		id: create_default_slot$8.name,
-    		type: "slot",
-    		source: "(20:2) <ToastNotification      type={notification.status}      on:close={() => {        notification = null;      }}>",
-    		ctx
-    	});
-
-    	return block;
-    }
-
     function create_fragment$k(ctx) {
     	let t0;
-    	let t1;
     	let main;
     	let sidefolder;
-    	let t2;
+    	let t1;
     	let div4;
     	let div2;
     	let div0;
     	let h1;
-    	let t4;
+    	let t3;
     	let div1;
     	let p;
-    	let t6;
+    	let t5;
     	let imgchoose;
-    	let t7;
+    	let t6;
     	let div3;
     	let sharing;
-    	let t8;
+    	let t7;
     	let theme;
     	let current;
-    	let if_block = /*notification*/ ctx[1] !== null && create_if_block$e(ctx);
 
     	sidefolder = new SideFolder({
     			props: {
     				profile: true,
-    				userData: /*userData*/ ctx[0]
+    				userData: /*userData*/ ctx[0],
+    				shared: false,
+    				selected: null
     			},
     			$$inline: true
     		});
 
     	imgchoose = new ImgChoose({
-    			props: { userData: /*userData*/ ctx[0] },
+    			props: {
+    				profilePic: /*profileSettings*/ ctx[1].profile
+    			},
     			$$inline: true
     		});
 
     	imgchoose.$on("profileClick", /*profileClick_handler*/ ctx[3]);
-    	sharing = new Sharing({ $$inline: true });
-    	theme = new Theme({ $$inline: true });
+
+    	sharing = new Sharing({
+    			props: {
+    				sharing: /*profileSettings*/ ctx[1].sharing
+    			},
+    			$$inline: true
+    		});
+
+    	sharing.$on("set-sharing", /*set_sharing_handler*/ ctx[4]);
+
+    	theme = new Theme({
+    			props: { theme: /*profileSettings*/ ctx[1].theme },
+    			$$inline: true
+    		});
+
+    	theme.$on("set-theme", /*set_theme_handler*/ ctx[5]);
 
     	const block = {
     		c: function create() {
     			t0 = space();
-    			if (if_block) if_block.c();
-    			t1 = space();
     			main = element("main");
     			create_component(sidefolder.$$.fragment);
-    			t2 = space();
+    			t1 = space();
     			div4 = element("div");
     			div2 = element("div");
     			div0 = element("div");
     			h1 = element("h1");
     			h1.textContent = "Notice";
-    			t4 = space();
+    			t3 = space();
     			div1 = element("div");
     			p = element("p");
     			p.textContent = "The profile page is not functional. This is all just asthetic stuff\r\n          to get everything working. The backend has not been hooked up yet.";
-    			t6 = space();
+    			t5 = space();
     			create_component(imgchoose.$$.fragment);
-    			t7 = space();
+    			t6 = space();
     			div3 = element("div");
     			create_component(sharing.$$.fragment);
-    			t8 = space();
+    			t7 = space();
     			create_component(theme.$$.fragment);
     			document.title = "Profile | GCloud";
     			attr_dev(h1, "class", "svelte-n52npe");
-    			add_location(h1, file$f, 31, 8, 760);
+    			add_location(h1, file$f, 39, 8, 1112);
     			attr_dev(div0, "class", "text svelte-n52npe");
-    			add_location(div0, file$f, 30, 6, 732);
+    			add_location(div0, file$f, 38, 6, 1084);
     			attr_dev(p, "class", "svelte-n52npe");
-    			add_location(p, file$f, 34, 8, 831);
+    			add_location(p, file$f, 42, 8, 1183);
     			attr_dev(div1, "class", "buttonGrid svelte-n52npe");
-    			add_location(div1, file$f, 33, 6, 797);
+    			add_location(div1, file$f, 41, 6, 1149);
     			attr_dev(div2, "class", "imgPart svelte-n52npe");
-    			add_location(div2, file$f, 29, 4, 703);
+    			add_location(div2, file$f, 37, 4, 1055);
     			attr_dev(div3, "class", "double svelte-n52npe");
-    			add_location(div3, file$f, 46, 4, 1161);
+    			add_location(div3, file$f, 57, 4, 1667);
     			attr_dev(div4, "class", "therest svelte-n52npe");
-    			add_location(div4, file$f, 28, 2, 676);
+    			add_location(div4, file$f, 36, 2, 1028);
     			attr_dev(main, "class", "svelte-n52npe");
-    			add_location(main, file$f, 26, 0, 622);
+    			add_location(main, file$f, 34, 0, 943);
     		},
     		l: function claim(nodes) {
     			throw new Error("options.hydrate only works if the component was compiled with the `hydratable: true` option");
     		},
     		m: function mount(target, anchor) {
     			insert_dev(target, t0, anchor);
-    			if (if_block) if_block.m(target, anchor);
-    			insert_dev(target, t1, anchor);
     			insert_dev(target, main, anchor);
     			mount_component(sidefolder, main, null);
-    			append_dev(main, t2);
+    			append_dev(main, t1);
     			append_dev(main, div4);
     			append_dev(div4, div2);
     			append_dev(div2, div0);
     			append_dev(div0, h1);
-    			append_dev(div2, t4);
+    			append_dev(div2, t3);
     			append_dev(div2, div1);
     			append_dev(div1, p);
-    			append_dev(div4, t6);
+    			append_dev(div4, t5);
     			mount_component(imgchoose, div4, null);
-    			append_dev(div4, t7);
+    			append_dev(div4, t6);
     			append_dev(div4, div3);
     			mount_component(sharing, div3, null);
-    			append_dev(div3, t8);
+    			append_dev(div3, t7);
     			mount_component(theme, div3, null);
     			current = true;
     		},
     		p: function update(ctx, [dirty]) {
-    			if (/*notification*/ ctx[1] !== null) {
-    				if (if_block) {
-    					if_block.p(ctx, dirty);
-
-    					if (dirty & /*notification*/ 2) {
-    						transition_in(if_block, 1);
-    					}
-    				} else {
-    					if_block = create_if_block$e(ctx);
-    					if_block.c();
-    					transition_in(if_block, 1);
-    					if_block.m(t1.parentNode, t1);
-    				}
-    			} else if (if_block) {
-    				group_outros();
-
-    				transition_out(if_block, 1, 1, () => {
-    					if_block = null;
-    				});
-
-    				check_outros();
-    			}
-
     			const sidefolder_changes = {};
     			if (dirty & /*userData*/ 1) sidefolder_changes.userData = /*userData*/ ctx[0];
     			sidefolder.$set(sidefolder_changes);
     			const imgchoose_changes = {};
-    			if (dirty & /*userData*/ 1) imgchoose_changes.userData = /*userData*/ ctx[0];
+    			if (dirty & /*profileSettings*/ 2) imgchoose_changes.profilePic = /*profileSettings*/ ctx[1].profile;
     			imgchoose.$set(imgchoose_changes);
+    			const sharing_changes = {};
+    			if (dirty & /*profileSettings*/ 2) sharing_changes.sharing = /*profileSettings*/ ctx[1].sharing;
+    			sharing.$set(sharing_changes);
+    			const theme_changes = {};
+    			if (dirty & /*profileSettings*/ 2) theme_changes.theme = /*profileSettings*/ ctx[1].theme;
+    			theme.$set(theme_changes);
     		},
     		i: function intro(local) {
     			if (current) return;
-    			transition_in(if_block);
     			transition_in(sidefolder.$$.fragment, local);
     			transition_in(imgchoose.$$.fragment, local);
     			transition_in(sharing.$$.fragment, local);
@@ -10961,7 +10866,6 @@ var app = (function () {
     			current = true;
     		},
     		o: function outro(local) {
-    			transition_out(if_block);
     			transition_out(sidefolder.$$.fragment, local);
     			transition_out(imgchoose.$$.fragment, local);
     			transition_out(sharing.$$.fragment, local);
@@ -10970,8 +10874,6 @@ var app = (function () {
     		},
     		d: function destroy(detaching) {
     			if (detaching) detach_dev(t0);
-    			if (if_block) if_block.d(detaching);
-    			if (detaching) detach_dev(t1);
     			if (detaching) detach_dev(main);
     			destroy_component(sidefolder);
     			destroy_component(imgchoose);
@@ -10994,21 +10896,45 @@ var app = (function () {
     function instance$k($$self, $$props, $$invalidate) {
     	let { $$slots: slots = {}, $$scope } = $$props;
     	validate_slots('Profile', slots, []);
+    	const dispatch = createEventDispatcher();
     	let { userData } = $$props;
-    	let selected = "none";
-    	let notification = null;
+    	let profileSettings = JSON.parse(userData.usersProfile);
+
+    	const changeProfile = newSettings => {
+    		fetch(`/changeProfileSettings?cred=${getCookie$2("G_VAR2")}&settings=${JSON.stringify(newSettings)}`, { method: "POST" }).then(res => res.json()).then(data => {
+    			console.log(data);
+
+    			if (data.msg === "Good") {
+    				dispatch("edit-profile", JSON.stringify(newSettings));
+    			}
+    		});
+    	};
+
     	const writable_props = ['userData'];
 
     	Object.keys($$props).forEach(key => {
     		if (!~writable_props.indexOf(key) && key.slice(0, 2) !== '$$' && key !== 'slot') console_1$3.warn(`<Profile> was created with unknown prop '${key}'`);
     	});
 
-    	const close_handler = () => {
-    		$$invalidate(1, notification = null);
+    	const profileClick_handler = ({ detail }) => {
+    		let settings2 = profileSettings;
+    		settings2.profile = detail;
+    		$$invalidate(1, profileSettings = settings2);
+    		changeProfile(profileSettings);
     	};
 
-    	const profileClick_handler = ({ detail }) => {
-    		console.log(detail);
+    	const set_sharing_handler = ({ detail }) => {
+    		let settings2 = profileSettings;
+    		settings2.sharing = detail;
+    		$$invalidate(1, profileSettings = settings2);
+    		changeProfile(profileSettings);
+    	};
+
+    	const set_theme_handler = ({ detail }) => {
+    		let settings2 = profileSettings;
+    		settings2.theme = detail;
+    		$$invalidate(1, profileSettings = settings2);
+    		changeProfile(profileSettings);
     	};
 
     	$$self.$$set = $$props => {
@@ -11016,26 +10942,39 @@ var app = (function () {
     	};
 
     	$$self.$capture_state = () => ({
-    		ToastNotification,
     		SideFolder,
     		ImgChoose,
     		Sharing,
     		Theme,
+    		getCookie: getCookie$2,
+    		createEventDispatcher,
+    		dispatch,
     		userData,
-    		selected,
-    		notification
+    		profileSettings,
+    		changeProfile
     	});
 
     	$$self.$inject_state = $$props => {
     		if ('userData' in $$props) $$invalidate(0, userData = $$props.userData);
-    		if ('selected' in $$props) $$invalidate(4, selected = $$props.selected);
-    		if ('notification' in $$props) $$invalidate(1, notification = $$props.notification);
+    		if ('profileSettings' in $$props) $$invalidate(1, profileSettings = $$props.profileSettings);
     	};
 
     	if ($$props && "$$inject" in $$props) {
     		$$self.$inject_state($$props.$$inject);
     	}
-    	return [userData, notification, close_handler, profileClick_handler];
+
+    	$$self.$$.update = () => {
+    		if ($$self.$$.dirty & /*profileSettings*/ 2) ;
+    	};
+
+    	return [
+    		userData,
+    		profileSettings,
+    		changeProfile,
+    		profileClick_handler,
+    		set_sharing_handler,
+    		set_theme_handler
+    	];
     }
 
     class Profile extends SvelteComponentDev {

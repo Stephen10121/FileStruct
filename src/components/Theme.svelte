@@ -1,7 +1,7 @@
 <script>
   import { createEventDispatcher } from "svelte";
   const dispatch = createEventDispatcher();
-  export let userData;
+  export let theme;
 </script>
 
 <div class="imgPart">
@@ -9,7 +9,16 @@
     <h1>Light Theme</h1>
   </div>
   <div class="buttonGrid">
-    <input type="checkbox" name="sharing" id="sharing" class="checkbox" />
+    <input
+      type="checkbox"
+      name="sharing"
+      id="sharing"
+      class="checkbox"
+      checked={theme === "light" ? true : false}
+      on:change={(e) => {
+        dispatch("set-theme", e.target.checked ? "light" : "dark");
+      }}
+    />
   </div>
 </div>
 
