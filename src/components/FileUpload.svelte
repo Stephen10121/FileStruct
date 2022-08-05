@@ -5,7 +5,6 @@
   import axios from "axios";
   import { getCookie } from "../cookie";
   export let selected;
-  export let PROXY;
   let notification = null;
 
   const sendFile = (e) => {
@@ -18,7 +17,7 @@
     axios
       .request({
         method: "post",
-        url: `${PROXY}upload`,
+        url: `/upload`,
         data,
         onUploadProgress: (p) => {
           notification = {};

@@ -4,7 +4,6 @@
   export let selected;
   export let file;
   export let metadata;
-  export let PROXY;
   export let shared;
 
   let fileData = "N/A";
@@ -34,9 +33,7 @@
   }
 
   fetch(
-    `${PROXY}getFileData?location=${path}&cred=${getCookie(
-      "G_VAR2"
-    )}&shared=${shared}`
+    `/getFileData?location=${path}&cred=${getCookie("G_VAR2")}&shared=${shared}`
   )
     .then((response) => response.json())
     .then((data) => {
@@ -73,7 +70,7 @@
     {#if fileData["video"]}
       <video id="previewBoxView" controls autoplay muted={false}>
         <source
-          src="{PROXY}getVideoStream?location={path}&cred={getCookie('G_VAR2')}"
+          src="/getVideoStream?location={path}&cred={getCookie('G_VAR2')}"
           type="video/mp4"
         />
       </video>

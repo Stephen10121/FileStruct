@@ -60,6 +60,7 @@
       {shared}
       on:addToDrive
       on:delete-folder
+      on:settings
       on:close-right={hideRightClick}
     />
   </section>

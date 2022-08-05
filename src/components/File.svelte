@@ -10,7 +10,6 @@
   export let selected;
   export let file;
   export let metadata;
-  export let PROXY;
   export let folderStruct;
   export let shared;
   let moveFile = false;
@@ -21,7 +20,7 @@
   const downloadFile = async () => {
     console.log("Download");
     let res = await fetch(
-      `${PROXY}download?file=${file}&location=${selected}&cred=${getCookie(
+      `/download?file=${file}&location=${selected}&cred=${getCookie(
         "G_VAR2"
       )}&shared=${shared}`,
       {
@@ -83,9 +82,9 @@
       location = extra[0] + "/" + extra[1];
     }
     fetch(
-      `${PROXY}shareFile?cred=${getCookie(
-        "G_VAR2"
-      )}&location=${location}&user=${e.target[0].value}`,
+      `/shareFile?cred=${getCookie("G_VAR2")}&location=${location}&user=${
+        e.target[0].value
+      }`,
       { method: "POST" }
     )
       .then((response) => response.json())
@@ -116,9 +115,9 @@
       location = extra[0] + "/" + extra[1];
     }
     fetch(
-      `${PROXY}renameFile?cred=${getCookie(
-        "G_VAR2"
-      )}&location=${location}&renamed=${e.target[0].value}`,
+      `/renameFile?cred=${getCookie("G_VAR2")}&location=${location}&renamed=${
+        e.target[0].value
+      }`,
       { method: "POST" }
     )
       .then((response) => response.json())
@@ -149,7 +148,7 @@
     }
     let destination = `${detail}/${file}`;
     fetch(
-      `${PROXY}moveFile?cred=${getCookie(
+      `/moveFile?cred=${getCookie(
         "G_VAR2"
       )}&location=${location}&dest=${destination}`,
       { method: "POST" }
@@ -180,7 +179,7 @@
       location = selected + "/" + file;
     }
     fetch(
-      `${PROXY}deleteFile?cred=${getCookie(
+      `/deleteFile?cred=${getCookie(
         "G_VAR2"
       )}&location=${location}&shared=${shared}`,
       { method: "POST" }
@@ -210,10 +209,9 @@
     } else {
       location = selected + "/" + file;
     }
-    fetch(
-      `${PROXY}addFileToDrive?cred=${getCookie("G_VAR2")}&location=${location}`,
-      { method: "POST" }
-    )
+    fetch(`/addFileToDrive?cred=${getCookie("G_VAR2")}&location=${location}`, {
+      method: "POST",
+    })
       .then((response) => response.json())
       .then((data) => {
         if (data.msg === "Good") {
@@ -263,7 +261,6 @@
 <li>
   {#if previewShow}
     <FilePreview
-      {PROXY}
       on:deleteFile={deleteFile}
       on:downloadFile={downloadFile}
       on:shareFile={shareFileDo}

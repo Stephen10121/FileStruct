@@ -3,7 +3,6 @@
   import FileUpload from "./FileUpload.svelte";
   export let profile;
   export let shared;
-  export let PROXY;
   export let selected;
   export let userData;
 </script>
@@ -40,7 +39,7 @@
     >
   {/if}
   {#if !shared && !profile}
-    <FileUpload {PROXY} {selected} on:update-file-struct />
+    <FileUpload {selected} on:update-file-struct />
   {/if}
   {#if shared}
     <Link to="/">

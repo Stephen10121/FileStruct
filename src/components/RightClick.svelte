@@ -59,6 +59,16 @@
     >
       Delete
     </Option>
+    <div class="break" />
+    <Option
+      ident="settings"
+      icon="/icons/gear.svg"
+      alt="Settings"
+      nonSelectable={false}
+      on:clicked={settings}
+    >
+      Settings
+    </Option>
   </section>
 {:else}
   <section class="right-click">

@@ -6,7 +6,6 @@
   import Theme from "./Theme.svelte";
 
   export let userData;
-  // export let PROXY;
 
   let selected = "none";
   $: selected;

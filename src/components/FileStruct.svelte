@@ -4,7 +4,6 @@
   import ToastNotification from "./ToastNotification.svelte";
   export let files;
   export let selected;
-  export let PROXY;
   export let folderStruct;
   export let shared;
   let fileExtensionValue;
@@ -30,7 +29,6 @@
   {#each files as file}
     <File
       {selected}
-      {PROXY}
       file={file.name}
       metadata={file.metadata}
       {folderStruct}

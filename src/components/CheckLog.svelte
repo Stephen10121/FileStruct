@@ -5,7 +5,6 @@
   import Profile from "./Profile.svelte";
   import Shared from "./Shared.svelte";
   import Home from "./Home.svelte";
-  export let PROXY;
   export let profile;
   export let shared;
 
@@ -23,11 +22,7 @@
     navigate("/");
     isLogged = false;
   } else {
-    fetch(
-      `${PROXY.split("/").slice(0, -1).join("/")}/userData?cred=${getCookie(
-        "G_VAR2"
-      )}`
-    )
+    fetch(`/userData?cred=${getCookie("G_VAR2")}`)
       .then((response) => response.json())
       .then((data) => {
         if (data.status !== 200) {
@@ -47,19 +42,12 @@
 
 {#if isLogged}
   {#if profile}
-    <Profile {userData} PROXY={PROXY.split("/").slice(0, -1).join("/") + "/"} />
+    <Profile {userData} />
   {:else if shared}
-    <Shared
-      {userData}
-      PROXY={PROXY.split("/").slice(0, -1).join("/") + "/"}
-      {profile}
-    />
+    <Shared {userData} {profile} />
   {:else}
-    <Home {userData} PROXY={PROXY.split("/").slice(0, -1).join("/") + "/"} />
+    <Home {userData} />
   {/if}
 {:else}
-  <NotLogged
-    on:userLoggedIn={loggedIn}
-    PROXY={PROXY.split("/").slice(0, -1).join("/") + "/"}
-  />
+  <NotLogged on:userLoggedIn={loggedIn} />
 {/if}

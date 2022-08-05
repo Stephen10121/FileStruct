@@ -4,12 +4,12 @@
   import SideFolder from "./SideFolder.svelte";
   import FolderPart from "./FolderPart.svelte";
   import LocationPath from "./LocationPath.svelte";
+  import Settings from "./Settings.svelte";
   import BoolPrompt from "./BoolPrompt.svelte";
   import { getCookie } from "../cookie";
   import { folderStructValue } from "../../scripts/stores";
 
   export let userData;
-  export let PROXY;
   export let profile;
 
   let selected = "none";
@@ -18,6 +18,8 @@
   let notification = null;
   let folderStruct = {};
   let boolPrompt = false;
+  let settings = false;
+  let usedSize = "N/A";
 
   folderStructValue.subscribe((value) => {
     folderStruct = value;
@@ -25,20 +27,22 @@
 
   console.log(userData);
 
-  fetch(`${PROXY}fetchSharedFiles?cred=${getCookie("G_VAR2")}`)
+  fetch(`/fetchSharedFiles?cred=${getCookie("G_VAR2")}`)
     .then((response) => response.json())
     .then((data) => {
       console.log(data);
       folderStructValue.update((n) => data.files);
+      usedSize = data.fileSize;
       newLoc({ detail: null });
     });
 
   const fetchFiles = () => {
-    fetch(`${PROXY}fetchSharedFiles?cred=${getCookie("G_VAR2")}`)
+    fetch(`/fetchSharedFiles?cred=${getCookie("G_VAR2")}`)
       .then((response) => response.json())
       .then((data) => {
         console.log(data);
         folderStructValue.update((n) => data.files);
+        usedSize = data.fileSize;
         newLoc({ detail: null });
       });
   };
@@ -70,7 +74,7 @@
       return;
     }
     fetch(
-      `${PROXY}deleteSharedFolder?cred=${getCookie("G_VAR2")}&location=${
+      `/deleteSharedFolder?cred=${getCookie("G_VAR2")}&location=${
         detail.extra
       }`,
       { method: "POST" }
@@ -107,10 +111,9 @@
   };
 
   const addToDrive = () => {
-    fetch(
-      `${PROXY}addToDrive?cred=${getCookie("G_VAR2")}&location=${selected}`,
-      { method: "POST" }
-    )
+    fetch(`/addToDrive?cred=${getCookie("G_VAR2")}&location=${selected}`, {
+      method: "POST",
+    })
       .then((response) => response.json())
       .then((data) => {
         if (data.msg === "Good") {
@@ -134,6 +137,14 @@
   <title>Shared | GCloud</title>
 </svelte:head>
 
+{#if settings}
+  <Settings
+    {usedSize}
+    on:close-settings={() => {
+      settings = false;
+    }}
+  />
+{/if}
 {#if boolPrompt}
   <BoolPrompt extra={boolPrompt.extra} on:boolChoose={boolPrompt.callback}
     >{boolPrompt.msg}</BoolPrompt
@@ -150,7 +161,6 @@
 <main>
   <SideFolder
     shared={true}
-    {PROXY}
     {selected}
     {profile}
     {userData}
@@ -164,6 +174,9 @@
     on:folderClicked={newLoc}
     on:delete-folder={deleteFolderPrompt}
     on:addToDrive={addToDrive}
+    on:settings={() => {
+      settings = true;
+    }}
   />
   <section class="file-part">
     <LocationPath {selected} on:change-dir={newLoc} />
@@ -171,7 +184,6 @@
       {selected}
       files={currentFolderPathFiles}
       shared={true}
-      {PROXY}
       {folderStruct}
       on:newLoc={newLoc}
     />

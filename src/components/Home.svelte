@@ -12,7 +12,6 @@
   import { fileExtension, folderStructValue } from "../../scripts/stores";
 
   export let userData;
-  export let PROXY;
 
   let selected = "none";
   $: selected;
@@ -45,7 +44,7 @@
       window.localStorage.getItem("fileExtension") === "true" ? true : false
     );
   }
-  fetch(`${PROXY}fetchFiles?cred=${getCookie("G_VAR2")}`)
+  fetch(`/fetchFiles?cred=${getCookie("G_VAR2")}`)
     .then((response) => response.json())
     .then((data) => {
       console.log(data);
@@ -54,7 +53,7 @@
       newLoc({ detail: null });
     });
   const fetchFiles = () => {
-    fetch(`${PROXY}fetchFiles?cred=${getCookie("G_VAR2")}`)
+    fetch(`/fetchFiles?cred=${getCookie("G_VAR2")}`)
       .then((response) => response.json())
       .then((data) => {
         console.log(data);
@@ -92,7 +91,7 @@
     }
     showPrompt = false;
     fetch(
-      `${PROXY}addFolder?cred=${getCookie("G_VAR2")}&location=${
+      `/addFolder?cred=${getCookie("G_VAR2")}&location=${
         extra ? extra : " "
       }&name=${e.target[0].value}`,
       { method: "POST" }
@@ -121,7 +120,7 @@
     }
     showPrompt = false;
     fetch(
-      `${PROXY}renameFolder?cred=${getCookie("G_VAR2")}&location=${
+      `/renameFolder?cred=${getCookie("G_VAR2")}&location=${
         extra ? extra : " "
       }&name=${e.target[0].value}`,
       { method: "POST" }
@@ -154,7 +153,7 @@
     }
     showPrompt = false;
     fetch(
-      `${PROXY}shareFolder?cred=${getCookie("G_VAR2")}&location=${extra}&user=${
+      `/shareFolder?cred=${getCookie("G_VAR2")}&location=${extra}&user=${
         e.target[0].value
       }`,
       { method: "POST" }
@@ -181,9 +180,7 @@
       return;
     }
     fetch(
-      `${PROXY}deleteFolder?cred=${getCookie("G_VAR2")}&location=${
-        detail.extra
-      }`,
+      `/deleteFolder?cred=${getCookie("G_VAR2")}&location=${detail.extra}`,
       { method: "POST" }
     )
       .then((response) => response.json())
@@ -211,7 +208,7 @@
 
   const moveHere = ({ detail }) => {
     fetch(
-      `${PROXY}moveFolder?cred=${getCookie(
+      `/moveFolder?cred=${getCookie(
         "G_VAR2"
       )}&location=${selected}&dest=${detail}`,
       { method: "POST" }
@@ -312,7 +309,6 @@
     shared={false}
     profile={false}
     {userData}
-    {PROXY}
     {selected}
     on:update-file-struct={fetchFiles}
   />
@@ -337,7 +333,6 @@
       shared={false}
       {selected}
       files={currentFolderPathFiles}
-      {PROXY}
       {folderStruct}
       on:newLoc={newLoc}
     />
