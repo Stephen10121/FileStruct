@@ -5,6 +5,7 @@
   import Theme from "./Theme.svelte";
   import ToastNotification from "./ToastNotification.svelte";
   import { getCookie } from "../cookie";
+  import Delete from "./Delete.svelte";
 
   export let userData;
   let profileSettings = JSON.parse(userData.usersProfile);
@@ -107,6 +108,14 @@
               "rgb(165, 165, 165)"
             );
           }
+        }}
+      />
+      <Delete
+        on:error={() => {
+          notification = {
+            status: "alert",
+            msg: "Error deleting account.",
+          };
         }}
       />
     </div>

@@ -138,6 +138,26 @@ async function saveProfile(profile, user) {
     }
 }
 
+async function deleteAccount(id) {
+    const db = await Database.open("./users.db");
+    const updateStatement = "DELETE FROM users WHERE usersName=?";
+    try {
+        const result = await db.run(updateStatement, [id]);
+        await db.close();
+    } catch (err) {
+        console.error(err);
+        return 'error';
+    }
+    let fileLocation = `./storage/${hashed(id)}`;
+  try {
+    await fs.promises.rmdir(fileLocation, { recursive: true });
+  } catch (err) {
+    console.error(err);
+    return "Error deleting folder.";
+  }
+  return 200;
+}
+
 async function checkUserSharing(user) {
     const gettingUser = await getUserByName(user);
     if (gettingUser.length > 0) {
@@ -157,5 +177,6 @@ module.exports = {
     saveProfile,
     checkUserSharing,
     createTable,
-    saveProfile
+    saveProfile,
+    deleteAccount
 }

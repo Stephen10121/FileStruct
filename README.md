@@ -91,6 +91,6 @@ node server.js
 - [ ] Profile Page.
   - [x] Choose picture.
   - [x] Set sharing.
-  - [ ] Theme toggling.
+  - [x] Theme toggling.
   - [ ] Delete account.
 - [ ] Not logged-in Page.

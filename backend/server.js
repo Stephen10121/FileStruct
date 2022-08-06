@@ -6,7 +6,7 @@ const path = require("path");
 const fs = require("fs");
 const { getFiles, readFile } = require("./dirGet");
 const cookieParser = require("cookie-parser");
-const { userLogin, getUserData, saveProfile } = require("./database");
+const { userLogin, getUserData, saveProfile, deleteAccount } = require("./database");
 const PORT = process.env.SERVER_PORT || 5700;
 const jwt = require("jsonwebtoken");
 const cors = require("cors");
@@ -241,6 +241,34 @@ app.get("/userData", async (req, res) => {
       res.json({ msg: "Good", userData: user2, status: 200 });
     }
   );
+});
+
+app.post("/deleteAccount", async (req, res) => {
+    if (!req.query["cred"]) {
+        res.json({ msg: "Missing arguments." });
+        return;
+    }
+    jwt.verify(
+        req.query.cred,
+        process.env.ACCESS_TOKEN_SECRET,
+        async (err, user) => {
+          if (err) {
+            res.status(400).json({ msg: "Invalid input" });
+            return;
+          }
+          const userif = await getUserData(user.usersHash);
+          if (userif == "error") {
+            res.status(400).json({ msg: "Invalid input" });
+            return;
+          }
+          const deletedAccount = await deleteAccount(user.usersName);
+          if (deletedAccount !== 200) {
+            res.json({ msg: "Error Deleting Account." });
+            return;
+          }
+          res.json({ msg: "Good" });
+        }
+      );
 });
 
 app.post("/changeProfileSettings", async (req, res) => {
