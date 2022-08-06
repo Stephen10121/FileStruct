@@ -113,7 +113,7 @@
 
   .logout {
     color: var(--file-color);
-    background-color: var(--folder-section-color);
+    background-color: var(--file-section-color);
     padding: 10px;
     width: 100%;
     font-size: 1.25rem;
@@ -123,7 +123,7 @@
   }
 
   .logout:hover {
-    background-color: var(--file-section-color);
+    background-color: var(--folder-section-color);
   }
 
   .profile {

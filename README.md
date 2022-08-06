@@ -89,8 +89,8 @@ node server.js
     - [x] Delete file.
     - [x] Add to drive.
 - [ ] Profile Page.
-  - [ ] Choose picture.
-  - [ ] Set sharing.
+  - [x] Choose picture.
+  - [x] Set sharing.
   - [ ] Theme toggling.
   - [ ] Delete account.
 - [ ] Not logged-in Page.
