@@ -88,9 +88,9 @@ node server.js
     - [x] File preview video/audio and text.
     - [x] Delete file.
     - [x] Add to drive.
-- [ ] Profile Page.
+- [x] Profile Page.
   - [x] Choose picture.
   - [x] Set sharing.
   - [x] Theme toggling.
-  - [ ] Delete account.
+  - [x] Delete account.
 - [ ] Not logged-in Page.
