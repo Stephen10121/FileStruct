@@ -237,6 +237,7 @@ app.get("/userData", async (req, res) => {
       const user2 = userif;
       delete user2.usersHash;
       delete user2.iat;
+      delete user2.id;
       res.json({ msg: "Good", userData: user2, status: 200 });
     }
   );
