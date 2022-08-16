@@ -93,4 +93,4 @@ node server.js
   - [x] Set sharing.
   - [x] Theme toggling.
   - [x] Delete account.
-- [ ] Not logged-in Page.
+- [x] Not logged-in Page.
