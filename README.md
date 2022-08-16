@@ -1,6 +1,6 @@
 # FileStruct
 
-This is a project I made to have a virtual file structure that I can access anywhere online.
+This is a project I made to have a virtual file structure that I can access anywhere online. Then I got out of hand and added file sharing and preview abilities. Now its a full fledged, PWA optimised application.
 
 ## What I'm using
 
