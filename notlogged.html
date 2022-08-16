@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>GCloud</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+	<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+	<link href="https://fonts.googleapis.com/css2?family=Poppins&family=Roboto&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="notlogged.css">
+    <script src="notlogged.js" defer></script>
+</head>
+<body>
+    <main>
+        <header>
+            <h1>GCloud</h1>
+            <div class="right-buttons">
+                <div class="pageLocations">
+                    <button onclick="home()">Home</button>
+                    <a href="#preview">Preview</a>
+                    <a href="#sharing">Sharing</a>
+                </div>
+                <button id="sauth-login">
+                    Login with Gruzservices
+                    <span>
+                      <img src="https://auth.gruzservices.com/icons/lock.svg" alt="Lock" />
+                    </span>
+                  </button>
+            </div>
+        </header>
+        <section class="about">
+            <div class="someText">
+                <div class="textbox">
+                    <h1>A Storage bucket</h1>
+                    <p>This is where you can share and store files in the Cloud.</p>
+                </div>
+            </div>
+            <div class="imgContain">
+                <div class="box">
+                    <img src="storage.jpg" alt="">
+                </div>
+            </div>
+        </section>
+        <section class="about preview" id="preview">
+            <div class="imgContain">
+                <div class="box">
+                    <video src="http://192.168.0.24:5700/getExampleVideoStream" controls></video>
+                    <!-- <img src="previewvid.png" alt="Preview video picture"> -->
+                </div>
+            </div>
+            <div class="someText">
+                <div class="textbox">
+                    <h1>File Preview.</h1>
+                    <p>Access content without downloading it. This video is streaming.</p>
+                </div>
+            </div>
+        </section>
+        <section class="about sharing" id="sharing">
+            <div class="imgContain">
+                <div class="box">
+                    <img src="sharing.jpg" alt="">
+                </div>
+            </div>
+            <div class="someText">
+                <div class="textbox">
+                    <h1>Sharing</h1>
+                    <p>Easily let other people view your files. File sharing is disabled by default.</p>
+                </div>
+            </div>
+        </section>
+    </main>
+</body>
+</html>
